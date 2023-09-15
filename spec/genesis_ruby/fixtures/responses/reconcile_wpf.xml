@@ -1,0 +1,87 @@
+<wpf_payment>
+  <status>refunded</status>
+  <unique_id>fa55e73384195e38ef85f7e4301f0e77</unique_id>
+  <transaction_id>sf-d76fb7bdb0166c129fe09e96834</transaction_id>
+  <consumer_id>17331</consumer_id>
+  <timestamp>2023-04-06T07:32:30Z</timestamp>
+  <amount>1810</amount>
+  <currency>EUR</currency>
+  <usage>Electronic Transaction</usage>
+  <description>Electronic Transaction</description>
+  <card_brand>visa</card_brand>
+  <card_number>420000...0000</card_number>
+  <card_type>CREDIT</card_type>
+  <card_issuing_bank>JPMORGAN CHASE BANK, N.A.</card_issuing_bank>
+  <card_issuing_country>united states</card_issuing_country>
+  <card_holder>John Smith</card_holder>
+  <expiration_year>2023</expiration_year>
+  <expiration_month>12</expiration_month>
+  <payment_transaction>
+    <status>refunded</status>
+    <response_code>00</response_code>
+    <authorization_code>127093</authorization_code>
+    <transaction_type>sale3d</transaction_type>
+    <unique_id>7f097dd3f5a2eff5c09300b6d1e040f8</unique_id>
+    <transaction_id>sf-d76fb7bdb0166c129fe09e96834</transaction_id>
+    <terminal_token>3c5c752969b447f09de25dea4b9f82bdff29b558</terminal_token>
+    <mode>test</mode>
+    <timestamp>2023-04-06T07:33:28Z</timestamp>
+    <descriptor>TEST</descriptor>
+    <dynamic_descriptor_params>
+      <merchant_name>EXAMPLE</merchant_name>
+      <merchant_city>LONDON</merchant_city>
+    </dynamic_descriptor_params>
+    <amount>1810</amount>
+    <currency>EUR</currency>
+    <customer_email>example@emerchantpay.com</customer_email>
+    <customer_phone/>
+    <technical_message>TESTMODE: No real money will be transferred!</technical_message>
+    <message>TESTMODE: No real money will be transferred!</message>
+    <threeds>
+      <eci>05</eci>
+      <authentication_flow>fallback</authentication_flow>
+      <protocol>
+        <target_version>2</target_version>
+        <concrete_version>1</concrete_version>
+      </protocol>
+    </threeds>
+    <billing_address>
+      <first_name>John</first_name>
+      <last_name>Smith</last_name>
+      <address1>1 London Bridge, London SE1 9BG, United Kingdom</address1>
+      <address2/>
+      <zip_code>0000</zip_code>
+      <city>London</city>
+      <state/>
+      <country>UK</country>
+    </billing_address>
+    <shipping_address>
+      <first_name/>
+      <last_name/>
+      <address1/>
+      <address2/>
+      <zip_code/>
+      <city/>
+      <state/>
+      <country/>
+    </shipping_address>
+  </payment_transaction>
+  <payment_transaction>
+    <status>approved</status>
+    <response_code>00</response_code>
+    <authorization_code>206439</authorization_code>
+    <transaction_type>refund</transaction_type>
+    <unique_id>694479f71e81155b0271e976bf13bffc</unique_id>
+    <transaction_id>sf-101906e34638717dd63fe016827</transaction_id>
+    <terminal_token>3c5c752969b447f09de25dea4b9f82bdff29b558</terminal_token>
+    <mode>test</mode>
+    <timestamp>2023-04-06T07:40:18Z</timestamp>
+    <descriptor>CL TEST</descriptor>
+    <amount>1810</amount>
+    <currency>EUR</currency>
+    <customer_email>dimitar.natskin@emerchantpay.com</customer_email>
+    <customer_phone/>
+    <technical_message>TESTMODE: No real money will be transferred!</technical_message>
+    <message>TESTMODE: No real money will be transferred!</message>
+  </payment_transaction>
+</wpf_payment>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wpf_payment>
+  <status>error</status>
+  <code>110</code>
+  <technical_message>Invalid Authentication</technical_message>
+  <message>401 Unauthorized: Invalid Authentication!</message>
+</wpf_payment>

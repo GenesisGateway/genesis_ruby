@@ -1,0 +1,92 @@
+require 'genesis_ruby/network/adapter/base_adapter'
+require 'genesis_ruby/errors/network_error'
+require 'net/http'
+
+module GenesisRuby
+  module Network
+    module Adapter
+      # Net-HTTP Adapter implementation
+      class NetHttpAdapter < BaseAdapter
+
+        # HTTP Response Status Code
+        def status
+          @response&.code
+        end
+
+        # Prepare the request from the given data
+        def prepare_request(data)
+          @request_data = data
+          @uri          = parse_uri
+          # Force connection re-creation
+          @request      = Net::HTTP.start(@uri.hostname ||= '', ssl_options)
+        end
+
+        # Send the request
+        def execute
+          raise NetworkError, 'Request is not initialized' unless @request
+
+          begin
+            # TODO: Use GenesisRuby::Api::Request::METHOD_XXX constants for sending GET and PUT request_data.type
+            @response = @request.post(path, request_data.body, headers)
+          rescue StandardError => e
+            raise NetworkError, "Network error raised by #{e.class.name}: #{e.message}"
+          ensure
+            # Close the request
+            @request.finish
+          end
+        end
+
+        # Response body
+        def response_body
+          @response_body ||= @response ? @response.body : ''
+        end
+
+        # Response headers
+        def response_headers
+          @response_headers ||= @response ? @response.each_header.to_h : {}
+        end
+
+        private
+
+        attr_reader :uri, :request, :response, :request_data
+
+        # Path accessor that secure always string return value
+        def path
+          path = @uri&.path
+
+          path.empty? ? '/' : path
+        end
+
+        # Override URI parsing errors
+        def parse_uri
+          URI.parse(request_data.url)
+        rescue URI::Error => e
+          raise NetworkError, "Error during URL parsing: #{e.message}"
+        end
+
+        # Define SSL requirements
+        def ssl_options
+          {
+            use_ssl:         true,
+            verify_mode:     OpenSSL::SSL::VERIFY_PEER,
+            verify_depth:    10,
+            verify_hostname: true,
+            read_timeout:    request_data.timeout,
+            min_version:     OpenSSL::SSL::TLS1_VERSION
+          }
+        end
+
+        # Define Headers
+        def headers
+          {
+            'Content-Type'   => request_data.format,
+            'Content-Length' => request_data.body&.length.to_s,
+            'Authorization'  => "Basic #{request_data.user_login}",
+            'User-Agent'     => request_data.user_agent
+          }
+        end
+
+      end
+    end
+  end
+end

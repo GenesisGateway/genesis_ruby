@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<payment_response>
+  <transaction_type>authorize3d</transaction_type>
+  <status>approved</status>
+  <authorization_code>345678</authorization_code>
+  <retrieval_reference_number>016813015184</retrieval_reference_number>
+  <response_code>00</response_code>
+  <unique_id>44177a21403427eb96664a6d7e5d5d48</unique_id>
+  <transaction_id>119643250547501c79d8295</transaction_id>
+  <mode>live</mode>
+  <timestamp>2023-04-04T18:45:22Z</timestamp>
+  <descriptor>Descriptor one</descriptor>
+  <amount>5000</amount>
+  <currency>USD</currency>
+  <card_brand>visa</card_brand>
+  <card_number>401200...0085</card_number>
+  <card_type>CREDIT</card_type>
+  <card_subtype>CARD SUBTYPE</card_subtype>
+  <card_issuing_bank>Issuing Bank</card_issuing_bank>
+  <card_issuing_country>Exact Issuing country</card_issuing_country>
+  <bank_account_number>Bank Account Number</bank_account_number>
+  <bank_identifier_code>Bank Identifier Code</bank_identifier_code>
+  <sent_to_acquirer>true</sent_to_acquirer>
+  <arn>74537605259536043849425</arn>
+  <scheme_response_code>00</scheme_response_code>
+  <threeds>
+    <authentication_flow>frictionless</authentication_flow>
+    <protocol>
+      <target_version>2</target_version>
+      <concrete_version>2</concrete_version>
+    </protocol>
+    <eci>05</eci>
+  </threeds>
+</payment_response>
