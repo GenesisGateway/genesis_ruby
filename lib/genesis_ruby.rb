@@ -12,7 +12,7 @@ module GenesisRuby
 
     # Transaction Request Initializer
     def self.for(config:, request:)
-      unless request.is_a?(Class) || request < GenesisRuby::Api::Request
+      unless request.is_a?(Class) && request < GenesisRuby::Api::Request
         raise InvalidArgumentError, 'Given Request is invalid'
       end
 
@@ -31,7 +31,10 @@ module GenesisRuby
     def initialize(configuration, request = nil)
       @configuration = configuration
       @request       = request
-      @response      = GenesisRuby::Api::Response.new(configuration)
+      @response      = GenesisRuby::Api::Response.new(
+        configuration,
+        request&.api_config || GenesisRuby::Utils::Options::ApiConfig.new
+      )
       @network       = GenesisRuby::Connection.for(configuration)
     end
 

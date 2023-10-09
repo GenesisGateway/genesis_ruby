@@ -1,6 +1,11 @@
 RSpec.describe GenesisRuby::Api::Response do
   let(:configuration) { GenesisRuby::Configuration.new }
-  let(:response) { described_class.new(configuration) }
+  let(:response) do
+    request_api_config = GenesisRuby::Utils::Options::ApiConfig.new
+    request_api_config.load_xml_config
+
+    described_class.new configuration, request_api_config
+  end
   let(:network_mock) do
     network = instance_double(GenesisRuby::Network::NetHttp)
 

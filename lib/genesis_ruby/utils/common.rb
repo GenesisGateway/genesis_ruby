@@ -93,12 +93,19 @@ module GenesisRuby
           parsed_date = nil
 
           formats.each do |format|
-            return Date.strptime(date, format)
+            return DateTime.strptime(date, format)
           rescue StandardError
             parsed_date = nil
           end
 
           parsed_date
+        end
+
+        # Check if the given string contain time
+        def date_has_time?(value)
+          return true if value =~ /(?:\d|[01]\d|2[0-3]):[0-5]\d:[0-5]\d/
+
+          false
         end
 
       end

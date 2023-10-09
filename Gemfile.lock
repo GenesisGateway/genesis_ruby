@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    genesis_ruby (0.1.0)
+    genesis_ruby (0.1.1)
       net-http (~> 0.3.2)
       nokogiri (~> 1.14)
 
@@ -140,7 +140,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  bundler
+  bundler (~> 2.1)
   faker (~> 2.22)
   faraday-retry (~> 2.0)
   genesis_ruby!

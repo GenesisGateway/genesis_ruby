@@ -12,6 +12,8 @@ Client Library for processing payments through Genesis Payment Processing Gatewa
 ## Requirements
 
 * Ruby version 2.7 or newer
+* [net-http](https://rubygems.org/gems/net-http) 0.3.2 or newer
+* [nokogiri](https://rubygems.org/gems/nokogiri) 1.14 or newer
 
 ## Installation
 
@@ -246,6 +248,35 @@ If an error occurs during the Transaction Execution the status is one of the fol
 ```
 </details>
 
+### Reference actions
+The Reference transaction requests allow actions over an existing payment. The payment can be modified with:
+* Capture - settles a transaction that has been authorized before
+* Void - undo other transactions
+* Refund -  allow to return already billed amounts to customers
+
+<kbd>!</kbd> Void transaction request doesn't require amount and currency parameters
+
+After a successful response of a payment, reference actions can be executed by using the `unique_id`.
+
+```ruby
+require 'genesis_ruby'
+
+begin
+  genesis = GenesisRuby::Genesis.for(config: configuration, request: GenesisRuby::Api::Requests::Financial::Refund) do |request|
+    request.transaction_id = '12345-67890'
+    request.amount         = '0.99' # not available for GenesisRuby::Api::Requests::Financial::Void
+    request.currency       = 'EUR' # not available for GenesisRuby::Api::Requests::Financial::Void
+    request.usage          = 'Example usage'
+    request.reference_id   = 'unique_id received upon successful payment transaction'
+  end.execute
+
+  puts genesis.response.response_object
+
+rescue GenesisRuby::Error => error
+  puts error.message
+end
+```
+
 ### Response Helpers
 
 #### Sates
@@ -284,7 +315,7 @@ configuration.sanitize_response = false
 You can use the following request classes to initialize the Genesis client:
 
 ```ruby
-# Transactions
+# Financial
 ## Cards
 GenesisRuby::Api::Requests::Financial::Cards::Authorize
 GenesisRuby::Api::Requests::Financial::Cards::Authorize3d
@@ -294,6 +325,17 @@ GenesisRuby::Api::Requests::Financial::Cards::Sale3d
 # Web Payment Form
 ## Create
 GenesisRuby::Api::Requests::Wpf::Create
+GenesisRuby::Api::Requests::Wpf::Reconcile
+
+# References
+GenesisRuby::Api::Requests::Financial::Capture
+GenesisRuby::Api::Requests::Financial::Void
+GenesisRuby::Api::Requests::Financial::Refund
+
+# Non Financial
+## Reconcile
+GenesisRuby::Api::Requests::NonFinancial::Reconcile::Transaction
+GenesisRuby::Api::Requests::NonFinancial::Reconcile::DateRange
 ```
 
 ### Manual initialization

@@ -9,3 +9,4 @@
 .rspec_status
 .idea
 .DS_Store
+genesis_ruby-*.gem

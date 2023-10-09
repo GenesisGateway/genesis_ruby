@@ -1,5 +1,3 @@
-require 'genesis_ruby/api/requests/base/financial'
-
 module GenesisRuby
   module Api
     module Requests

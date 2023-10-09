@@ -10,10 +10,13 @@ RSpec.describe GenesisRuby::Api::Requests::Base::Financials::CreditCard do
     configuration
   end
 
-  let(:credit_card) do
-    credit_card          = GenesisSpec::Stubs::Api::Requests::Base::Financials::CreditCardStub.new configuration
-    credit_card.amount   = 1.99
-    credit_card.currency = 'EUR'
+  let(:request) do
+    credit_card                = GenesisSpec::Stubs::Api::Requests::Base::Financials::CreditCardStub.new configuration
+    credit_card.transaction_id = Faker::Internet.uuid
+    credit_card.usage          = Faker::Lorem.sentence
+    credit_card.remote_ip      = Faker::Internet.ip_v4_address
+    credit_card.amount         = 1.99
+    credit_card.currency       = 'EUR'
 
     credit_card
   end
@@ -35,6 +38,10 @@ RSpec.describe GenesisRuby::Api::Requests::Base::Financials::CreditCard do
   end
 
   it 'with payment transaction structure' do
-    expect(credit_card.__send__(:payment_transaction_structure)).to be_kind_of Hash
+    expect(request.__send__(:payment_transaction_structure)).to be_kind_of Hash
   end
+
+  include_examples 'payment attributes examples'
+  include_examples 'financial attributes examples'
+  include_examples 'financial structure examples'
 end

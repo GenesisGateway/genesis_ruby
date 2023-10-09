@@ -10,10 +10,11 @@ module GenesisRuby
     # Response - process/format an incoming Genesis response
     class Response
 
-      def initialize(configuration)
+      def initialize(configuration, request_api_config = {})
         @configuration      = configuration
         @object_formatter   = GenesisRuby::Utils::ObjectFormatter.new
         @response_formatter = GenesisRuby::Utils::Formatters::Response::Loader.new
+        @request_api_config = request_api_config
       end
 
       # Default Response Object initialization
@@ -54,11 +55,9 @@ module GenesisRuby
       # Load the corresponding parser based on the Network header
       def load_parser(network)
         @parser = GenesisRuby::Parsers.new(GenesisRuby::Parser::JSON) if network.json?
+        @parser = GenesisRuby::Parser.new(GenesisRuby::Parser::XML) if network.xml?
 
-        if network.xml?
-          @parser = GenesisRuby::Parser.new(GenesisRuby::Parser::XML)
-          @parser.skip_root_node
-        end
+        @parser.skip_root_node if @request_api_config[:parser_skip_root_node]
 
         @parser
       end

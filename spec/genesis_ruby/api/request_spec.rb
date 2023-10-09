@@ -30,9 +30,9 @@ RSpec.describe GenesisRuby::Api::Request do
       url:      'https://staging.gate.emerchantpay.net:443/process/token/'
     }
 
-    xml_request_configuration  = base_request_configuration.merge({ format: 'xml' })
-    json_request_configuration = base_request_configuration.merge({ format: 'json' })
-    form_request_configuration = base_request_configuration.merge({ format: 'form' })
+    xml_request_configuration  = base_request_configuration.merge format: 'xml', parser_skip_root_node: true
+    json_request_configuration = base_request_configuration.merge format: 'json', parser_skip_root_node: false
+    form_request_configuration = base_request_configuration.merge format: 'form', parser_skip_root_node: true
 
     let(:request) do
       genesis_configuration.username    = 'username'
