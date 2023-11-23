@@ -1,3 +1,11 @@
+0.1.2
+-----
+**Features**:
+
+* Added 3D Secure Method Continue API request support
+* Updated Gateway response handling upon error cases like 3D Secure Method Continue with invalid identifier a Network error will be raised
+* Added `GenesisRuby::Api::Notification` handler that provides an easy way of handling Gateway instant payment notifications
+
 0.1.1
 -----
 **Features**:

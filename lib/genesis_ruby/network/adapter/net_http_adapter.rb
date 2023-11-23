@@ -25,14 +25,13 @@ module GenesisRuby
         def execute
           raise NetworkError, 'Request is not initialized' unless @request
 
-          begin
-            # TODO: Use GenesisRuby::Api::Request::METHOD_XXX constants for sending GET and PUT request_data.type
-            @response = @request.post(path, request_data.body, headers)
-          rescue StandardError => e
-            raise NetworkError, "Network error raised by #{e.class.name}: #{e.message}"
-          ensure
-            # Close the request
-            @request.finish
+          safe_execute do
+            case request_data.type
+            when Api::Request::METHOD_POST then @response = @request.post path, request_data.body, headers
+            when Api::Request::METHOD_PUT then @response = @request.put path, request_data.body, headers
+            else
+              raise 'Invalid Request Type!'
+            end
           end
         end
 
@@ -44,6 +43,19 @@ module GenesisRuby
         # Response headers
         def response_headers
           @response_headers ||= @response ? @response.each_header.to_h : {}
+        end
+
+        # Whether the response is an error (HTTP Code != 200)
+        def error?
+          !@response.is_a? Net::HTTPSuccess
+        end
+
+        # Response server message
+        def server_message
+          message = status
+          message += " #{@response.message}" if @response.message
+
+          message
         end
 
         private
@@ -84,6 +96,16 @@ module GenesisRuby
             'Authorization'  => "Basic #{request_data.user_login}",
             'User-Agent'     => request_data.user_agent
           }
+        end
+
+        # Safe Request execution
+        def safe_execute(&block)
+          block.call
+        rescue StandardError => e
+          raise NetworkError, "Network error raised by #{e.class.name}: #{e.message}"
+        ensure
+          # Close the request
+          @request.finish
         end
 
       end

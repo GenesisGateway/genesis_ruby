@@ -9,6 +9,7 @@ module GenesisRuby
 
       XML_HEADER  = 'application/xml'.freeze
       JSON_HEADER = 'application/json'.freeze
+      HTML_HEADER = 'text/html'.freeze
 
       # Base constructor
       def initialize(configuration)
@@ -25,6 +26,16 @@ module GenesisRuby
       # Return the Response Headers
       def response_headers
         @context.response_headers
+      end
+
+      # Whether returned response is an error response
+      def error?
+        @context.error?
+      end
+
+      # Returns the server message
+      def server_message
+        @context.server_message
       end
 
       # Send the request
@@ -45,6 +56,11 @@ module GenesisRuby
       # Every child defines is JSON Response Type
       def json?
         raise NotImplementedError, 'Is JSON method must be implemented'
+      end
+
+      # Every child defines is HTML Response Type
+      def html?
+        raise NotImplementedError, 'Is HTML method must be implemented'
       end
 
       protected

@@ -57,6 +57,8 @@ module GenesisRuby
         @parser = GenesisRuby::Parsers.new(GenesisRuby::Parser::JSON) if network.json?
         @parser = GenesisRuby::Parser.new(GenesisRuby::Parser::XML) if network.xml?
 
+        raise NetworkError, network.server_message if @parser.nil? || @response_raw.empty?
+
         @parser.skip_root_node if @request_api_config[:parser_skip_root_node]
 
         @parser

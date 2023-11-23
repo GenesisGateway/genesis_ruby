@@ -45,4 +45,35 @@ RSpec.describe GenesisRuby::Builder do
       end
     end
   end
+
+  describe 'FORM Builder' do
+    let(:form_builder) { described_class.new(GenesisRuby::Builder::FORM) }
+
+    it 'can generate valid form content' do
+      form_builder.parse_structure element1: 'value1', element2: 'value2'
+
+      expect(form_builder.document).to eq 'element1=value1&element2=value2'
+    end
+
+    describe 'can escape illegal characters' do
+      let(:builder) do
+        form_builder.parse_structure amp: 'http://domain.tld/?arg1=normal&arg2=<&arg3=>'
+
+        form_builder
+      end
+
+      it 'escape less than' do
+        expect(builder.document).to include '%3C'
+      end
+
+      it 'escape greater than' do
+        expect(builder.document).to include '%3E'
+      end
+
+      it 'escape an ampersand' do
+        expect(builder.document).to include '%26'
+      end
+    end
+
+  end
 end

@@ -22,13 +22,12 @@ module GenesisRuby
 
         # Retrieve the Request data format that must be used as Content-Type header
         def fetch_content_type(data_format)
-          # TODO: Builder Constants
           case data_format
-          when 'xml'
+          when Builder::XML
             'text/xml'
-          when 'json'
+          when Builder::JSON
             'application/json'
-          when 'form'
+          when Builder::FORM
             'application/x-www-form-urlencoded'
           else
             raise InvalidArgumentError, 'Invalid request format type. Allowed are XML, JSON and FORM'

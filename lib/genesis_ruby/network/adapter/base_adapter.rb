@@ -25,6 +25,16 @@ module GenesisRuby
           raise NotImplementedError, 'Execute method must be implemented'
         end
 
+        # Whether the response is an error (HTTP Code != 200)
+        def error?
+          raise NotImplementedError, 'Error? method must be implemented'
+        end
+
+        # Response server message
+        def server_message
+          raise NotImplementedError, 'Server Message method must be implemented'
+        end
+
       end
     end
   end

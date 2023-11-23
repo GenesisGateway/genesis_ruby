@@ -14,8 +14,35 @@ module GenesisSpec
         xml_response 400, 'common_error.xml'
       end
 
+      post '/error_example_without_body' do
+        content_type :html
+        status 422
+      end
+
       post '/wpf' do
         xml_response 200, 'gate_wpf_payment.xml'
+      end
+
+      put '/method_continue' do
+        xml_response 200, 'method_continue.xml'
+      end
+
+      post '/html_error' do
+        content_type :html
+        status 404
+        File.open("#{File.dirname(__FILE__)}/../fixtures/responses/404.html")
+      end
+
+      post '/reconcile/api_transaction/' do
+        xml_response 200, 'reconcile_api.xml'
+      end
+
+      post '/wpf/reconcile' do
+        xml_response 200, 'reconcile_wpf.xml'
+      end
+
+      post '/reconcile/error_reconcile/' do
+        xml_response 200, 'reconcile_error.xml'
       end
 
       private

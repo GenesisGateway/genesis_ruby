@@ -16,6 +16,11 @@ module GenesisRuby
         response_headers['content-type'].downcase.include?(BaseNetwork::JSON_HEADER)
       end
 
+      # HTML Response Type
+      def html?
+        response_headers['content-type'].downcase.include?(BaseNetwork::HTML_HEADER)
+      end
+
       protected
 
       # Adapter Initialization

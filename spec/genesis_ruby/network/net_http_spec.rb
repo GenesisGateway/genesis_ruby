@@ -64,6 +64,79 @@ RSpec.describe GenesisRuby::Network::NetHttp do
       it 'validates json? correctly with xml response type' do
         expect(net_http.json?).to eq(false)
       end
+
+      it 'validates html? correctly with xml response type' do
+        expect(net_http.html?).to eq false
+      end
+    end
+
+    describe 'when html error response' do
+      before do
+        request.api_config.url = 'https://emerchantpay.net/html_error'
+        net_http.init_api_data request
+        net_http.send_request
+      end
+
+      it 'with response body' do
+        expect(net_http.response_body).to_not be_empty
+      end
+
+      it 'validates html? correctly' do
+        expect(net_http.html?).to eq true
+      end
+
+      it 'with error?' do
+        expect(net_http.error?).to eq true
+      end
+
+      it 'with server_message' do
+        expect(net_http.server_message).to eq '404 Not Found'
+      end
+    end
+
+    describe 'when xml error response with body' do
+      before do
+        request.api_config.url = 'https://emerchantpay.net/error_example'
+        net_http.init_api_data request
+        net_http.send_request
+      end
+
+      it 'with response body' do
+        expect(net_http.response_body).to_not be_empty
+      end
+
+      it 'with error?' do
+        expect(net_http.error?).to eq true
+      end
+
+      it 'with server_message' do
+        expect(net_http.server_message).to eq '400 Bad Request'
+      end
+    end
+
+    describe 'when xml error response without body' do
+      before do
+        request.api_config.url = 'https://emerchantpay.net/error_example_without_body'
+        net_http.init_api_data request
+        net_http.send_request
+      end
+
+      it 'without response body' do
+        expect(net_http.response_body).to be_empty
+      end
+
+      it 'validates html? correctly' do
+        expect(net_http.html?).to eq true
+      end
+
+      it 'with error?' do
+        expect(net_http.error?).to eq true
+      end
+
+      it 'with server_message' do
+        expect(net_http.server_message).to eq '422 Unprocessable Entity'
+      end
+
     end
   end
 end

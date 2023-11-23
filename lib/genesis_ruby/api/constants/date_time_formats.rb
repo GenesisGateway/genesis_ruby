@@ -16,7 +16,7 @@ module GenesisRuby
         DD_MM_YYYY_L_SLASHES  = '%d/%m/%Y'.freeze
 
         # Zulu timestamp
-        YYYY_MM_DD_H_I_S_ZULU = '%Y-%m-%dT%H:%M:%S%z'.freeze
+        YYYY_MM_DD_H_I_S_ZULU = '%Y-%m-%dT%H:%M:%SZ'.freeze
 
         # Modified Zulu timestamp
         YYYY_MM_DD_H_I_S      = '%Y-%m-%d %H:%M:%S'.freeze

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<payment_response>
+  <transaction_type>authorize3d</transaction_type>
+  <status>approved</status>
+  <mode>test</mode>
+  <transaction_id>119643250547501c79d8295</transaction_id>
+  <unique_id>44177a21403427eb96664a6d7e5d5d48</unique_id>
+  <timestamp>2023-10-12T16:04:52Z</timestamp>
+  <descriptor>Descriptor one</descriptor>
+  <amount>100</amount>
+  <currency>USD</currency>
+  <sent_to_acquirer>true</sent_to_acquirer>
+  <scheme_transaction_identifier>019091214161031</scheme_transaction_identifier>
+  <scheme_settlement_date>1013</scheme_settlement_date>
+  <threeds>
+    <eci>05</eci>
+  </threeds>
+</payment_response>

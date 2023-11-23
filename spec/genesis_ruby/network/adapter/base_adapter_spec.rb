@@ -16,6 +16,14 @@ RSpec.describe GenesisRuby::Network::Adapter::BaseAdapter do
       it 'throws when execute called' do
         expect { base_adapter.execute }.to raise_error(NotImplementedError)
       end
+
+      it 'with error?' do
+        expect { base_adapter.error? }.to raise_error NotImplementedError
+      end
+
+      it 'with server_message' do
+        expect { base_adapter.server_message }.to raise_error NotImplementedError
+      end
     end
 
     describe 'has predefined accessors' do

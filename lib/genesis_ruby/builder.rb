@@ -1,4 +1,5 @@
 require 'genesis_ruby/builders/xml'
+require 'genesis_ruby/builders/form'
 require 'genesis_ruby/errors/builder_error'
 
 module GenesisRuby
@@ -17,8 +18,8 @@ module GenesisRuby
     # Initialize the Builder Interface based on the Request requirements
     def initialize(request_interface)
       case request_interface
-      when XML
-        @builder_context = GenesisRuby::Builders::Xml.new
+      when XML then @builder_context = Builders::Xml.new
+      when FORM then @builder_context = Builders::Form.new
       else
         raise GenesisRuby::BuilderError, 'Invalid Builder interface!'
       end

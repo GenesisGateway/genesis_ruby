@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<payment_response>
+  <status>error</status>
+  <code>220</code>
+  <message>Reconcile request failed, please contact support!</message>
+  <technical_message>Invalid Terminal</technical_message>
+</payment_response>

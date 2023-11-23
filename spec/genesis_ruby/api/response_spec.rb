@@ -106,4 +106,44 @@ RSpec.describe GenesisRuby::Api::Response do
       expect(response.new?).to eq(false)
     end
   end
+
+  describe 'when parsing error response' do
+    let(:configuration) do
+      config             = GenesisRuby::Configuration.new
+      config.username    = 'example_username'
+      config.password    = 'example_password'
+      config.token       = 'example_token'
+      config.environment = GenesisRuby::Api::Constants::Environments::STAGING
+      config.endpoint    = GenesisRuby::Api::Constants::Endpoints::EMERCHANTPAY
+
+      config
+    end
+    let(:net_http) { GenesisRuby::Network::NetHttp.new(configuration) }
+    let(:request) { GenesisSpec::Stubs::RequestSkeleton.new(configuration) }
+
+    it 'with 404 html error response' do
+      request.api_config.url = 'https://emerchantpay.net/html_error'
+      net_http.init_api_data request
+      net_http.send_request
+
+      expect { response.parse_response(net_http) }.to raise_error GenesisRuby::NetworkError
+    end
+
+    it 'with 422 html empty error response' do
+      request.api_config.url = 'https://emerchantpay.net/error_example_without_body'
+      net_http.init_api_data request
+      net_http.send_request
+
+      expect { response.parse_response(net_http) }.to raise_error GenesisRuby::NetworkError
+    end
+
+    it 'with 400 xml error response' do
+      request.api_config.url = 'https://emerchantpay.net/error_example'
+      net_http.init_api_data request
+      net_http.send_request
+
+      expect(response.parse_response(net_http)).to include :status
+    end
+
+  end
 end
