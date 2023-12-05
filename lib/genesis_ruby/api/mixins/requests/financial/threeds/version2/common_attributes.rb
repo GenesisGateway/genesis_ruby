@@ -31,7 +31,7 @@ module GenesisRuby
                 # Threeds V2 Web Payment Form Attributes
                 def threeds_v2_common_attributes_structure
                   {
-                    method:              method_attributes,
+                    threeds_method:      method_attributes,
                     control:             control_attributes,
                     purchase:            purchase_attributes,
                     merchant_risk:       merchant_risk_attributes,

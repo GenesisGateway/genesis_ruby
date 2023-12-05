@@ -64,4 +64,36 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Threeds::Version2:
   it 'has request structure' do
     expect(attributes.threeds_v2_common_attributes_structure).to_not be_empty
   end
+
+  it 'with threeds_method attributes key' do
+    expect(attributes.threeds_v2_common_attributes_structure).to include :threeds_method
+  end
+
+  it 'with control attributes key' do
+    expect(attributes.threeds_v2_common_attributes_structure).to include :control
+  end
+
+  it 'with purchase attributes key' do
+    expect(attributes.threeds_v2_common_attributes_structure).to include :purchase
+  end
+
+  it 'with merchant_risk attributes key' do
+    expect(attributes.threeds_v2_common_attributes_structure).to include :merchant_risk
+  end
+
+  it 'with card_holder_account attributes key' do
+    expect(attributes.threeds_v2_common_attributes_structure).to include :card_holder_account
+  end
+
+  it 'with recurring attributes key' do
+    expect(attributes.threeds_v2_common_attributes_structure).to include :recurring
+  end
+
+  it 'with browser attributes key' do
+    expect(attributes.threeds_v2_common_attributes_structure).to include :browser
+  end
+
+  it 'with sdk attributes key' do
+    expect(attributes.threeds_v2_common_attributes_structure).to include :sdk
+  end
 end

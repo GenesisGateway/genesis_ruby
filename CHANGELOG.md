@@ -1,3 +1,9 @@
+0.1.3
+-----
+**Fixes**:
+
+* Fixed 3DSv2 Method element name in the XML document
+
 0.1.2
 -----
 **Features**:
