@@ -67,6 +67,8 @@ begin
     request.add_transaction_type('authorize3d')
     # Transaction Type with Customer Attribute 
     request.add_transaction_type('sale3d', { bin: '420000' })
+    # Transaction Type with Recurring V2
+    request.add_transaction_type('sale3d', { recurring_type: GenesisRuby::Api::Constants::Transactions::Parameters::Recurring::Types::INITIAL })
 
     # Tokenization Attributes
     request.consumer_id   = '123456789'

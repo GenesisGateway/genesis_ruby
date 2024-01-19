@@ -14,6 +14,8 @@ module GenesisRuby
             include Mixins::Requests::Financial::AsyncAttributes
             include Mixins::Requests::Financial::Business::BusinessAttributes
             include Mixins::Requests::Financial::Cards::FxRateAttributes
+            include Mixins::Requests::Financial::Cards::MpiAttributes
+            include Mixins::Requests::Financial::Cards::Recurring::ManagedRecurringAttributes
             include Mixins::Requests::Financial::Cards::Recurring::RecurringCategoryAttributes
             include Mixins::Requests::Financial::Cards::Recurring::RecurringTypeAttributes
             include Mixins::Requests::Financial::CryptoAttributes
@@ -58,13 +60,15 @@ module GenesisRuby
                 fx_rate_id:                fx_rate_id,
                 billing_address:           billing_address_parameters_structure,
                 shipping_address:          shipping_address_parameters_structure,
+                mpi_params:                mpi_attributes_structure,
                 risk_params:               risk_parameters_structure,
                 dynamic_descriptor_params: dynamic_descriptor_structure,
                 business_attributes:       business_attributes_structure,
                 recurring_type:            recurring_type,
                 recurring_category:        recurring_category,
                 sca_params:                sca_attributes_structure,
-                threeds_v2_params:         threeds_v2_common_attributes_structure
+                threeds_v2_params:         threeds_v2_common_attributes_structure,
+                managed_recurring:         managed_recurring_attributes_structure
               )
             end
 

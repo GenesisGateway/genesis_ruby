@@ -15,7 +15,7 @@ module GenesisRuby
           include Mixins::Requests::Financial::NotificationAttributes
           include Mixins::Requests::Financial::PendingPaymentAttributes
           include Mixins::Requests::Financial::Threeds::Version2::WpfAttributes
-          include Mixins::Requests::Financial::Cards::Recurring::RecurringTypeAttributes
+          include Mixins::Requests::Financial::Cards::AccountOwnerAttributes
           include Mixins::Requests::Financial::Cards::Recurring::RecurringCategoryAttributes
           include Mixins::Requests::Financial::DynamicDescriptorAttributes
           include Mixins::Requests::Financial::RiskAttributes
@@ -58,16 +58,6 @@ module GenesisRuby
                             allowed:     [sca_exemptions::LOW_VALUE, sca_exemptions::LOW_RISK],
                             value:       value.to_s.empty? ? nil : value.to_s.downcase,
                             allow_empty: true
-          end
-
-          # Specifies the recurring type of transaction
-          def recurring_type=(value)
-            allowed_values = [
-              GenesisRuby::Api::Constants::Transactions::Parameters::Recurring::Types::INITIAL,
-              GenesisRuby::Api::Constants::Transactions::Parameters::Recurring::Types::MANAGED
-            ]
-
-            allowed_options attribute: __method__, allowed: allowed_values, value: value, allow_empty: true
           end
 
           protected
@@ -116,10 +106,10 @@ module GenesisRuby
                 },
                 threeds_v2_params:         threeds_v2_wpf_attributes_structure,
                 web_payment_form_id:       web_payment_form_id,
-                recurring_type:            recurring_type,
                 recurring_category:        recurring_category,
                 dynamic_descriptor_params: dynamic_descriptor_structure,
-                risk_params:               risk_parameters_structure
+                risk_params:               risk_parameters_structure,
+                account_owner:             account_owner_attributes_structure
               }
             }
           end

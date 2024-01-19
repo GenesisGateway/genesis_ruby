@@ -49,4 +49,7 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Authorize3d do
   include_examples 'sca attributes examples'
   include_examples 'threeds v2 common attributes examples'
   include_examples 'tokenization attributes examples'
+  include_examples 'mpi attributes examples'
+  include_examples 'account owner attributes examples'
+  include_examples 'managed recurring examples'
 end

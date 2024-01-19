@@ -10,3 +10,5 @@
 .idea
 .DS_Store
 genesis_ruby-*.gem
+rspec_report.xml
+rubocop_report.txt

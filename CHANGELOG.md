@@ -1,3 +1,23 @@
+0.1.4
+-----
+**Features**:
+
+* Added Account Owner attributes support to the following transaction requests:
+  * Authorize
+  * Authorize 3D
+  * Sale
+  * Sale 3D
+  * Web Payment Form
+* Added MPI attributes support to the following transaction requests:
+  * Authorize 3D
+  * Sale 3D
+* Removed Recurring Type attribute from Web Payment Form transaction request
+* Added Managed Recurring attributes support to the following transaction requests:
+  * Authorize
+  * Authorize 3D
+  * Sale
+  * Sale 3D
+
 0.1.3
 -----
 **Fixes**:

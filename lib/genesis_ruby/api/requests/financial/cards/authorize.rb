@@ -13,6 +13,7 @@ module GenesisRuby
             include Mixins::Requests::DocumentAttributes
             include Mixins::Requests::Financial::Business::BusinessAttributes
             include Mixins::Requests::Financial::Cards::FxRateAttributes
+            include Mixins::Requests::Financial::Cards::Recurring::ManagedRecurringAttributes
             include Mixins::Requests::Financial::Cards::Recurring::RecurringCategoryAttributes
             include Mixins::Requests::Financial::Cards::Recurring::RecurringTypeAttributes
             include Mixins::Requests::Financial::CryptoAttributes
@@ -31,7 +32,7 @@ module GenesisRuby
               GenesisRuby::Api::Constants::Transactions::AUTHORIZE
             end
 
-            def payment_transaction_structure # rubocop:disable Metrics/MethodLength
+            def payment_transaction_structure # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
               super.merge(
                 gaming:                    gaming,
                 moto:                      moto,
@@ -48,7 +49,8 @@ module GenesisRuby
                 business_attributes:       business_attributes_structure,
                 recurring_type:            recurring_type,
                 recurring_category:        recurring_category,
-                sca_params:                sca_attributes_structure
+                sca_params:                sca_attributes_structure,
+                managed_recurring:         managed_recurring_attributes_structure
               )
             end
 
