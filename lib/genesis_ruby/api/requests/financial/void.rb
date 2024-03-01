@@ -14,6 +14,10 @@ module GenesisRuby
             Api::Constants::Transactions::VOID
           end
 
+          def init_required_fields
+            self.required_fields = %i[transaction_id reference_id]
+          end
+
           # Void transaction request structure
           def payment_transaction_structure
             {

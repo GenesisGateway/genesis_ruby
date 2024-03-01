@@ -148,6 +148,24 @@ rescue GenesisRuby::Error => error
 end
 ```
 
+### Smart Router
+
+The Smart Routing API is a higher-level abstraction that allows for simpler and more efficient gateway Processing API integration.
+It does not require the terminal token (`configuration.token`). This by itself minimizes the need for complex customer-level manual routing to terminals set up on the gateway platform configuration layer.
+
+By default the Smart Router is disabled. Contact your account manager to use the functionality.
+
+Smart Router global definition for all requests
+* GenesisRuby::Configuration
+  ```ruby
+  configuration.force_smart_routing = true
+  ```
+
+* Smart Router definition per request
+  ```ruby
+  request.use_smart_router = true
+  ```
+
 ### Example 3DSv2 Request
 
 Sample request including all the conditionally required/optional params for initiating a 3DS transaction with the 3DSv2-Method authentication protocol.

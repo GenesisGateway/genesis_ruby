@@ -13,7 +13,7 @@ module GenesisRuby
               FIXED = 'fixed'.freeze
 
               # Amount Type MAX
-              MAX   = 'MAX'.freeze
+              MAX   = 'max'.freeze
 
             end
           end

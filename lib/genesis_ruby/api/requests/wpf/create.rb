@@ -6,9 +6,8 @@ module GenesisRuby
     module Requests
       module Wpf
         # Web-Payment Form Request
-        class Create < Request
+        class Create < Request # rubocop:disable Metrics/ClassLength
 
-          include Mixins::Requests::RestrictedSetter
           include Mixins::Requests::Financial::PaymentAttributes
           include Mixins::Requests::AddressInfoAttributes
           include Mixins::Requests::Financial::AsyncAttributes
@@ -66,6 +65,19 @@ module GenesisRuby
           def init_configuration
             init_xml_configuration
             init_api_wpf_configuration
+          end
+
+          def init_required_fields
+            self.required_fields = %i[
+              transaction_id
+              amount
+              currency
+              notification_url
+              return_success_url
+              return_failure_url
+              return_cancel_url
+              transaction_types
+            ]
           end
 
           # Perform validation over the defined parameters upon request execution

@@ -6,7 +6,7 @@ RSpec.describe GenesisRuby::Builder do
   end
 
   describe 'XML Builder' do
-    let(:xml_builder) { described_class.new(GenesisRuby::Builder::XML) }
+    let(:xml_builder) { described_class.new(described_class::XML) }
 
     it 'can generate valid xml content' do
       xml_builder.parse_structure({ root: { element1: 'value1', element2: 'value2' } })
@@ -47,7 +47,7 @@ RSpec.describe GenesisRuby::Builder do
   end
 
   describe 'FORM Builder' do
-    let(:form_builder) { described_class.new(GenesisRuby::Builder::FORM) }
+    let(:form_builder) { described_class.new(described_class::FORM) }
 
     it 'can generate valid form content' do
       form_builder.parse_structure element1: 'value1', element2: 'value2'

@@ -27,7 +27,7 @@ RSpec.describe GenesisRuby::Configuration do
     end
 
     it 'has default timeout' do
-      expect(configuration.timeout).to eq(GenesisRuby::Configuration::DEFAULT_TIMEOUT)
+      expect(configuration.timeout).to eq(described_class::DEFAULT_TIMEOUT)
     end
 
     it 'has default format_response' do
@@ -36,6 +36,10 @@ RSpec.describe GenesisRuby::Configuration do
 
     it 'has default sanitize_response' do
       expect(configuration.sanitize_response).to eq(true)
+    end
+
+    it 'has default force_smart_routing' do
+      expect(configuration.force_smart_routing).to eq false
     end
   end
 
@@ -81,7 +85,7 @@ RSpec.describe GenesisRuby::Configuration do
     it 'set non zero timeout' do
       configuration.timeout = 'zero evaluation timeout'
 
-      expect(configuration.timeout).to eq(GenesisRuby::Configuration::DEFAULT_TIMEOUT)
+      expect(configuration.timeout).to eq(described_class::DEFAULT_TIMEOUT)
     end
 
     it 'set format_response' do
@@ -94,6 +98,18 @@ RSpec.describe GenesisRuby::Configuration do
       configuration.sanitize_response = false
 
       expect(configuration.sanitize_response).to eq(false)
+    end
+
+    describe 'with force_smart_routing' do
+      it 'with invalid value' do
+        expect { configuration.force_smart_routing = 'true' }.to raise_error GenesisRuby::InvalidArgumentError
+      end
+
+      it 'with valid value' do
+        configuration.force_smart_routing = true
+
+        expect(configuration.force_smart_routing).to eq true
+      end
     end
   end
 

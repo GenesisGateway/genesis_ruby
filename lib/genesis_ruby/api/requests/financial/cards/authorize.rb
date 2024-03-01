@@ -23,13 +23,18 @@ module GenesisRuby
             include Mixins::Requests::Financial::ReferenceAttributes
             include Mixins::Requests::Financial::RiskAttributes
             include Mixins::Requests::Financial::ScaAttributes
-            include Mixins::Requests::RestrictedSetter
 
             protected
 
             # Authorize Transaction Type
             def transaction_type
               GenesisRuby::Api::Constants::Transactions::AUTHORIZE
+            end
+
+            def init_required_fields
+              return super unless recurring_type == Constants::Transactions::Parameters::Recurring::Types::SUBSEQUENT
+
+              self.required_fields = recurring_type_subsequent_required_request_attributes
             end
 
             def payment_transaction_structure # rubocop:disable Metrics/MethodLength, Metrics/AbcSize

@@ -11,6 +11,10 @@ module GenesisRuby
             include Mixins::Requests::Financial::Cards::TokenizationAttributes
             include Mixins::Requests::Financial::PaymentAttributes
 
+            def init_required_fields
+              self.required_fields = %i[transaction_id amount currency]
+            end
+
             protected
 
             # Credit Card attributes

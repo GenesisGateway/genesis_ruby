@@ -1,4 +1,5 @@
 RSpec.describe GenesisRuby::Api::Requests::Financial::Refund do
+  let(:test_required_fields) { %i[transaction_id reference_id] }
   let(:config) do
     config             = GenesisRuby::Configuration.new
     config.username    = 'example_username'
@@ -18,6 +19,7 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Refund do
     request.currency           = 'EUR'
     request.usage              = Faker::Lorem.sentence
     request.remote_ip          = Faker::Internet.ip_v4_address
+    request.reference_id       = Faker::Internet.uuid
 
     request.beneficiary_bank_code      = 'beneficiary_bank_code'
     request.beneficiary_name           = 'beneficiary_name'

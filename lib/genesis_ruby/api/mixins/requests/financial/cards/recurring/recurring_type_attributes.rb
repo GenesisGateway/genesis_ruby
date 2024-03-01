@@ -21,6 +21,13 @@ module GenesisRuby
                                   allow_empty: true
                 end
 
+                protected
+
+                # Minimum required fields with recurring_type subsequent request
+                def recurring_type_subsequent_required_request_attributes
+                  %i[transaction_id amount]
+                end
+
               end
             end
           end

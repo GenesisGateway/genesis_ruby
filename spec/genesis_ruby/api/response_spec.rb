@@ -146,4 +146,23 @@ RSpec.describe GenesisRuby::Api::Response do
     end
 
   end
+
+  describe 'when json network response' do
+    let(:network_mock) do
+      network = instance_double(GenesisRuby::Network::NetHttp)
+
+      allow(network).to receive(:response_body).and_return(
+        File.open("#{File.dirname(File.dirname(__FILE__))}/fixtures/responses/gate_json_error_response.json").read
+      )
+
+      allow(network).to receive(:json?).and_return(true)
+      allow(network).to receive(:xml?).and_return(false)
+
+      network
+    end
+
+    it 'with json parser' do
+      expect { response.parse_response(network_mock) }.to raise_error GenesisRuby::ParserError
+    end
+  end
 end

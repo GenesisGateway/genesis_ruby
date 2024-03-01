@@ -1,4 +1,5 @@
 RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Sale do
+  let(:test_required_fields) { %i[transaction_id] }
   let(:config) do
     config             = GenesisRuby::Configuration.new
     config.username    = 'example_username'

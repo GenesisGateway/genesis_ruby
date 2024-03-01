@@ -25,7 +25,6 @@ module GenesisRuby
             include Mixins::Requests::Financial::RiskAttributes
             include Mixins::Requests::Financial::ScaAttributes
             include Mixins::Requests::Financial::Threeds::Version2::CommonAttributes
-            include Mixins::Requests::RestrictedSetter
 
             # Specifies the recurring type of transaction
             def recurring_type=(value)

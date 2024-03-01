@@ -1,4 +1,5 @@
 RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Threeds::V2::MethodContinue do
+  let(:test_required_fields) { %i[amount transaction_timestamp] }
   let(:timestamp) do
     Faker::Date.between(from: '1990-01-01', to: '2040-12-31')
                .strftime(GenesisRuby::Api::Constants::DateTimeFormats::YYYY_MM_DD_H_I_S_ZULU)
@@ -163,4 +164,6 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Threeds::V2::Method
     end
 
   end
+
+  include_examples 'base request examples'
 end

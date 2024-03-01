@@ -1,3 +1,14 @@
+0.1.5
+-----
+**Features**:
+
+* Added Smart Routing support
+* Added Required field validations to the existing transaction requests
+
+**Fixes**:
+
+* Fixed JSON parser loading in the Response handling logic
+
 0.1.4
 -----
 **Features**:

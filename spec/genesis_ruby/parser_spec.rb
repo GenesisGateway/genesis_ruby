@@ -6,7 +6,7 @@ RSpec.describe GenesisRuby::Parser do
   end
 
   describe 'XML Parser' do
-    let(:parser) { described_class.new(GenesisRuby::Parser::XML) }
+    let(:parser) { described_class.new(described_class::XML) }
     let(:payment_response) do
       File.open("#{File.dirname(__FILE__)}/fixtures/responses/gate_authorize_payment_response.xml", 'rb').read
     end

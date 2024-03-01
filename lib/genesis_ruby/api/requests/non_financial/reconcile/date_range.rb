@@ -8,8 +8,6 @@ module GenesisRuby
           # The response is paginated, each request will return 100 entries max.
           class DateRange < Api::Request
 
-            include Mixins::Requests::RestrictedSetter
-
             attr_reader :page
 
             # Start of the requested date range (time is optional)
@@ -60,6 +58,10 @@ module GenesisRuby
               init_xml_configuration
               init_api_gateway_configuration request_path: 'reconcile/by_date'
               @api_config.parser_skip_root_node = false
+            end
+
+            def init_required_fields
+              self.required_fields = %i[start_date]
             end
 
             # API Request structure

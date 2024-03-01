@@ -1,9 +1,10 @@
 # =================================
 # Transaction Request Requirements
 # =================================
+require 'genesis_ruby/api/mixins/requests/attribute_validation'
+require 'genesis_ruby/api/mixins/requests/restricted_setter'
 require 'genesis_ruby/api/request'
 require 'genesis_ruby/api/mixins/constants/common'
-require 'genesis_ruby/api/mixins/requests/restricted_setter'
 
 # =================================
 # Transaction Requests Definitions

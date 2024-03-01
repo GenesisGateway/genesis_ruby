@@ -1,0 +1,6 @@
+{
+  "status": "error",
+  "code": "120",
+  "message": "Transaction failed, please contact support!",
+  "technical_message": "Configuration error. Missing proper Contract Supported Features configuration in order to process the transaction!"
+}

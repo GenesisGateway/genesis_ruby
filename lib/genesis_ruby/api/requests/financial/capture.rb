@@ -6,7 +6,6 @@ module GenesisRuby
         class Capture < Requests::Base::Reference
 
           include Mixins::Requests::Financial::Business::BusinessAttributes
-          include Mixins::Requests::RestrictedSetter
 
           protected
 

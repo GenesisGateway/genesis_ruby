@@ -9,6 +9,9 @@ module GenesisRuby
     # Base Request Class
     class Request
 
+      include Mixins::Requests::RestrictedSetter
+      include Mixins::Requests::AttributeValidation
+
       PROTOCOL_HTTPS = 'https'.freeze
       PORT_HTTPS     = 443
 
@@ -46,11 +49,11 @@ module GenesisRuby
       attr_reader :configuration, :builder_interface, :builder_context
       attr_accessor :tree_structure
 
-      # Request Configuration
-      def init_configuration; end
-
       # Required fields for the request
       def init_required_fields; end
+
+      # Request Configuration
+      def init_configuration; end
 
       # Pre-defined XML Request Configuration
       def init_xml_configuration
@@ -121,7 +124,7 @@ module GenesisRuby
 
       # Perform validation over the defined parameters
       def check_requirements
-        # TODO: perform validation over the defined parameters
+        validate
       end
 
       # Build the Genesis API endpoint

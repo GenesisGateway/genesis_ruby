@@ -7,8 +7,6 @@ module GenesisRuby
         # Refund reference transaction request
         class Refund < Requests::Base::Reference
 
-          include Mixins::Requests::RestrictedSetter
-
           attr_accessor :beneficiary_bank_code, :beneficiary_name, :beneficiary_account_number, :bank, :bank_branch,
                         :bank_account
           attr_reader :bank_account_type

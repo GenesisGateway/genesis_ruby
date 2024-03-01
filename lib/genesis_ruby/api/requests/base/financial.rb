@@ -7,6 +7,20 @@ module GenesisRuby
 
           include Mixins::Requests::Financial::BaseAttributes
 
+          # Use Smart Router endpoint for the current request
+          def use_smart_router
+            @use_smart_router ||= false
+          end
+
+          # Use Smart Router endpoint for the current request
+          def use_smart_router=(value)
+            unless [true, false].include? value
+              raise InvalidArgumentError, 'Given invalid Use Smart Routing value! Allowed: true, false'
+            end
+
+            @use_smart_router = value
+          end
+
           protected
 
           # Returns the Request transaction type
@@ -24,6 +38,14 @@ module GenesisRuby
             super
             init_xml_configuration
             init_api_gateway_configuration
+            init_api_smart_router_configuration if @configuration.force_smart_routing
+          end
+
+          # Process the request
+          def process_request_parameters
+            init_api_smart_router_configuration if use_smart_router
+
+            super
           end
 
           def populate_structure
@@ -35,6 +57,11 @@ module GenesisRuby
                 remote_ip:        remote_ip
               }.merge(payment_transaction_structure)
             }
+          end
+
+          # Initialize Smart Router endpoint
+          def init_api_smart_router_configuration
+            api_config.url = build_request_url({ subdomain: 'smart_router', path: 'transactions' })
           end
 
         end

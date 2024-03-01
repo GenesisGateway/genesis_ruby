@@ -11,7 +11,6 @@ module GenesisRuby
               class MethodContinue < Request
 
                 include Mixins::Requests::Financial::PaymentAttributes
-                include Mixins::Requests::RestrictedSetter
 
                 attr_writer :url, :transaction_unique_id, :signature
 
@@ -103,6 +102,10 @@ module GenesisRuby
                   @api_config.type = Request::METHOD_PUT
 
                   init_api_gateway_configuration request_path: 'threeds/threeds_method/:unique_id', include_token: false
+                end
+
+                def init_required_fields
+                  self.required_fields = %i[amount transaction_timestamp]
                 end
 
                 # Build correct endpoint url during runtime

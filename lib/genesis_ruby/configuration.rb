@@ -59,6 +59,11 @@ module GenesisRuby
       @timeout ||= DEFAULT_TIMEOUT
     end
 
+    # Enable Smart Routing for Financial transaction requests
+    def force_smart_routing
+      @force_smart_routing ||= false
+    end
+
     # Genesis Request Timeout
     def timeout=(value)
       timeout = value.to_i
@@ -120,6 +125,15 @@ module GenesisRuby
       @sanitize_response
     end
 
+    # Enable Smart Routing for Financial transaction requests
+    def force_smart_routing=(value)
+      unless [true, false].include? value
+        raise InvalidArgumentError, 'Given invalid Force Smart Routing value! Allowed: true, false'
+      end
+
+      @force_smart_routing = value
+    end
+
     private
 
     # Various definitions for environment
@@ -160,15 +174,19 @@ module GenesisRuby
     # rubocop:enable Metrics/MethodLength
 
     # Available Genesis subdomains
-    def available_sub_domains
+    def available_sub_domains # rubocop:disable Metrics/MethodLength
       {
-        gateway: {
+        gateway:      {
           GenesisRuby::Api::Constants::Environments::PRODUCTION => 'gate.',
           GenesisRuby::Api::Constants::Environments::STAGING    => 'staging.gate.'
         },
-        wpf:     {
+        wpf:          {
           GenesisRuby::Api::Constants::Environments::PRODUCTION => 'wpf.',
           GenesisRuby::Api::Constants::Environments::STAGING    => 'staging.wpf.'
+        },
+        smart_router: {
+          GenesisRuby::Api::Constants::Environments::PRODUCTION => 'prod.api.',
+          GenesisRuby::Api::Constants::Environments::STAGING    => 'staging.api.'
         }
       }
     end

@@ -54,7 +54,7 @@ module GenesisRuby
 
       # Load the corresponding parser based on the Network header
       def load_parser(network)
-        @parser = GenesisRuby::Parsers.new(GenesisRuby::Parser::JSON) if network.json?
+        @parser = GenesisRuby::Parser.new(GenesisRuby::Parser::JSON) if network.json?
         @parser = GenesisRuby::Parser.new(GenesisRuby::Parser::XML) if network.xml?
 
         raise NetworkError, network.server_message if @parser.nil? || @response_raw.empty?

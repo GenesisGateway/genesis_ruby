@@ -17,6 +17,10 @@ module GenesisRuby
             @api_config.url = build_request_url subdomain: 'wpf', path: 'wpf/reconcile'
           end
 
+          def init_required_fields
+            self.required_fields = %i[unique_id]
+          end
+
           # WPF Reconcile request structure
           def populate_structure
             @tree_structure = {

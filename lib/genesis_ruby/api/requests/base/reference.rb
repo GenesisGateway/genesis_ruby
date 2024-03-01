@@ -10,6 +10,10 @@ module GenesisRuby
 
           protected
 
+          def init_required_fields
+            self.required_fields = %i[transaction_id reference_id amount currency]
+          end
+
           # Reference transaction request structure
           def reference_transaction_structure
             raise NotImplementedError, 'Reference transaction structure must be implemented.'

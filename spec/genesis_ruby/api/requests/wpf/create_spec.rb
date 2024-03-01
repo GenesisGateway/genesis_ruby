@@ -1,4 +1,5 @@
 RSpec.describe GenesisRuby::Api::Requests::Wpf::Create do
+  let(:test_required_fields) { %i[transaction_id transaction_types] }
   let(:config) do
     config             = GenesisRuby::Configuration.new
     config.username    = 'example_username'
