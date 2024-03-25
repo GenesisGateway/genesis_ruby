@@ -98,6 +98,11 @@ begin
     # Other
     request.lifetime            = 30
     request.web_payment_form_id = '987654321'
+
+    # Reminders
+    request.pay_later           = true
+    request.add_reminder channel: 'email', after: 10
+    request.add_reminder channel: 'sms', after: 30
   end.execute
   
   puts genesis.response.response_object

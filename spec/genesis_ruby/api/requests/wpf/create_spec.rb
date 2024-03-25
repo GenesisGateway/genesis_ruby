@@ -51,6 +51,7 @@ RSpec.describe GenesisRuby::Api::Requests::Wpf::Create do
   include_examples 'address info attributes examples'
   include_examples 'base request examples'
   include_examples 'account owner attributes examples'
+  include_examples 'wpf reminders attributes examples'
 
   it 'has proper structure without threedsv2 parameters' do
     expect(request.build_document).to_not include 'threeds_v2_params'
@@ -68,19 +69,29 @@ RSpec.describe GenesisRuby::Api::Requests::Wpf::Create do
     expect { described_class.new(config).build_document }.to raise_error GenesisRuby::InvalidArgumentError
   end
 
-  it 'has locale with ecp endpoint' do
-    config.endpoint = GenesisRuby::Api::Constants::Endpoints::ECOMPROCESSING
+  describe 'when locale' do
+    it 'with valid locale' do
+      expect { request.locale = GenesisRuby::Api::Constants::I18n.all.sample.upcase }.to_not raise_error
+    end
 
-    request         = described_class.new(config)
-    request.locale  = 'BG'
+    it 'with ecp endpoint' do
+      config.endpoint = GenesisRuby::Api::Constants::Endpoints::ECOMPROCESSING
 
-    expect(request.api_config.url).to eq 'https://staging.wpf.e-comprocessing.net:443/bg/wpf'
-  end
+      request         = described_class.new(config)
+      request.locale  = 'BG'
 
-  it 'has locale with emp endpoint' do
-    request.locale = 'IT'
+      expect(request.api_config.url).to eq 'https://staging.wpf.e-comprocessing.net:443/bg/wpf'
+    end
 
-    expect(request.api_config.url).to eq 'https://staging.wpf.emerchantpay.net:443/it/wpf'
+    it 'with emp endpoint' do
+      request.locale = 'IT'
+
+      expect(request.api_config.url).to eq 'https://staging.wpf.emerchantpay.net:443/it/wpf'
+    end
+
+    it 'with invalid locale' do
+      expect { request.locale = 'ff' }.to raise_error GenesisRuby::InvalidArgumentError
+    end
   end
 
   describe 'when 3DSv2 attributes' do
@@ -218,6 +229,38 @@ RSpec.describe GenesisRuby::Api::Requests::Wpf::Create do
       request.sca_preference = ''
 
       expect(request.build_document).to_not include 'sca_preference'
+    end
+  end
+
+  describe 'when Pay Later' do
+    it 'without pay later' do
+      expect(request.build_document).to_not include 'pay_later'
+    end
+
+    it 'with valid value' do
+      request.pay_later = true
+
+      expect(request.build_document).to include '<pay_later>true</pay_later>'
+    end
+
+    it 'with invalid value' do
+      expect { request.pay_later = 'invalid' }.to raise_error GenesisRuby::InvalidArgumentError
+    end
+  end
+
+  describe 'when lifetime' do
+    it 'with default value' do
+      expect(request.lifetime).to be 30
+    end
+
+    it 'with invalid value' do
+      expect { request.lifetime = 0 }.to raise_error GenesisRuby::InvalidArgumentError
+    end
+
+    it 'with string value' do
+      request.lifetime = minutes = '255'
+
+      expect(request.lifetime).to be minutes.to_i
     end
   end
 end

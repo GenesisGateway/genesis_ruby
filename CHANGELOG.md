@@ -1,3 +1,15 @@
+0.1.6
+-----
+**Features**:
+
+* Added Web Payment Form `lifetime` validations with a maximum allowed value of 3 months in minutes (131487)
+* Added Web Payment Form `lifetime` default value of 30 minutes
+* Added Web Payment Form Reminders support
+* Added Pay Later parameter support to the Web Payment Form
+  * Reminders will be sent to the Gateway only when `pay_later=true`
+* Added Reminder Language parameter support to the Web Payment Form. It accepts only available WPF locales.
+* Added validation for Web Payment Form `locale` attribute. It accepts only available WPF locales.
+
 0.1.5
 -----
 **Features**:
