@@ -1,3 +1,5 @@
+require 'genesis_ruby/api/constants/transactions/parameters/managed_recurring/modes'
+require 'genesis_ruby/api/constants/transactions/parameters/managed_recurring/intervals'
 require 'genesis_ruby/api/mixins/requests/financial/cards/recurring/managed_recurring_indian_card_attributes'
 
 module GenesisRuby

@@ -17,7 +17,7 @@ module GenesisRuby
                 CAPTURE, CASHU,
                 DAVIVIENDA,
                 EFECTY, EPS, FASHIONCHEQUE,
-                GIROPAY, GOOGLE_PAY,
+                GOOGLE_PAY,
                 IDEAL, IDEBIT_PAYIN, INIT_RECURRING_SALE, INIT_RECURRING_SALE_3D, INVOICE_CAPTURE, ITAU,
                 MY_BANK,
                 NEOSURF,

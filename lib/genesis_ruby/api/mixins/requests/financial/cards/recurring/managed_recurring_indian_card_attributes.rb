@@ -1,3 +1,7 @@
+require 'genesis_ruby/api/constants/transactions/parameters/managed_recurring/payment_types'
+require 'genesis_ruby/api/constants/transactions/parameters/managed_recurring/amount_types'
+require 'genesis_ruby/api/constants/transactions/parameters/managed_recurring/frequencies'
+
 module GenesisRuby
   module Api
     module Mixins

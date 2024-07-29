@@ -1,11 +1,13 @@
 
-# Genesis Ruby
-
+Genesis Ruby
+========
+[![Gem Version](https://badge.fury.io/rb/genesis_ruby.svg)](https://badge.fury.io/rb/genesis_ruby)
 [![Software License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](LICENSE)
 
 Ruby Client for Genesis Payment Processing Gateway
 
-## Overview
+Overview
+--------
 
 Client Library for processing payments through Genesis Payment Processing Gateway. Its highly recommended to checkout "Genesis Payment Gateway API Documentation" first, in order to get an overview of Genesis's Payment Gateway API and functionality.
 
@@ -485,6 +487,89 @@ request.recurring_type = GenesisRuby::Api::Constants::Transactions::Parameters::
   ```
   </details>
 
+#### Level 3 Travel Data
+Level 3 travel data is supplied as optional data to the standard API request. If the supplied is valid travel data then the transaction will be processed as a travel transaction and will qualify for the travel Incentive rates. Otherwise the transaction will be processed normally as a regular transaction. Note that the travel data will be stored as part of the transaction in all cases.
+
+<details>
+<summary>Example Leg Data</summary>
+
+```ruby
+GenesisRuby::Utils::Transactions::TravelData::AirlineItinerary::Leg.new departure_date:         '2034-12-31',
+                                                                        arrival_date:           '2034-12-31',
+                                                                        carrier_code:           12,
+                                                                        service_class:          1,
+                                                                        origin_city:            'VAR',
+                                                                        destination_city:       'FRA',
+                                                                        stopover_code:          0,
+                                                                        fare_basis_code:        1,
+                                                                        flight_number:          'W1234',
+                                                                        departure_time:         '11:37',
+                                                                        departure_time_segment: 'P'
+```
+
+</details>
+
+<details>
+<summary>Example Tax Data</summary>
+
+```ruby
+GenesisRuby::Utils::Transactions::TravelData::AirlineItinerary::Tax.new fee_type: 'type', 
+                                                                        fee_amount: 0.99 # will converted automatically to minor format based on the currency
+```
+
+</details>
+
+<details>
+<summary>Example Level 3 Travel Data</summary>
+
+```ruby
+# Ticket attributes
+request.travel_aid_ticket_number               = '123456789012345'
+request.travel_aid_passenger_name              = 'Test Example'
+request.travel_aid_customer_code               = 1
+request.travel_aid_issuing_carrier             = 'AAAA'
+request.travel_aid_total_fare                  = '0.99' # will converted automatically to minor format based on the currency
+request.travel_aid_agency_name                 = 'Agency'
+request.travel_aid_agency_code                 = 'AG001'
+request.travel_aid_date_of_issue               = '2018-02-01'
+request.travel_aid_restricted_ticket_indicator = 1
+request.travel_aid_confirmation_information    = 'Confirmation'
+
+request.add_travel_aid_leg leg
+request.add_travel_aid_tax tax
+
+# Car rental
+request.travel_car_rental_purchase_identifier       = '12478'
+request.travel_car_rental_class_id                  = 3
+request.travel_car_rental_pickup_date               = '2034-12-31'
+request.travel_car_rental_renter_name               = 'John Smith'
+request.travel_car_rental_return_city               = 'Varna'
+request.travel_car_rental_return_state              = 'VAR'
+request.travel_car_rental_return_country            = 'BGR'
+request.travel_car_rental_return_date               = '2034-12-31'
+request.travel_car_rental_renter_return_location_id = '12478'
+request.travel_car_rental_customer_code             = 1
+request.travel_car_rental_extra_charges             = 2
+request.travel_car_rental_no_show_indicator         = 1
+
+# Hotel Rental attributes
+request.travel_hotel_rental_purchase_identifier = '12478'
+request.travel_hotel_rental_arrival_date        = '2034-12-31'
+request.travel_hotel_rental_departure_date      = '2034-12-31'
+request.travel_hotel_rental_customer_code       = '12478'
+request.travel_hotel_rental_no_show_indicator   = 1
+
+# Reference Ticket Attributes
+request.travel_ac_ticket_reference_id       = '8b7e3575e5605ea7e1895707a3e92837'
+request.travel_ac_ticket_document_number    = '1111'
+request.travel_ac_issued_with_ticket_number = '12321'
+
+# Ancillary Charges
+request.travel_ac_type     = 'BF'
+request.travel_ac_sub_type = 'BG'
+```
+
+</details>
 
 ## Response
 

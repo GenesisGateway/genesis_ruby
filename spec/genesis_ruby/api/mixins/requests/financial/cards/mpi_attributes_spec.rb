@@ -106,4 +106,34 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Cards::MpiAttribut
       expect(mpi.mpi_threeds_challenge_indicator).to eq challenge_indicator
     end
   end
+
+  describe 'when protocol sub version' do
+    let(:sub_version) { GenesisRuby::Api::Constants::Transactions::Parameters::MpiProtocolSubVersions.all.sample }
+
+    it 'with valid value' do
+      expect { mpi.mpi_protocol_sub_version = sub_version }.to_not raise_error
+    end
+
+    it 'with invalid value' do
+      expect { mpi.mpi_protocol_sub_version = 'invalid' }.to raise_error GenesisRuby::InvalidArgumentError
+    end
+
+    it 'with valid string value' do
+      mpi.mpi_protocol_sub_version = sub_version.to_s
+
+      expect(mpi.mpi_protocol_sub_version).to eq sub_version
+    end
+
+    it 'with getter' do
+      mpi.mpi_protocol_sub_version = sub_version
+
+      expect(mpi.mpi_protocol_sub_version).to eq sub_version
+    end
+
+    it 'with integer getter' do
+      mpi.mpi_protocol_sub_version = sub_version.to_s
+
+      expect(mpi.mpi_protocol_sub_version).to be_kind_of Integer
+    end
+  end
 end

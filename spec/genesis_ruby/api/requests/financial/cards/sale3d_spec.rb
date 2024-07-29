@@ -53,4 +53,5 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Sale3d do
   include_examples 'mpi attributes examples'
   include_examples 'account owner attributes examples'
   include_examples 'managed recurring examples'
+  include_examples 'travel data attributes examples'
 end

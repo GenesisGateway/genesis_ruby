@@ -23,6 +23,7 @@ module GenesisRuby
             include Mixins::Requests::Financial::ReferenceAttributes
             include Mixins::Requests::Financial::RiskAttributes
             include Mixins::Requests::Financial::ScaAttributes
+            include Mixins::Requests::Financial::TravelData::TravelAttributes
 
             protected
 
@@ -55,7 +56,8 @@ module GenesisRuby
                 recurring_type:            recurring_type,
                 recurring_category:        recurring_category,
                 sca_params:                sca_attributes_structure,
-                managed_recurring:         managed_recurring_attributes_structure
+                managed_recurring:         managed_recurring_attributes_structure,
+                travel:                    travel_data_attributes_structure
               )
             end
 

@@ -16,7 +16,7 @@ module GenesisRuby
               BRADESCO,
               CABAL, CASHU, CENCOSUD, DAVIVIENDA,
               EFECTY, ELO, EPS, EZEEWALLET, FASHIONCHEQUE,
-              GIROPAY, GOOGLE_PAY,
+              GOOGLE_PAY,
               IDEAL, IDEBIT_PAYIN, INSTA_DEBIT_PAYIN, INTERSOLVE, ITAU,
               MULTIBANCO, MY_BANK,
               NARANJA, NATIVA, NEOSURF, NETELLER,

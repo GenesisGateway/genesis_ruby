@@ -19,7 +19,7 @@ module GenesisRuby
               EFECTY, ELO, EPS,
               EZEECARD_PAYOUT, EZEEWALLET,
               FASHIONCHEQUE,
-              GIROPAY, GOOGLE_PAY,
+              GOOGLE_PAY,
               IDEAL, IDEBIT_PAYIN, IDEBIT_PAYOUT, INCREMENTAL_AUTHORIZE, INSTA_DEBIT_PAYIN, INSTA_DEBIT_PAYOUT,
               INTERSOLVE, ITAU,
               MULTIBANCO, MY_BANK,

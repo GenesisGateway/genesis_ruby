@@ -25,6 +25,7 @@ module GenesisRuby
             include Mixins::Requests::Financial::RiskAttributes
             include Mixins::Requests::Financial::ScaAttributes
             include Mixins::Requests::Financial::Threeds::Version2::CommonAttributes
+            include Mixins::Requests::Financial::TravelData::TravelAttributes
 
             # Specifies the recurring type of transaction
             def recurring_type=(value)
@@ -66,7 +67,8 @@ module GenesisRuby
                 recurring_category:        recurring_category,
                 sca_params:                sca_attributes_structure,
                 threeds_v2_params:         threeds_v2_common_attributes_structure,
-                managed_recurring:         managed_recurring_attributes_structure
+                managed_recurring:         managed_recurring_attributes_structure,
+                travel:                    travel_data_attributes_structure
               )
             end
 

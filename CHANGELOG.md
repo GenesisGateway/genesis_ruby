@@ -1,3 +1,19 @@
+0.1.7
+-----
+**Features**:
+
+* Removed GiroPay transaction type support through the Web Payment Form
+* Added Protocol Sub Version parameter support part of the MPI attributes
+* Added Level 3 Travel Data attributes support to the following transaction requests:
+  * Sale
+  * Sale 3D
+  * Authorize
+  * Authorize 3D
+  * Init Recurring Sale
+  * Init Recurring Sale 3D
+  * RecurringSale
+  * Capture
+
 0.1.6
 -----
 **Features**:

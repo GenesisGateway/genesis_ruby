@@ -115,10 +115,6 @@ module GenesisRuby
         # They can also be refunded.
         FASHIONCHEQUE = 'fashioncheque'.freeze
 
-        # GiroPay
-        # Direct PPRO transaction
-        GIROPAY = 'giropay'.freeze
-
         # Google Pay allows shoppers to purchase with credit and debit cards linked to their Google account.
         GOOGLE_PAY = 'google_pay'.freeze
 
@@ -260,7 +256,7 @@ module GenesisRuby
         # PostFinance is an online banking provider in Switzerland
         POST_FINANCE = 'post_finance'.freeze
 
-        # Supports payments via EPS, SafetyPay, TrustPay, ELV, Przelewy24, and GiroPay
+        # Supports payments via EPS, SafetyPay, TrustPay, ELV, Przelewy24
         PPRO = 'ppro'.freeze
 
         # PSE (Pagos Seguros en Linea) is the preferred alternative payment solution in Colombia.

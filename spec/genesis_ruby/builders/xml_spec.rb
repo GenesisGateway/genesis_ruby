@@ -20,6 +20,32 @@ RSpec.describe GenesisRuby::Builders::Xml do
     expect(xml_builder.output).to eq(sample_xml_attributes_data)
   end
 
+  it 'can generate complex structure' do # rubocop:disable RSpec/ExampleLength
+    xml_builder.populate_nodes(
+      {
+        root: {
+          travel: {
+            '@attributes': { attribute1: 'attribute1' },
+            legs:          {
+              '@attributes': { attribute1: 'attribute1' },
+              leg:           [
+                { leg_data: 'data', leg_data1: 'data 1' },
+                { leg_data: 'data', leg_data1: 'data 1' },
+                { leg_data: 'data', leg_data1: 'data 1' }
+              ]
+            }
+          }
+        }
+      }
+    )
+
+    complex_xml_attributes_data = File.open(
+      "#{File.dirname(__FILE__)}/../fixtures/complex_xml_attributes_data.xml", 'rb'
+    ).read
+
+    expect(xml_builder.output).to eq complex_xml_attributes_data
+  end
+
   describe 'can escape illegal characters' do
     let(:builder) do
       xml_builder.populate_nodes(

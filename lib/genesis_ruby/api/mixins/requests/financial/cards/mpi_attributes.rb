@@ -1,4 +1,5 @@
 require 'genesis_ruby/api/constants/transactions/parameters/mpi_protocol_versions'
+require 'genesis_ruby/api/constants/transactions/parameters/mpi_protocol_sub_versions'
 
 module GenesisRuby
   module Api
@@ -9,9 +10,8 @@ module GenesisRuby
             # Mixin Mpi Attributes
             module MpiAttributes
 
-              attr_reader :mpi_threeds_challenge_indicator, :mpi_protocol_version
-              attr_accessor :mpi_cavv, :mpi_eci, :mpi_xid, :mpi_directory_server_id,
-                            :mpi_asc_transaction_id
+              attr_reader :mpi_threeds_challenge_indicator, :mpi_protocol_version, :mpi_protocol_sub_version
+              attr_accessor :mpi_cavv, :mpi_eci, :mpi_xid, :mpi_directory_server_id, :mpi_asc_transaction_id
 
               # The used 3DS protocol version. Default is 1 if not supplied.
               def mpi_protocol_version=(value)
@@ -31,6 +31,15 @@ module GenesisRuby
                 allowed_options attribute: __method__, allowed: allowed_indicators, value: value, allow_empty: true
               end
 
+              # The used 3DSv2 authentication protocol.
+              def mpi_protocol_sub_version=(value)
+                allowed_options attribute:   __method__,
+                                allowed:     GenesisRuby::Api::Constants::Transactions::Parameters::
+                                    MpiProtocolSubVersions.all,
+                                value:       value.to_i,
+                                allow_empty: true
+              end
+
               protected
 
               # Mpi Attributes Structure
@@ -41,7 +50,8 @@ module GenesisRuby
                   protocol_version:            mpi_protocol_version,
                   directory_server_id:         mpi_directory_server_id,
                   acs_transaction_id:          mpi_asc_transaction_id,
-                  threeds_challenge_indicator: mpi_threeds_challenge_indicator
+                  threeds_challenge_indicator: mpi_threeds_challenge_indicator,
+                  protocol_sub_version:        mpi_protocol_sub_version
                 }
               end
 

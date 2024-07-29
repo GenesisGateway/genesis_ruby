@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <travel attribute1="attribute1">
+    <legs attribute1="attribute1">
+      <leg>
+        <leg_data>data</leg_data>
+        <leg_data1>data 1</leg_data1>
+      </leg>
+      <leg>
+        <leg_data>data</leg_data>
+        <leg_data1>data 1</leg_data1>
+      </leg>
+      <leg>
+        <leg_data>data</leg_data>
+        <leg_data1>data 1</leg_data1>
+      </leg>
+    </legs>
+  </travel>
+</root>

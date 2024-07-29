@@ -86,6 +86,12 @@ module GenesisRuby
       # Build XMl Document part from Array
       def build_array(element_name, element_value)
         element_value.each do |tag_value|
+          if tag_value.is_a? Hash
+            add_node element_name, tag_value
+
+            next
+          end
+
           add_element element_name, tag_value
         end
       end

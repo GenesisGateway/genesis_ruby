@@ -29,4 +29,5 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Capture do
   include_examples 'reference attributes examples'
   include_examples 'payment attributes examples'
   include_examples 'business attributes examples'
+  include_examples 'travel data attributes examples'
 end

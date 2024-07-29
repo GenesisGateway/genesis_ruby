@@ -50,4 +50,5 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Sale do
   include_examples 'tokenization attributes examples'
   include_examples 'account owner attributes examples'
   include_examples 'managed recurring examples'
+  include_examples 'travel data attributes examples'
 end
