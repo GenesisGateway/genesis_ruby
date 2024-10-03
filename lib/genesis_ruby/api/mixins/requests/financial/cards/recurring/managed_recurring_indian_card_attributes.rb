@@ -14,48 +14,24 @@ module GenesisRuby
               # India (RBI) regulations.
               module ManagedRecurringIndianCardAttributes
 
-                attr_reader :managed_recurring_payment_type, :managed_recurring_amount_type,
-                            :managed_recurring_frequency, :managed_recurring_validated
-
-                attr_accessor :managed_recurring_registration_reference_number, :managed_recurring_max_amount
-
-                # Payment Type of the current recurring transaction
-                def managed_recurring_payment_type=(value)
-                  allowed_options attribute:   __method__,
-                                  allowed:     GenesisRuby::Api::Constants::Transactions::Parameters::ManagedRecurring::
-                                    PaymentTypes.all,
-                                  value:       value.to_s,
-                                  allow_empty: true
-                end
-
-                # Amount Type of the current recurring transaction
-                def managed_recurring_amount_type=(value)
-                  allowed_options attribute:   __method__,
-                                  allowed:     GenesisRuby::Api::Constants::Transactions::Parameters::ManagedRecurring::
-                                      AmountTypes.all,
-                                  value:       value.to_s,
-                                  allow_empty: true
-                end
-
-                # Frequencies of the Frequency of the subsequent transactions
-                def managed_recurring_frequency=(value)
-                  allowed_options attribute:   __method__,
-                                  allowed:     GenesisRuby::Api::Constants::Transactions::Parameters::ManagedRecurring::
-                                    Frequencies.all,
-                                  value:       value.to_s,
-                                  allow_empty: true
-                end
-
-                # Indicates if the current transaction is valid as per the registered agreement. Values: true, false
-                def managed_recurring_validated=(value)
-                  allowed_options attribute:     __method__,
-                                  allowed:       [true, false],
-                                  value:         value,
-                                  allow_empty:   true,
-                                  error_message: 'Accepts only boolean values'
-                end
+                attr_accessor :managed_recurring_registration_reference_number, :managed_recurring_max_amount,
+                              :managed_recurring_payment_type, :managed_recurring_amount_type,
+                              :managed_recurring_frequency, :managed_recurring_validated
 
                 protected
+
+                # Managed Recurring Indian Card field values validation structure
+                def managed_recurring_indian_card_field_values
+                  {
+                    managed_recurring_payment_type: Api::Constants::Transactions::Parameters::ManagedRecurring::
+                        PaymentTypes.all,
+                    managed_recurring_amount_type:  Api::Constants::Transactions::Parameters::ManagedRecurring::
+                        AmountTypes.all,
+                    managed_recurring_frequency:    Api::Constants::Transactions::Parameters::ManagedRecurring::
+                        Frequencies.all,
+                    managed_recurring_validated:    [true, false]
+                  }
+                end
 
                 # Managed Recurring Indian Card attributes structure
                 def managed_recurring_indian_card_attributes_structure

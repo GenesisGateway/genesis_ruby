@@ -15,26 +15,8 @@ module GenesisRuby
 
                 include Recurring::ManagedRecurringIndianCardAttributes
 
-                attr_reader :managed_recurring_mode, :managed_recurring_interval, :managed_recurring_time_of_day,
-                            :managed_recurring_period, :managed_recurring_max_count
-                attr_accessor :managed_recurring_amount
-
-                # This indicates that the gateway will automatically manage the subsequent recurring transactions.
-                def managed_recurring_mode=(value)
-                  allowed_options attribute: __method__,
-                                  allowed:   GenesisRuby::Api::Constants::Transactions::Parameters::ManagedRecurring::
-                                      Modes.all,
-                                  value:     value
-                end
-
-                # The interval type for the period: days or months. The default value is days
-                def managed_recurring_interval=(value)
-                  allowed_options attribute:   __method__,
-                                  allowed:     GenesisRuby::Api::Constants::Transactions::Parameters::ManagedRecurring::
-                                      Intervals.all,
-                                  value:       value,
-                                  allow_empty: true
-                end
+                attr_reader :managed_recurring_time_of_day, :managed_recurring_period, :managed_recurring_max_count
+                attr_accessor :managed_recurring_amount, :managed_recurring_mode, :managed_recurring_interval
 
                 # Specifies the date of the first recurring event in the future
                 # default value is date of creation + period.
@@ -66,6 +48,25 @@ module GenesisRuby
                 end
 
                 protected
+
+                # Managed Recurring field values validation structure
+                def managed_recurring_field_values
+                  {
+                    managed_recurring_mode:     Api::Constants::Transactions::Parameters::ManagedRecurring::Modes.all,
+                    managed_recurring_interval: Api::Constants::Transactions::Parameters::ManagedRecurring::Intervals
+                      .all
+                  }.merge managed_recurring_indian_card_field_values
+                end
+
+                # Managed Recurring Field validation structure
+                def required_recurring_managed_type_field_conditional
+                  {
+                    recurring_type: Hash[
+                                      Api::Constants::Transactions::Parameters::Recurring::Types::MANAGED,
+                                      %i[managed_recurring_mode]
+                                    ]
+                  }
+                end
 
                 # Managed Recurring attributes structure
                 def managed_recurring_attributes_structure

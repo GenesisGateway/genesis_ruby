@@ -21,6 +21,15 @@ module GenesisRuby
 
               protected
 
+              # Tokenization Attributes validation structure
+              def required_tokenization_fields_conditional
+                {
+                  token:         %i[consumer_id customer_email],
+                  remember_card: { true => %i[customer_email card_number] },
+                  consumer_id:   %i[customer_email]
+                }
+              end
+
               # Tokenization Attributes Structure
               def tokenization_attributes_structure
                 {

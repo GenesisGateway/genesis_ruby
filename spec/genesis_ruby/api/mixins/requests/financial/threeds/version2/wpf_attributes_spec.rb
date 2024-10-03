@@ -45,4 +45,11 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Threeds::Version2:
     expect(attributes.threeds_v2_wpf_attributes_structure).to_not be_empty
   end
 
+  it 'with field values structure' do
+    expect(attributes.threeds_field_validations).to_not be_empty
+  end
+
+  it 'with field values structure without control device type' do
+    expect(attributes.threeds_field_validations).to_not include 'threeds_v2_control_device_type'
+  end
 end

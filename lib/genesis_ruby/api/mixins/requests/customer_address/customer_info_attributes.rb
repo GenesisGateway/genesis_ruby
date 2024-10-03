@@ -13,7 +13,7 @@ module GenesisRuby
 
             # Email of the customer
             def customer_email=(value)
-              raise GenesisRuby::ParameterError unless value =~ /\A.+@.+\..+\Z/
+              raise GenesisRuby::ParameterError unless value.nil? || value =~ /\A.+@.+\..+\Z/
 
               @customer_email = value
             end

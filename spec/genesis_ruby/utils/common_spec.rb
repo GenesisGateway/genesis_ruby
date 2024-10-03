@@ -114,6 +114,47 @@ RSpec.describe GenesisRuby::Utils::Common do
     it 'when invalid timestamp' do
       expect(described_class.parse_date(Faker::Date.in_date_period.strftime('%Y-%m'), formats)).to eq(nil)
     end
+  end
 
+  describe 'when parse json string' do
+    it 'with valid json string' do
+      expect(described_class.parse_json_string('{"key": "value"}')).to eq({ 'key' => 'value' })
+    end
+
+    it 'with invalid json string' do
+      expect { described_class.parse_json_string('invalid') }.to raise_error GenesisRuby::InvalidArgumentError
+    end
+  end
+
+  describe 'when camel to snake case' do
+    it 'with CamelCase string' do
+      expect(described_class.camel_to_snake_case('CamelCase')).to eq 'camel_case'
+    end
+
+    it 'with single word' do
+      expect(described_class.camel_to_snake_case('key')).to eq 'key'
+    end
+
+    it 'with integer' do
+      expect(described_class.camel_to_snake_case(1)).to eq '1'
+    end
+  end
+
+  describe 'when snake to camel case' do
+    it 'when snake_case string with camelCase output' do
+      expect(described_class.snake_to_camel_case('snake_case')).to eq 'snakeCase'
+    end
+
+    it 'when snake_case string with PascalCase output' do
+      expect(described_class.snake_to_camel_case('snake_case', lower: false)).to eq 'SnakeCase'
+    end
+
+    it 'with single word' do
+      expect(described_class.snake_to_camel_case('key')).to eq 'key'
+    end
+
+    it 'with integer' do
+      expect(described_class.snake_to_camel_case(1)).to eq '1'
+    end
   end
 end

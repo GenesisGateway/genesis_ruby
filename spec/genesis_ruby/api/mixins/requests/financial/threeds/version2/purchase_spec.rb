@@ -6,22 +6,20 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Threeds::Version2:
   end
 
   describe 'when threeds_v2_purchase_category' do
-    it 'with valid category' do
+    it 'with setter' do
+      expect { purchase.threeds_v2_purchase_category = Faker::Lorem.word }.to_not raise_error
+    end
+
+    it 'with getter' do
       purchase.threeds_v2_purchase_category = category = 'goods'
 
-      expect(purchase.threeds_v2_purchase_category).to eq(category)
+      expect(purchase.threeds_v2_purchase_category).to eq category
     end
 
     it 'with empty category' do
       purchase.threeds_v2_purchase_category = ''
 
-      expect(purchase.threeds_v2_purchase_category).to eq(nil)
-    end
-
-    it 'with invalid category' do
-      expect do
-        purchase.threeds_v2_purchase_category = 'invalid'
-      end.to raise_error GenesisRuby::InvalidArgumentError
+      expect(purchase.threeds_v2_purchase_category).to eq ''
     end
   end
 
@@ -29,4 +27,7 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Threeds::Version2:
     expect(purchase.purchase_attributes).to_not be_empty
   end
 
+  it 'with threeds purchase field validations' do
+    expect(purchase.threeds_purchase_field_validations).to_not be_empty
+  end
 end

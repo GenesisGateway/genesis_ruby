@@ -116,26 +116,20 @@ module GenesisRuby
             init_api_wpf_configuration
           end
 
-          def init_required_fields
-            self.required_fields = %i[
-              transaction_id
-              amount
-              currency
-              notification_url
-              return_success_url
-              return_failure_url
-              return_cancel_url
-              transaction_types
-            ]
+          def init_field_validations
+            required_fields.push *%i[transaction_id amount currency notification_url return_success_url
+              return_failure_url return_cancel_url transaction_types]
+
+            field_values.merge!(
+              { currency: Api::Constants::Currencies::Iso4217.all.map(&:upcase) },
+              threeds_field_validations
+            )
           end
 
           # Perform validation over the defined parameters upon request execution
           def check_requirements
-            unless GenesisRuby::Api::Constants::Currencies::Iso4217.valid?(currency)
-              raise ParameterError, "Invalid Currency given with value #{currency}"
-            end
-
             validate_reminders
+            validate_threeds_card_holder_dates
 
             super
           end
@@ -185,6 +179,8 @@ module GenesisRuby
 
           # Add every transaction type to the transaction types structure
           def transaction_types=(value)
+            @transaction_types = [] if value.nil?
+
             @transaction_types ||= []
 
             @transaction_types.push(value)

@@ -27,7 +27,7 @@ module GenesisRuby
         @api_config        = GenesisRuby::Utils::Options::ApiConfig.new
 
         init_configuration
-        init_required_fields
+        init_field_validations
       end
 
       # Generate the Request Document based on the builder_interface
@@ -50,7 +50,7 @@ module GenesisRuby
       attr_accessor :tree_structure
 
       # Required fields for the request
-      def init_required_fields; end
+      def init_field_validations; end
 
       # Request Configuration
       def init_configuration; end
@@ -146,6 +146,8 @@ module GenesisRuby
 
       # Transform amount to minor currency format
       def transform_amount(amount, currency)
+        return amount if amount.nil? || !GenesisRuby::Api::Constants::Currencies::Iso4217.valid?(currency)
+
         GenesisRuby::Utils::MoneyFormat.amount_to_exponent amount, currency
       end
 

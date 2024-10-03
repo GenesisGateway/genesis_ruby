@@ -1,5 +1,6 @@
 require 'uri'
 require 'date'
+require 'json'
 
 module GenesisRuby
   module Utils
@@ -106,6 +107,31 @@ module GenesisRuby
           return true if value =~ /(?:\d|[01]\d|2[0-3]):[0-5]\d:[0-5]\d/
 
           false
+        end
+
+        # Parse JSON string
+        def parse_json_string(value)
+          JSON.parse value
+        rescue StandardError => e
+          raise InvalidArgumentError, "Given JSON string is invalid: #{e.message}"
+        end
+
+        # String conversion from CamelCase to snake_case
+        def camel_to_snake_case(camel_cased_word)
+          camel_cased_word.to_s.gsub(/::/, '/')
+                          .gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2')
+                          .gsub(/([a-z\d])([A-Z])/, '\1_\2')
+                          .tr('-', '_')
+                          .downcase
+        end
+
+        # String conversion from snake_case to CamelCase
+        def snake_to_camel_case(snake_case_word, lower: true)
+          string = snake_case_word.to_s.split(/_/).map(&:capitalize).join
+
+          string.sub!(/^[[:alpha:]]/, &:downcase) if lower
+
+          string
         end
 
       end

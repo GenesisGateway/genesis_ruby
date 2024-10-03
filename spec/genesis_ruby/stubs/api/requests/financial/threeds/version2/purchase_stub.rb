@@ -12,7 +12,7 @@ module GenesisSpec
                 include GenesisRuby::Api::Mixins::Requests::RestrictedSetter
                 include GenesisRuby::Api::Mixins::Requests::Financial::Threeds::Version2::Purchase
 
-                public :purchase_attributes
+                public :purchase_attributes, :threeds_purchase_field_validations
 
               end
             end

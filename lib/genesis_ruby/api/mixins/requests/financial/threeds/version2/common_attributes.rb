@@ -28,6 +28,29 @@ module GenesisRuby
 
                 protected
 
+                # Threeds Common Attribute Field Validation
+                def threeds_field_validations
+                  {}.merge threeds_control_field_validations, threeds_purchase_field_validations,
+                           threeds_merchant_risk_field_validations, threeds_card_holder_field_validations,
+                           threeds_browser_field_validations, threeds_sdk_field_validations
+                end
+
+                def threeds_field_conditional_validations # rubocop:disable Metrics/MethodLength
+                  {
+                    threeds_v2_control_device_type: Hash[
+                      Api::Constants::Transactions::Parameters::Threeds::Version2::Control::DeviceTypes::BROWSER,
+                      %i[threeds_v2_browser_accept_header threeds_v2_browser_java_enabled threeds_v2_browser_language
+                        threeds_v2_browser_color_depth threeds_v2_browser_screen_height
+                        threeds_v2_browser_screen_width threeds_v2_browser_time_zone_offset
+                        threeds_v2_browser_user_agent],
+                      Api::Constants::Transactions::Parameters::Threeds::Version2::Control::DeviceTypes::APPLICATION,
+                      %i[threeds_v2_sdk_interface threeds_v2_sdk_ui_types threeds_v2_sdk_application_id
+                        threeds_v2_sdk_encrypted_data threeds_v2_sdk_ephemeral_public_key_pair
+                        threeds_v2_sdk_max_timeout threeds_v2_sdk_reference_number]
+                    ]
+                  }
+                end
+
                 # Threeds V2 Web Payment Form Attributes
                 def threeds_v2_common_attributes_structure
                   {

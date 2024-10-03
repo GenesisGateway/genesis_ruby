@@ -104,8 +104,8 @@ module GenesisRuby
                   init_api_gateway_configuration request_path: 'threeds/threeds_method/:unique_id', include_token: false
                 end
 
-                def init_required_fields
-                  self.required_fields = %i[amount transaction_timestamp]
+                def init_field_validations
+                  required_fields.push *%i[amount transaction_timestamp]
                 end
 
                 # Build correct endpoint url during runtime

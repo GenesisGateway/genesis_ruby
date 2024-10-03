@@ -10,7 +10,7 @@ module GenesisSpec
 
                 include GenesisRuby::Api::Mixins::Requests::Financial::Threeds::Version2::WpfAttributes
 
-                public :threeds_v2_wpf_attributes_structure
+                public :threeds_v2_wpf_attributes_structure, :threeds_field_validations
 
               end
             end

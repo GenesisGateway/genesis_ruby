@@ -1,5 +1,6 @@
 RSpec.describe GenesisRuby::Api::Requests::Financial::Capture do
-  let(:test_required_fields) { %i[transaction_id reference_id] }
+  let(:test_required_fields) { %i[transaction_id reference_id amount currency] }
+  let(:test_required_field_values) { %i[currency] }
   let(:config) do
     config             = GenesisRuby::Configuration.new
     config.username    = 'example_username'

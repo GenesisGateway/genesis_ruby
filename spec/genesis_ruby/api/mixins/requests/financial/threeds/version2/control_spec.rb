@@ -6,62 +6,56 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Threeds::Version2:
   end
 
   describe 'when threeds_v2_control_device_type' do
-    it 'with valid type' do
+    it 'with setter' do
+      expect { control.threeds_v2_control_device_type = Faker::Lorem.word }.to_not raise_error
+    end
+
+    it 'with getter' do
       control.threeds_v2_control_device_type = type = 'browser'
 
-      expect(control.threeds_v2_control_device_type).to eq(type)
+      expect(control.threeds_v2_control_device_type).to eq type
     end
 
     it 'with empty type' do
       control.threeds_v2_control_device_type = ''
 
-      expect(control.threeds_v2_control_device_type).to eq(nil)
-    end
-
-    it 'with invalid type' do
-      expect do
-        control.threeds_v2_control_device_type = 'invalid'
-      end.to raise_error GenesisRuby::InvalidArgumentError
+      expect(control.threeds_v2_control_device_type).to eq ''
     end
   end
 
   describe 'when threeds_v2_control_challenge_indicator' do
-    it 'with valid indicator' do
+    it 'with setter' do
+      expect { control.threeds_v2_control_challenge_indicator = Faker::Lorem.word }.to_not raise_error
+    end
+
+    it 'with getter' do
       control.threeds_v2_control_challenge_indicator = indicator = 'no_preference'
 
-      expect(control.threeds_v2_control_challenge_indicator).to eq(indicator)
+      expect(control.threeds_v2_control_challenge_indicator).to eq indicator
     end
 
     it 'with empty indicator' do
       control.threeds_v2_control_challenge_indicator = ''
 
-      expect(control.threeds_v2_control_challenge_indicator).to eq(nil)
-    end
-
-    it 'with invalid indicator' do
-      expect do
-        control.threeds_v2_control_challenge_indicator = 'invalid'
-      end.to raise_error GenesisRuby::InvalidArgumentError
+      expect(control.threeds_v2_control_challenge_indicator).to eq ''
     end
   end
 
   describe 'when threeds_v2_control_challenge_window_size' do
-    it 'with valid size' do
+    it 'with setter' do
+      expect { control.threeds_v2_control_challenge_window_size = Faker::Lorem.word }.to_not raise_error
+    end
+
+    it 'with getter' do
       control.threeds_v2_control_challenge_window_size = indicator = '250x400'
 
-      expect(control.threeds_v2_control_challenge_window_size).to eq(indicator)
+      expect(control.threeds_v2_control_challenge_window_size).to eq indicator
     end
 
     it 'with empty size' do
       control.threeds_v2_control_challenge_window_size = ''
 
-      expect(control.threeds_v2_control_challenge_window_size).to eq(nil)
-    end
-
-    it 'with invalid size' do
-      expect do
-        control.threeds_v2_control_challenge_window_size = 'invalid'
-      end.to raise_error GenesisRuby::InvalidArgumentError
+      expect(control.threeds_v2_control_challenge_window_size).to eq ''
     end
   end
 
@@ -69,4 +63,7 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Threeds::Version2:
     expect(control.control_attributes).to_not be_empty
   end
 
+  it 'with field values validations' do
+    expect(control.threeds_control_field_validations).to_not be_empty
+  end
 end

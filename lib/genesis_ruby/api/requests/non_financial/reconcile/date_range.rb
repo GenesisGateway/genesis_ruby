@@ -60,8 +60,8 @@ module GenesisRuby
               @api_config.parser_skip_root_node = false
             end
 
-            def init_required_fields
-              self.required_fields = %i[start_date]
+            def init_field_validations
+              required_fields.push *%i[start_date]
             end
 
             # API Request structure

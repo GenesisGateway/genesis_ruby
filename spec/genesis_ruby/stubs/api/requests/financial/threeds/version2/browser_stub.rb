@@ -12,7 +12,7 @@ module GenesisSpec
                 include GenesisRuby::Api::Mixins::Requests::RestrictedSetter
                 include GenesisRuby::Api::Mixins::Requests::Financial::Threeds::Version2::Browser
 
-                public :browser_attributes
+                public :browser_attributes, :threeds_browser_field_validations
 
               end
             end

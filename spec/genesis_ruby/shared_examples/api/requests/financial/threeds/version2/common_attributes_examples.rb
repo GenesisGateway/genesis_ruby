@@ -19,9 +19,47 @@ RSpec.shared_examples 'threeds v2 common attributes examples' do
         expect(request.build_document).to_not include 'threeds_v2_control_device_type'
       end
 
-      it 'with threeds_v2_control_device_type' do
+      it 'when browser threeds_v2_control_device_type without field dependencies' do
+        request.threeds_v2_control_device_type = GenesisRuby::Api::Constants::Transactions::Parameters::Threeds::
+            Version2::Control::DeviceTypes::BROWSER
+
+        expect { request.build_document }.to raise_error GenesisRuby::ParameterError
+      end
+
+      it 'when browser threeds_v2_control_device_type with field dependencies' do # rubocop:disable RSpec/ExampleLength
         request.threeds_v2_control_device_type = type = GenesisRuby::Api::Constants::Transactions::Parameters::
-            Threeds::Version2::Control::DeviceTypes.all.sample
+            Threeds::Version2::Control::DeviceTypes::BROWSER
+
+        request.threeds_v2_browser_accept_header    = '*/*'
+        request.threeds_v2_browser_java_enabled     = false
+        request.threeds_v2_browser_language         = 'en-GB'
+        request.threeds_v2_browser_color_depth      = 48
+        request.threeds_v2_browser_screen_height    = 400
+        request.threeds_v2_browser_screen_width     = 400
+        request.threeds_v2_browser_time_zone_offset = '+0'
+        request.threeds_v2_browser_user_agent       = Faker::Internet.user_agent
+
+        expect(request.build_document).to include "<device_type>#{type}</device_type>"
+      end
+
+      it 'when application threeds_control_device_type without filed dependencies' do
+        request.threeds_v2_control_device_type = GenesisRuby::Api::Constants::Transactions::Parameters::Threeds::
+            Version2::Control::DeviceTypes::APPLICATION
+
+        expect { request.build_document }.to raise_error GenesisRuby::ParameterError
+      end
+
+      it 'when application threeds_v2_control_device_type with field_dependencies' do # rubocop:disable RSpec/ExampleLength
+        request.threeds_v2_control_device_type = type = GenesisRuby::Api::Constants::Transactions::Parameters::
+            Threeds::Version2::Control::DeviceTypes::APPLICATION
+
+        request.threeds_v2_sdk_interface                 = 'native'
+        request.threeds_v2_sdk_ui_types                  = 'text'
+        request.threeds_v2_sdk_application_id            = Faker::Internet.uuid
+        request.threeds_v2_sdk_encrypted_data            = Faker::Internet.uuid
+        request.threeds_v2_sdk_ephemeral_public_key_pair = Faker::Internet.uuid
+        request.threeds_v2_sdk_max_timeout               = 15
+        request.threeds_v2_sdk_reference_number          = '1234'
 
         expect(request.build_document).to include "<device_type>#{type}</device_type>"
       end
@@ -381,7 +419,7 @@ RSpec.shared_examples 'threeds v2 common attributes examples' do
       end
 
       it 'with threeds_v2_card_holder_account_creation_date' do
-        request.threeds_v2_card_holder_account_creation_date = date = Faker::Date.in_date_period.strftime('%d-%m-%Y')
+        request.threeds_v2_card_holder_account_creation_date = date = Faker::Date.backward(days: 1).strftime('%d-%m-%Y')
 
         expect(request.build_document).to include "<creation_date>#{date}</creation_date>"
       end
@@ -406,7 +444,8 @@ RSpec.shared_examples 'threeds v2 common attributes examples' do
       end
 
       it 'with threeds_v2_card_holder_account_last_change_date' do
-        request.threeds_v2_card_holder_account_last_change_date = date = Faker::Date.in_date_period.strftime('%d-%m-%Y')
+        request.threeds_v2_card_holder_account_last_change_date = date =
+          Faker::Date.backward(days: 1).strftime('%d-%m-%Y')
 
         expect(request.build_document).to include "<last_change_date>#{date}</last_change_date>"
       end
@@ -432,7 +471,7 @@ RSpec.shared_examples 'threeds v2 common attributes examples' do
 
       it 'with threeds_v2_card_holder_account_password_change_date' do
         request.threeds_v2_card_holder_account_password_change_date = date =
-          Faker::Date.in_date_period.strftime('%d-%m-%Y')
+          Faker::Date.backward(days: 1).strftime('%d-%m-%Y')
 
         expect(request.build_document).to include "<password_change_date>#{date}</password_change_date>"
       end
@@ -460,7 +499,7 @@ RSpec.shared_examples 'threeds v2 common attributes examples' do
 
       it 'with threeds_v2_card_holder_account_shipping_address_date_first_used' do
         request.threeds_v2_card_holder_account_shipping_address_date_first_used = date =
-          Faker::Date.in_date_period.strftime('%d-%m-%Y')
+          Faker::Date.backward(days: 1).strftime('%d-%m-%Y')
 
         expect(
           request.build_document
@@ -546,7 +585,7 @@ RSpec.shared_examples 'threeds v2 common attributes examples' do
 
       it 'with threeds_v2_card_holder_account_registration_date' do
         request.threeds_v2_card_holder_account_registration_date = date =
-          Faker::Date.in_date_period.strftime('%d-%m-%Y')
+          Faker::Date.backward(days: 1).strftime('%d-%m-%Y')
 
         expect(
           request.build_document

@@ -29,5 +29,23 @@ RSpec.shared_examples 'credit card attributes examples' do
 
       expect(request.build_document).to include "<cvv>#{cvv}</cvv>"
     end
+
+    it 'without expiration_year' do
+      request.expiration_year = nil
+
+      expect { request.build_document }.to raise_error GenesisRuby::ParameterError
+    end
+
+    it 'without expiration_month' do
+      request.expiration_month = nil
+
+      expect { request.build_document }.to raise_error GenesisRuby::ParameterError
+    end
+
+    it 'without card_holder' do
+      request.card_holder = nil
+
+      expect { request.build_document }.to raise_error GenesisRuby::ParameterError
+    end
   end
 end

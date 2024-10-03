@@ -10,13 +10,8 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Cards::Recurring::
       GenesisRuby::Api::Constants::Transactions::Parameters::ManagedRecurring::PaymentTypes.all.sample
     end
 
-    it 'with valid value' do
+    it 'with setter' do
       expect { managed_recurring.managed_recurring_payment_type = payment_type }.to_not raise_error
-    end
-
-    it 'with invalid value' do
-      expect { managed_recurring.managed_recurring_payment_type = 'invalid' }
-        .to raise_error GenesisRuby::InvalidArgumentError
     end
 
     it 'with getter' do
@@ -31,13 +26,8 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Cards::Recurring::
       GenesisRuby::Api::Constants::Transactions::Parameters::ManagedRecurring::AmountTypes.all.sample
     end
 
-    it 'with valid value' do
+    it 'with setter' do
       expect { managed_recurring.managed_recurring_amount_type = amount_type }.to_not raise_error
-    end
-
-    it 'with invalid value' do
-      expect { managed_recurring.managed_recurring_amount_type = 'invalid' }
-        .to raise_error GenesisRuby::InvalidArgumentError
     end
 
     it 'with getter' do
@@ -50,15 +40,10 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Cards::Recurring::
   describe 'when managed_recurring_frequency' do
     let(:frequency) { GenesisRuby::Api::Constants::Transactions::Parameters::ManagedRecurring::Frequencies.all.sample }
 
-    it 'with valid value' do
+    it 'with setter' do
       expect do
         managed_recurring.managed_recurring_frequency = frequency
       end.to_not raise_error
-    end
-
-    it 'with invalid value' do
-      expect { managed_recurring.managed_recurring_frequency = 'invalid' }
-        .to raise_error GenesisRuby::InvalidArgumentError
     end
 
     it 'with getter' do
@@ -69,13 +54,8 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Cards::Recurring::
   end
 
   describe 'when managed_recurring_validated' do
-    it 'with valid value' do
+    it 'with setter' do
       expect { managed_recurring.managed_recurring_validated = true }.to_not raise_error
-    end
-
-    it 'with invalid value' do
-      expect { managed_recurring.managed_recurring_validated = 'invalid' }
-        .to raise_error GenesisRuby::InvalidArgumentError
     end
 
     it 'with getter' do

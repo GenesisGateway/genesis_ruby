@@ -11,6 +11,13 @@ module GenesisRuby
 
               protected
 
+              # Credit Card Fields validation structure
+              def required_cc_fields_conditional
+                {
+                  card_number: %i[card_holder expiration_month expiration_year]
+                }
+              end
+
               # Credit Card Attributes Structure
               def credit_card_attributes_structure
                 {

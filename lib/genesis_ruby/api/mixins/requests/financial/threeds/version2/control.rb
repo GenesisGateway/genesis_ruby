@@ -12,35 +12,22 @@ module GenesisRuby
               # Mixin ThreedsV2 Control
               module Control
 
-                attr_reader :threeds_v2_control_device_type, :threeds_v2_control_challenge_window_size,
-                            :threeds_v2_control_challenge_indicator
-
-                # Identifies the device channel of the consumer
-                def threeds_v2_control_device_type=(value)
-                  allowed_types = GenesisRuby::Api::Constants::Transactions::Parameters::Threeds::Version2::Control::
-                      DeviceTypes.all
-
-                  allowed_options attribute: __method__, allowed: allowed_types, value: value, allow_empty: true
-                end
-
-                # Identifies the size of the challenge window for the consumer
-                def threeds_v2_control_challenge_window_size=(value)
-                  allowed_sizes = GenesisRuby::Api::Constants::Transactions::Parameters::Threeds::Version2::Control::
-                      ChallengeWindowSizes.all
-
-                  allowed_options attribute: __method__, allowed: allowed_sizes, value: value, allow_empty: true
-                end
-
-                # The value has weight and might impact the decision whether a challenge will be required for the
-                # transaction or not
-                def threeds_v2_control_challenge_indicator=(value)
-                  allowed_indicators = GenesisRuby::Api::Constants::Transactions::Parameters::Threeds::Version2::
-                      Control::ChallengeIndicators.all
-
-                  allowed_options attribute: __method__, allowed: allowed_indicators, value: value, allow_empty: true
-                end
+                attr_accessor :threeds_v2_control_device_type, :threeds_v2_control_challenge_window_size,
+                              :threeds_v2_control_challenge_indicator
 
                 protected
+
+                # Control field validations structure
+                def threeds_control_field_validations
+                  {
+                    threeds_v2_control_device_type:           Api::Constants::Transactions::Parameters::Threeds::
+                        Version2::Control::DeviceTypes.all,
+                    threeds_v2_control_challenge_window_size: Api::Constants::Transactions::Parameters::Threeds::
+                        Version2::Control::ChallengeWindowSizes.all,
+                    threeds_v2_control_challenge_indicator:   Api::Constants::Transactions::Parameters::Threeds::
+                        Version2::Control::ChallengeIndicators.all
+                  }
+                end
 
                 # Request Control Attributes structure
                 def control_attributes

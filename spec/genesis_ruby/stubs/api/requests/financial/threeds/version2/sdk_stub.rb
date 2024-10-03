@@ -12,7 +12,7 @@ module GenesisSpec
                 include GenesisRuby::Api::Mixins::Requests::RestrictedSetter
                 include GenesisRuby::Api::Mixins::Requests::Financial::Threeds::Version2::Sdk
 
-                public :sdk_attributes
+                public :sdk_attributes, :threeds_sdk_field_validations
 
               end
             end

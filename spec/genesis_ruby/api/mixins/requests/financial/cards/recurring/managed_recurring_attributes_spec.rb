@@ -15,12 +15,8 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Cards::Recurring::
   describe 'when managed_recurring_mode' do
     let(:mode) { GenesisRuby::Api::Constants::Transactions::Parameters::ManagedRecurring::Modes.all.sample }
 
-    it 'with valid value' do
+    it 'with setter' do
       expect { managed_recurring.managed_recurring_mode = mode }.to_not raise_error
-    end
-
-    it 'with invalid value' do
-      expect { managed_recurring.managed_recurring_mode = 'invalid' }.to raise_error GenesisRuby::InvalidArgumentError
     end
 
     it 'with getter' do
@@ -33,13 +29,8 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Cards::Recurring::
   describe 'when managed_recurring_interval' do
     let(:interval) { GenesisRuby::Api::Constants::Transactions::Parameters::ManagedRecurring::Intervals.all.sample }
 
-    it 'with valid value' do
+    it 'with setter' do
       expect { managed_recurring.managed_recurring_interval = interval }.to_not raise_error
-    end
-
-    it 'with invalid value' do
-      expect { managed_recurring.managed_recurring_interval = 'invalid' }
-        .to raise_error GenesisRuby::InvalidArgumentError
     end
 
     it 'with getter' do

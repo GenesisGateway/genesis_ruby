@@ -12,18 +12,10 @@ module GenesisRuby
               # Mixin ThreedsV2 SDK
               module Sdk
 
-                attr_reader :threeds_v2_sdk_interface, :threeds_v2_sdk_application_id, :threeds_v2_sdk_encrypted_data,
+                attr_reader :threeds_v2_sdk_application_id, :threeds_v2_sdk_encrypted_data,
                             :threeds_v2_sdk_ephemeral_public_key_pair, :threeds_v2_sdk_max_timeout,
                             :threeds_v2_sdk_reference_number
-
-                # SDK Interface types that the device of the consumer supports for displaying specific challenge
-                # interfaces within the SDK
-                def threeds_v2_sdk_interface=(value)
-                  allowed_interfaces = GenesisRuby::Api::Constants::Transactions::Parameters::Threeds::Version2::Sdk::
-                      Interfaces.all
-
-                  allowed_options attribute: __method__, allowed: allowed_interfaces, value: value, allow_empty: true
-                end
+                attr_accessor :threeds_v2_sdk_interface
 
                 # UI type that the device of the consumer supports for displaying specific challenge interface
                 def threeds_v2_sdk_ui_types
@@ -83,6 +75,14 @@ module GenesisRuby
                 end
 
                 protected
+
+                # SDK field validations
+                def threeds_sdk_field_validations
+                  {
+                    threeds_v2_sdk_interface: Api::Constants::Transactions::Parameters::Threeds::Version2::Sdk::
+                        Interfaces.all
+                  }
+                end
 
                 # Request SDK Attributes structure
                 def sdk_attributes

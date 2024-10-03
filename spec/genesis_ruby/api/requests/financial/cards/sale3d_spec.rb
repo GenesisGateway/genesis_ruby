@@ -1,5 +1,36 @@
 RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Sale3d do
-  let(:test_required_fields) { %i[transaction_id] }
+  let(:test_required_fields) { %i[transaction_id amount currency] }
+  let(:test_required_field_values) do
+    %i[
+      currency
+      recurring_type
+      managed_recurring_mode
+      managed_recurring_interval
+      managed_recurring_mode
+      managed_recurring_interval
+      managed_recurring_payment_type
+      managed_recurring_amount_type
+      managed_recurring_frequency
+      managed_recurring_validated
+      threeds_v2_control_device_type
+      threeds_v2_control_challenge_window_size
+      threeds_v2_control_challenge_indicator
+      threeds_v2_purchase_category
+      threeds_v2_merchant_risk_shipping_indicator
+      threeds_v2_merchant_risk_delivery_timeframe
+      threeds_v2_merchant_risk_reorder_items_indicator
+      threeds_v2_merchant_risk_pre_order_purchase_indicator
+      threeds_v2_merchant_risk_gift_card
+      threeds_v2_card_holder_account_update_indicator
+      threeds_v2_card_holder_account_password_change_indicator
+      threeds_v2_card_holder_account_shipping_address_usage_indicator
+      threeds_v2_card_holder_account_suspicious_activity_indicator
+      threeds_v2_card_holder_account_registration_indicator
+      threeds_v2_browser_color_depth
+      threeds_v2_browser_java_enabled
+      threeds_v2_sdk_interface
+    ]
+  end
   let(:config) do
     config             = GenesisRuby::Configuration.new
     config.username    = 'example_username'
@@ -54,4 +85,5 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Sale3d do
   include_examples 'account owner attributes examples'
   include_examples 'managed recurring examples'
   include_examples 'travel data attributes examples'
+  include_examples 'card holder date attributes examples'
 end

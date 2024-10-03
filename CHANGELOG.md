@@ -1,3 +1,13 @@
+0.1.8
+-----
+**Features**:
+
+* Added Apple Pay transaction request support
+* Added Google Pay transaction request support
+* Added Online Banking PayIn transaction request support
+* Updated transform amount logic during request execution
+* Added 3DSv2 parameters validations
+
 0.1.7
 -----
 **Features**:

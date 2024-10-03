@@ -7,9 +7,9 @@ RSpec.shared_examples 'recurring type initial examples' do
     end
 
     it 'with subsequent recurring type' do
-      expect do
-        request.recurring_type = GenesisRuby::Api::Constants::Transactions::Parameters::Recurring::Types::SUBSEQUENT
-      end.to raise_error GenesisRuby::InvalidArgumentError
+      request.recurring_type = GenesisRuby::Api::Constants::Transactions::Parameters::Recurring::Types::SUBSEQUENT
+
+      expect { request.build_document }.to raise_error GenesisRuby::ParameterError
     end
 
     it 'has proper structure without recurring type' do
@@ -17,15 +17,22 @@ RSpec.shared_examples 'recurring type initial examples' do
     end
 
     it 'has proper structure with recurring type' do
-      request.recurring_type = type = GenesisRuby::Api::Constants::Transactions::Parameters::Recurring::Types::MANAGED
+      request.recurring_type = type  = GenesisRuby::Api::Constants::Transactions::Parameters::Recurring::Types::MANAGED
+      request.managed_recurring_mode = 'automatic'
 
       expect(request.build_document).to include "<recurring_type>#{type}</recurring_type>"
     end
 
     it 'can unset recurring type' do
-      request.recurring_type = ''
+      request.recurring_type = nil
 
       expect(request.build_document).to_not include 'recurring_type'
+    end
+
+    it 'without managed_recurring_mode with managed recurring_type' do
+      request.recurring_type = GenesisRuby::Api::Constants::Transactions::Parameters::Recurring::Types::MANAGED
+
+      expect { request.build_document }.to raise_error GenesisRuby::ParameterError
     end
   end
 end

@@ -447,6 +447,214 @@ end
 
 </details>
 
+### Apple Pay Request
+
+Apple Pay is a mobile payment solution available on iOS devices with Touch ID / Face ID support. Apple Pay allows shoppers to purchase with credit and debit cards linked to their devices.
+
+<details>
+<summary>Apple Pay Transaction Example</summary>
+
+```ruby
+require 'genesis_ruby'
+
+begin
+  genesis = GenesisRuby::Genesis.for(config:  configuration, request: GenesisRuby::Api::Requests::Financial::Mobile::ApplePay) do |request|
+    # Common Attributes
+    request.transaction_id     = '12345-67890'
+    request.amount             = '0.99'
+    request.currency           = 'EUR'
+    request.usage              = 'Example usage'
+    request.customer_email     = 'travis@example.com'
+    request.customer_phone     = '+1987987987987'
+
+    request.payment_subtype    = GenesisRuby::Api::Constants::Transactions::Parameters::Mobile::ApplePay::PaymentSubtypes::SALE
+
+    # Billing Attributes
+    request.billing_first_name = 'Travis'
+    request.billing_last_name  = 'Pastrana'
+    request.billing_address1   = 'Muster Str. 12'
+    request.billing_zip_code   = '10178'
+    request.billing_city       = 'Los Angeles'
+    request.billing_state      = 'CA'
+    request.billing_country    = 'US'
+
+    # Apple Pay Payment Token
+    json_token = '{"paymentData":{"version":"EC_v1","data":"MgcrhHr/uhfRy7zxMOvahhf5sp+ZfUsWADlG5OhvZ8vEAybEouyk4tT8oYaOqlfNTdkJZl2tmCgyLReibOjW2RiXzw5S9ZtA6ISnEBjNFla9Hju1KJnxQ+QFIdSlhEDOqN/Wk9kSFz2mnT8wajaG6mytpXhzCxvl5ElCp0gm0wMb82lvpf6my5TIu+CuANPZ2g/kslqKUGEjQHhO3FVqmiEj2YpkrlhXcvFu1GalTOWgjnLVCMz8l8DCQek/UIZQ3ZiJEoQTlEZRzXlwG8FlEp/QwbLiIlQfDLCtu3pBH0EaOeQ1OwupXs64EYfL+DEzYKdpi7dE9Y93zcXR6y2qsawBC8lCeI8zGc+kRFQJ5IrPd81BRZep3xsHwh1uki2dfx2taLyjxyCWWKaUWCzYI1p/u7YsypYEMj3np+MHfg==","signature":"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","header":{"wrappedKey": "wrapped key", "ephemeralPublicKey":"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEJsaMBlzR3D0H7xKwDncLNGOEcsl6Jilx5d+MDI/1QFxuIf6a0fY5qgOwnuLgZepqc3AVeU1RV8enPCQSWfFKRg==","publicKeyHash":"QOmvMaoCNYk5tv+69KC1i2UCFQcOl6LYPIJfYAT+SLQ=","transactionId":"ccedaf3f32efcc971259694f0efd0dcaa0ed545e7a31a0f7ec8e1c110656c25b"}},"paymentMethod":{"displayName":"Visa 0225","network":"Visa","type":"debit"},"transactionIdentifier":"CCEDAF3F32EFCC971259694F0EFD0DCAA0ED545E7A31A0F7EC8E1C110656C25B"}'
+
+    # Set Apple Pay token from a JSON string
+    request.json_token = json_token
+
+    # Alternatively you can set every token attributes
+    # token = JSON.parse json_token
+    # request.token_version                = token['paymentData']['version']
+    # request.token_data                   = token['paymentData']['data']
+    # request.token_signature              = token['paymentData']['signature']
+    # request.token_ephemeral_public_key   = token['paymentData']['header']['ephemeralPublicKey']
+    # request.token_public_key_hash        = token['paymentData']['header']['publicKeyHash']
+    # request.token_transaction_id         = token['paymentData']['header']['transactionId']
+    # request.token_display_name           = token['paymentMethod']['displayName']
+    # request.token_network                = token['paymentMethod']['network']
+    # request.token_type                   = token['paymentMethod']['type']
+    # request.token_transaction_identifier = token['transactionIdentifier']
+  end.execute
+
+  puts genesis.response.response_object
+rescue GenesisRuby::Error => error
+  puts error.message
+end
+```
+
+</details>
+
+<details>
+<summary>Apple Pay Web Payment Form Example</summary>
+
+```ruby
+require 'genesis_ruby'
+
+begin
+  genesis = GenesisRuby::Genesis.for(config: configuration, request: GenesisRuby::Api::Requests::Wpf::Create) do |request|
+    # Common Attributes
+    request.transaction_id     = '12345-67890'
+    request.amount             = '0.99'
+    request.currency           = 'EUR'
+    request.usage              = 'Example usage'
+    request.description        = 'You are about to complete you purchase'
+    request.customer_email     = 'travis@example.com'
+    request.customer_phone     = '+1987987987987'
+    request.notification_url   = 'https://www.example.com/notification'
+    request.return_success_url = 'https://www.example.com/success'
+    request.return_cancel_url  = 'https://www.example.com/failure'
+    request.return_failure_url = 'https://www.example.com/cancel.html'
+    request.return_pending_url = 'https://www.example.com/payment-pending.html'
+
+    # Transaction Types
+    request.add_transaction_type('apple_pay', { payment_subtype: GenesisRuby::Api::Constants::Transactions::Parameters::Mobile::ApplePay::PaymentSubtypes::AUTHORIZE })
+
+    # Billing Attributes
+    request.billing_first_name = 'Travis'
+    request.billing_last_name  = 'Pastrana'
+    request.billing_address1   = 'Muster Str. 12'
+    request.billing_zip_code   = '10178'
+    request.billing_city       = 'Los Angeles'
+    request.billing_state      = 'CA'
+    request.billing_country    = 'US'
+  end.execute
+
+  puts genesis.response.response_object
+
+rescue GenesisRuby::Error => error
+  puts error.message
+end
+```
+
+</details>
+
+### Google Pay Request
+
+Google Pay allows shoppers to purchase with credit and debit cards linked to their Google account.
+
+<details>
+<summary>Google Pay Transaction Example</summary>
+
+```ruby
+require 'genesis_ruby'
+
+begin
+  genesis = GenesisRuby::Genesis.for(config:  configuration, request: GenesisRuby::Api::Requests::Financial::Mobile::GooglePay) do |request|
+    # Common Attributes
+    request.transaction_id     = '12345-67890'
+    request.amount             = '0.99'
+    request.currency           = 'EUR'
+    request.usage              = 'Example usage'
+    request.customer_email     = 'travis@example.com'
+    request.customer_phone     = '+1987987987987'
+
+    request.payment_subtype    = GenesisRuby::Api::Constants::Transactions::Parameters::Mobile::GooglePay::PaymentSubtypes::SALE
+
+    # Billing Attributes
+    request.billing_first_name = 'Travis'
+    request.billing_last_name  = 'Pastrana'
+    request.billing_address1   = 'Muster Str. 12'
+    request.billing_zip_code   = '10178'
+    request.billing_city       = 'Los Angeles'
+    request.billing_state      = 'CA'
+    request.billing_country    = 'US'
+
+    # Google Pay Payment Token
+    json_token = '{
+            "protocolVersion":"ECv2",
+            "signature":"MEQCIH6Q4OwQ0jAceFEkGF0JID6sJNXxOEi4r+mA7biRxqBQAiAondqoUpU/bdsrAOpZIsrHQS9nwiiNwOrr24RyPeHA0Q\u003d\u003d",
+            "intermediateSigningKey":{
+                    "signedKey": "{\"keyExpiration\":\"1542323393147\",\"keyValue\":\"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE/1+3HBVSbdv+j7NaArdgMyoSAM43yRydzqdg1TxodSzA96Dj4Mc1EiKroxxunavVIvdxGnJeFViTzFvzFRxyCw\\u003d\\u003d\"}",
+                    "signatures": ["MEYCIQCO2EIi48s8VTH+ilMEpoXLFfkxAwHjfPSCVED/QDSHmQIhALLJmrUlNAY8hDQRV/y1iKZGsWpeNmIP+z+tCQHQxP0v"]
+            },
+            "signedMessage":"{\"tag\":\"jpGz1F1Bcoi/fCNxI9n7Qrsw7i7KHrGtTf3NrRclt+U\\u003d\",\"ephemeralPublicKey\":\"BJatyFvFPPD21l8/uLP46Ta1hsKHndf8Z+tAgk+DEPQgYTkhHy19cF3h/bXs0tWTmZtnNm+vlVrKbRU9K8+7cZs\\u003d\",\"encryptedMessage\":\"mKOoXwi8OavZ\"}"
+    }'
+
+    # Set Google Pay token from a JSON string
+    request.json_token = json_token
+
+    # Alternatively you can set every token attributes
+    # token = JSON.parse json_token
+    # request.token_protocol_version = token['protocolVersion']
+    # request.token_signature        = token['signature']
+    # request.token_signed_key       = token['intermediateSigningKey']['signedKey']
+    # request.token_signatures       = token['intermediateSigningKey']['signatures']
+    # request.token_signed_message   = token['signedMessage']
+  end.execute
+
+  puts genesis.response.response_object
+rescue GenesisRuby::Error => error
+  puts error.message
+end
+```
+
+</details>
+
+<details>
+<summary>Google Pay Web Payment Form Example</summary>
+
+```ruby
+require 'genesis_ruby'
+
+begin
+  genesis = GenesisRuby::Genesis.for(config: configuration, request: GenesisRuby::Api::Requests::Wpf::Create) do |request|
+    # Common Attributes
+    request.transaction_id     = '12345-67890'
+    request.amount             = '0.99'
+    request.currency           = 'EUR'
+    request.usage              = 'Example usage'
+    request.description        = 'You are about to complete you purchase'
+    request.customer_email     = 'travis@example.com'
+    request.customer_phone     = '+1987987987987'
+    request.notification_url   = 'https://www.example.com/notification'
+    request.return_success_url = 'https://www.example.com/success'
+    request.return_cancel_url  = 'https://www.example.com/failure'
+    request.return_failure_url = 'https://www.example.com/cancel.html'
+    request.return_pending_url = 'https://www.example.com/payment-pending.html'
+
+    # Transaction Types
+    request.add_transaction_type('google_pay', { payment_subtype: GenesisRuby::Api::Constants::Transactions::Parameters::Mobile::GooglePay::PaymentSubtypes::AUTHORIZE })
+
+    # Billing Attributes
+    request.billing_first_name = 'Travis'
+    request.billing_last_name  = 'Pastrana'
+    request.billing_address1   = 'Muster Str. 12'
+    request.billing_zip_code   = '10178'
+    request.billing_city       = 'Los Angeles'
+    request.billing_state      = 'CA'
+    request.billing_country    = 'US'
+  end.execute
+
+  puts genesis.response.response_object
+
+rescue GenesisRuby::Error => error
+  puts error.message
+end
+```
+
+</details>
 
 ### Recurring
 
@@ -789,10 +997,19 @@ GenesisRuby::Api::Requests::Financial::Cards::Authorize3d
 GenesisRuby::Api::Requests::Financial::Cards::Sale
 GenesisRuby::Api::Requests::Financial::Cards::Sale3d
 
+## Mobile
+GenesisRuby::Api::Requests::Financial::Mobile::ApplePay
+GenesisRuby::Api::Requests::Financial::Mobile::GooglePay
+
 # Web Payment Form
 ## Create
 GenesisRuby::Api::Requests::Wpf::Create
+## WPF Reconcile
 GenesisRuby::Api::Requests::Wpf::Reconcile
+
+# Online Banking Payments
+# PayIn
+GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::OnlineBanking::PayIn
 
 # References
 GenesisRuby::Api::Requests::Financial::Capture

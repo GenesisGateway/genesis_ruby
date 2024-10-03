@@ -11,20 +11,20 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Threeds::Version2:
 
   describe 'when threeds_v2_card_holder_account_creation_date' do
     it 'with default value' do
-      expect(card_holder_account.threeds_v2_card_holder_account_creation_date).to eq(nil)
+      expect(card_holder_account.threeds_v2_card_holder_account_creation_date).to eq nil
     end
 
     it 'with empty date' do
       card_holder_account.threeds_v2_card_holder_account_creation_date = in_period_date
       card_holder_account.threeds_v2_card_holder_account_creation_date = ''
 
-      expect(card_holder_account.threeds_v2_card_holder_account_creation_date).to eq(nil)
+      expect(card_holder_account.threeds_v2_card_holder_account_creation_date).to eq nil
     end
 
     it 'with valid date' do
       card_holder_account.threeds_v2_card_holder_account_creation_date = in_period_date
 
-      expect(card_holder_account.threeds_v2_card_holder_account_creation_date).to eq(genesis_format_date)
+      expect(card_holder_account.threeds_v2_card_holder_account_creation_date).to eq genesis_format_date
     end
 
     it 'with invalid date' do
@@ -35,41 +35,40 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Threeds::Version2:
   end
 
   describe 'when threeds_v2_card_holder_account_update_indicator' do
-    it 'with valid indicator' do
+    it 'with setter' do
+      expect { card_holder_account.threeds_v2_card_holder_account_update_indicator = Faker::Lorem.word }
+        .to_not raise_error
+    end
+
+    it 'with getter' do
       card_holder_account.threeds_v2_card_holder_account_update_indicator = indicator = 'current_transaction'
 
-      expect(card_holder_account.threeds_v2_card_holder_account_update_indicator).to eq(indicator)
+      expect(card_holder_account.threeds_v2_card_holder_account_update_indicator).to eq indicator
     end
 
     it 'with empty indicator' do
       card_holder_account.threeds_v2_card_holder_account_update_indicator = ''
 
-      expect(card_holder_account.threeds_v2_card_holder_account_update_indicator).to eq(nil)
-    end
-
-    it 'with invalid indicator' do
-      expect do
-        card_holder_account.threeds_v2_card_holder_account_update_indicator = 'invalid'
-      end.to raise_error GenesisRuby::InvalidArgumentError
+      expect(card_holder_account.threeds_v2_card_holder_account_update_indicator).to eq ''
     end
   end
 
   describe 'when threeds_v2_card_holder_account_last_change_date' do
     it 'with default value' do
-      expect(card_holder_account.threeds_v2_card_holder_account_last_change_date).to eq(nil)
+      expect(card_holder_account.threeds_v2_card_holder_account_last_change_date).to eq nil
     end
 
     it 'with empty date' do
       card_holder_account.threeds_v2_card_holder_account_last_change_date = in_period_date
       card_holder_account.threeds_v2_card_holder_account_last_change_date = ''
 
-      expect(card_holder_account.threeds_v2_card_holder_account_last_change_date).to eq(nil)
+      expect(card_holder_account.threeds_v2_card_holder_account_last_change_date).to eq nil
     end
 
     it 'with valid date' do
       card_holder_account.threeds_v2_card_holder_account_last_change_date = in_period_date
 
-      expect(card_holder_account.threeds_v2_card_holder_account_last_change_date).to eq(genesis_format_date)
+      expect(card_holder_account.threeds_v2_card_holder_account_last_change_date).to eq genesis_format_date
     end
 
     it 'with invalid date' do
@@ -80,41 +79,40 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Threeds::Version2:
   end
 
   describe 'when threeds_v2_card_holder_account_password_change_indicator' do
-    it 'with valid indicator' do
+    it 'with setter' do
+      expect { card_holder_account.threeds_v2_card_holder_account_password_change_indicator = Faker::Lorem.word }
+        .to_not raise_error
+    end
+
+    it 'with getter' do
       card_holder_account.threeds_v2_card_holder_account_password_change_indicator = indicator = 'no_change'
 
-      expect(card_holder_account.threeds_v2_card_holder_account_password_change_indicator).to eq(indicator)
+      expect(card_holder_account.threeds_v2_card_holder_account_password_change_indicator).to eq indicator
     end
 
     it 'with empty indicator' do
       card_holder_account.threeds_v2_card_holder_account_password_change_indicator = ''
 
-      expect(card_holder_account.threeds_v2_card_holder_account_password_change_indicator).to eq(nil)
-    end
-
-    it 'with invalid indicator' do
-      expect do
-        card_holder_account.threeds_v2_card_holder_account_password_change_indicator = 'invalid'
-      end.to raise_error GenesisRuby::InvalidArgumentError
+      expect(card_holder_account.threeds_v2_card_holder_account_password_change_indicator).to eq ''
     end
   end
 
   describe 'when threeds_v2_card_holder_account_password_change_date' do
     it 'with default value' do
-      expect(card_holder_account.threeds_v2_card_holder_account_password_change_date).to eq(nil)
+      expect(card_holder_account.threeds_v2_card_holder_account_password_change_date).to eq nil
     end
 
     it 'with empty date' do
       card_holder_account.threeds_v2_card_holder_account_password_change_date = in_period_date
       card_holder_account.threeds_v2_card_holder_account_password_change_date = ''
 
-      expect(card_holder_account.threeds_v2_card_holder_account_password_change_date).to eq(nil)
+      expect(card_holder_account.threeds_v2_card_holder_account_password_change_date).to eq nil
     end
 
     it 'with valid date' do
       card_holder_account.threeds_v2_card_holder_account_password_change_date = in_period_date
 
-      expect(card_holder_account.threeds_v2_card_holder_account_password_change_date).to eq(genesis_format_date)
+      expect(card_holder_account.threeds_v2_card_holder_account_password_change_date).to eq genesis_format_date
     end
 
     it 'with invalid date' do
@@ -125,36 +123,35 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Threeds::Version2:
   end
 
   describe 'when threeds_v2_card_holder_account_shipping_address_usage_indicator' do
-    it 'with valid indicator' do
+    it 'with setter' do
+      expect { card_holder_account.threeds_v2_card_holder_account_shipping_address_usage_indicator = Faker::Lorem.word }
+        .to_not raise_error
+    end
+
+    it 'with getter' do
       card_holder_account.threeds_v2_card_holder_account_shipping_address_usage_indicator = indicator =
         'current_transaction'
 
-      expect(card_holder_account.threeds_v2_card_holder_account_shipping_address_usage_indicator).to eq(indicator)
+      expect(card_holder_account.threeds_v2_card_holder_account_shipping_address_usage_indicator).to eq indicator
     end
 
     it 'with empty indicator' do
       card_holder_account.threeds_v2_card_holder_account_shipping_address_usage_indicator = ''
 
-      expect(card_holder_account.threeds_v2_card_holder_account_shipping_address_usage_indicator).to eq(nil)
-    end
-
-    it 'with invalid indicator' do
-      expect do
-        card_holder_account.threeds_v2_card_holder_account_shipping_address_usage_indicator = 'invalid'
-      end.to raise_error GenesisRuby::InvalidArgumentError
+      expect(card_holder_account.threeds_v2_card_holder_account_shipping_address_usage_indicator).to eq ''
     end
   end
 
   describe 'when threeds_v2_card_holder_account_shipping_address_date_first_used' do
     it 'with default value' do
-      expect(card_holder_account.threeds_v2_card_holder_account_shipping_address_date_first_used).to eq(nil)
+      expect(card_holder_account.threeds_v2_card_holder_account_shipping_address_date_first_used).to eq nil
     end
 
     it 'with empty date' do
       card_holder_account.threeds_v2_card_holder_account_shipping_address_date_first_used = in_period_date
       card_holder_account.threeds_v2_card_holder_account_shipping_address_date_first_used = ''
 
-      expect(card_holder_account.threeds_v2_card_holder_account_shipping_address_date_first_used).to eq(nil)
+      expect(card_holder_account.threeds_v2_card_holder_account_shipping_address_date_first_used).to eq nil
     end
 
     it 'with valid date' do
@@ -178,7 +175,7 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Threeds::Version2:
 
       expect(
         card_holder_account.threeds_v2_card_holder_account_transactions_activity_last24_hours
-      ).to eq(number_positive)
+      ).to eq number_positive
     end
 
     it 'with string count' do
@@ -186,13 +183,13 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Threeds::Version2:
 
       expect(
         card_holder_account.threeds_v2_card_holder_account_transactions_activity_last24_hours
-      ).to eq(number_positive)
+      ).to eq number_positive
     end
 
     it 'with empty count' do
       card_holder_account.threeds_v2_card_holder_account_transactions_activity_last24_hours = ''
 
-      expect(card_holder_account.threeds_v2_card_holder_account_transactions_activity_last24_hours).to eq(nil)
+      expect(card_holder_account.threeds_v2_card_holder_account_transactions_activity_last24_hours).to eq nil
     end
   end
 
@@ -202,7 +199,7 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Threeds::Version2:
 
       expect(
         card_holder_account.threeds_v2_card_holder_account_transactions_activity_previous_year
-      ).to eq(number_positive)
+      ).to eq number_positive
     end
 
     it 'with string count' do
@@ -210,13 +207,13 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Threeds::Version2:
 
       expect(
         card_holder_account.threeds_v2_card_holder_account_transactions_activity_previous_year
-      ).to eq(number_positive)
+      ).to eq number_positive
     end
 
     it 'with empty count' do
       card_holder_account.threeds_v2_card_holder_account_transactions_activity_previous_year = ''
 
-      expect(card_holder_account.threeds_v2_card_holder_account_transactions_activity_previous_year).to eq(nil)
+      expect(card_holder_account.threeds_v2_card_holder_account_transactions_activity_previous_year).to eq nil
     end
   end
 
@@ -226,7 +223,7 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Threeds::Version2:
 
       expect(
         card_holder_account.threeds_v2_card_holder_account_provision_attempts_last24_hours
-      ).to eq(number_positive)
+      ).to eq number_positive
     end
 
     it 'with string count' do
@@ -234,13 +231,13 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Threeds::Version2:
 
       expect(
         card_holder_account.threeds_v2_card_holder_account_provision_attempts_last24_hours
-      ).to eq(number_positive)
+      ).to eq number_positive
     end
 
     it 'with empty count' do
       card_holder_account.threeds_v2_card_holder_account_provision_attempts_last24_hours = ''
 
-      expect(card_holder_account.threeds_v2_card_holder_account_provision_attempts_last24_hours).to eq(nil)
+      expect(card_holder_account.threeds_v2_card_holder_account_provision_attempts_last24_hours).to eq nil
     end
   end
 
@@ -250,7 +247,7 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Threeds::Version2:
 
       expect(
         card_holder_account.threeds_v2_card_holder_account_purchases_count_last6_months
-      ).to eq(number_positive)
+      ).to eq number_positive
     end
 
     it 'with string count' do
@@ -258,74 +255,72 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Threeds::Version2:
 
       expect(
         card_holder_account.threeds_v2_card_holder_account_purchases_count_last6_months
-      ).to eq(number_positive)
+      ).to eq number_positive
     end
 
     it 'with empty count' do
       card_holder_account.threeds_v2_card_holder_account_purchases_count_last6_months = ''
 
-      expect(card_holder_account.threeds_v2_card_holder_account_purchases_count_last6_months).to eq(nil)
+      expect(card_holder_account.threeds_v2_card_holder_account_purchases_count_last6_months).to eq nil
     end
   end
 
   describe 'when threeds_v2_card_holder_account_suspicious_activity_indicator' do
-    it 'with valid indicator' do
+    it 'with setter' do
+      expect { card_holder_account.threeds_v2_card_holder_account_suspicious_activity_indicator = Faker::Lorem.word }
+        .to_not raise_error
+    end
+
+    it 'with getter' do
       card_holder_account.threeds_v2_card_holder_account_suspicious_activity_indicator = indicator =
         'no_suspicious_observed'
 
-      expect(card_holder_account.threeds_v2_card_holder_account_suspicious_activity_indicator).to eq(indicator)
+      expect(card_holder_account.threeds_v2_card_holder_account_suspicious_activity_indicator).to eq indicator
     end
 
     it 'with empty indicator' do
       card_holder_account.threeds_v2_card_holder_account_suspicious_activity_indicator = ''
 
-      expect(card_holder_account.threeds_v2_card_holder_account_suspicious_activity_indicator).to eq(nil)
-    end
-
-    it 'with invalid indicator' do
-      expect do
-        card_holder_account.threeds_v2_card_holder_account_suspicious_activity_indicator = 'invalid'
-      end.to raise_error GenesisRuby::InvalidArgumentError
+      expect(card_holder_account.threeds_v2_card_holder_account_suspicious_activity_indicator).to eq ''
     end
   end
 
   describe 'when threeds_v2_card_holder_account_registration_indicator' do
-    it 'with valid indicator' do
+    it 'with setter' do
+      expect { card_holder_account.threeds_v2_card_holder_account_registration_indicator = Faker::Lorem.word }
+        .to_not raise_error
+    end
+
+    it 'with getter' do
       card_holder_account.threeds_v2_card_holder_account_registration_indicator = indicator =
         'guest_checkout'
 
-      expect(card_holder_account.threeds_v2_card_holder_account_registration_indicator).to eq(indicator)
+      expect(card_holder_account.threeds_v2_card_holder_account_registration_indicator).to eq indicator
     end
 
     it 'with empty indicator' do
       card_holder_account.threeds_v2_card_holder_account_registration_indicator = ''
 
-      expect(card_holder_account.threeds_v2_card_holder_account_registration_indicator).to eq(nil)
-    end
-
-    it 'with invalid indicator' do
-      expect do
-        card_holder_account.threeds_v2_card_holder_account_registration_indicator = 'invalid'
-      end.to raise_error GenesisRuby::InvalidArgumentError
+      expect(card_holder_account.threeds_v2_card_holder_account_registration_indicator).to eq ''
     end
   end
 
   describe 'when threeds_v2_card_holder_account_registration_date' do
     it 'with default value' do
-      expect(card_holder_account.threeds_v2_card_holder_account_registration_date).to eq(nil)
+      expect(card_holder_account.threeds_v2_card_holder_account_registration_date).to eq nil
     end
 
     it 'with empty date' do
       card_holder_account.threeds_v2_card_holder_account_registration_date = in_period_date
       card_holder_account.threeds_v2_card_holder_account_registration_date = ''
 
-      expect(card_holder_account.threeds_v2_card_holder_account_registration_date).to eq(nil)
+      expect(card_holder_account.threeds_v2_card_holder_account_registration_date).to eq nil
     end
 
     it 'with valid date' do
       card_holder_account.threeds_v2_card_holder_account_registration_date = in_period_date
 
-      expect(card_holder_account.threeds_v2_card_holder_account_registration_date).to eq(genesis_format_date)
+      expect(card_holder_account.threeds_v2_card_holder_account_registration_date).to eq genesis_format_date
     end
 
     it 'with invalid date' do
@@ -339,4 +334,7 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Threeds::Version2:
     expect(card_holder_account.card_holder_account_attributes).to_not be_empty
   end
 
+  it 'with card holder field validation structure' do
+    expect(card_holder_account.threeds_card_holder_field_validations).to_not be_empty
+  end
 end

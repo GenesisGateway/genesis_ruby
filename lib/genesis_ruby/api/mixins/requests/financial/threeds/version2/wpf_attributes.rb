@@ -32,6 +32,15 @@ module GenesisRuby
 
                 protected
 
+                # Threeds Common Attribute Field Validation
+                def threeds_field_validations
+                  control_validations = threeds_control_field_validations
+                  control_validations.delete(:threeds_v2_control_device_type)
+
+                  {}.merge control_validations, threeds_purchase_field_validations,
+                           threeds_merchant_risk_field_validations, threeds_card_holder_field_validations
+                end
+
                 # Request Control Attributes structure available for the Web Payment Form
                 def control_attributes
                   {

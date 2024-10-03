@@ -10,8 +10,9 @@ module GenesisRuby
 
           protected
 
-          def init_required_fields
-            self.required_fields = %i[transaction_id reference_id amount currency]
+          def init_field_validations
+            required_fields.push *%i[transaction_id reference_id amount currency]
+            field_values.merge! currency: Api::Constants::Currencies::Iso4217.all.map(&:upcase)
           end
 
           # Reference transaction request structure

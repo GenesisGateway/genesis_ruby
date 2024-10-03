@@ -1,5 +1,17 @@
 RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Authorize do
-  let(:test_required_fields) { %i[transaction_id] }
+  let(:test_required_fields) { %i[transaction_id amount currency] }
+  let(:test_required_field_values) do
+    %i[
+      currency
+      recurring_type
+      managed_recurring_mode
+      managed_recurring_interval
+      managed_recurring_payment_type
+      managed_recurring_amount_type
+      managed_recurring_frequency
+      managed_recurring_validated
+    ]
+  end
   let(:config) do
     config             = GenesisRuby::Configuration.new
     config.username    = 'example_username'

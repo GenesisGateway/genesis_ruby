@@ -10,20 +10,17 @@ module GenesisRuby
               # Mixin ThreedsV2 Purchase
               module Purchase
 
-                attr_reader :threeds_v2_purchase_category
-
-                # Identifies the type of transaction being authenticated
-                def threeds_v2_purchase_category=(value)
-                  allowed_indicators = GenesisRuby::Api::Constants::Transactions::Parameters::Threeds::Version2::
-                      Purchase::Categories.all
-
-                  allowed_options attribute:   __method__,
-                                  allowed:     allowed_indicators,
-                                  value:       value.to_s,
-                                  allow_empty: true
-                end
+                attr_accessor :threeds_v2_purchase_category
 
                 protected
+
+                # Purchase field validations structure
+                def threeds_purchase_field_validations
+                  {
+                    threeds_v2_purchase_category: Api::Constants::Transactions::Parameters::Threeds::Version2::
+                        Purchase::Categories.all
+                  }
+                end
 
                 # Request Purchase Attributes structure
                 def purchase_attributes

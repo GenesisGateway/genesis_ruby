@@ -32,8 +32,16 @@ module GenesisRuby
               GenesisRuby::Api::Constants::Transactions::AUTHORIZE
             end
 
-            def init_required_fields
-              return super unless recurring_type == Constants::Transactions::Parameters::Recurring::Types::SUBSEQUENT
+            # Request Field validations
+            def init_field_validations
+              super
+
+              field_values.merge! managed_recurring_field_values, recurring_type_field_values_validation_structure
+
+              field_value_dependencies.merge! required_tokenization_fields_conditional, required_cc_fields_conditional,
+                                              required_recurring_managed_type_field_conditional
+
+              return unless recurring_type == Constants::Transactions::Parameters::Recurring::Types::SUBSEQUENT
 
               self.required_fields = recurring_type_subsequent_required_request_attributes
             end

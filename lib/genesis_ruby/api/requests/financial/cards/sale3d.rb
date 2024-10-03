@@ -27,21 +27,30 @@ module GenesisRuby
             include Mixins::Requests::Financial::Threeds::Version2::CommonAttributes
             include Mixins::Requests::Financial::TravelData::TravelAttributes
 
-            # Specifies the recurring type of transaction
-            def recurring_type=(value)
-              allowed_values = [
-                GenesisRuby::Api::Constants::Transactions::Parameters::Recurring::Types::INITIAL,
-                GenesisRuby::Api::Constants::Transactions::Parameters::Recurring::Types::MANAGED
-              ]
-
-              allowed_options attribute: __method__, allowed: allowed_values, value: value, allow_empty: true
-            end
-
             protected
 
             # Sale 3D Transaction Type
             def transaction_type
               GenesisRuby::Api::Constants::Transactions::SALE_3D
+            end
+
+            # Request Field validations
+            def init_field_validations
+              super
+
+              field_values.merge! managed_recurring_field_values,
+                                  recurring_type_initial_field_values_validation_structure, threeds_field_validations
+
+              field_value_dependencies.merge! required_tokenization_fields_conditional, required_cc_fields_conditional,
+                                              required_recurring_managed_type_field_conditional,
+                                              threeds_field_conditional_validations
+            end
+
+            # Special validations upon document building
+            def check_requirements
+              validate_threeds_card_holder_dates
+
+              super
             end
 
             # Sale 3D transaction request parameters

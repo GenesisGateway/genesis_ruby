@@ -5,7 +5,8 @@ RSpec.shared_examples 'tokenization attributes examples' do
     end
 
     it 'with token' do
-      request.token = uuid = Faker::Internet.uuid
+      request.token       = uuid = Faker::Internet.uuid
+      request.consumer_id = Faker::Internet.uuid
 
       expect(request.build_document).to include "<token>#{uuid}</token>"
     end
@@ -21,6 +22,13 @@ RSpec.shared_examples 'tokenization attributes examples' do
 
       expect(request.build_document).to include '<remember_card>true</remember_card>'
     end
+
+    it 'without customer_email' do
+      request.remember_card  = true
+      request.customer_email = nil
+
+      expect { request.build_document }.to raise_error GenesisRuby::ParameterError
+    end
   end
 
   describe 'when consumer_id attributes' do
@@ -32,6 +40,13 @@ RSpec.shared_examples 'tokenization attributes examples' do
       request.consumer_id = identifier = Faker::Number.positive
 
       expect(request.build_document).to include "<consumer_id>#{identifier}</consumer_id>"
+    end
+
+    it 'without customer_email' do
+      request.consumer_id    = Faker::Number.positive
+      request.customer_email = nil
+
+      expect { request.build_document }.to raise_error GenesisRuby::ParameterError
     end
   end
 end
