@@ -1,14 +1,20 @@
 RSpec.shared_examples 'address info attributes examples' do
   describe 'when billing address attributes' do
+    let(:billing_country) do
+      return request.billing_country if request.billing_country
+
+      Faker::Address.country_code
+    end
     let(:billing) do
-      request.billing_first_name = Faker::Name.first_name
-      request.billing_last_name  = Faker::Name.last_name
-      request.billing_address1   = Faker::Address.street_address
-      request.billing_address2   = Faker::Address.street_address
-      request.billing_zip_code   = Faker::Address.zip_code
-      request.billing_city       = Faker::Address.city
-      request.billing_state      = Faker::Address.state_abbr
-      request.billing_country    = Faker::Address.country_code
+      request.billing_first_name   = Faker::Name.first_name
+      request.billing_last_name    = Faker::Name.last_name
+      request.billing_address1     = Faker::Address.street_address
+      request.billing_address2     = Faker::Address.street_address
+      request.billing_zip_code     = Faker::Address.zip_code
+      request.billing_city         = Faker::Address.city
+      request.billing_state        = Faker::Address.state_abbr
+      request.billing_neighborhood = Faker::Address.community
+      request.billing_country      = billing_country
 
       request
     end
@@ -60,22 +66,29 @@ RSpec.shared_examples 'address info attributes examples' do
     end
 
     it 'with billing country' do
-      billing.billing_country = country = Faker::Address.country_code
+      billing.billing_country = country = billing_country
 
       expect(billing.build_document).to include "<country>#{country}</country>"
+    end
+
+    it 'with billing billing_neighborhood' do
+      billing.billing_neighborhood = neighborhood = Faker::Address.community
+
+      expect(billing.build_document).to include "<neighborhood>#{neighborhood}</neighborhood>"
     end
   end
 
   describe 'when shipping address attributes' do
     let(:shipping) do
-      request.shipping_first_name = Faker::Name.first_name
-      request.shipping_last_name  = Faker::Name.last_name
-      request.shipping_address1   = Faker::Address.street_address
-      request.shipping_address2   = Faker::Address.street_address
-      request.shipping_zip_code   = Faker::Address.zip_code
-      request.shipping_city       = Faker::Address.city
-      request.shipping_state      = Faker::Address.state_abbr
-      request.shipping_country    = Faker::Address.country_code
+      request.shipping_first_name   = Faker::Name.first_name
+      request.shipping_last_name    = Faker::Name.last_name
+      request.shipping_address1     = Faker::Address.street_address
+      request.shipping_address2     = Faker::Address.street_address
+      request.shipping_zip_code     = Faker::Address.zip_code
+      request.shipping_city         = Faker::Address.city
+      request.shipping_state        = Faker::Address.state_abbr
+      request.shipping_neighborhood = Faker::Address.community
+      request.shipping_country      = Faker::Address.country_code
 
       request
     end
@@ -131,9 +144,17 @@ RSpec.shared_examples 'address info attributes examples' do
 
       expect(shipping.build_document).to include "<country>#{country}</country>"
     end
+
+    it 'with shipping neighborhood' do
+      shipping.shipping_neighborhood = neighborhood = Faker::Address.community
+
+      expect(shipping.build_document).to include "<neighborhood>#{neighborhood}</neighborhood>"
+    end
   end
 
   describe 'when customer attributes' do
+    let(:skip_customer_phone) { false } unless method_defined? :skip_customer_phone
+
     it 'with customer email' do
       request.customer_email = email = Faker::Internet.email
 
@@ -141,6 +162,8 @@ RSpec.shared_examples 'address info attributes examples' do
     end
 
     it 'with customer phone' do
+      skip "#{request.class} doesn't support Phone Number" if skip_customer_phone
+
       request.customer_phone = phone = Faker::PhoneNumber.cell_phone_in_e164
 
       expect(request.build_document).to include "<customer_phone>#{phone}</customer_phone>"

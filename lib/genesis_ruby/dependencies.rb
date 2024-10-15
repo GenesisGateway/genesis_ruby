@@ -18,6 +18,7 @@ Dir["#{File.dirname(__FILE__)}/api/mixins/**/*_attributes.rb"].sort.each { |file
 # =================================
 require 'genesis_ruby/api/requests/base/financial'
 require 'genesis_ruby/api/requests/base/financials/credit_card'
+require 'genesis_ruby/api/requests/base/financials/south_american_payments'
 require 'genesis_ruby/api/requests/base/reference'
 require 'genesis_ruby/api/notification'
 

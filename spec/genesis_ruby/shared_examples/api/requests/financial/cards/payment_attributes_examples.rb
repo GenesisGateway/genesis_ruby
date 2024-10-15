@@ -1,7 +1,7 @@
 RSpec.shared_examples 'payment attributes examples' do
   describe 'when payment attributes' do
     let(:currency) do
-      return request.currency if request.currency
+      return request.currency unless request.currency.empty?
 
       'EUR'
     end

@@ -1,3 +1,34 @@
+0.1.9
+-----
+**Features**:
+
+* Added PayPal transaction request
+* Added PIX transaction request
+* Added Boleto transaction request
+* Added Neighborhood parameter support to Billing and Shipping address attributes
+* Added Argencard transaction request
+* Added Aura transaction request
+* Added Baloto transaction request
+* Added Banco de Occidente transaction request
+* Added Bancomer transaction request
+* Added Bradesco transaction request
+* Added Cabal transaction request
+* Added Cencosud transaction request
+* Added Davivienda transaction request
+* Added Efecty transaction request
+* Added Elo transaction request
+* Added Itau transaction request
+* Added Naranja transaction request
+* Added Nativa transaction request
+* Added OXXO transaction request
+* Added Pago Facil transaction request
+* Added PSE transaction request
+* Added RapiPago transaction request
+* Added Redpagos transaction request
+* Added Santander transaction request
+* Added Tarjeta Shopping transaction request
+* Added Webpay transaction request
+
 0.1.8
 -----
 **Features**:

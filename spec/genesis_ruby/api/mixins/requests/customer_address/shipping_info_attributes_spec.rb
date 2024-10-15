@@ -99,6 +99,18 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::CustomerAddress::ShippingInfo
     end
   end
 
+  describe 'has proper neighborhood accessors' do
+    it 'has setter' do
+      expect { shipping_info_attributes.shipping_neighborhood = Faker::Address.community }.to_not raise_error
+    end
+
+    it 'has getter' do
+      shipping_info_attributes.shipping_neighborhood = neighborhood = Faker::Address.community
+
+      expect(shipping_info_attributes.shipping_neighborhood).to eq(neighborhood)
+    end
+  end
+
   it 'has hash shipping_address_parameters_structure' do
     expect(shipping_info_attributes.shipping_address_parameters_structure).to be_kind_of(Hash)
   end

@@ -99,6 +99,18 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::CustomerAddress::BillingInfoA
     end
   end
 
+  describe 'has proper neighborhood accessors' do
+    it 'has setter' do
+      expect { billing_info_attributes.billing_neighborhood = Faker::Address.community }.to_not raise_error
+    end
+
+    it 'has getter' do
+      billing_info_attributes.billing_neighborhood = neighborhood = Faker::Address.community
+
+      expect(billing_info_attributes.billing_neighborhood).to eq(neighborhood)
+    end
+  end
+
   it 'has hash billing_address_parameters_structure' do
     expect(billing_info_attributes.billing_address_parameters_structure).to be_kind_of(Hash)
   end

@@ -71,6 +71,7 @@ RSpec.describe GenesisRuby::Api::Requests::Wpf::Create do
   include_examples 'account owner attributes examples'
   include_examples 'wpf reminders attributes examples'
   include_examples 'card holder date attributes examples'
+  include_examples 'pending attributes examples'
 
   it 'has proper structure without threedsv2 parameters' do
     expect(request.build_document).to_not include 'threeds_v2_params'

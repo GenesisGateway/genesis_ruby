@@ -992,14 +992,35 @@ You can use the following request classes to initialize the Genesis client:
 ```ruby
 # Financial
 ## Cards
+GenesisRuby::Api::Requests::Financial::Cards::Argencard
+GenesisRuby::Api::Requests::Financial::Cards::Aura
 GenesisRuby::Api::Requests::Financial::Cards::Authorize
 GenesisRuby::Api::Requests::Financial::Cards::Authorize3d
+GenesisRuby::Api::Requests::Financial::Cards::Cabal
+GenesisRuby::Api::Requests::Financial::Cards::Cencosud
+GenesisRuby::Api::Requests::Financial::Cards::Elo
+GenesisRuby::Api::Requests::Financial::Cards::Naranja
+GenesisRuby::Api::Requests::Financial::Cards::Nativa
 GenesisRuby::Api::Requests::Financial::Cards::Sale
 GenesisRuby::Api::Requests::Financial::Cards::Sale3d
+GenesisRuby::Api::Requests::Financial::Cards::TarjetaShopping
 
 ## Mobile
 GenesisRuby::Api::Requests::Financial::Mobile::ApplePay
 GenesisRuby::Api::Requests::Financial::Mobile::GooglePay
+
+## Wallets
+GenesisRuby::Api::Requests::Financial::Wallets::PayPal
+
+## Cash Payments
+GenesisRuby::Api::Requests::Financial::CashPayments::Baloto
+GenesisRuby::Api::Requests::Financial::CashPayments::BancoDeOccidente
+GenesisRuby::Api::Requests::Financial::CashPayments::Boleto
+GenesisRuby::Api::Requests::Financial::CashPayments::Efecty
+GenesisRuby::Api::Requests::Financial::CashPayments::Oxxo
+GenesisRuby::Api::Requests::Financial::CashPayments::PagoFacil
+GenesisRuby::Api::Requests::Financial::CashPayments::Pix
+GenesisRuby::Api::Requests::Financial::CashPayments::Redpagos
 
 # Web Payment Form
 ## Create
@@ -1008,6 +1029,14 @@ GenesisRuby::Api::Requests::Wpf::Create
 GenesisRuby::Api::Requests::Wpf::Reconcile
 
 # Online Banking Payments
+GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Bancomer
+GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Bradesco
+GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Davivienda
+GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Itau
+GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Pse
+GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::RapiPago
+GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Santander
+GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Webpay
 # PayIn
 GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::OnlineBanking::PayIn
 
