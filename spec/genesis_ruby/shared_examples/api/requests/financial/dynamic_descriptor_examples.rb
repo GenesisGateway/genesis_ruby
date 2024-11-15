@@ -10,22 +10,25 @@ RSpec.shared_examples 'dynamic descriptor examples' do
     let(:address) { Faker::Address.street_address }
     let(:url) { Faker::Internet.url }
     let(:phone) { Faker::PhoneNumber.cell_phone }
+    let(:coordinates) { "#{Faker::Address.longitude.to_s[..7]}, #{Faker::Address.latitude.to_s[..7]}" }
 
     it 'has proper structure with dynamic descriptor' do # rubocop:disable RSpec/ExampleLength
-      request.dynamic_descriptor_merchant_name             = name
-      request.dynamic_descriptor_merchant_city             = city
-      request.dynamic_descriptor_sub_merchant_id           = merchant_id
-      request.dynamic_descriptor_merchant_country          = country
-      request.dynamic_descriptor_merchant_state            = state
-      request.dynamic_descriptor_merchant_zip_code         = zip_code
-      request.dynamic_descriptor_merchant_address          = address
-      request.dynamic_descriptor_merchant_url              = url
-      request.dynamic_descriptor_merchant_phone            = phone
-      request.dynamic_descriptor_merchant_service_city     = city
-      request.dynamic_descriptor_merchant_service_country  = country
-      request.dynamic_descriptor_merchant_service_state    = state
-      request.dynamic_descriptor_merchant_service_zip_code = zip_code
-      request.dynamic_descriptor_merchant_service_phone    = phone
+      request.dynamic_descriptor_merchant_name                    = name
+      request.dynamic_descriptor_merchant_city                    = city
+      request.dynamic_descriptor_sub_merchant_id                  = merchant_id
+      request.dynamic_descriptor_merchant_country                 = country
+      request.dynamic_descriptor_merchant_state                   = state
+      request.dynamic_descriptor_merchant_zip_code                = zip_code
+      request.dynamic_descriptor_merchant_address                 = address
+      request.dynamic_descriptor_merchant_url                     = url
+      request.dynamic_descriptor_merchant_phone                   = phone
+      request.dynamic_descriptor_merchant_service_city            = city
+      request.dynamic_descriptor_merchant_geo_coordinates         = coordinates
+      request.dynamic_descriptor_merchant_service_country         = country
+      request.dynamic_descriptor_merchant_service_state           = state
+      request.dynamic_descriptor_merchant_service_zip_code        = zip_code
+      request.dynamic_descriptor_merchant_service_phone           = phone
+      request.dynamic_descriptor_merchant_service_geo_coordinates = coordinates
 
       expect(request.build_document).to include '<dynamic_descriptor_params>'
     end
@@ -88,6 +91,12 @@ RSpec.shared_examples 'dynamic descriptor examples' do
       expect(request.build_document).to include "<merchant_phone>#{phone}</merchant_phone>"
     end
 
+    it 'with proper structure with dynamic descriptor merchant geo coordinates' do
+      request.dynamic_descriptor_merchant_geo_coordinates = coordinates
+
+      expect(request.build_document).to include "<merchant_geo_coordinates>#{coordinates}</merchant_geo_coordinates>"
+    end
+
     it 'has proper structure with dynamic descriptor merchant service city' do
       request.dynamic_descriptor_merchant_service_city = city
 
@@ -116,6 +125,13 @@ RSpec.shared_examples 'dynamic descriptor examples' do
       request.dynamic_descriptor_merchant_service_phone = phone
 
       expect(request.build_document).to include "<merchant_service_phone>#{phone}</merchant_service_phone>"
+    end
+
+    it 'with proper structure with dynamic descriptor merchant service geo coordinates' do
+      request.dynamic_descriptor_merchant_service_geo_coordinates = coordinates
+
+      expect(request.build_document)
+        .to include "<merchant_service_geo_coordinates>#{coordinates}</merchant_service_geo_coordinates>"
     end
   end
 end

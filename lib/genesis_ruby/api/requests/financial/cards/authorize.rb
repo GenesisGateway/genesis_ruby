@@ -18,6 +18,7 @@ module GenesisRuby
             include Mixins::Requests::Financial::Cards::Recurring::RecurringTypeAttributes
             include Mixins::Requests::Financial::CryptoAttributes
             include Mixins::Requests::Financial::DynamicDescriptorAttributes
+            include Mixins::Requests::Financial::FundingAttributes
             include Mixins::Requests::Financial::GamingAttributes
             include Mixins::Requests::Financial::MotoAttributes
             include Mixins::Requests::Financial::ReferenceAttributes
@@ -36,7 +37,8 @@ module GenesisRuby
             def init_field_validations
               super
 
-              field_values.merge! managed_recurring_field_values, recurring_type_field_values_validation_structure
+              field_values.merge! managed_recurring_field_values, recurring_type_field_values_validation_structure,
+                                  funding_attributes_field_validations
 
               field_value_dependencies.merge! required_tokenization_fields_conditional, required_cc_fields_conditional,
                                               required_recurring_managed_type_field_conditional
@@ -65,7 +67,8 @@ module GenesisRuby
                 recurring_category:        recurring_category,
                 sca_params:                sca_attributes_structure,
                 managed_recurring:         managed_recurring_attributes_structure,
-                travel:                    travel_data_attributes_structure
+                travel:                    travel_data_attributes_structure,
+                funding:                   funding_attributes_structure
               )
             end
 

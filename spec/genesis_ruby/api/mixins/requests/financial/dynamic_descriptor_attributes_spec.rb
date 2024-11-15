@@ -183,6 +183,25 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::DynamicDescriptorA
     end
   end
 
+  describe 'when dynamic descriptor merchant geo coordinates' do
+    it 'with valid value' do
+      dynamic_descriptor.dynamic_descriptor_merchant_geo_coordinates = coordinates =
+        "#{Faker::Address.longitude.to_s[..7]}, #{Faker::Address.latitude.to_s[..7]}"
+
+      expect(dynamic_descriptor.dynamic_descriptor_merchant_geo_coordinates).to eq coordinates
+    end
+
+    it 'with invalid min value' do
+      expect { dynamic_descriptor.dynamic_descriptor_merchant_geo_coordinates = 'invalid' }
+        .to raise_error GenesisRuby::InvalidArgumentError
+    end
+
+    it 'with invalid max value' do
+      expect { dynamic_descriptor.dynamic_descriptor_merchant_geo_coordinates = Faker::String.random(length: 21) }
+        .to raise_error GenesisRuby::InvalidArgumentError
+    end
+  end
+
   describe 'when dynamic descriptor merchant service city' do
     it 'with valid value' do
       dynamic_descriptor.dynamic_descriptor_merchant_service_city = city = Faker::String.random length: 13
@@ -280,6 +299,26 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::DynamicDescriptorA
       dynamic_descriptor.dynamic_descriptor_merchant_service_phone = ''
 
       expect(dynamic_descriptor.dynamic_descriptor_merchant_service_phone).to eq nil
+    end
+  end
+
+  describe 'when dynamic descriptor merchant service geo coordinates' do
+    it 'with valid value' do
+      dynamic_descriptor.dynamic_descriptor_merchant_service_geo_coordinates = coordinates =
+        "#{Faker::Address.longitude.to_s[..7]}, #{Faker::Address.latitude.to_s[..7]}"
+
+      expect(dynamic_descriptor.dynamic_descriptor_merchant_service_geo_coordinates).to eq coordinates
+    end
+
+    it 'with invalid min value' do
+      expect { dynamic_descriptor.dynamic_descriptor_merchant_service_geo_coordinates = 'invalid' }
+        .to raise_error GenesisRuby::InvalidArgumentError
+    end
+
+    it 'with invalid max value' do
+      expect do
+        dynamic_descriptor.dynamic_descriptor_merchant_service_geo_coordinates = Faker::String.random(length: 21)
+      end.to raise_error GenesisRuby::InvalidArgumentError
     end
   end
 

@@ -100,6 +100,9 @@ module GenesisRuby
                 ],
                 GBP: [
                   BankCodes::TRL
+                ],
+                NZD: [
+                  BankCodes::POLI
                 ]
               }.freeze
 

@@ -1,3 +1,17 @@
+0.2.0
+-----
+**Features**:
+
+* Added Funding parameters support to the following transaction requests:
+  * Authorize
+  * Authorize 3D
+  * Sale
+  * Sale 3D
+  * Web Payment Form
+* Added Dynamic Descriptor geo coordinates support
+* Added POLI bank code and NZD currency support to Online Banking PayIn transaction request
+* Added recurring type parameter support to Google Pay and Apple Pay transaction requests
+
 0.1.9
 -----
 **Features**:

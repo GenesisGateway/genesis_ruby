@@ -15,6 +15,7 @@ module GenesisRuby
             include Mixins::Requests::DocumentAttributes
             include Mixins::Requests::Financial::AsyncAttributes
             include Mixins::Requests::Financial::Business::BusinessAttributes
+            include Mixins::Requests::Financial::Cards::Recurring::RecurringTypeAttributes
             include Mixins::Requests::Financial::DynamicDescriptorAttributes
             include Mixins::Requests::Financial::Mobile::GooglePayTokenAttributes
             include Mixins::Requests::Financial::NotificationAttributes
@@ -44,7 +45,8 @@ module GenesisRuby
 
               field_values.merge! currency:        Constants::Currencies::Iso4217.all.map(&:upcase),
                                   payment_subtype: Constants::Transactions::Parameters::Mobile::GooglePay::
-                                      PaymentSubtypes.all
+                                      PaymentSubtypes.all,
+                                  recurring_type:  [Api::Constants::Transactions::Parameters::Recurring::Types::INITIAL]
               field_values.merge! threeds_field_validations
 
               field_value_dependencies.merge! threeds_field_conditional_validations
@@ -74,6 +76,7 @@ module GenesisRuby
                   business_attributes:       business_attributes_structure,
                   dynamic_descriptor_params: dynamic_descriptor_structure,
                   document_id:               document_id,
+                  recurring_type:            recurring_type,
                   threeds_v2_params:         threeds_v2_common_attributes_structure
                 }
               )

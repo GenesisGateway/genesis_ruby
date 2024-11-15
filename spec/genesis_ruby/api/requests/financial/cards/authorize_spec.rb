@@ -43,6 +43,7 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Authorize do
     request
   end
 
+  include_examples 'account owner attributes examples'
   include_examples 'address info attributes examples'
   include_examples 'base request examples'
   include_examples 'business attributes examples'
@@ -50,8 +51,10 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Authorize do
   include_examples 'crypto attributes examples'
   include_examples 'document attributes examples'
   include_examples 'dynamic descriptor examples'
+  include_examples 'funding attributes examples'
   include_examples 'fx rate attributes examples'
   include_examples 'gaming attributes examples'
+  include_examples 'managed recurring examples'
   include_examples 'moto attributes examples'
   include_examples 'payment attributes examples'
   include_examples 'recurring category examples'
@@ -60,6 +63,4 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Authorize do
   include_examples 'risk attributes examples'
   include_examples 'sca attributes examples'
   include_examples 'tokenization attributes examples'
-  include_examples 'account owner attributes examples'
-  include_examples 'managed recurring examples'
 end

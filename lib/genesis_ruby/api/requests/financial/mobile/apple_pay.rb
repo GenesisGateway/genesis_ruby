@@ -12,6 +12,7 @@ module GenesisRuby
             include Mixins::Requests::BirthDateAttributes
             include Mixins::Requests::DocumentAttributes
             include Mixins::Requests::Financial::Business::BusinessAttributes
+            include Mixins::Requests::Financial::Cards::Recurring::RecurringTypeAttributes
             include Mixins::Requests::Financial::CryptoAttributes
             include Mixins::Requests::Financial::DynamicDescriptorAttributes
             include Mixins::Requests::Financial::Mobile::ApplePayTokenAttributes
@@ -40,7 +41,8 @@ module GenesisRuby
 
               field_values.merge! currency:        Api::Constants::Currencies::Iso4217.all.map(&:upcase),
                                   payment_subtype: Api::Constants::Transactions::Parameters::Mobile::ApplePay::
-                                      PaymentSubtypes.all
+                                      PaymentSubtypes.all,
+                                  recurring_type:  [Api::Constants::Transactions::Parameters::Recurring::Types::INITIAL]
             end
 
             # Apple Pay payment transaction structure
@@ -56,6 +58,7 @@ module GenesisRuby
                   shipping_address:          shipping_address_parameters_structure,
                   document_id:               document_id,
                   crypto:                    crypto,
+                  recurring_type:            recurring_type,
                   business_attributes:       business_attributes_structure,
                   dynamic_descriptor_params: dynamic_descriptor_structure
                 }

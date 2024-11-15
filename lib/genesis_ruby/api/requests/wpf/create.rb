@@ -10,17 +10,18 @@ module GenesisRuby
         # Web-Payment Form Request
         class Create < Request # rubocop:disable Metrics/ClassLength
 
-          include Mixins::Requests::Financial::PaymentAttributes
           include Mixins::Requests::AddressInfoAttributes
           include Mixins::Requests::Financial::AsyncAttributes
-          include Mixins::Requests::Financial::NotificationAttributes
-          include Mixins::Requests::Financial::PendingPaymentAttributes
-          include Mixins::Requests::Financial::Threeds::Version2::WpfAttributes
+          include Mixins::Requests::Financial::Business::BusinessAttributes
           include Mixins::Requests::Financial::Cards::AccountOwnerAttributes
           include Mixins::Requests::Financial::Cards::Recurring::RecurringCategoryAttributes
           include Mixins::Requests::Financial::DynamicDescriptorAttributes
+          include Mixins::Requests::Financial::FundingAttributes
+          include Mixins::Requests::Financial::NotificationAttributes
+          include Mixins::Requests::Financial::PaymentAttributes
+          include Mixins::Requests::Financial::PendingPaymentAttributes
           include Mixins::Requests::Financial::RiskAttributes
-          include Mixins::Requests::Financial::Business::BusinessAttributes
+          include Mixins::Requests::Financial::Threeds::Version2::WpfAttributes
           include Mixins::Requests::WpfRemindersAttributes
 
           attr_reader   :locale, :sca_preference, :sca_exemption
@@ -122,7 +123,8 @@ module GenesisRuby
 
             field_values.merge!(
               { currency: Api::Constants::Currencies::Iso4217.all.map(&:upcase) },
-              threeds_field_validations
+              threeds_field_validations,
+              funding_attributes_field_validations
             )
           end
 
@@ -168,7 +170,8 @@ module GenesisRuby
                 risk_params:               risk_parameters_structure,
                 account_owner:             account_owner_attributes_structure,
                 pay_later:                 pay_later,
-                reminders:                 pay_later ? reminders_structure : []
+                reminders:                 pay_later ? reminders_structure : [],
+                funding:                   funding_attributes_structure
               }
             }
           end

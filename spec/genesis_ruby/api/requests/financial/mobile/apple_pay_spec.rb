@@ -192,4 +192,5 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Mobile::ApplePay do
   include_examples 'dynamic descriptor examples'
   include_examples 'payment attributes examples'
   include_examples 'financial attributes examples'
+  include_examples 'recurring type mobile tokenized examples'
 end

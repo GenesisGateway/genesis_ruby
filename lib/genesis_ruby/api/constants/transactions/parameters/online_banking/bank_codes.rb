@@ -591,6 +591,9 @@ module GenesisRuby
               # Latipay
               PID = 'PID'.freeze
 
+              # Latipay
+              POLI = 'POLI'.freeze
+
             end
           end
         end

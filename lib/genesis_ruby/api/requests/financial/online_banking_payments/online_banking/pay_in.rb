@@ -121,6 +121,10 @@ module GenesisRuby
                       GBP: {
                         bank_code: Api::Constants::Transactions::Parameters::OnlineBanking::BankCodeCurrencies
                                      .bank_codes_per_currency('GBP')
+                      },
+                      NZD: {
+                        bank_code: Api::Constants::Transactions::Parameters::OnlineBanking::BankCodeCurrencies
+                                     .bank_codes_per_currency('NZD')
                       }
                     }
                   }
