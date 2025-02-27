@@ -61,4 +61,5 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::CashPayments::Pix do
   include_examples 'financial attributes examples'
   include_examples 'payment attributes examples'
   include_examples 'pending attributes examples'
+  include_examples 'pix attributes examples'
 end

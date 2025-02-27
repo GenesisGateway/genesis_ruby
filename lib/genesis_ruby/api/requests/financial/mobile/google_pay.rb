@@ -17,6 +17,7 @@ module GenesisRuby
             include Mixins::Requests::Financial::Business::BusinessAttributes
             include Mixins::Requests::Financial::Cards::Recurring::RecurringTypeAttributes
             include Mixins::Requests::Financial::DynamicDescriptorAttributes
+            include Mixins::Requests::Financial::FundingAttributes
             include Mixins::Requests::Financial::Mobile::GooglePayTokenAttributes
             include Mixins::Requests::Financial::NotificationAttributes
             include Mixins::Requests::Financial::PaymentAttributes
@@ -47,7 +48,7 @@ module GenesisRuby
                                   payment_subtype: Constants::Transactions::Parameters::Mobile::GooglePay::
                                       PaymentSubtypes.all,
                                   recurring_type:  [Api::Constants::Transactions::Parameters::Recurring::Types::INITIAL]
-              field_values.merge! threeds_field_validations
+              field_values.merge! threeds_field_validations, funding_attributes_field_validations
 
               field_value_dependencies.merge! threeds_field_conditional_validations
             end
@@ -60,7 +61,7 @@ module GenesisRuby
             end
 
             # Google Pay Payment Transaction Structure
-            def payment_transaction_structure # rubocop:disable Metrics/MethodLength
+            def payment_transaction_structure # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
               payment_attributes_structure.merge(
                 {
                   payment_subtype:           payment_subtype,
@@ -77,7 +78,8 @@ module GenesisRuby
                   dynamic_descriptor_params: dynamic_descriptor_structure,
                   document_id:               document_id,
                   recurring_type:            recurring_type,
-                  threeds_v2_params:         threeds_v2_common_attributes_structure
+                  threeds_v2_params:         threeds_v2_common_attributes_structure,
+                  funding:                   funding_attributes_structure
                 }
               )
             end

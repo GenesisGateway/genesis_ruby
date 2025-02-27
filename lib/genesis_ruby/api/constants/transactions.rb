@@ -79,6 +79,10 @@ module GenesisRuby
         # Capture settles a transaction which has been authorized before.
         CAPTURE = 'capture'.freeze
 
+        # Cash payment methods allow customers to pay bills and online purchases in cash at convenient
+        # physical locations such as stores, banks, ATMs, even pharmacies in some countries.
+        CASH = 'cash'.freeze
+
         # Voucher-based payment
         CASHU = 'cashu'.freeze
 

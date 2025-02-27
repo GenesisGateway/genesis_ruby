@@ -15,6 +15,7 @@ module GenesisRuby
             include Mixins::Requests::Financial::Cards::Recurring::RecurringTypeAttributes
             include Mixins::Requests::Financial::CryptoAttributes
             include Mixins::Requests::Financial::DynamicDescriptorAttributes
+            include Mixins::Requests::Financial::FundingAttributes
             include Mixins::Requests::Financial::Mobile::ApplePayTokenAttributes
             include Mixins::Requests::Financial::PaymentAttributes
 
@@ -43,6 +44,7 @@ module GenesisRuby
                                   payment_subtype: Api::Constants::Transactions::Parameters::Mobile::ApplePay::
                                       PaymentSubtypes.all,
                                   recurring_type:  [Api::Constants::Transactions::Parameters::Recurring::Types::INITIAL]
+              field_values.merge! funding_attributes_field_validations
             end
 
             # Apple Pay payment transaction structure
@@ -60,7 +62,8 @@ module GenesisRuby
                   crypto:                    crypto,
                   recurring_type:            recurring_type,
                   business_attributes:       business_attributes_structure,
-                  dynamic_descriptor_params: dynamic_descriptor_structure
+                  dynamic_descriptor_params: dynamic_descriptor_structure,
+                  funding:                   funding_attributes_structure
                 }
               )
             end

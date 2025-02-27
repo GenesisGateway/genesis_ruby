@@ -46,12 +46,14 @@ module GenesisRuby
 
               field_value_dependencies.merge! required_tokenization_fields_conditional, required_cc_fields_conditional,
                                               required_recurring_managed_type_field_conditional,
-                                              threeds_field_conditional_validations
+                                              threeds_field_conditional_validations, mpi_attributes_field_dependencies
             end
 
             # Special validations upon document building
             def check_requirements
               validate_threeds_card_holder_dates
+              # MPI Directory Server ID is optional when Scheme Tokenized with MPI Protocol Version 2
+              field_value_dependencies.delete :mpi_protocol_version if scheme_tokenized
 
               super
             end

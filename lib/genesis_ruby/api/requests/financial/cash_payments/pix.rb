@@ -15,11 +15,12 @@ module GenesisRuby
             include Api::Mixins::Requests::BirthDateAttributes
             include Api::Mixins::Requests::DocumentAttributes
             include Api::Mixins::Requests::Financial::AsyncAttributes
+            include Api::Mixins::Requests::Financial::OnlineBankingPayments::PixAttributes
             include Api::Mixins::Requests::Financial::PaymentAttributes
             include Api::Mixins::Requests::Financial::PendingPaymentAttributes
 
             attr_accessor :gender, :marital_status, :sender_occupation, :nationality, :country_of_origin, :birth_city,
-                          :birth_state, :company_type, :company_activity, :mothers_name
+                          :birth_state
 
             # Billing Country custom accessor
             def billing_country
@@ -28,14 +29,9 @@ module GenesisRuby
               @billing_country.to_s.upcase
             end
 
-            # Incorporation date
+            # Override incorpocation date with specific format for Pix request
             def incorporation_date
-              @incorporation_date&.strftime GenesisRuby::Api::Constants::DateTimeFormats::DD_MM_YYYY_L_HYPHENS
-            end
-
-            # Incorporation date
-            def incorporation_date=(value)
-              parse_date attribute: __method__, value: value, allow_empty: true
+              @incorporation_date&.strftime Api::Constants::DateTimeFormats::DD_MM_YYYY_L_HYPHENS
             end
 
             protected

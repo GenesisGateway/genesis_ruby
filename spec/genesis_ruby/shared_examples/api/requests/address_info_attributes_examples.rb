@@ -154,8 +154,11 @@ RSpec.shared_examples 'address info attributes examples' do
 
   describe 'when customer attributes' do
     let(:skip_customer_phone) { false } unless method_defined? :skip_customer_phone
+    let(:skip_customer_email) { false } unless method_defined? :skip_customer_email
 
     it 'with customer email' do
+      skip "#{request.class} doesn't support Customer Email" if skip_customer_email
+
       request.customer_email = email = Faker::Internet.email
 
       expect(request.build_document).to include "<customer_email>#{email}</customer_email>"

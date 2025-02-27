@@ -144,17 +144,18 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Mobile::GooglePay do
 
   end
 
-  include_examples 'base request examples'
   include_examples 'address info attributes examples'
-  include_examples 'document attributes examples'
   include_examples 'async attributes examples'
+  include_examples 'base request examples'
   include_examples 'birth date attributes examples'
   include_examples 'business attributes examples'
+  include_examples 'card holder date attributes examples'
+  include_examples 'document attributes examples'
   include_examples 'dynamic descriptor examples'
+  include_examples 'financial attributes examples'
+  include_examples 'funding attributes examples'
   include_examples 'notification attributes examples'
   include_examples 'payment attributes examples'
-  include_examples 'threeds v2 common attributes examples'
-  include_examples 'card holder date attributes examples'
-  include_examples 'financial attributes examples'
   include_examples 'recurring type mobile tokenized examples'
+  include_examples 'threeds v2 common attributes examples'
 end

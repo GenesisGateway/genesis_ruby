@@ -55,6 +55,16 @@ module GenesisRuby
                 }
               end
 
+              # Field value dependencies for MPI parameters
+              def mpi_attributes_field_dependencies
+                {
+                  mpi_protocol_version: Hash[
+                    Api::Constants::Transactions::Parameters::MpiProtocolVersions::PROTOCOL_VERSION_2,
+                    %w(mpi_directory_server_id)
+                  ]
+                }
+              end
+
             end
           end
         end

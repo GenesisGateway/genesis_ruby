@@ -1,3 +1,18 @@
+0.2.1
+-----
+**Features**:
+
+* Added Online Banking PayOut transaction request
+* Added Funding Parameters support to Google Pay and Apple Pay transaction requests
+* Added Bancontact transaction request support
+* Added Cash transaction request support
+* Added COF and UCOF parameters support to the following transaction requests:
+  * Authorize
+  * Authorize 3D
+  * Sale
+  * Sale 3D
+* Added Tokenized e-commerce payment support
+
 0.2.0
 -----
 **Features**:

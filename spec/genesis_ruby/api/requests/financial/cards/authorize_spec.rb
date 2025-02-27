@@ -47,6 +47,7 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Authorize do
   include_examples 'address info attributes examples'
   include_examples 'base request examples'
   include_examples 'business attributes examples'
+  include_examples 'credential on file attributes examples'
   include_examples 'credit card attributes examples'
   include_examples 'crypto attributes examples'
   include_examples 'document attributes examples'
@@ -62,5 +63,7 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Authorize do
   include_examples 'reference attributes examples'
   include_examples 'risk attributes examples'
   include_examples 'sca attributes examples'
+  include_examples 'scheme tokenized attributes examples'
   include_examples 'tokenization attributes examples'
+  include_examples 'ucof attributes examples'
 end

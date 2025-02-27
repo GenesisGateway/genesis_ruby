@@ -50,6 +50,29 @@ RSpec.shared_examples 'mpi attributes examples' do
         expect(mpi.build_document)
           .to include "<threeds_challenge_indicator>#{challenge_indicator}</threeds_challenge_indicator>"
       end
+
+      it 'when protocol version 2 with directory server id' do
+        mpi.mpi_protocol_version = 2
+        mpi.mpi_directory_server_id = Faker::Internet.uuid
+
+        expect { mpi.build_document }.to_not raise_error
+      end
+
+      it 'when protocol version 2 without directory server id' do
+        mpi.mpi_protocol_version    = 2
+        mpi.mpi_directory_server_id = nil
+        mpi.scheme_tokenized        = false
+
+        expect { mpi.build_document }.to raise_error GenesisRuby::ParameterError
+      end
+
+      it 'when mpi_protocol_version with scheme_tokenized without mpi_directory_server_id' do
+        request.scheme_tokenized        = true
+        request.mpi_protocol_version    = 2
+        request.mpi_directory_server_id = nil
+
+        expect { request.build_document }.to_not raise_error
+      end
     end
   end
 end

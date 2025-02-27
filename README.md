@@ -996,6 +996,7 @@ GenesisRuby::Api::Requests::Financial::Cards::Argencard
 GenesisRuby::Api::Requests::Financial::Cards::Aura
 GenesisRuby::Api::Requests::Financial::Cards::Authorize
 GenesisRuby::Api::Requests::Financial::Cards::Authorize3d
+GenesisRuby::Api::Requests::Financial::Cards::Bancontact
 GenesisRuby::Api::Requests::Financial::Cards::Cabal
 GenesisRuby::Api::Requests::Financial::Cards::Cencosud
 GenesisRuby::Api::Requests::Financial::Cards::Elo
@@ -1016,6 +1017,7 @@ GenesisRuby::Api::Requests::Financial::Wallets::PayPal
 GenesisRuby::Api::Requests::Financial::CashPayments::Baloto
 GenesisRuby::Api::Requests::Financial::CashPayments::BancoDeOccidente
 GenesisRuby::Api::Requests::Financial::CashPayments::Boleto
+GenesisRuby::Api::Requests::Financial::CashPayments::Cash
 GenesisRuby::Api::Requests::Financial::CashPayments::Efecty
 GenesisRuby::Api::Requests::Financial::CashPayments::Oxxo
 GenesisRuby::Api::Requests::Financial::CashPayments::PagoFacil
@@ -1039,6 +1041,8 @@ GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Santander
 GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Webpay
 # PayIn
 GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::OnlineBanking::PayIn
+# PayOut
+GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::OnlineBanking::PayOut
 
 # References
 GenesisRuby::Api::Requests::Financial::Capture

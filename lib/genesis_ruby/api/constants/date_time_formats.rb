@@ -24,6 +24,9 @@ module GenesisRuby
         # Date Format ISO 8601
         YYYY_MM_DD_ISO_8601   = '%Y-%m-%d'.freeze
 
+        # Date Format
+        MM_DD                 = '%m%d'.freeze
+
         class << self
 
           def all
@@ -33,6 +36,7 @@ module GenesisRuby
               DD_MM_YYYY_L_SLASHES,
               YYYY_MM_DD_H_I_S_ZULU,
               YYYY_MM_DD_H_I_S,
+              MM_DD,
               YYYY_MM_DD_ISO_8601 # Always keep it last!!!
             ]
           end
