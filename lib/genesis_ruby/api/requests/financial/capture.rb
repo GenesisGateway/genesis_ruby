@@ -6,6 +6,7 @@ module GenesisRuby
         class Capture < Requests::Base::Reference
 
           include Mixins::Requests::Financial::Business::BusinessAttributes
+          include Mixins::Requests::Financial::Cards::InstallmentAttributes
           include Mixins::Requests::Financial::TravelData::TravelAttributes
 
           protected
@@ -18,9 +19,11 @@ module GenesisRuby
           # Capture Transaction Request Structure
           def reference_transaction_structure
             {
-              reference_id:        reference_id,
-              business_attributes: business_attributes_structure,
-              travel:              travel_data_attributes_structure
+              reference_id:               reference_id,
+              business_attributes:        business_attributes_structure,
+              travel:                     travel_data_attributes_structure,
+              installment_plan_id:        installment_plan_id,
+              installment_plan_reference: installment_plan_reference
             }
           end
 

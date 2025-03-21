@@ -88,6 +88,12 @@ RSpec.describe GenesisRuby::Network::Adapter::NetHttpAdapter do
 
         expect(net_http.status).to eq '400'
       end
+
+      it 'when headers with content type' do
+        net_http.prepare_request post_adapter_config
+
+        expect(net_http.__send__(:headers)).to include 'Content-Type', 'Content-Length'
+      end
     end
 
     describe 'when METHOD_PUT request' do
@@ -108,6 +114,60 @@ RSpec.describe GenesisRuby::Network::Adapter::NetHttpAdapter do
         ).read
       end
 
+      it 'when headers with content type' do
+        net_http.prepare_request form_adapter_config
+
+        expect(net_http.__send__(:headers)).to include 'Content-Type', 'Content-Length'
+      end
+    end
+
+    describe 'when METHOD_GET request' do
+      let(:get_adapter_config) do
+        adapter_config.url  = 'https://emerchantpay.net/success_example'
+        adapter_config.type = GenesisRuby::Api::Request::METHOD_GET
+
+        adapter_config
+      end
+
+      it 'when execute with success request' do
+        net_http.prepare_request get_adapter_config
+        net_http.execute
+
+        expect(net_http.response_body).to eq File.open(
+          "#{File.dirname(File.dirname(File.dirname(__FILE__)))}/fixtures/responses/billing_api_response.json"
+        ).read
+      end
+
+      it 'when execute with 200 success status code' do
+        net_http.prepare_request get_adapter_config
+        net_http.execute
+
+        expect(net_http.status).to eq '200'
+      end
+
+      it 'when execute with error request' do # rubocop:disable RSpec/ExampleLength
+        get_adapter_config.url = 'https://emerchantpay.net/error_example'
+        net_http.prepare_request get_adapter_config
+        net_http.execute
+
+        expect(net_http.response_body)
+          .to eq File.open("#{File.dirname(File.dirname(File.dirname(__FILE__)))}/fixtures/responses/" \
+                             'gate_json_error_response.json').read
+      end
+
+      it 'when execute with 400 status code' do
+        get_adapter_config.url = 'https://emerchantpay.net/error_example'
+        net_http.prepare_request get_adapter_config
+        net_http.execute
+
+        expect(net_http.status).to eq '400'
+      end
+
+      it 'when headers without content type' do
+        net_http.prepare_request get_adapter_config
+
+        expect(net_http.__send__(:headers)).to_not include 'Content-Type', 'Content-Length'
+      end
     end
   end
 end

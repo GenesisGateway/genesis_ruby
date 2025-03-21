@@ -25,5 +25,11 @@ RSpec.describe GenesisRuby::Utils::Options::ApiConfig do
 
       expect(options).to eq({ format: 'form', parser_skip_root_node: true, port: 443, protocol: 'https', type: 'POST' })
     end
+
+    it 'with GET configuration' do
+      options.load_get_config
+
+      expect(options).to eq({ format: 'xml', parser_skip_root_node: false, port: 443, protocol: 'https', type: 'GET' })
+    end
   end
 end

@@ -1,0 +1,11 @@
+{
+  "payment": {
+    "status": "new",
+    "unique_id": "1c4ae3aee01fe6fcc346b6c54074d26b",
+    "amount": 99,
+    "currency": "EUR",
+    "redirect_url": "https://staging.wpf.emerchantpay.net/en/v2/payment/1c4ae3aee01fe6fcc346b6c54074d26b",
+    "timestamp": "2023-04-04T18:45:22Z",
+    "mode": "live"
+  }
+}

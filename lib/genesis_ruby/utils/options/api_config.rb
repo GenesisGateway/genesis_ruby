@@ -33,6 +33,15 @@ module GenesisRuby
           self.parser_skip_root_node = true
         end
 
+        # Load pre-defined GET configuration
+        def load_get_config
+          self.protocol              = GenesisRuby::Api::Request::PROTOCOL_HTTPS
+          self.port                  = GenesisRuby::Api::Request::PORT_HTTPS
+          self.type                  = GenesisRuby::Api::Request::METHOD_GET
+          self.format                = Builder::XML
+          self.parser_skip_root_node = false
+        end
+
       end
     end
   end

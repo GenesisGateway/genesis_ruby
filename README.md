@@ -1053,6 +1053,10 @@ GenesisRuby::Api::Requests::Financial::Refund
 ## Reconcile
 GenesisRuby::Api::Requests::NonFinancial::Reconcile::Transaction
 GenesisRuby::Api::Requests::NonFinancial::Reconcile::DateRange
+
+## Installments
+GenesisRuby::Api::Requests::NonFinancial::Installments::Fetch
+
 ```
 
 ### Manual initialization

@@ -1,0 +1,26 @@
+{
+  "data": {
+    "innerData": {
+      "items": [
+        {
+          "uniqueId": "abc123",
+          "integerValue": 10001,
+          "stringValue": "stmt-0001",
+          "booleanValue": true
+        },
+        {
+          "uniqueId": "abc123",
+          "integerValue": 10001,
+          "stringValue": "stmt-0001",
+          "booleanValue": true
+        }
+      ],
+      "paging": {
+        "page": 1,
+        "perPage": 2,
+        "pagesCount": 7,
+        "totalCount": 13
+      }
+    }
+  }
+}

@@ -162,7 +162,15 @@ RSpec.describe GenesisRuby::Api::Response do
     end
 
     it 'with json parser' do
-      expect { response.parse_response(network_mock) }.to raise_error GenesisRuby::ParserError
+      expect { response.parse_response(network_mock) }.to_not raise_error
+    end
+
+    it 'returns parsed response' do
+      expect(response.parse_response(network_mock)).to be_kind_of Hash
+    end
+
+    it 'with error object' do
+      expect(response.parse_response(network_mock)).to include :status
     end
   end
 end

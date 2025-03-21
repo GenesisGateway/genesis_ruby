@@ -66,4 +66,5 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Authorize do
   include_examples 'scheme tokenized attributes examples'
   include_examples 'tokenization attributes examples'
   include_examples 'ucof attributes examples'
+  include_examples 'installment attributes examples'
 end

@@ -103,4 +103,27 @@ RSpec.describe GenesisRuby::Parser do
     end
   end
 
+  describe 'when JSON parser' do
+    let(:parser) { described_class.new(described_class::JSON) }
+    let(:payment_response) do
+      File.open("#{File.dirname(__FILE__)}/fixtures/responses/gate_fake_payment.json", 'rb').read
+    end
+    let(:structure) { parser.parse_document payment_response }
+
+    it 'with status' do
+      expect(structure[:payment][:status]).to eq 'new'
+    end
+
+    it 'with amount' do
+      expect(structure[:payment][:amount]).to eq 99
+    end
+
+    it 'contains timestamp' do
+      expect(structure[:payment][:timestamp]).to eq('2023-04-04T18:45:22Z')
+    end
+
+    it 'contains mode' do
+      expect(structure[:payment][:mode]).to eq('live')
+    end
+  end
 end

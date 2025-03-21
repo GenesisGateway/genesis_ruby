@@ -1,4 +1,5 @@
 require 'genesis_ruby/parsers/xml'
+require 'genesis_ruby/parsers/json'
 require 'genesis_ruby/errors/parser_error'
 
 module GenesisRuby
@@ -16,6 +17,8 @@ module GenesisRuby
       case response_interface
       when XML
         @parser_context = GenesisRuby::Parsers::Xml.new
+      when JSON
+        @parser_context = GenesisRuby::Parsers::Json.new
       else
         raise GenesisRuby::ParserError, 'Invalid Parser interface!'
       end

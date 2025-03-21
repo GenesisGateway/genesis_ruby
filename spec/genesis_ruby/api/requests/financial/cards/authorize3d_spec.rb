@@ -89,4 +89,5 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Authorize3d do
   include_examples 'threeds v2 common attributes examples'
   include_examples 'tokenization attributes examples'
   include_examples 'ucof attributes examples'
+  include_examples 'installment attributes examples'
 end

@@ -69,4 +69,5 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Sale do
   include_examples 'tokenization attributes examples'
   include_examples 'travel data attributes examples'
   include_examples 'ucof attributes examples'
+  include_examples 'installment attributes examples'
 end

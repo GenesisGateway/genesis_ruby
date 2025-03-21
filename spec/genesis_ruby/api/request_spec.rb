@@ -4,19 +4,31 @@ require 'spec/genesis_ruby/shared_examples/api/request_examples'
 RSpec.describe GenesisRuby::Api::Request do
   describe 'with undefined configuration' do
     let(:request) do
-      described_class.new(GenesisRuby::Configuration.new)
+      described_class.new GenesisRuby::Configuration.new
     end
 
     it 'has proper initialization' do
-      expect(request.class.to_s).to eq('GenesisRuby::Api::Request')
+      expect(request.class.to_s).to eq 'GenesisRuby::Api::Request'
     end
 
-    it 'can build document' do
-      expect(request.build_document).to eq("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")
+    it 'can build XML document' do
+      expect(request.build_document).to eq "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+    end
+
+    it 'can build JSON document' do
+      request = described_class.new GenesisRuby::Configuration.new, 'json'
+
+      expect(request.build_document).to eq "{\n}"
+    end
+
+    it 'can build FORM document' do
+      request = described_class.new GenesisRuby::Configuration.new, 'form'
+
+      expect(request.build_document).to eq ''
     end
 
     it 'can not init api gateway configuration' do
-      expect { request.__send__(:init_api_gateway_configuration) }.to raise_error(GenesisRuby::EndpointNotSetError)
+      expect { request.__send__(:init_api_gateway_configuration) }.to raise_error GenesisRuby::EndpointNotSetError
     end
   end
 
@@ -41,28 +53,28 @@ RSpec.describe GenesisRuby::Api::Request do
       genesis_configuration.endpoint    = GenesisRuby::Api::Constants::Endpoints::EMERCHANTPAY
       genesis_configuration.environment = GenesisRuby::Api::Constants::Environments::STAGING
 
-      described_class.new(genesis_configuration)
+      described_class.new genesis_configuration
     end
 
     it 'init proper XML configuration' do
       request.__send__ :init_xml_configuration
       request.__send__ :init_api_gateway_configuration
 
-      expect(request.api_config).to eq(xml_request_configuration)
+      expect(request.api_config).to eq xml_request_configuration
     end
 
     it 'init proper JSON configuration' do
       request.__send__ :init_json_configuration
       request.__send__ :init_api_gateway_configuration
 
-      expect(request.api_config).to eq(json_request_configuration)
+      expect(request.api_config).to eq json_request_configuration
     end
 
     it 'init proper FORM configuration' do
       request.__send__ :init_form_configuration
       request.__send__ :init_api_gateway_configuration
 
-      expect(request.api_config).to eq(form_request_configuration)
+      expect(request.api_config).to eq form_request_configuration
     end
 
     include_examples(

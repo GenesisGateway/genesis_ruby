@@ -22,15 +22,15 @@ module GenesisRuby
         end
 
         # Send the request
-        def execute
+        def execute # rubocop:disable Metrics/AbcSize
           raise NetworkError, 'Request is not initialized' unless @request
 
           safe_execute do
             case request_data.type
             when Api::Request::METHOD_POST then @response = @request.post path, request_data.body, headers
             when Api::Request::METHOD_PUT then @response = @request.put path, request_data.body, headers
-            else
-              raise 'Invalid Request Type!'
+            when Api::Request::METHOD_GET then @response = @request.get path, headers
+            else raise 'Invalid Request Type!'
             end
           end
         end
@@ -90,12 +90,17 @@ module GenesisRuby
 
         # Define Headers
         def headers
-          {
-            'Content-Type'   => request_data.format,
-            'Content-Length' => request_data.body&.length.to_s,
-            'Authorization'  => "Basic #{request_data.user_login}",
-            'User-Agent'     => request_data.user_agent
+          headers = {
+            'Authorization' => "Basic #{request_data.user_login}",
+            'User-Agent'    => request_data.user_agent
           }
+
+          unless request_data.type == Api::Request::METHOD_GET
+            headers.merge! 'Content-Type'   => request_data.format,
+                           'Content-Length' => request_data.body&.length.to_s
+          end
+
+          headers
         end
 
         # Safe Request execution

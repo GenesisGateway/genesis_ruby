@@ -74,6 +74,15 @@ RSpec.describe GenesisRuby::Builder do
         expect(builder.document).to include '%26'
       end
     end
+  end
 
+  describe 'JSON Builder' do
+    let(:json_builder) { described_class.new(described_class::JSON) }
+
+    it 'can generate valid json content' do
+      json_builder.parse_structure element1: 'value1', element2: 'value2'
+
+      expect(json_builder.document).to eq "{\n  \"element1\": \"value1\",\n  \"element2\": \"value2\"\n}"
+    end
   end
 end

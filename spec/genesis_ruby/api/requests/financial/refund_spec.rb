@@ -35,7 +35,9 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Refund do
   end
 
   it 'when bank_account_type with invalid value' do
-    expect { request.bank_account_type = 'invalid' }.to raise_error GenesisRuby::InvalidArgumentError
+    request.bank_account_type = 'invalid'
+
+    expect { request.build_document }.to raise_error GenesisRuby::ParameterError
   end
 
   describe 'when beneficiary attributes' do
@@ -72,8 +74,75 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Refund do
     end
   end
 
+  describe 'when Level 3 Travel Data attributes' do
+    it 'without attributes' do
+      expect(request.build_document).to_not include '<travel>'
+    end
+
+    it 'when credit_reason_indicator_1 with valid value' do
+      request.credit_reason_indicator_1 = indicator = GenesisRuby::Api::Constants::Transactions::Parameters::Refund::
+          CreditReasonIndicators.all.sample
+
+      expect(request.build_document).to include "<credit_reason_indicator_1>#{indicator}</credit_reason_indicator_1>"
+    end
+
+    it 'when credit_reason_indicator_1 with invalid value' do
+      request.credit_reason_indicator_1 = 'invalid'
+
+      expect { request.build_document }.to raise_error GenesisRuby::ParameterError
+    end
+
+    it 'when credit_reason_indicator_2 with valid value' do
+      request.credit_reason_indicator_2 = indicator = GenesisRuby::Api::Constants::Transactions::Parameters::Refund::
+          CreditReasonIndicators.all.sample
+
+      expect(request.build_document).to include "<credit_reason_indicator_2>#{indicator}</credit_reason_indicator_2>"
+    end
+
+    it 'when credit_reason_indicator_2 with invalid value' do
+      request.credit_reason_indicator_2 = 'invalid'
+
+      expect { request.build_document }.to raise_error GenesisRuby::ParameterError
+    end
+
+    it 'when ticket_change_indicator with valid value' do
+      request.ticket_change_indicator = indicator = GenesisRuby::Api::Constants::Transactions::Parameters::Refund::
+          TicketChangeIndicators.all.sample
+
+      expect(request.build_document).to include "<ticket_change_indicator>#{indicator}</ticket_change_indicator>"
+    end
+
+    it 'when ticket_change_indicator with invalid value' do
+      request.ticket_change_indicator = 'invalid'
+
+      expect { request.build_document }.to raise_error GenesisRuby::ParameterError
+    end
+
+    describe 'when structure' do
+      let(:travel_request) do
+        request.credit_reason_indicator_1 = GenesisRuby::Api::Constants::Transactions::Parameters::Refund::
+              CreditReasonIndicators.all.sample
+        request.credit_reason_indicator_2 = GenesisRuby::Api::Constants::Transactions::Parameters::Refund::
+              CreditReasonIndicators.all.sample
+        request.ticket_change_indicator   = GenesisRuby::Api::Constants::Transactions::Parameters::Refund::
+              TicketChangeIndicators.all.sample
+
+        request
+      end
+
+      it 'with ticket node' do
+        expect(travel_request.build_document).to include '<ticket>'
+      end
+
+      it 'with travel node' do
+        expect(travel_request.build_document).to include '<travel>'
+      end
+    end
+  end
+
   include_examples 'base request examples'
   include_examples 'financial attributes examples'
   include_examples 'reference attributes examples'
   include_examples 'payment attributes examples'
+  include_examples 'installment attributes examples'
 end

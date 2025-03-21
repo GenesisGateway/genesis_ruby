@@ -1,5 +1,6 @@
 require 'genesis_ruby/builders/xml'
 require 'genesis_ruby/builders/form'
+require 'genesis_ruby/builders/json'
 require 'genesis_ruby/errors/builder_error'
 
 module GenesisRuby
@@ -20,6 +21,7 @@ module GenesisRuby
       case request_interface
       when XML then @builder_context = Builders::Xml.new
       when FORM then @builder_context = Builders::Form.new
+      when JSON then @builder_context = Builders::Json.new
       else
         raise GenesisRuby::BuilderError, 'Invalid Builder interface!'
       end

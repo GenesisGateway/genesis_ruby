@@ -7,7 +7,7 @@ require 'genesis_ruby/utils/money_format'
 module GenesisRuby
   module Api
     # Base Request Class
-    class Request
+    class Request # rubocop:disable Metrics/ClassLength
 
       include Mixins::Requests::RestrictedSetter
       include Mixins::Requests::AttributeValidation
@@ -68,6 +68,11 @@ module GenesisRuby
       # Pre-defined FORM Request Configuration
       def init_form_configuration
         @api_config.load_form_config
+      end
+
+      # Pre-defined GET Request Configuration
+      def init_get_configuration
+        @api_config.load_get_config
       end
 
       # Initializes Api EndPoint Url with request path & terminal token

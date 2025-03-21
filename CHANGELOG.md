@@ -1,3 +1,17 @@
+0.2.2
+-----
+**Features**:
+
+* Added Installments API services support
+* Added Installments attributes support to the following transaction requests:
+  * Authorize
+  * Authorize 3D
+  * Capture
+  * Sale
+  * Sale 3D
+  * Refund
+* Added Level 3 Travel Data attributes support to Refund transaction request
+
 0.2.1
 -----
 **Features**:
