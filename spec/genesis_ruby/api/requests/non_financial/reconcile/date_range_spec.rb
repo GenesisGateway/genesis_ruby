@@ -38,14 +38,6 @@ RSpec.describe GenesisRuby::Api::Requests::NonFinancial::Reconcile::DateRange do
       expect(request.build_document).to include '<reconcile>'
     end
 
-    it 'with start_date' do
-      expect(request.build_document).to include "<start_date>#{request.start_date}</start_date>"
-    end
-
-    it 'with end_date' do
-      expect(request.build_document).to include "<end_date>#{request.end_date}</end_date>"
-    end
-
     it 'with page' do
       expect(request.build_document).to include "<page>#{request.page}</page>"
     end
@@ -65,33 +57,6 @@ RSpec.describe GenesisRuby::Api::Requests::NonFinancial::Reconcile::DateRange do
     end
   end
 
-  describe 'when start_date' do
-    it 'with time' do
-      request.start_date = timestamp_object.strftime(GenesisRuby::Api::Constants::DateTimeFormats::YYYY_MM_DD_H_I_S)
-
-      expect(request.start_date).to eq "#{date} #{time}"
-    end
-
-    it 'without time' do
-      request.start_date = timestamp_object.strftime GenesisRuby::Api::Constants::DateTimeFormats::YYYY_MM_DD_ISO_8601
-
-      expect(request.start_date).to eq date
-    end
-  end
-
-  describe 'when end_date' do
-    it 'with time' do
-      request.end_date = timestamp_object.strftime(GenesisRuby::Api::Constants::DateTimeFormats::YYYY_MM_DD_H_I_S)
-
-      expect(request.end_date).to eq "#{date} #{time}"
-    end
-
-    it 'without time' do
-      request.end_date = timestamp_object.strftime GenesisRuby::Api::Constants::DateTimeFormats::YYYY_MM_DD_ISO_8601
-
-      expect(request.end_date).to eq date
-    end
-  end
-
   include_examples 'base request examples'
+  include_examples 'date attributes examples'
 end

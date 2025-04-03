@@ -3,6 +3,23 @@ AllCops:
   DisplayCopNames: true
   NewCops: disable
 
+Capybara/MatchStyle:
+  Enabled: true
+Capybara/NegationMatcher:
+  Enabled: true
+Capybara/SpecificActions:
+  Enabled: true
+Capybara/SpecificFinders:
+  Enabled: true
+Capybara/SpecificMatcher:
+  Enabled: true
+
+plugins:
+  - rubocop-capybara
+
+require:
+  - rubocop-rspec
+
 Layout/ArrayAlignment:
   Description: >-
     Align the elements of an array literal if they span more than
@@ -80,6 +97,3 @@ Layout/LineLength:
 RSpec/NotToNot:
   EnforcedStyle: to_not
   Enabled: true
-
-require:
-  - rubocop-rspec

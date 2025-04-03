@@ -12,7 +12,7 @@ module GenesisRuby
             # Array containing all available Refundable Types
             def all # rubocop:disable Metrics/MethodLength
               [
-                AFRICAN_MOBILE_PAYOUT, AFRICAN_MOBILE_SALE, APPLE_PAY,
+                AFRICAN_MOBILE_PAYOUT, AFRICAN_MOBILE_SALE, ALIPAY, APPLE_PAY,
                 BALOTO, BANCOMER, BANCONTACT, BANCO_DE_OCCIDENTE, BANCO_DO_BRASIL, BITPAY_SALE, BOLETO, BRADESCO,
                 CAPTURE, CASHU,
                 DAVIVIENDA,

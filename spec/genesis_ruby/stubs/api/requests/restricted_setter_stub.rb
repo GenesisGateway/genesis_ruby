@@ -5,7 +5,7 @@ module GenesisSpec
         # Restricted Setter Sub
         class RestrictedSetterStub
 
-          attr_accessor :attr_string, :attr_option, :attr_date, :attr_int
+          attr_accessor :attr_string, :attr_option, :attr_date, :attr_int, :attr_arr
 
           include GenesisRuby::Api::Mixins::Requests::RestrictedSetter
 

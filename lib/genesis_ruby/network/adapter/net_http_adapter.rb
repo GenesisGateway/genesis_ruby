@@ -90,17 +90,28 @@ module GenesisRuby
 
         # Define Headers
         def headers
-          headers = {
-            'Authorization' => "Basic #{request_data.user_login}",
-            'User-Agent'    => request_data.user_agent
+          data = common_headers
+
+          data.merge! payload_headers unless request_data.type == Api::Request::METHOD_GET
+          data.merge! request_data.headers if request_data.headers.is_a?(Hash) && !request_data.headers.empty?
+
+          data
+        end
+
+        # Provides default request headers
+        def common_headers
+          {
+            'Authorization' => request_data.user_login.to_s,
+            'User-Agent'    => request_data.user_agent.to_s
           }
+        end
 
-          unless request_data.type == Api::Request::METHOD_GET
-            headers.merge! 'Content-Type'   => request_data.format,
-                           'Content-Length' => request_data.body&.length.to_s
-          end
-
-          headers
+        # Payload Headers
+        def payload_headers
+          {
+            'Content-Type'   => request_data.format,
+            'Content-Length' => request_data.body&.length.to_s
+          }
         end
 
         # Safe Request execution

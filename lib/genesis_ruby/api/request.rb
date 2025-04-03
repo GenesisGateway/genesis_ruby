@@ -19,6 +19,9 @@ module GenesisRuby
       METHOD_GET     = 'GET'.freeze
       METHOD_PUT     = 'PUT'.freeze
 
+      AUTH_TYPE_BASIC = 'basic'.freeze
+      AUTH_TYPE_TOKEN = 'bearer'.freeze
+
       attr_reader :api_config
 
       def initialize(configuration, builder_interface = 'xml')
@@ -75,6 +78,11 @@ module GenesisRuby
         @api_config.load_get_config
       end
 
+      # Pre-defined GraphQL Request Configuration
+      def init_graphql_configuration
+        @api_config.load_graphql_config
+      end
+
       # Initializes Api EndPoint Url with request path & terminal token
       def init_api_gateway_configuration(options = { request_path: 'process', include_token: true })
         request_path  = options.fetch :request_path, 'process'
@@ -99,6 +107,13 @@ module GenesisRuby
             path:      language.empty? ? 'wpf' : format('%{language}/wpf', { language: language })
           }
         )
+      end
+
+      # Initializes API Service Configuration
+      def init_api_service_configuration(options = { request_path: 'graphql' })
+        request_path = options.fetch :request_path, 'graphql'
+
+        api_config.url = build_request_url({ subdomain: 'api_service', path: request_path })
       end
 
       # Process Everything the variables set previously

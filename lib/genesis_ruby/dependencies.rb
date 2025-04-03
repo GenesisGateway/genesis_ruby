@@ -21,6 +21,8 @@ require 'genesis_ruby/api/requests/base/financials/credit_card'
 require 'genesis_ruby/api/requests/base/financials/south_american_payments'
 require 'genesis_ruby/api/requests/base/reference'
 require 'genesis_ruby/api/requests/base/versioned'
+require 'genesis_ruby/api/requests/financial/sdd/sale'
+require 'genesis_ruby/api/requests/base/graphql'
 require 'genesis_ruby/api/notification'
 
 # Load Financial and Non Financial API Requests

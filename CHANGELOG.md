@@ -1,3 +1,20 @@
+0.2.3
+-----
+**Features**:
+
+* Added Billing API Support
+* Added Alipay transaction request support
+* Added the following SDD (Sepa Direct Debit) transaction requests support
+  * SDD Sale
+  * SDD Init Recurring Sale
+  * SDD Refund
+  * SDD Recurring Sale
+* Added Spei payment type support to Online Banking PayIn
+* Added EPS transaction request support
+* Added WeChat transaction request support
+* Added Banco Do Brasil transaction request support
+* Added iDebit PayIn and PayOut transaction requests support
+
 0.2.2
 -----
 **Features**:

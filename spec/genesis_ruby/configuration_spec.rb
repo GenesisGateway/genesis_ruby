@@ -41,6 +41,10 @@ RSpec.describe GenesisRuby::Configuration do
     it 'has default force_smart_routing' do
       expect(configuration.force_smart_routing).to eq false
     end
+
+    it 'has default billing_api_token' do
+      expect(configuration.billing_api_token).to be_kind_of String
+    end
   end
 
   describe 'with proper initialization' do
@@ -98,6 +102,12 @@ RSpec.describe GenesisRuby::Configuration do
       configuration.sanitize_response = false
 
       expect(configuration.sanitize_response).to eq(false)
+    end
+
+    it 'set billing_api_token' do
+      configuration.billing_api_token = uuid = Faker::Internet.uuid
+
+      expect(configuration.billing_api_token).to eq uuid
     end
 
     describe 'with force_smart_routing' do
@@ -178,6 +188,24 @@ RSpec.describe GenesisRuby::Configuration do
   describe 'with invalid endpoint' do
     it 'throws when endpoint is invalid' do
       expect { configuration.endpoint = 'invalid' }.to raise_error(GenesisRuby::InvalidArgumentError)
+    end
+  end
+
+  describe 'when sub_domain' do
+    it 'with gateway' do
+      expect(configuration.sub_domain('gateway')).to eq 'staging.gate.'
+    end
+
+    it 'with wpf' do
+      expect(configuration.sub_domain('wpf')).to eq 'staging.wpf.'
+    end
+
+    it 'with smart_router' do
+      expect(configuration.sub_domain('smart_router')).to eq 'staging.api.'
+    end
+
+    it 'with api_service' do
+      expect(configuration.sub_domain('api_service')).to eq 'staging.api.'
     end
   end
 end

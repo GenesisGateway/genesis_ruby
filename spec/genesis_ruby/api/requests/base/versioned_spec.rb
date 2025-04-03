@@ -73,16 +73,19 @@ RSpec.describe GenesisRuby::Api::Requests::Base::Versioned do
   end
 
   describe 'with implementation' do
-    let(:versioned) { GenesisSpec::Stubs::Api::Requests::Base::VersionedStub.new configuration }
+    let(:request) { GenesisSpec::Stubs::Api::Requests::Base::VersionedStub.new configuration }
 
     it 'with request_path' do
-      expect(versioned.api_config['url']).to eq 'https://staging.gate.emerchantpay.net:443/v1/fake_path'
+      expect(request.api_config['url']).to eq 'https://staging.gate.emerchantpay.net:443/v1/fake_path'
     end
 
     it 'with populated_structure' do
-      versioned.__send__(:populate_structure)
+      request.__send__(:populate_structure)
 
-      expect(versioned.instance_variable_get('@tree_structure')).to be_kind_of Hash
+      expect(request.instance_variable_get('@tree_structure')).to be_kind_of Hash
     end
+
+    include_examples 'base request examples'
+    include_examples 'versioned request examples'
   end
 end

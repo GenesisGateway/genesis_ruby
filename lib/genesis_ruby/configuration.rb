@@ -20,8 +20,8 @@ module GenesisRuby
     # Default sanitize Response
     DEFAULT_SANITIZE_RESPONSE = true
 
-    # Genesis basic configuration - credentials, endpoint, environment, token
-    attr_writer :username, :password, :token, :interface, :format_response, :sanitize_response
+    # Genesis basic configuration - credentials, endpoint, environment, token, etc
+    attr_writer :username, :password, :token, :interface, :format_response, :sanitize_response, :billing_api_token
 
     # Configuration constructor
     def initialize
@@ -62,6 +62,11 @@ module GenesisRuby
     # Enable Smart Routing for Financial transaction requests
     def force_smart_routing
       @force_smart_routing ||= false
+    end
+
+    # Defines the Bearer token used for authorization in Billing API Service
+    def billing_api_token
+      @billing_api_token || ''
     end
 
     # Genesis Request Timeout
@@ -185,6 +190,10 @@ module GenesisRuby
           GenesisRuby::Api::Constants::Environments::STAGING    => 'staging.wpf.'
         },
         smart_router: {
+          GenesisRuby::Api::Constants::Environments::PRODUCTION => 'prod.api.',
+          GenesisRuby::Api::Constants::Environments::STAGING    => 'staging.api.'
+        },
+        api_service:  {
           GenesisRuby::Api::Constants::Environments::PRODUCTION => 'prod.api.',
           GenesisRuby::Api::Constants::Environments::STAGING    => 'staging.api.'
         }

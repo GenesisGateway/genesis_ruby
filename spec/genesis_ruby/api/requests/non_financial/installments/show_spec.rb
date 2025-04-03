@@ -19,7 +19,7 @@ RSpec.describe GenesisRuby::Api::Requests::NonFinancial::Installments::Show do
 
   it 'with proper request structure' do
     expect(request.build_document)
-      .to eq "{\n}"
+      .to eq '{}'
   end
 
   it 'with proper endpoint url' do

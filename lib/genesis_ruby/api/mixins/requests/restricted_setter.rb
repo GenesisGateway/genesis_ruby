@@ -61,6 +61,24 @@ module GenesisRuby
             assign_instance_variable attribute, value.to_i
           end
 
+          # Parses given value by validating if an array is given
+          # Apply .to_s to every array value
+          def parse_array_of_strings(attribute:, value:, allowed: [], allow_empty: false)
+            raise InvalidArgumentError, "#{attribute} accepts only Array value." unless value.is_a?(Array)
+            raise InvalidArgumentError, "#{attribute} empty value not allowed!" if !allow_empty && value.empty?
+
+            parsed_value = value.map(&:to_s)
+
+            unless allowed.empty?
+              diff    = parsed_value - allowed
+              message = "#{attribute} has invalid values #{diff.join(", ")}. Allowed: #{allowed.join(", ")}."
+
+              raise InvalidArgumentError, message unless diff.empty?
+            end
+
+            assign_instance_variable attribute, value
+          end
+
           private
 
           # Helper for assigning a attribute to the class instance

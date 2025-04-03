@@ -85,4 +85,38 @@ RSpec.describe GenesisRuby::Builder do
       expect(json_builder.document).to eq "{\n  \"element1\": \"value1\",\n  \"element2\": \"value2\"\n}"
     end
   end
+
+  describe 'Graphql Builder' do
+    let(:graphql_builder) { described_class.new(described_class::GRAPHQL) }
+    let(:structure) do
+      {
+        query: {
+          action:          'billingTransactions',
+          filters:         {
+            filter: {
+              billingStatement: %w(A123 B456),
+              startDate:        '2023-10-03',
+              endDate:          '2023-10-05',
+              transactionType:  ['Settlement Approved']
+            },
+            paging: { page: 2, perPage: 3 },
+            sort:   { byDirection: 'desc', byField: 'transactionDate' }
+          },
+          response_fields: {
+            items:  %w(billingStatement uniqueId transactionType billingAmount billingCurrency transactionDate),
+            paging: %w(page perPage pagesCount totalCount)
+          }
+        }
+      }
+    end
+    let(:document) do
+      File.open("#{File.dirname(__FILE__)}/fixtures/requests/billing_api_request.gql").read.strip
+    end
+
+    it 'can generate valid GraphQL content' do
+      graphql_builder.parse_structure structure
+
+      expect(graphql_builder.document).to eq document
+    end
+  end
 end

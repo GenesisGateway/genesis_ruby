@@ -1,0 +1,18 @@
+query {
+  exampleAction(filter: { key1: value1, key2: value2, key3: ["some value", "other value"] }, sort: { byDirection: desc, byField: key2 }, paging: { page: 1, perPage: 2 })
+  {
+    items
+    {
+      item1
+      item2
+      item3
+    }
+    paging
+    {
+      page
+      perPage
+      pagesCount
+      totalCount
+    }
+  }
+}

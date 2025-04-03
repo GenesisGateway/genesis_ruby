@@ -21,6 +21,11 @@ module GenesisRuby
         # operator
         AFRICAN_MOBILE_SALE = 'african_mobile_sale'.freeze
 
+        # Alipay is an oBeP-style alternative payment method that allows you to pay directly with your ebank account.
+        # After initiating a transaction Alipay will redirect you to their page.
+        # There you will see a picture of a QR code, which you will have to scan with your Alipay mobile application.
+        ALIPAY = 'alipay'.freeze
+
         # Apple pay is payment method working with apple devices
         APPLE_PAY = 'apple_pay'.freeze
 

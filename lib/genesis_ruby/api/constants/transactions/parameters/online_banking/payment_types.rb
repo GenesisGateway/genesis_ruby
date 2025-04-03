@@ -27,6 +27,9 @@ module GenesisRuby
               # Payment Scotia Bank
               SCOTIABANK     = 'scotiabank'.freeze
 
+              # Payment SPEI
+              SPEI           = 'spei'.freeze
+
             end
           end
         end

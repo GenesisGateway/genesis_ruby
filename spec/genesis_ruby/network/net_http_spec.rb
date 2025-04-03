@@ -18,17 +18,13 @@ RSpec.describe GenesisRuby::Network::NetHttp do
   let(:request) { GenesisSpec::Stubs::RequestSkeleton.new(configuration) }
 
   describe 'has base methods' do
-    it 'build user login' do
-      expect(net_http.__send__(:build_user_login)).to_not be_empty
-    end
-
     it 'build network user agent' do
       expect(net_http.__send__(:network_user_agent)).to_not be_empty
     end
 
-    it 'map the request' do
+    it 'map request with basic auth' do
       encoded_login = Base64.urlsafe_encode64("#{configuration.username}:#{configuration.password}")
-      expect(net_http.__send__(:adapter_data_mapper, request)).to include({ user_login: encoded_login })
+      expect(net_http.__send__(:adapter_data_mapper, request)).to include({ user_login: "Basic #{encoded_login}" })
     end
   end
 

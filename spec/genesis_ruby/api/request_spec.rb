@@ -18,7 +18,7 @@ RSpec.describe GenesisRuby::Api::Request do
     it 'can build JSON document' do
       request = described_class.new GenesisRuby::Configuration.new, 'json'
 
-      expect(request.build_document).to eq "{\n}"
+      expect(request.build_document).to eq '{}'
     end
 
     it 'can build FORM document' do
@@ -36,15 +36,25 @@ RSpec.describe GenesisRuby::Api::Request do
     genesis_configuration      = GenesisRuby::Configuration.new
 
     base_request_configuration = {
-      protocol: described_class::PROTOCOL_HTTPS,
-      port:     described_class::PORT_HTTPS,
-      type:     described_class::METHOD_POST,
-      url:      'https://staging.gate.emerchantpay.net:443/process/token/'
+      authorization: described_class::AUTH_TYPE_BASIC,
+      bearer_token:  nil,
+      protocol:      described_class::PROTOCOL_HTTPS,
+      port:          described_class::PORT_HTTPS,
+      type:          described_class::METHOD_POST,
+      url:           'https://staging.gate.emerchantpay.net:443/process/token/'
     }
 
-    xml_request_configuration  = base_request_configuration.merge format: 'xml', parser_skip_root_node: true
-    json_request_configuration = base_request_configuration.merge format: 'json', parser_skip_root_node: false
-    form_request_configuration = base_request_configuration.merge format: 'form', parser_skip_root_node: true
+    xml_request_configuration     = base_request_configuration.merge format: 'xml', parser_skip_root_node: true
+    json_request_configuration    = base_request_configuration.merge format: 'json', parser_skip_root_node: false
+    form_request_configuration    = base_request_configuration.merge format: 'form', parser_skip_root_node: true
+    graphql_request_configuration = base_request_configuration.merge(
+      {
+        format:                'graphql',
+        parser_skip_root_node: false,
+        authorization:         'bearer',
+        url:                   'https://staging.api.emerchantpay.net:443/graphql'
+      }
+    )
 
     let(:request) do
       genesis_configuration.username    = 'username'
@@ -75,6 +85,13 @@ RSpec.describe GenesisRuby::Api::Request do
       request.__send__ :init_api_gateway_configuration
 
       expect(request.api_config).to eq form_request_configuration
+    end
+
+    it 'init proper GraphQL configuration' do
+      request.__send__ :init_graphql_configuration
+      request.__send__ :init_api_service_configuration
+
+      expect(request.api_config).to eq graphql_request_configuration
     end
 
     include_examples(

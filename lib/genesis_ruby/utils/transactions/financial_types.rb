@@ -11,7 +11,7 @@ module GenesisRuby
           # Return array containing all available Web Payment Form transaction types
           def all # rubocop:disable Metrics/MethodLength
             [
-              AFRICAN_MOBILE_PAYOUT, AFRICAN_MOBILE_SALE, APPLE_PAY, ARGENCARD, AURA, AUTHORIZE, AUTHORIZE_3D,
+              AFRICAN_MOBILE_PAYOUT, AFRICAN_MOBILE_SALE, ALIPAY, APPLE_PAY, ARGENCARD, AURA, AUTHORIZE, AUTHORIZE_3D,
               BALOTO, BANCOMER, BANCONTACT, BANCO_DE_OCCIDENTE, BANCO_DO_BRASIL, BITPAY_PAYOUT, BITPAY_REFUND,
               BITPAY_SALE, BOLETO, BRADESCO,
               CABAL, CAPTURE, CASHU, CENCOSUD, CREDIT,

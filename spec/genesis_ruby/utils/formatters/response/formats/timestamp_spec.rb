@@ -2,7 +2,7 @@ RSpec.describe GenesisRuby::Utils::Formatters::Response::Formats::Timestamp do
   let(:timestamp_format) { described_class.new }
 
   it 'has formatting_keys' do
-    expect(timestamp_format.formatting_keys).to eq(%w(timestamp))
+    expect(timestamp_format.formatting_keys).to eq %w(timestamp transactionDate valueDate)
   end
 
   it 'has no required_keys' do

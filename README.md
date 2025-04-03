@@ -1011,6 +1011,7 @@ GenesisRuby::Api::Requests::Financial::Mobile::ApplePay
 GenesisRuby::Api::Requests::Financial::Mobile::GooglePay
 
 ## Wallets
+GenesisRuby::Api::Requests::Financial::Wallets::Alipay
 GenesisRuby::Api::Requests::Financial::Wallets::PayPal
 
 ## Cash Payments
@@ -1031,23 +1032,35 @@ GenesisRuby::Api::Requests::Wpf::Create
 GenesisRuby::Api::Requests::Wpf::Reconcile
 
 # Online Banking Payments
+GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::BancoDoBrasil
 GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Bancomer
 GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Bradesco
 GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Davivienda
+GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Eps
 GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Itau
 GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Pse
 GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::RapiPago
 GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Santander
 GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Webpay
+GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Wechat
 # PayIn
 GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::OnlineBanking::PayIn
 # PayOut
 GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::OnlineBanking::PayOut
+# iDebit
+GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Idebit::PayIn
+GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Idebit::PayOut
+
+# SDD
+GenesisRuby::Api::Requests::Financial::Sdd::Sale
+GenesisRuby::Api::Requests::Financial::Sdd::Recurring::InitRecurringSale
 
 # References
 GenesisRuby::Api::Requests::Financial::Capture
 GenesisRuby::Api::Requests::Financial::Void
 GenesisRuby::Api::Requests::Financial::Refund
+GenesisRuby::Api::Requests::Financial::Sdd::Refund
+GenesisRuby::Api::Requests::Financial::Sdd::Recurring::RecurringSale
 
 # Non Financial
 ## Reconcile
@@ -1056,6 +1069,9 @@ GenesisRuby::Api::Requests::NonFinancial::Reconcile::DateRange
 
 ## Installments
 GenesisRuby::Api::Requests::NonFinancial::Installments::Fetch
+
+## Billing API
+GenesisRuby::Api::Requests::NonFinancial::BillingApi::Transactions
 
 ```
 

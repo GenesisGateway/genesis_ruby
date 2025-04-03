@@ -1,6 +1,4 @@
-require 'genesis_ruby/errors/invalid_argument_error'
 require 'genesis_ruby/utils/options/network_adapter_config'
-require 'base64'
 
 module GenesisRuby
   module Network
@@ -75,18 +73,7 @@ module GenesisRuby
 
       # Map the Request to the Network Adapter object
       def adapter_data_mapper(request)
-        network_adapter_config.map_from_request(request).merge(
-          {
-            user_login: build_user_login,
-            user_agent: network_user_agent,
-            timeout:    configuration.timeout
-          }
-        )
-      end
-
-      # Build the User login string used for the Authorization Header
-      def build_user_login
-        Base64.urlsafe_encode64("#{configuration.username}:#{configuration.password}")
+        network_adapter_config.map_from_request(request, configuration).merge({ user_agent: network_user_agent })
       end
 
       # The default user agent for every Network

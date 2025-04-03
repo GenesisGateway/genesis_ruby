@@ -174,4 +174,85 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::RestrictedSetter do
       end
     end
   end
+
+  describe 'when parse_array_of_strings' do
+    let(:attribute) { 'attr_arr' }
+    let(:allowed) { %w(value1 value2 value3) }
+    let(:value) { %w(value1) }
+
+    it 'with invalid non-array value' do
+      expect { restricted_setter.__send__ :parse_array_of_strings, attribute: attribute, value: Faker::Lorem.word }
+        .to raise_error GenesisRuby::InvalidArgumentError
+    end
+
+    it 'with every allowed value' do
+      value = [Faker::Lorem.word]
+
+      expect(restricted_setter.__send__(:parse_array_of_strings, attribute: attribute, value: value, allowed: []))
+        .to eq value
+    end
+
+    it 'when empty value without allowed_empty' do
+      value = []
+
+      expect do
+        restricted_setter
+          .__send__(:parse_array_of_strings, attribute: attribute, value: value, allowed: [], allow_empty: false)
+      end.to raise_error GenesisRuby::InvalidArgumentError
+    end
+
+    it 'when empty value with allowed_empty' do
+      value = []
+
+      expect(restricted_setter
+               .__send__(:parse_array_of_strings, attribute: attribute, value: value, allowed: [], allow_empty: true))
+        .to eq []
+    end
+
+    it 'when assigned instance variable' do
+      restricted_setter.__send__ :parse_array_of_strings, attribute: attribute, value: value, allowed: []
+
+      restricted_setter.attr_arr = value
+    end
+
+    describe 'when allowed values' do
+      it 'when valid value' do
+        expect(
+          restricted_setter.__send__(:parse_array_of_strings, attribute: attribute, value: value, allowed: allowed)
+        ).to eq value
+      end
+
+      it 'when invalid value' do
+        value = [Faker::Lorem.word]
+
+        expect do
+          restricted_setter.__send__ :parse_array_of_strings, attribute: attribute, value: value, allowed: allowed
+        end.to raise_error GenesisRuby::InvalidArgumentError
+      end
+
+      it 'when empty value with allowed_empty' do
+        expect(
+          restricted_setter.__send__(
+            :parse_array_of_strings, attribute: attribute, value: [], allowed: allowed, allow_empty: true
+          )
+        ).to eq []
+      end
+
+      it 'when empty value without allowed_empty' do
+        expect do
+          restricted_setter.__send__(
+            :parse_array_of_strings, attribute: attribute, value: [], allowed: allowed, allow_empty: false
+          )
+        end.to raise_error GenesisRuby::InvalidArgumentError
+      end
+
+      it 'when valid values with limited allowed value' do
+        values = value.push 'value2'
+
+        expect(
+          restricted_setter.__send__(:parse_array_of_strings, attribute: attribute, value: values, allowed: allowed)
+        ).to eq values
+      end
+    end
+  end
 end

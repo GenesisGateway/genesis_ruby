@@ -94,6 +94,25 @@ RSpec.describe GenesisRuby::Network::Adapter::NetHttpAdapter do
 
         expect(net_http.__send__(:headers)).to include 'Content-Type', 'Content-Length'
       end
+
+      it 'when header with authorization without kind' do
+        net_http.prepare_request post_adapter_config
+
+        expect(net_http.__send__(:headers)['Authorization']).to eq ''
+      end
+
+      it 'when header without custom headers' do
+        net_http.prepare_request post_adapter_config
+
+        expect(net_http.__send__(:headers)).to_not include 'Accept'
+      end
+
+      it 'when header with custom headers' do
+        post_adapter_config.headers = { 'Accept' => 'application/json' }
+        net_http.prepare_request post_adapter_config
+
+        expect(net_http.__send__(:headers)).to include 'Accept'
+      end
     end
 
     describe 'when METHOD_PUT request' do
@@ -118,6 +137,12 @@ RSpec.describe GenesisRuby::Network::Adapter::NetHttpAdapter do
         net_http.prepare_request form_adapter_config
 
         expect(net_http.__send__(:headers)).to include 'Content-Type', 'Content-Length'
+      end
+
+      it 'when header with authorization without kind' do
+        net_http.prepare_request form_adapter_config
+
+        expect(net_http.__send__(:headers)['Authorization']).to eq ''
       end
     end
 
@@ -167,6 +192,12 @@ RSpec.describe GenesisRuby::Network::Adapter::NetHttpAdapter do
         net_http.prepare_request get_adapter_config
 
         expect(net_http.__send__(:headers)).to_not include 'Content-Type', 'Content-Length'
+      end
+
+      it 'when header with authorization without kind' do
+        net_http.prepare_request get_adapter_config
+
+        expect(net_http.__send__(:headers)['Authorization']).to eq ''
       end
     end
   end

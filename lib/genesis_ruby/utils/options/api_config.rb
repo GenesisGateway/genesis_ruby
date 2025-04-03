@@ -13,6 +13,8 @@ module GenesisRuby
           self.type                  = GenesisRuby::Api::Request::METHOD_POST
           self.format                = Builder::XML
           self.parser_skip_root_node = true
+          self.authorization         = GenesisRuby::Api::Request::AUTH_TYPE_BASIC
+          self.bearer_token          = nil
         end
 
         # Load pre-defined JSON configuration
@@ -22,6 +24,8 @@ module GenesisRuby
           self.type                  = GenesisRuby::Api::Request::METHOD_POST
           self.format                = Builder::JSON
           self.parser_skip_root_node = false
+          self.authorization         = GenesisRuby::Api::Request::AUTH_TYPE_BASIC
+          self.bearer_token          = nil
         end
 
         # Load pre-defined FORM configuration
@@ -31,6 +35,8 @@ module GenesisRuby
           self.type                  = GenesisRuby::Api::Request::METHOD_POST
           self.format                = Builder::FORM
           self.parser_skip_root_node = true
+          self.authorization         = GenesisRuby::Api::Request::AUTH_TYPE_BASIC
+          self.bearer_token          = nil
         end
 
         # Load pre-defined GET configuration
@@ -40,6 +46,19 @@ module GenesisRuby
           self.type                  = GenesisRuby::Api::Request::METHOD_GET
           self.format                = Builder::XML
           self.parser_skip_root_node = false
+          self.authorization         = GenesisRuby::Api::Request::AUTH_TYPE_BASIC
+          self.bearer_token          = nil
+        end
+
+        # Load pre-defined GraphQL configuration
+        def load_graphql_config
+          self.protocol              = GenesisRuby::Api::Request::PROTOCOL_HTTPS
+          self.port                  = GenesisRuby::Api::Request::PORT_HTTPS
+          self.type                  = GenesisRuby::Api::Request::METHOD_POST
+          self.format                = Builder::GRAPHQL
+          self.parser_skip_root_node = false
+          self.authorization         = GenesisRuby::Api::Request::AUTH_TYPE_TOKEN
+          self.bearer_token          = nil
         end
 
       end
