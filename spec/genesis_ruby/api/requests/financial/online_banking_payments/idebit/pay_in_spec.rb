@@ -54,6 +54,7 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Ide
 
   include_examples 'address info attributes examples'
   include_examples 'base request examples'
+  include_examples 'customer account attributes examples'
   include_examples 'financial attributes examples'
   include_examples 'payment attributes examples'
 end

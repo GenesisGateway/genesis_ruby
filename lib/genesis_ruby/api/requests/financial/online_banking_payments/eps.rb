@@ -8,7 +8,6 @@ module GenesisRuby
 
             include Api::Mixins::Requests::AddressInfoAttributes
             include Api::Mixins::Requests::Financial::AsyncAttributes
-            include Api::Mixins::Requests::Financial::PaymentAttributes
             include Api::Mixins::Requests::Financial::PendingPaymentAttributes
 
             protected
@@ -20,6 +19,8 @@ module GenesisRuby
 
             # EPS field validations
             def init_field_validations
+              super
+
               required_fields.push *%i[transaction_id return_success_url return_failure_url
                amount currency billing_country]
               field_values.merge! currency:        'EUR',
@@ -28,15 +29,13 @@ module GenesisRuby
 
             # EPS request structure
             def payment_transaction_structure
-              payment_attributes_structure.merge(
-                {
-                  return_success_url: return_success_url,
-                  return_failure_url: return_failure_url,
-                  return_pending_url: return_pending_url,
-                  billing_address:    billing_address_parameters_structure,
-                  shipping_address:   shipping_address_parameters_structure
-                }
-              )
+              {
+                return_success_url: return_success_url,
+                return_failure_url: return_failure_url,
+                return_pending_url: return_pending_url,
+                billing_address:    billing_address_parameters_structure,
+                shipping_address:   shipping_address_parameters_structure
+              }
             end
 
           end

@@ -22,6 +22,5 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Void do
   end
 
   include_examples 'base request examples'
-  include_examples 'financial attributes examples'
   include_examples 'reference attributes examples'
 end

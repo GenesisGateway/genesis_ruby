@@ -1038,9 +1038,17 @@ GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Bradesco
 GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Davivienda
 GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Eps
 GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Itau
+GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Multibanco
+GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::PayU
+GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::PostFinance
+GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::MyBank
 GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Pse
 GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::RapiPago
+GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::SafetyPay
 GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Santander
+GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::TrustlySale
+GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Upi
+GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Sofort
 GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Webpay
 GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Wechat
 # PayIn
@@ -1050,6 +1058,9 @@ GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::OnlineBanking::Pay
 # iDebit
 GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Idebit::PayIn
 GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Idebit::PayOut
+# InstaDebit
+GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::InstaDebit::PayIn
+GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::InstaDebit::PayOut
 
 # SDD
 GenesisRuby::Api::Requests::Financial::Sdd::Sale
@@ -1072,6 +1083,35 @@ GenesisRuby::Api::Requests::NonFinancial::Installments::Fetch
 
 ## Billing API
 GenesisRuby::Api::Requests::NonFinancial::BillingApi::Transactions
+
+## Consumer API
+GenesisRuby::Api::Requests::NonFinancial::Consumers::Create
+GenesisRuby::Api::Requests::NonFinancial::Consumers::Retrieve
+GenesisRuby::Api::Requests::NonFinancial::Consumers::Update
+GenesisRuby::Api::Requests::NonFinancial::Consumers::Disable
+GenesisRuby::Api::Requests::NonFinancial::Consumers::Enable
+GenesisRuby::Api::Requests::NonFinancial::Consumers::GetCards
+
+## Retrieval API
+GenesisRuby::Api::Requests::NonFinancial::Fraud::Retrieval::Transaction
+GenesisRuby::Api::Requests::NonFinancial::Fraud::Retrieval::DateRange
+
+## SCA API
+GenesisRuby::Api::Requests::NonFinancial::Sca::Checker
+
+## Processed Transaction API
+GenesisRuby::Api::Requests::NonFinancial::ProcessedTransactions::Transaction
+GenesisRuby::Api::Requests::NonFinancial::ProcessedTransactions::DateRange
+GenesisRuby::Api::Requests::NonFinancial::ProcessedTransactions::PostDateRange
+
+## Tokenization API
+GenesisRuby::Api::Requests::NonFinancial::Tokenization::Tokenize
+GenesisRuby::Api::Requests::NonFinancial::Tokenization::Detokenize
+GenesisRuby::Api::Requests::NonFinancial::Tokenization::UpdateToken
+GenesisRuby::Api::Requests::NonFinancial::Tokenization::Cryptogram
+GenesisRuby::Api::Requests::NonFinancial::Tokenization::ValidateToken
+GenesisRuby::Api::Requests::NonFinancial::Tokenization::DeleteToken
+GenesisRuby::Api::Requests::NonFinancial::Tokenization::GetCard
 
 ```
 

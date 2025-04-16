@@ -14,7 +14,6 @@ module GenesisRuby
               include Api::Mixins::Requests::DocumentAttributes
               include Api::Mixins::Requests::Financial::AsyncAttributes
               include Api::Mixins::Requests::Financial::OnlineBankingPayments::VirtualPaymentAddressAttributes
-              include Api::Mixins::Requests::Financial::PaymentAttributes
 
               attr_accessor :user_category, :payment_type, :bank_code, :consumer_reference, :auth_code
 
@@ -27,6 +26,8 @@ module GenesisRuby
 
               # Online Banking PayIn field validations
               def init_field_validations # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
+                super
+
                 required_fields.push *%i[transaction_id return_success_url return_failure_url amount currency bank_code]
 
                 field_values.merge! payment_type: Api::Constants::Transactions::Parameters::OnlineBanking::
@@ -133,23 +134,21 @@ module GenesisRuby
 
               # Online Banking PayIn parameters structure
               def payment_transaction_structure # rubocop:disable Metrics/MethodLength
-                payment_attributes_structure.merge(
-                  {
-                    return_success_url:      return_success_url,
-                    return_failure_url:      return_failure_url,
-                    billing_address:         billing_address_parameters_structure,
-                    shipping_address:        shipping_address_parameters_structure,
-                    customer_email:          customer_email,
-                    customer_phone:          customer_phone,
-                    payment_type:            payment_type,
-                    bank_code:               bank_code,
-                    document_id:             document_id,
-                    user_category:           user_category,
-                    virtual_payment_address: virtual_payment_address,
-                    consumer_reference:      consumer_reference,
-                    auth_code:               auth_code
-                  }
-                )
+                {
+                  return_success_url:      return_success_url,
+                  return_failure_url:      return_failure_url,
+                  billing_address:         billing_address_parameters_structure,
+                  shipping_address:        shipping_address_parameters_structure,
+                  customer_email:          customer_email,
+                  customer_phone:          customer_phone,
+                  payment_type:            payment_type,
+                  bank_code:               bank_code,
+                  document_id:             document_id,
+                  user_category:           user_category,
+                  virtual_payment_address: virtual_payment_address,
+                  consumer_reference:      consumer_reference,
+                  auth_code:               auth_code
+                }
               end
 
             end

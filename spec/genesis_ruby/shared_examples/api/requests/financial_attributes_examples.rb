@@ -21,4 +21,16 @@ RSpec.shared_examples 'financial attributes examples' do
       expect(request.build_document).to include "<remote_ip>#{request.remote_ip}</remote_ip>"
     end
   end
+
+  describe 'when currency' do
+    it 'with invalid currency' do
+      request.currency = 'CUR'
+      expect { request.build_document }.to raise_error GenesisRuby::ParameterError
+    end
+
+    it 'with document element' do
+      expect(request.build_document).to include "<currency>#{request.currency}</currency>"
+    end
+  end
+
 end

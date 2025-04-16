@@ -17,7 +17,6 @@ module GenesisRuby
             include Mixins::Requests::Financial::DynamicDescriptorAttributes
             include Mixins::Requests::Financial::FundingAttributes
             include Mixins::Requests::Financial::Mobile::ApplePayTokenAttributes
-            include Mixins::Requests::Financial::PaymentAttributes
 
             attr_accessor :payment_subtype
 
@@ -36,12 +35,13 @@ module GenesisRuby
             end
 
             def init_field_validations
+              super
+
               required_fields.push *%i[transaction_id payment_subtype token_version token_data token_signature
                 token_ephemeral_public_key token_public_key_hash token_transaction_id token_display_name token_network
                 token_type token_transaction_identifier amount currency]
 
-              field_values.merge! currency:        Api::Constants::Currencies::Iso4217.all.map(&:upcase),
-                                  payment_subtype: Api::Constants::Transactions::Parameters::Mobile::ApplePay::
+              field_values.merge! payment_subtype: Api::Constants::Transactions::Parameters::Mobile::ApplePay::
                                       PaymentSubtypes.all,
                                   recurring_type:  [Api::Constants::Transactions::Parameters::Recurring::Types::INITIAL]
               field_values.merge! funding_attributes_field_validations
@@ -49,23 +49,21 @@ module GenesisRuby
 
             # Apple Pay payment transaction structure
             def payment_transaction_structure # rubocop:disable Metrics/MethodLength
-              payment_attributes_structure.merge(
-                {
-                  payment_subtype:           payment_subtype,
-                  payment_token:             payment_token_structure,
-                  customer_email:            customer_email,
-                  customer_phone:            customer_phone,
-                  birth_date:                birth_date,
-                  billing_address:           billing_address_parameters_structure,
-                  shipping_address:          shipping_address_parameters_structure,
-                  document_id:               document_id,
-                  crypto:                    crypto,
-                  recurring_type:            recurring_type,
-                  business_attributes:       business_attributes_structure,
-                  dynamic_descriptor_params: dynamic_descriptor_structure,
-                  funding:                   funding_attributes_structure
-                }
-              )
+              {
+                payment_subtype:           payment_subtype,
+                payment_token:             payment_token_structure,
+                customer_email:            customer_email,
+                customer_phone:            customer_phone,
+                birth_date:                birth_date,
+                billing_address:           billing_address_parameters_structure,
+                shipping_address:          shipping_address_parameters_structure,
+                document_id:               document_id,
+                crypto:                    crypto,
+                recurring_type:            recurring_type,
+                business_attributes:       business_attributes_structure,
+                dynamic_descriptor_params: dynamic_descriptor_structure,
+                funding:                   funding_attributes_structure
+              }
             end
 
             private

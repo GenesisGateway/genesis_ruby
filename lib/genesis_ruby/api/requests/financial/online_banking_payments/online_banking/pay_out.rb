@@ -15,8 +15,8 @@ module GenesisRuby
               include Api::Mixins::Requests::DocumentAttributes
               include Api::Mixins::Requests::Financial::AsyncAttributes
               include Api::Mixins::Requests::Financial::NotificationAttributes
+              include Api::Mixins::Requests::Financial::OnlineBankingPayments::PayerAttributes
               include Api::Mixins::Requests::Financial::OnlineBankingPayments::PixAttributes
-              include Api::Mixins::Requests::Financial::PaymentAttributes
 
               attr_reader :id_card_number, :payer_bank_phone_number, :document_type, :account_id, :user_id
               attr_accessor :bank_name, :bank_code, :bank_branch, :bank_account_name, :bank_account_number, :pix_key,
@@ -25,11 +25,6 @@ module GenesisRuby
               # Id Card Number
               def id_card_number=(value)
                 limited_string attribute: __method__, value: value.to_s.empty? ? nil : value.to_s, max: 30
-              end
-
-              # Payer bank phone Number
-              def payer_bank_phone_number=(value)
-                limited_string attribute: __method__, value: value.to_s, min: 11, max: 14
               end
 
               # ID card/document type
@@ -56,6 +51,8 @@ module GenesisRuby
 
               # Set field validations
               def init_field_validations
+                super
+
                 required_fields.push *%i[transaction_id amount currency notification_url return_success_url
                 return_failure_url billing_first_name billing_last_name billing_state billing_country]
 
@@ -75,38 +72,36 @@ module GenesisRuby
 
               # Bank Payout payment transaction structure
               def payment_transaction_structure # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
-                payment_attributes_structure.merge(
-                  {
-                    return_success_url:              return_success_url,
-                    return_failure_url:              return_failure_url,
-                    notification_url:                notification_url,
-                    customer_email:                  customer_email,
-                    customer_phone:                  customer_phone,
-                    bank_name:                       bank_name,
-                    bank_code:                       bank_code,
-                    bank_account_name:               bank_account_name,
-                    bank_account_number:             bank_account_number,
-                    bank_account_type:               bank_account_type,
-                    bank_account_verification_digit: bank_account_verification_digit,
-                    bank_province:                   bank_province,
-                    bank_branch:                     bank_branch,
-                    id_card_number:                  id_card_number,
-                    payer_bank_phone_number:         payer_bank_phone_number,
-                    document_type:                   document_type,
-                    document_id:                     document_id,
-                    account_id:                      account_id,
-                    user_id:                         user_id,
-                    birth_date:                      birth_date,
-                    payment_type:                    payment_type,
-                    company_type:                    company_type,
-                    company_activity:                company_activity,
-                    incorporation_date:              incorporation_date,
-                    mothers_name:                    mothers_name,
-                    pix_key:                         pix_key,
-                    billing_address:                 billing_address_parameters_structure,
-                    shipping_address:                shipping_address_parameters_structure
-                  }
-                )
+                {
+                  return_success_url:              return_success_url,
+                  return_failure_url:              return_failure_url,
+                  notification_url:                notification_url,
+                  customer_email:                  customer_email,
+                  customer_phone:                  customer_phone,
+                  bank_name:                       bank_name,
+                  bank_code:                       bank_code,
+                  bank_account_name:               bank_account_name,
+                  bank_account_number:             bank_account_number,
+                  bank_account_type:               bank_account_type,
+                  bank_account_verification_digit: bank_account_verification_digit,
+                  bank_province:                   bank_province,
+                  bank_branch:                     bank_branch,
+                  id_card_number:                  id_card_number,
+                  payer:                           payer_parameters_structure,
+                  document_type:                   document_type,
+                  document_id:                     document_id,
+                  account_id:                      account_id,
+                  user_id:                         user_id,
+                  birth_date:                      birth_date,
+                  payment_type:                    payment_type,
+                  company_type:                    company_type,
+                  company_activity:                company_activity,
+                  incorporation_date:              incorporation_date,
+                  mothers_name:                    mothers_name,
+                  pix_key:                         pix_key,
+                  billing_address:                 billing_address_parameters_structure,
+                  shipping_address:                shipping_address_parameters_structure
+                }
               end
 
               private

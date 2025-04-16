@@ -9,7 +9,6 @@ module GenesisRuby
             include Api::Mixins::Requests::AddressInfoAttributes
             include Api::Mixins::Requests::BirthDateAttributes
             include Api::Mixins::Requests::Financial::AsyncAttributes
-            include Api::Mixins::Requests::Financial::PaymentAttributes
 
             protected
 
@@ -27,18 +26,16 @@ module GenesisRuby
             end
 
             # Alipay request structure
-            def payment_transaction_structure # rubocop:disable Metrics/MethodLength
-              payment_attributes_structure.merge(
-                {
-                  return_success_url: return_success_url,
-                  return_failure_url: return_failure_url,
-                  customer_email:     customer_email,
-                  customer_phone:     customer_phone,
-                  birth_date:         birth_date,
-                  billing_address:    billing_address_parameters_structure,
-                  shipping_address:   shipping_address_parameters_structure
-                }
-              )
+            def payment_transaction_structure
+              {
+                return_success_url: return_success_url,
+                return_failure_url: return_failure_url,
+                customer_email:     customer_email,
+                customer_phone:     customer_phone,
+                birth_date:         birth_date,
+                billing_address:    billing_address_parameters_structure,
+                shipping_address:   shipping_address_parameters_structure
+              }
             end
 
           end

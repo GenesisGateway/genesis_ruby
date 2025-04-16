@@ -56,6 +56,7 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::CashPayments::Pix do
   include_examples 'address info attributes examples'
   include_examples 'async attributes examples'
   include_examples 'base request examples'
+  include_examples 'beneficiary attributes examples'
   include_examples 'birth date attributes examples'
   include_examples 'document attributes examples'
   include_examples 'financial attributes examples'

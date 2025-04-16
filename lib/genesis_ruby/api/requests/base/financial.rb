@@ -6,6 +6,7 @@ module GenesisRuby
         class Financial < Request
 
           include Mixins::Requests::Financial::BaseAttributes
+          include Mixins::Requests::Financial::PaymentAttributes
 
           # Use Smart Router endpoint for the current request
           def use_smart_router
@@ -48,6 +49,7 @@ module GenesisRuby
             super
           end
 
+          # Populate the request structure
           def populate_structure
             self.tree_structure = {
               payment_transaction: {
@@ -55,13 +57,20 @@ module GenesisRuby
                 transaction_id:   transaction_id,
                 usage:            usage,
                 remote_ip:        remote_ip
-              }.merge(payment_transaction_structure)
+              }.merge(payment_attributes_structure, payment_transaction_structure)
             }
           end
 
           # Initialize Smart Router endpoint
           def init_api_smart_router_configuration
             api_config.url = build_request_url({ subdomain: 'smart_router', path: 'transactions' })
+          end
+
+          # Initialize Financial class validations
+          def init_field_validations
+            super
+
+            field_values.merge! currency: Api::Constants::Currencies::Iso4217.all.map(&:upcase)
           end
 
         end

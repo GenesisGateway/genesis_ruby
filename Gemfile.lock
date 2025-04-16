@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    genesis_ruby (0.2.3)
+    genesis_ruby (0.2.4)
       net-http (~> 0.3.2)
       nokogiri (~> 1.14)
 

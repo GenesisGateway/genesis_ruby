@@ -9,9 +9,10 @@ module GenesisSpec
               class ManagedRecurringIndianCardAttributesStub
 
                 include GenesisRuby::Api::Mixins::Requests::RestrictedSetter
-                include GenesisRuby::Api::Mixins::Requests::Financial::PaymentAttributes
                 include GenesisRuby::Api::Mixins::Requests::Financial::Cards::Recurring::
                     ManagedRecurringIndianCardAttributes
+
+                attr_accessor :currency
 
                 public :managed_recurring_indian_card_attributes_structure
 

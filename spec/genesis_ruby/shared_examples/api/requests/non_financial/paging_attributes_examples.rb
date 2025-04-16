@@ -8,7 +8,10 @@ RSpec.shared_examples 'paging attributes examples' do
       it 'with page' do
         request.page = '1'
 
-        expect(request.build_document).to include "page: #{request.page.to_i}"
+        expectation = "<page>#{request.page.to_i}</page>"
+        expectation = "page: #{request.page.to_i}" if request.api_config.format == 'graphql'
+
+        expect(request.build_document).to include expectation
       end
     end
 
@@ -20,7 +23,10 @@ RSpec.shared_examples 'paging attributes examples' do
       it 'with per_page' do
         request.per_page = '1'
 
-        expect(request.build_document).to include "perPage: #{request.per_page.to_i}"
+        expectation = "<per_page>#{request.per_page.to_i}</per_page>"
+        expectation = "perPage: #{request.per_page.to_i}" if request.api_config.format == 'graphql'
+
+        expect(request.build_document).to include expectation
       end
     end
   end

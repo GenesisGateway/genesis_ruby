@@ -3,8 +3,9 @@ module GenesisRuby
     module Requests
       module Financial
         # Void or undo payment transaction request
-        class Void < Base::Financial
+        class Void < Request
 
+          include Mixins::Requests::Financial::BaseAttributes
           include Mixins::Requests::Financial::ReferenceAttributes
 
           protected
@@ -18,10 +19,16 @@ module GenesisRuby
             required_fields.push *%i[transaction_id reference_id]
           end
 
-          # Void transaction request structure
-          def payment_transaction_structure
-            {
-              reference_id: reference_id
+          # Returns the Request transaction structure
+          def populate_structure
+            @tree_structure = {
+              payment_transaction: {
+                transaction_type: transaction_type,
+                transaction_id:   transaction_id,
+                usage:            usage,
+                reference_id:     reference_id,
+                remote_ip:        remote_ip
+              }
             }
           end
 

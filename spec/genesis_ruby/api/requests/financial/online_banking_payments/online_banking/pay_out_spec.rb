@@ -51,39 +51,6 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Onl
     end
   end
 
-  describe 'when payer_bank_phone_number' do
-    it 'with 11 characters value' do
-      request.payer_bank_phone_number = '12345678901'
-
-      expect(request.build_document)
-        .to include "<payer_bank_phone_number>#{request.payer_bank_phone_number}</payer_bank_phone_number>"
-    end
-
-    it 'with 13 characters value' do
-      request.payer_bank_phone_number = '+1234567890123'
-
-      expect(request.build_document)
-        .to include "<payer_bank_phone_number>#{request.payer_bank_phone_number}</payer_bank_phone_number>"
-    end
-
-    it 'without assignment' do
-      expect(request.build_document).to_not include 'payer_bank_phone_number'
-    end
-
-    it 'with empty value' do
-      expect { request.payer_bank_phone_number = nil }.to raise_error GenesisRuby::InvalidArgumentError
-    end
-
-    it 'with invalid min value' do
-      expect { request.payer_bank_phone_number = 1 }.to raise_error GenesisRuby::InvalidArgumentError
-    end
-
-    it 'with invalid max value' do
-      expect { request.payer_bank_phone_number = Faker::Number.number digits: 15 }
-        .to raise_error GenesisRuby::InvalidArgumentError
-    end
-  end
-
   describe 'when document_type' do
     it 'with empty value' do
       request.document_type = nil
@@ -242,6 +209,7 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Onl
   include_examples 'birth date attributes examples'
   include_examples 'document attributes examples'
   include_examples 'financial attributes examples'
+  include_examples 'payer attributes examples'
   include_examples 'payment attributes examples'
   include_examples 'pix attributes examples'
 end

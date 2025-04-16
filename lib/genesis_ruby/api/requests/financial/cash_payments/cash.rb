@@ -12,7 +12,6 @@ module GenesisRuby
             include Api::Mixins::Requests::AddressInfoAttributes
             include Api::Mixins::Requests::DocumentAttributes
             include Api::Mixins::Requests::Financial::AsyncAttributes
-            include Api::Mixins::Requests::Financial::PaymentAttributes
 
             attr_accessor :payment_type
 
@@ -25,6 +24,8 @@ module GenesisRuby
 
             # Cash field validations
             def init_field_validations
+              super
+
               required_fields.push *%i[transaction_id return_success_url return_failure_url amount currency
                payment_type document_id billing_country]
 
@@ -33,19 +34,17 @@ module GenesisRuby
             end
 
             # Cash request attributes structure
-            def payment_transaction_structure # rubocop:disable Metrics/MethodLength
-              payment_attributes_structure.merge(
-                {
-                  return_success_url: return_success_url,
-                  return_failure_url: return_failure_url,
-                  customer_email:     customer_email,
-                  customer_phone:     customer_phone,
-                  payment_type:       payment_type,
-                  document_id:        document_id,
-                  billing_address:    billing_address_parameters_structure,
-                  shipping_address:   shipping_address_parameters_structure
-                }
-              )
+            def payment_transaction_structure
+              {
+                return_success_url: return_success_url,
+                return_failure_url: return_failure_url,
+                customer_email:     customer_email,
+                customer_phone:     customer_phone,
+                payment_type:       payment_type,
+                document_id:        document_id,
+                billing_address:    billing_address_parameters_structure,
+                shipping_address:   shipping_address_parameters_structure
+              }
             end
 
           end

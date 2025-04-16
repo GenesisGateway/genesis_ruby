@@ -11,7 +11,6 @@ module GenesisRuby
             include Mixins::Requests::Financial::Cards::CreditCardAttributes
             include Mixins::Requests::Financial::Cards::TokenizationAttributes
             include Mixins::Requests::Financial::Cards::UcofAttributes
-            include Mixins::Requests::Financial::PaymentAttributes
 
             attr_reader :scheme_tokenized
 
@@ -29,17 +28,16 @@ module GenesisRuby
 
             # Request Field validations
             def init_field_validations
+              super
+
               required_fields.push *%i[transaction_id amount currency]
-              field_values.merge!(
-                { currency: Api::Constants::Currencies::Iso4217.all.map(&:upcase) },
-                credential_on_file_field_validations
-              )
+              field_values.merge! credential_on_file_field_validations
             end
 
             # Credit Card attributes
             def payment_transaction_structure
-              payment_attributes_structure.merge(
-                credit_card_attributes_structure, tokenization_attributes_structure,
+              credit_card_attributes_structure.merge(
+                tokenization_attributes_structure,
                 {
                   account_owner:                             account_owner_attributes_structure,
                   credential_on_file:                        credential_on_file,

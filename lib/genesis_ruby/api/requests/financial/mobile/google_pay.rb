@@ -20,7 +20,6 @@ module GenesisRuby
             include Mixins::Requests::Financial::FundingAttributes
             include Mixins::Requests::Financial::Mobile::GooglePayTokenAttributes
             include Mixins::Requests::Financial::NotificationAttributes
-            include Mixins::Requests::Financial::PaymentAttributes
             include Mixins::Requests::Financial::Threeds::Version2::CommonAttributes
 
             # Define a payment token from a JSON string
@@ -44,8 +43,7 @@ module GenesisRuby
               required_fields.push *%i[transaction_id payment_subtype amount currency token_signature token_signed_key
                 token_signatures token_protocol_version token_signed_message]
 
-              field_values.merge! currency:        Constants::Currencies::Iso4217.all.map(&:upcase),
-                                  payment_subtype: Constants::Transactions::Parameters::Mobile::GooglePay::
+              field_values.merge! payment_subtype: Constants::Transactions::Parameters::Mobile::GooglePay::
                                       PaymentSubtypes.all,
                                   recurring_type:  [Api::Constants::Transactions::Parameters::Recurring::Types::INITIAL]
               field_values.merge! threeds_field_validations, funding_attributes_field_validations
@@ -61,27 +59,25 @@ module GenesisRuby
             end
 
             # Google Pay Payment Transaction Structure
-            def payment_transaction_structure # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
-              payment_attributes_structure.merge(
-                {
-                  payment_subtype:           payment_subtype,
-                  payment_token:             google_pay_token_structure,
-                  customer_email:            customer_email,
-                  customer_phone:            customer_phone,
-                  birth_date:                birth_date,
-                  notification_url:          notification_url,
-                  return_success_url:        return_success_url,
-                  return_failure_url:        return_failure_url,
-                  billing_address:           billing_address_parameters_structure,
-                  shipping_address:          shipping_address_parameters_structure,
-                  business_attributes:       business_attributes_structure,
-                  dynamic_descriptor_params: dynamic_descriptor_structure,
-                  document_id:               document_id,
-                  recurring_type:            recurring_type,
-                  threeds_v2_params:         threeds_v2_common_attributes_structure,
-                  funding:                   funding_attributes_structure
-                }
-              )
+            def payment_transaction_structure # rubocop:disable Metrics/MethodLength
+              {
+                payment_subtype:           payment_subtype,
+                payment_token:             google_pay_token_structure,
+                customer_email:            customer_email,
+                customer_phone:            customer_phone,
+                birth_date:                birth_date,
+                notification_url:          notification_url,
+                return_success_url:        return_success_url,
+                return_failure_url:        return_failure_url,
+                billing_address:           billing_address_parameters_structure,
+                shipping_address:          shipping_address_parameters_structure,
+                business_attributes:       business_attributes_structure,
+                dynamic_descriptor_params: dynamic_descriptor_structure,
+                document_id:               document_id,
+                recurring_type:            recurring_type,
+                threeds_v2_params:         threeds_v2_common_attributes_structure,
+                funding:                   funding_attributes_structure
+              }
             end
 
             private

@@ -10,7 +10,6 @@ module GenesisRuby
             include Api::Mixins::Requests::CustomerAddress::BillingInfoAttributes
             include Api::Mixins::Requests::CustomerAddress::ShippingInfoAttributes
             include Api::Mixins::Requests::Financial::AsyncAttributes
-            include Api::Mixins::Requests::Financial::PaymentAttributes
 
             protected
 
@@ -21,6 +20,8 @@ module GenesisRuby
 
             # Bancontact field validations
             def init_field_validations
+              super
+
               required_fields.push *%i[transaction_id amount currency return_success_url return_failure_url
                 billing_country]
               field_values.merge! currency:        'EUR',
@@ -29,14 +30,12 @@ module GenesisRuby
 
             # Bancontact transaction structure
             def payment_transaction_structure
-              payment_attributes_structure.merge(
-                {
-                  return_success_url: return_success_url,
-                  return_failure_url: return_failure_url,
-                  billing_address:    billing_address_parameters_structure,
-                  shipping_address:   shipping_address_parameters_structure
-                }
-              )
+              {
+                return_success_url: return_success_url,
+                return_failure_url: return_failure_url,
+                billing_address:    billing_address_parameters_structure,
+                shipping_address:   shipping_address_parameters_structure
+              }
             end
 
           end

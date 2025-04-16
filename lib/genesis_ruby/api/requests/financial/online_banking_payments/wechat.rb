@@ -8,7 +8,6 @@ module GenesisRuby
           class Wechat < Base::Financial
 
             include Api::Mixins::Requests::AddressInfoAttributes
-            include Api::Mixins::Requests::Financial::PaymentAttributes
             include Api::Mixins::Requests::Financial::AsyncAttributes
 
             attr_accessor :product_code, :product_num, :product_desc
@@ -30,19 +29,17 @@ module GenesisRuby
 
             # WeChat transaction request structure
             def payment_transaction_structure # rubocop:disable Metrics/MethodLength
-              payment_attributes_structure.merge(
-                {
-                  return_success_url: return_success_url,
-                  return_failure_url: return_failure_url,
-                  product_code:       product_code,
-                  product_num:        product_num,
-                  product_desc:       product_desc,
-                  customer_email:     customer_email,
-                  customer_phone:     customer_phone,
-                  billing_address:    billing_address_parameters_structure,
-                  shipping_address:   shipping_address_parameters_structure
-                }
-              )
+              {
+                return_success_url: return_success_url,
+                return_failure_url: return_failure_url,
+                product_code:       product_code,
+                product_num:        product_num,
+                product_desc:       product_desc,
+                customer_email:     customer_email,
+                customer_phone:     customer_phone,
+                billing_address:    billing_address_parameters_structure,
+                shipping_address:   shipping_address_parameters_structure
+              }
             end
 
           end

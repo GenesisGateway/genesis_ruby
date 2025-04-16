@@ -1,3 +1,43 @@
+0.2.4
+-----
+**Features**:
+
+* Added Tokenization API support:
+  * Tokenize
+  * Detokenize
+  * Token
+  * Cryptogram
+  * Validate token
+  * Delete token
+  * Get Card
+* Added Payer attributes support to Bank Payout
+* Added Beneficiary attributes support to PIX transaction request
+* Added Processed Transactions API support:
+  * Single Processed Transaction
+  * By Date Range
+  * Post By Date Range
+* Added SCA Checker API support
+* Added Retrieval API support:
+  * Single Retrieval
+  * List of Retrievals
+  * By Date Range
+* Added Consumer API support:
+  * Create
+  * Retrieve
+  * Update
+  * Disable
+  * Enable
+  * Get Consumer Cards
+* Added PayU transaction request support
+* Added Post Finance transaction request support
+* Added SafetyPay transaction request support
+* Added TrustlySale transaction request support
+* Added MyBank transaction request support
+* Added InstaDebit transaction request support
+* Added UPI transaction request support
+* Added Sofort transaction request support
+* Added Multibanco transaction request support
+
 0.2.3
 -----
 **Features**:

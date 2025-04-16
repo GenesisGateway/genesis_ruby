@@ -43,6 +43,7 @@ RSpec.describe GenesisRuby::Api::Requests::Base::Financial do
       request.transaction_id = Faker::Internet.uuid
       request.usage          = Faker::Lorem.sentence
       request.remote_ip      = Faker::Internet.ip_v4_address
+      request.currency       = 'EUR'
 
       request
     end
@@ -64,8 +65,9 @@ RSpec.describe GenesisRuby::Api::Requests::Base::Financial do
       expect(request.api_config.url).to eq 'https://staging.api.emerchantpay.net:443/transactions'
     end
 
+    include_examples 'financial attributes examples'
     include_examples 'base request examples'
     include_examples 'financial structure examples'
-    include_examples 'financial attributes examples'
+    include_examples 'payment attributes examples'
   end
 end

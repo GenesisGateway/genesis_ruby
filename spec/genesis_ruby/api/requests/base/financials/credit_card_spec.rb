@@ -21,10 +21,6 @@ RSpec.describe GenesisRuby::Api::Requests::Base::Financials::CreditCard do
     credit_card
   end
 
-  it 'includes payment attributes' do
-    expect(described_class.include?(GenesisRuby::Api::Mixins::Requests::Financial::PaymentAttributes)).to eq true
-  end
-
   it 'includes tokenization attributes' do
     expect(
       described_class.include?(GenesisRuby::Api::Mixins::Requests::Financial::Cards::TokenizationAttributes)

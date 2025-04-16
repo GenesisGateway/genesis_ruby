@@ -150,7 +150,7 @@ RSpec.describe GenesisRuby::Api::Requests::NonFinancial::BillingApi::Transaction
     end
 
     it 'with invalid array value' do
-      expect { request.response_fields = [Faker::Lorem.word] }.to raise_error GenesisRuby::InvalidArgumentError
+      expect { request.response_fields = %w(invalid) }.to raise_error GenesisRuby::InvalidArgumentError
     end
 
     it 'with empty value' do

@@ -10,7 +10,6 @@ module GenesisRuby
             include Api::Mixins::Requests::Financial::AsyncAttributes
             include Api::Mixins::Requests::Financial::PendingPaymentAttributes
             include Api::Mixins::Requests::BirthDateAttributes
-            include Api::Mixins::Requests::Financial::PaymentAttributes
             include Api::Mixins::Requests::Financial::ConsumerIdentifierAttributes
 
             protected
@@ -37,19 +36,17 @@ module GenesisRuby
 
             # Banco do Brasil request structure
             def payment_transaction_structure # rubocop:disable Metrics/MethodLength
-              payment_attributes_structure.merge(
-                {
-                  return_success_url: return_success_url,
-                  return_failure_url: return_failure_url,
-                  return_pending_url: return_pending_url,
-                  consumer_reference: consumer_reference,
-                  national_id:        national_id,
-                  birth_date:         birth_date,
-                  customer_email:     customer_email,
-                  billing_address:    billing_address_parameters_structure,
-                  shipping_address:   shipping_address_parameters_structure
-                }
-              )
+              {
+                return_success_url: return_success_url,
+                return_failure_url: return_failure_url,
+                return_pending_url: return_pending_url,
+                consumer_reference: consumer_reference,
+                national_id:        national_id,
+                birth_date:         birth_date,
+                customer_email:     customer_email,
+                billing_address:    billing_address_parameters_structure,
+                shipping_address:   shipping_address_parameters_structure
+              }
             end
 
           end

@@ -8,8 +8,9 @@ module GenesisSpec
               # Managed Recurring Attributes Stub
               class ManagedRecurringAttributesStub
 
+                attr_accessor :currency
+
                 include GenesisRuby::Api::Mixins::Requests::RestrictedSetter
-                include GenesisRuby::Api::Mixins::Requests::Financial::PaymentAttributes
                 include GenesisRuby::Api::Mixins::Requests::Financial::Cards::Recurring::ManagedRecurringAttributes
 
                 public :managed_recurring_attributes_structure

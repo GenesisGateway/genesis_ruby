@@ -15,8 +15,8 @@ module GenesisRuby
             include Api::Mixins::Requests::BirthDateAttributes
             include Api::Mixins::Requests::DocumentAttributes
             include Api::Mixins::Requests::Financial::AsyncAttributes
+            include Api::Mixins::Requests::Financial::BeneficiaryAttributes
             include Api::Mixins::Requests::Financial::OnlineBankingPayments::PixAttributes
-            include Api::Mixins::Requests::Financial::PaymentAttributes
             include Api::Mixins::Requests::Financial::PendingPaymentAttributes
 
             attr_accessor :gender, :marital_status, :sender_occupation, :nationality, :country_of_origin, :birth_city,
@@ -46,8 +46,7 @@ module GenesisRuby
 
               required_fields.push *%i[transaction_id amount currency document_id]
 
-              field_values.merge! currency:        Api::Constants::Currencies::Iso4217.all.map(&:upcase),
-                                  billing_country: %w(BR),
+              field_values.merge! billing_country: %w(BR),
                                   gender:          Api::Constants::Transactions::Parameters::CashPayments::Genders.all,
                                   marital_status:  Api::Constants::Transactions::Parameters::CashPayments::
                                       MaritalStatuses.all,
@@ -56,28 +55,27 @@ module GenesisRuby
             end
 
             # PayPal request attributes structure
-            def payment_transaction_structure # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
-              payment_attributes_structure.merge(
-                {
-                  return_success_url: return_success_url,
-                  return_failure_url: return_failure_url,
-                  return_pending_url: return_pending_url,
-                  customer_email:     customer_email,
-                  document_id:        document_id,
-                  billing_address:    billing_address_parameters_structure,
-                  shipping_address:   shipping_address_parameters_structure,
-                  birth_date:         birth_date,
-                  gender:             gender,
-                  marital_status:     marital_status,
-                  sender_occupation:  sender_occupation,
-                  nationality:        nationality,
-                  country_of_origin:  country_of_origin,
-                  company_type:       company_type,
-                  company_activity:   company_activity,
-                  incorporation_date: incorporation_date,
-                  mothers_name:       mothers_name
-                }
-              )
+            def payment_transaction_structure # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
+              {
+                return_success_url: return_success_url,
+                return_failure_url: return_failure_url,
+                return_pending_url: return_pending_url,
+                customer_email:     customer_email,
+                document_id:        document_id,
+                billing_address:    billing_address_parameters_structure,
+                shipping_address:   shipping_address_parameters_structure,
+                birth_date:         birth_date,
+                gender:             gender,
+                marital_status:     marital_status,
+                sender_occupation:  sender_occupation,
+                nationality:        nationality,
+                country_of_origin:  country_of_origin,
+                company_type:       company_type,
+                company_activity:   company_activity,
+                incorporation_date: incorporation_date,
+                mothers_name:       mothers_name,
+                beneficiary:        beneficiary_parameters_structure
+              }
             end
 
           end

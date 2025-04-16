@@ -7,7 +7,10 @@ RSpec.shared_examples 'moto attributes examples' do
     it 'with moto attributes' do
       request.moto = true
 
-      expect(request.build_document).to include '<moto>true</moto>'
+      expectation = '<moto>true</moto>'
+      expectation = '"moto": true' if request.instance_variable_get('@builder_interface') == 'json'
+
+      expect(request.build_document).to include expectation
     end
   end
 end

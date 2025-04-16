@@ -8,6 +8,8 @@ module GenesisSpec
           # Financial stub
           class FinancialStub < GenesisRuby::Api::Requests::Base::Financial
 
+            attr_accessor :currency
+
             public :populate_structure
 
             protected

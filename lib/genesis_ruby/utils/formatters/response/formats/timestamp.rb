@@ -11,7 +11,7 @@ module GenesisRuby
 
             # The Response keys that the formatter will be applied to
             def formatting_keys
-              %w(timestamp transactionDate valueDate)
+              %w(timestamp transactionDate valueDate transaction_date post_date)
             end
 
             # Format the given timestamp to DateTime object

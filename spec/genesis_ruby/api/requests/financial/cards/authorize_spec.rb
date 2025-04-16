@@ -30,6 +30,7 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Authorize do
     request.amount             = Faker::Number.decimal(l_digits: 2, r_digits: 2)
     request.currency           = 'EUR'
     request.usage              = Faker::Lorem.sentence
+    request.remote_ip          = Faker::Internet.ip_v4_address
     request.customer_email     = Faker::Internet.email
     request.customer_phone     = Faker::PhoneNumber.cell_phone_in_e164
 
@@ -52,9 +53,11 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Authorize do
   include_examples 'crypto attributes examples'
   include_examples 'document attributes examples'
   include_examples 'dynamic descriptor examples'
+  include_examples 'financial attributes examples'
   include_examples 'funding attributes examples'
   include_examples 'fx rate attributes examples'
   include_examples 'gaming attributes examples'
+  include_examples 'installment attributes examples'
   include_examples 'managed recurring examples'
   include_examples 'moto attributes examples'
   include_examples 'payment attributes examples'
@@ -66,5 +69,4 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Authorize do
   include_examples 'scheme tokenized attributes examples'
   include_examples 'tokenization attributes examples'
   include_examples 'ucof attributes examples'
-  include_examples 'installment attributes examples'
 end
