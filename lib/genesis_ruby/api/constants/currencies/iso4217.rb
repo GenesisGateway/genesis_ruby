@@ -1001,6 +1001,12 @@ module GenesisRuby
               country:  'SAINT VINCENT AND THE GRENADINES',
               exponent: '2'
             },
+            XCG: {
+              name:     'Netherlands Antillean guilder',
+              code:     '532',
+              country:  'Curaçao (CW), Sint Maarten (SX)',
+              exponent: '2'
+            },
             XDR: {
               name:     'SDR (Special Drawing Right)',
               code:     '960',

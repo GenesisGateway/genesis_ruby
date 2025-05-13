@@ -5,7 +5,6 @@ module GenesisRuby
         # Base class used in the Reference transaction requests
         class Reference < Financial
 
-          include Mixins::Requests::Financial::PaymentAttributes
           include Mixins::Requests::Financial::ReferenceAttributes
 
           protected
@@ -25,7 +24,7 @@ module GenesisRuby
           def payment_transaction_structure
             {
               reference_id: reference_id
-            }.merge payment_attributes_structure, reference_transaction_structure
+            }.merge reference_transaction_structure
           end
 
         end

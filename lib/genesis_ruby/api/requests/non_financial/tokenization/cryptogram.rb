@@ -9,6 +9,8 @@ module GenesisRuby
             include Api::Mixins::Requests::NonFinancial::Tokenization::TokenAttributes
             include Api::Mixins::Requests::NonFinancial::Tokenization::TokenizationAttributes
 
+            attr_accessor :transaction_reference
+
             def initialize(configuration, builder_interface = Builder::XML)
               super configuration, builder_interface
 
@@ -21,7 +23,7 @@ module GenesisRuby
             def init_field_validations
               super
 
-              required_fields.push *tokenization_required_fields, *%i[token]
+              required_fields.push *tokenization_required_fields, *%i[token transaction_reference]
             end
 
             # API Request structure
@@ -29,7 +31,8 @@ module GenesisRuby
               {
                 cryptogram_request: tokenization_attributes_structure.merge(
                   {
-                    token: token
+                    token:                 token,
+                    transaction_reference: transaction_reference
                   }
                 )
               }

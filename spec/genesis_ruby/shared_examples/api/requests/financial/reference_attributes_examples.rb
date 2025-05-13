@@ -18,6 +18,7 @@ RSpec.shared_examples 'reference attributes examples' do
   # Validate the given request if requires reference_id
   def required_reference_id?
     request.is_a?(GenesisRuby::Api::Requests::Base::Reference) ||
-      request.is_a?(GenesisRuby::Api::Requests::Financial::Void)
+      request.is_a?(GenesisRuby::Api::Requests::Financial::Void) ||
+      request.is_a?(GenesisRuby::Api::Requests::Financial::Crypto::BitPay::Refund)
   end
 end

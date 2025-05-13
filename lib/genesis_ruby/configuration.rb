@@ -196,6 +196,10 @@ module GenesisRuby
         api_service:  {
           GenesisRuby::Api::Constants::Environments::PRODUCTION => 'prod.api.',
           GenesisRuby::Api::Constants::Environments::STAGING    => 'staging.api.'
+        },
+        kyc_service:  {
+          GenesisRuby::Api::Constants::Environments::PRODUCTION => 'prod.kyc.',
+          GenesisRuby::Api::Constants::Environments::STAGING    => 'staging.kyc.'
         }
       }
     end

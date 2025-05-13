@@ -1,4 +1,6 @@
 RSpec.shared_examples 'tokenization attributes examples' do
+  let(:skip_tokenization_customer_email) { false } unless method_defined? :skip_tokenization_customer_email
+
   describe 'when token attributes' do
     it 'without token' do
       expect(request.build_document).to_not include 'token'
@@ -24,6 +26,8 @@ RSpec.shared_examples 'tokenization attributes examples' do
     end
 
     it 'without customer_email' do
+      skip "#{request.class} doesn't support Customer email" if skip_tokenization_customer_email
+
       request.remember_card  = true
       request.customer_email = nil
 
@@ -43,6 +47,8 @@ RSpec.shared_examples 'tokenization attributes examples' do
     end
 
     it 'without customer_email' do
+      skip "#{request.class} doesn't support Customer email" if skip_tokenization_customer_email
+
       request.consumer_id    = Faker::Number.positive
       request.customer_email = nil
 

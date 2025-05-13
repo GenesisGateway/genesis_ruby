@@ -9,6 +9,7 @@ module GenesisRuby
           class Sale < Requests::Base::Financials::CreditCard
 
             include Mixins::Requests::AddressInfoAttributes
+            include Mixins::Requests::DigitalAssetTypeAttributes
             include Mixins::Requests::DocumentAttributes
             include Mixins::Requests::Financial::Business::BusinessAttributes
             include Mixins::Requests::Financial::Cards::FxRateAttributes
@@ -70,7 +71,8 @@ module GenesisRuby
                 travel:                     travel_data_attributes_structure,
                 funding:                    funding_attributes_structure,
                 installment_plan_id:        installment_plan_id,
-                installment_plan_reference: installment_plan_reference
+                installment_plan_reference: installment_plan_reference,
+                digital_asset_type:         digital_asset_type
               )
             end
 

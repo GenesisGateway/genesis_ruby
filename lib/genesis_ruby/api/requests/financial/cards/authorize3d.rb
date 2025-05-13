@@ -10,6 +10,7 @@ module GenesisRuby
           class Authorize3d < Requests::Base::Financials::CreditCard
 
             include Mixins::Requests::AddressInfoAttributes
+            include Mixins::Requests::DigitalAssetTypeAttributes
             include Mixins::Requests::DocumentAttributes
             include Mixins::Requests::Financial::AsyncAttributes
             include Mixins::Requests::Financial::Business::BusinessAttributes
@@ -25,6 +26,7 @@ module GenesisRuby
             include Mixins::Requests::Financial::GamingAttributes
             include Mixins::Requests::Financial::MotoAttributes
             include Mixins::Requests::Financial::NotificationAttributes
+            include Mixins::Requests::Financial::PreauthorizationAttributes
             include Mixins::Requests::Financial::RiskAttributes
             include Mixins::Requests::Financial::ScaAttributes
             include Mixins::Requests::Financial::Threeds::Version2::CommonAttributes
@@ -67,6 +69,7 @@ module GenesisRuby
                 return_failure_url:         return_failure_url,
                 gaming:                     gaming,
                 moto:                       moto,
+                preauthorization:           preauthorization,
                 crypto:                     crypto,
                 customer_email:             customer_email,
                 customer_phone:             customer_phone,
@@ -86,7 +89,8 @@ module GenesisRuby
                 travel:                     travel_data_attributes_structure,
                 funding:                    funding_attributes_structure,
                 installment_plan_id:        installment_plan_id,
-                installment_plan_reference: installment_plan_reference
+                installment_plan_reference: installment_plan_reference,
+                digital_asset_type:         digital_asset_type
               )
             end
 

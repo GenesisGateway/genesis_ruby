@@ -9,10 +9,7 @@ module GenesisRuby
 
           # Convert amount to ISO-4217 minor currency unit
           def convert
-            format(
-              '%d',
-              (amount * parse_amount(10**currency_exponent))
-            )
+            format '%d', amount * parse_amount(10**currency_exponent)
           end
 
         end

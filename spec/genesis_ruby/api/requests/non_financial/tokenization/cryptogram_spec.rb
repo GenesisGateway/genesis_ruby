@@ -1,6 +1,6 @@
 RSpec.describe GenesisRuby::Api::Requests::NonFinancial::Tokenization::Cryptogram do
   let(:test_required_fields) do
-    %i[consumer_id email token_type token]
+    %i[consumer_id email token_type token transaction_reference]
   end
   let(:config) do
     config             = GenesisRuby::Configuration.new
@@ -16,10 +16,11 @@ RSpec.describe GenesisRuby::Api::Requests::NonFinancial::Tokenization::Cryptogra
   let(:request) do
     request = described_class.new config
 
-    request.consumer_id = Faker::Internet.uuid[..9]
-    request.email       = Faker::Internet.email
-    request.token_type  = Faker::Lorem.word
-    request.token       = Faker::Lorem.characters(number: 36)
+    request.consumer_id           = Faker::Internet.uuid[..9]
+    request.email                 = Faker::Internet.email
+    request.token_type            = Faker::Lorem.word
+    request.token                 = Faker::Lorem.characters(number: 36)
+    request.transaction_reference = Faker::Lorem.word
 
     request
   end
@@ -31,6 +32,14 @@ RSpec.describe GenesisRuby::Api::Requests::NonFinancial::Tokenization::Cryptogra
 
     it 'with XML root element' do
       expect(request.build_document).to include '<cryptogram_request>'
+    end
+  end
+
+  describe 'when transaction_reference' do
+    it 'with value' do
+      request.transaction_reference = value = Faker::Lorem.word
+
+      expect(request.build_document).to include "<transaction_reference>#{value}</transaction_reference>"
     end
   end
 

@@ -73,6 +73,7 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Authorize3d do
   include_examples 'credential on file attributes examples'
   include_examples 'credit card attributes examples'
   include_examples 'crypto attributes examples'
+  include_examples 'digital asset type attributes examples'
   include_examples 'document attributes examples'
   include_examples 'dynamic descriptor examples'
   include_examples 'financial attributes examples'
@@ -85,6 +86,7 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Authorize3d do
   include_examples 'mpi attributes examples'
   include_examples 'notification attributes examples'
   include_examples 'payment attributes examples'
+  include_examples 'preauthorization attributes examples'
   include_examples 'recurring category examples'
   include_examples 'recurring type initial examples'
   include_examples 'risk attributes examples'
@@ -92,5 +94,6 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Authorize3d do
   include_examples 'scheme tokenized attributes examples'
   include_examples 'threeds v2 common attributes examples'
   include_examples 'tokenization attributes examples'
+  include_examples 'tokenization params attributes examples'
   include_examples 'ucof attributes examples'
 end

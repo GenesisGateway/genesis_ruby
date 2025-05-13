@@ -10,6 +10,7 @@ module GenesisRuby
             include Mixins::Requests::Financial::Cards::CredentialOnFileAttributes
             include Mixins::Requests::Financial::Cards::CreditCardAttributes
             include Mixins::Requests::Financial::Cards::TokenizationAttributes
+            include Mixins::Requests::Financial::Cards::TokenizationParamsAttributes
             include Mixins::Requests::Financial::Cards::UcofAttributes
 
             attr_reader :scheme_tokenized
@@ -35,7 +36,7 @@ module GenesisRuby
             end
 
             # Credit Card attributes
-            def payment_transaction_structure
+            def payment_transaction_structure # rubocop:disable Metrics/MethodLength
               credit_card_attributes_structure.merge(
                 tokenization_attributes_structure,
                 {
@@ -43,7 +44,8 @@ module GenesisRuby
                   credential_on_file:                        credential_on_file,
                   credential_on_file_transaction_identifier: credential_on_file_transaction_identifier,
                   credential_on_file_settlement_date:        credential_on_file_settlement_date,
-                  scheme_tokenized:                          scheme_tokenized
+                  scheme_tokenized:                          scheme_tokenized,
+                  tokenization_params:                       tokenization_params_attributes_structure
                 }
               )
             end

@@ -135,7 +135,7 @@ module GenesisRuby
               end
 
               # Attributes Structure
-              def airline_attributes_structure # rubocop:disable RSpec/MethodLength
+              def airline_attributes_structure # rubocop:disable Metrics/MethodLength
                 {
                   ticket_number:               travel_aid_ticket_number,
                   passenger_name:              travel_aid_passenger_name,

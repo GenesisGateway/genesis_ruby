@@ -1,3 +1,41 @@
+0.2.5
+-----
+**Features**:
+
+* Added Incremental Authorize transaction request support
+* Added Preauthorization attributes support to Authorize and Authorize 3D transaction requests
+* Added BitPay Sale, Refund and Payout transaction requests support
+* Added support for the following Gift Card transaction requests:
+  * Fashioncheque
+  * Intersolve
+  * TCS
+* Added Chargeback API support with the following endpoints:
+  * Single/List
+  * By Date Range
+* Added Fraud reports API support with the following endpoints:
+  * Single/List SAFE/TC40
+  * By Date Range
+* Added FX API services support with the following endpoints:
+  * GetRate
+  * GetRates
+  * GetTier
+  * GetTiers
+  * SearchRate
+* Added KYC Create Consumer Registration API request support
+* Added XCG currency support
+* Updated Tokenization Cryptogram API request support with mandatory parameter - transaction_reference
+* Added Digital Asset Type attribute support to the following transaction requests:
+  * Authorize
+  * Authorize 3D
+  * Sale
+  * Sale 3D
+  * Web Payment Form
+* Added African Mobile Sale transaction request support
+* Added Russian Mobile Sale transaction request support
+* Added Credit transaction request support
+* Added Neosurf transaction request support
+* Added Payout transaction request support
+
 0.2.4
 -----
 **Features**:

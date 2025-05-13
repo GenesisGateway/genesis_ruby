@@ -67,6 +67,7 @@ RSpec.describe GenesisRuby::Api::Requests::Wpf::Create do
   include_examples 'base request examples'
   include_examples 'business attributes examples'
   include_examples 'card holder date attributes examples'
+  include_examples 'digital asset type attributes examples'
   include_examples 'dynamic descriptor examples'
   include_examples 'funding attributes examples'
   include_examples 'pending attributes examples'

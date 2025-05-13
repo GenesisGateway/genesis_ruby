@@ -11,6 +11,7 @@ module GenesisRuby
         class Create < Request # rubocop:disable Metrics/ClassLength
 
           include Mixins::Requests::AddressInfoAttributes
+          include Mixins::Requests::DigitalAssetTypeAttributes
           include Mixins::Requests::Financial::AsyncAttributes
           include Mixins::Requests::Financial::Business::BusinessAttributes
           include Mixins::Requests::Financial::Cards::AccountOwnerAttributes
@@ -171,7 +172,8 @@ module GenesisRuby
                 account_owner:             account_owner_attributes_structure,
                 pay_later:                 pay_later,
                 reminders:                 pay_later ? reminders_structure : [],
-                funding:                   funding_attributes_structure
+                funding:                   funding_attributes_structure,
+                digital_asset_type:        digital_asset_type
               }
             }
           end

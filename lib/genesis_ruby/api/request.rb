@@ -116,6 +116,13 @@ module GenesisRuby
         api_config.url = build_request_url({ subdomain: 'api_service', path: request_path })
       end
 
+      # Initializes KYC Service Configuration
+      def init_kyc_service_configuration(options = { request_path: '' })
+        request_path = options.fetch :request_path, ''
+
+        api_config.url = build_request_url({ subdomain: 'kyc_service', path: request_path })
+      end
+
       # Process Everything the variables set previously
       #
       # Step 1: Execute per-field actions

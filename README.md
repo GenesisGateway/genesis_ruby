@@ -1002,13 +1002,19 @@ GenesisRuby::Api::Requests::Financial::Cards::Cencosud
 GenesisRuby::Api::Requests::Financial::Cards::Elo
 GenesisRuby::Api::Requests::Financial::Cards::Naranja
 GenesisRuby::Api::Requests::Financial::Cards::Nativa
+GenesisRuby::Api::Requests::Financial::Cards::Payout
 GenesisRuby::Api::Requests::Financial::Cards::Sale
 GenesisRuby::Api::Requests::Financial::Cards::Sale3d
 GenesisRuby::Api::Requests::Financial::Cards::TarjetaShopping
 
+## Preauthorizations
+GenesisRuby::Api::Requests::Financial::Preauthorizations::IncrementalAuthorize
+
 ## Mobile
 GenesisRuby::Api::Requests::Financial::Mobile::ApplePay
 GenesisRuby::Api::Requests::Financial::Mobile::GooglePay
+GenesisRuby::Api::Requests::Financial::Mobile::AfricanMobileSale
+GenesisRuby::Api::Requests::Financial::Mobile::RussianMobileSale
 
 ## Wallets
 GenesisRuby::Api::Requests::Financial::Wallets::Alipay
@@ -1024,6 +1030,19 @@ GenesisRuby::Api::Requests::Financial::CashPayments::Oxxo
 GenesisRuby::Api::Requests::Financial::CashPayments::PagoFacil
 GenesisRuby::Api::Requests::Financial::CashPayments::Pix
 GenesisRuby::Api::Requests::Financial::CashPayments::Redpagos
+
+## Crypto transactions
+GenesisRuby::Api::Requests::Financial::Crypto::BitPay::Sale
+GenesisRuby::Api::Requests::Financial::Crypto::BitPay::Refund
+GenesisRuby::Api::Requests::Financial::Crypto::BitPay::Payout
+
+## Gift Cards transactions
+GenesisRuby::Api::Requests::Financial::GiftCards::Intersolve
+GenesisRuby::Api::Requests::Financial::GiftCards::Fashioncheque
+GenesisRuby::Api::Requests::Financial::GiftCards::Tcs
+
+## Vouchers
+GenesisRuby::Api::Requests::Financial::Vouchers::Neosurf
 
 # Web Payment Form
 ## Create
@@ -1072,6 +1091,7 @@ GenesisRuby::Api::Requests::Financial::Void
 GenesisRuby::Api::Requests::Financial::Refund
 GenesisRuby::Api::Requests::Financial::Sdd::Refund
 GenesisRuby::Api::Requests::Financial::Sdd::Recurring::RecurringSale
+GenesisRuby::Api::Requests::Financial::Cards::Credit
 
 # Non Financial
 ## Reconcile
@@ -1112,6 +1132,24 @@ GenesisRuby::Api::Requests::NonFinancial::Tokenization::Cryptogram
 GenesisRuby::Api::Requests::NonFinancial::Tokenization::ValidateToken
 GenesisRuby::Api::Requests::NonFinancial::Tokenization::DeleteToken
 GenesisRuby::Api::Requests::NonFinancial::Tokenization::GetCard
+
+## KYC Know Your Customer API
+GenesisRuby::Api::Requests::NonFinancial::Kyc::ConsumerRegistration::Create
+
+## Chargeback API
+GenesisRuby::Api::Requests::NonFinancial::Fraud::Chargeback::Transaction
+GenesisRuby::Api::Requests::NonFinancial::Fraud::Chargeback::DateRange
+
+## SAFE/TC40 Report
+GenesisRuby::Api::Requests::NonFinancial::Fraud::Reports::Transaction
+GenesisRuby::Api::Requests::NonFinancial::Fraud::Reports::DateRange
+
+## Fx API
+GenesisRuby::Api::Requests::NonFinancial::Fx::GetTiers
+GenesisRuby::Api::Requests::NonFinancial::Fx::GetTier
+GenesisRuby::Api::Requests::NonFinancial::Fx::GetRates
+GenesisRuby::Api::Requests::NonFinancial::Fx::GetRate
+GenesisRuby::Api::Requests::NonFinancial::Fx::SearchRate
 
 ```
 
