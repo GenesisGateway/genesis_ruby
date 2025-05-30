@@ -51,7 +51,6 @@ module GenesisRuby
                 super
 
                 required_fields.push *%i[
-                  customer_information_structure
                   customer_unique_id
                   customer_registration_date
                   customer_registration_ip_address
@@ -59,7 +58,8 @@ module GenesisRuby
 
                 field_values.merge! device_fingerprint_type: [1, 2, 3],
                                     profile_action_type:     [1, 2],
-                                    profile_current_status:  [0, 1, 2, 3],
+                                    profile_current_status:
+                                      GenesisRuby::Api::Constants::NonFinancial::Kyc::ProfileCurrentStatuses.all,
                                     industry_type:           [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
                 field_values.merge! customer_information_required_field_values
               end

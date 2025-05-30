@@ -1,3 +1,11 @@
+0.2.6
+-----
+**Features**:
+
+* Added Partial Reversal transaction request support
+* Added KYC Remote Identity Verification API request support
+* Added KYC Update Consumer Registration API request support
+
 0.2.5
 -----
 **Features**:

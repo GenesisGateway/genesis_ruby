@@ -1009,6 +1009,7 @@ GenesisRuby::Api::Requests::Financial::Cards::TarjetaShopping
 
 ## Preauthorizations
 GenesisRuby::Api::Requests::Financial::Preauthorizations::IncrementalAuthorize
+GenesisRuby::Api::Requests::Financial::Preauthorizations::PartialReversal
 
 ## Mobile
 GenesisRuby::Api::Requests::Financial::Mobile::ApplePay
@@ -1135,6 +1136,8 @@ GenesisRuby::Api::Requests::NonFinancial::Tokenization::GetCard
 
 ## KYC Know Your Customer API
 GenesisRuby::Api::Requests::NonFinancial::Kyc::ConsumerRegistration::Create
+GenesisRuby::Api::Requests::NonFinancial::Kyc::ConsumerRegistration::Update
+GenesisRuby::Api::Requests::NonFinancial::Kyc::Verifications::RemoteIdentity
 
 ## Chargeback API
 GenesisRuby::Api::Requests::NonFinancial::Fraud::Chargeback::Transaction

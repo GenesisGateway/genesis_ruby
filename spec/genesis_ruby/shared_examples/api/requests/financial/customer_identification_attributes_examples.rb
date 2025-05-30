@@ -32,7 +32,7 @@ RSpec.shared_examples 'customer identification attributes examples' do
     end
 
     it 'with customer_identification_issuing_country' do
-      request.customer_identification_issuing_country = value = Faker::Address.country_code
+      request.customer_identification_issuing_country = value = GenesisRuby::Utils::Country::COUNTRIES.keys.sample
 
       expect(request.build_document)
         .to include "<customer_identification>\n    <issuing_country>#{value}</issuing_country>\n  </customer_identification>\n" # rubocop:disable Layout/LineLength

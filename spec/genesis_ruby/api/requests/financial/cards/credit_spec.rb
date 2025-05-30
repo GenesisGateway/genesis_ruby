@@ -39,7 +39,7 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Credit do
       request.customer_identification_subtype         =
         GenesisRuby::Api::Constants::Transactions::Parameters::CustomerIdentification::CustomerIdentificationSubtype.all.sample # rubocop:disable Layout/LineLength
       request.customer_identification_document_id     = Faker::Alphanumeric.alphanumeric(number: 9)
-      request.customer_identification_issuing_country = Faker::Address.country_code
+      request.customer_identification_issuing_country = GenesisRuby::Utils::Country::COUNTRIES.keys.sample
       request.account_first_name                      = Faker::Name.first_name
       request.account_middle_name                     = Faker::Name.middle_name
       request.account_last_name                       = Faker::Name.last_name
