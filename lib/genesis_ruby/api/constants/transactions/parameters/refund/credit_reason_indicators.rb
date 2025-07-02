@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -10,16 +12,16 @@ module GenesisRuby
               extend Api::Mixins::Constants::Common
 
               # Passenger Transport Ancillary Cancellation
-              INDICATOR_A = 'A'.freeze
+              INDICATOR_A = 'A'
 
               # Travel Ticket and Passenger Transport
-              INDICATOR_B = 'B'.freeze
+              INDICATOR_B = 'B'
 
               # Partial Refund of Travel Ticket
-              INDICATOR_P = 'P'.freeze
+              INDICATOR_P = 'P'
 
               # Other
-              INDICATOR_O = 'O'.freeze
+              INDICATOR_O = 'O'
 
             end
           end

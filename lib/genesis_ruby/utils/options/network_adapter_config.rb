@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/utils/options/base'
 require 'genesis_ruby/errors/invalid_argument_error'
 require 'base64'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   # Base Genesis Ruby Error
   class Error < StandardError

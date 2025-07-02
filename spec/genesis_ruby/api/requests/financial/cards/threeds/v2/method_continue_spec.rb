@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Threeds::V2::MethodContinue do
   let(:test_required_fields) { %i[amount transaction_timestamp] }
   let(:timestamp) do

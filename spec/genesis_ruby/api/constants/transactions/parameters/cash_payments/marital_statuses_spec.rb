@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/constants/transactions/parameters/cash_payments/marital_statuses'
 
 RSpec.describe GenesisRuby::Api::Constants::Transactions::Parameters::CashPayments::MaritalStatuses do

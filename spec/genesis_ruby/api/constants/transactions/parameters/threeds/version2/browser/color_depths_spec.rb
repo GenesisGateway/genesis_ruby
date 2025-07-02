@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/constants/transactions/parameters/threeds/version2/browser/color_depths'
 require 'spec/genesis_ruby/shared_examples/api/constants/common_examples'
 

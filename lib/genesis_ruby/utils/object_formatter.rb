@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/errors/object_formatter_error'
 
 module GenesisRuby

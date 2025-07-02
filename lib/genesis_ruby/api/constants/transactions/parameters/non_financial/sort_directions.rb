@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -10,10 +12,10 @@ module GenesisRuby
               extend Mixins::Constants::Common
 
               # Ascending sort
-              ASCENDING_SORT  = 'asc'.freeze
+              ASCENDING_SORT  = 'asc'
 
               # Descending sort
-              DESCENDING_SORT = 'desc'.freeze
+              DESCENDING_SORT = 'desc'
 
             end
           end

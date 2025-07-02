@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'card holder date attributes examples' do
   describe 'when threeds card holder date validations' do
     let(:test_date) { Faker::Date.forward(days: 1).strftime('%d-%m-%Y') }

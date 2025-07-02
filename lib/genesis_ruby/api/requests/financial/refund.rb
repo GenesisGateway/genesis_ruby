@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/constants/transactions/parameters/refund/bank_account_types'
 require 'genesis_ruby/api/constants/transactions/parameters/refund/credit_reason_indicators'
 require 'genesis_ruby/api/constants/transactions/parameters/refund/ticket_change_indicators'

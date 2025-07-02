@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -10,13 +12,13 @@ module GenesisRuby
               extend Mixins::Constants::Common
 
               # C: for Checking accounts
-              CHECKING      = 'C'.freeze
+              CHECKING      = 'C'
 
               # S: for Savings accounts
-              SAVINGS       = 'S'.freeze
+              SAVINGS       = 'S'
 
               # I: for International accounts
-              INTERNATIONAL = 'I'.freeze
+              INTERNATIONAL = 'I'
 
             end
           end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -12,10 +14,10 @@ module GenesisRuby
                   extend Mixins::Constants::Common
 
                   # First Time
-                  FIRST_TIME = 'first_time'.freeze
+                  FIRST_TIME = 'first_time'
 
                   # Reordered
-                  REORDERED  = 'reordered'.freeze
+                  REORDERED  = 'reordered'
 
                 end
               end

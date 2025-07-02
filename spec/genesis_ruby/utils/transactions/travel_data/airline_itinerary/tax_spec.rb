@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/utils/transactions/travel_data/airline_itinerary/tax'
 
 RSpec.describe GenesisRuby::Utils::Transactions::TravelData::AirlineItinerary::Tax do

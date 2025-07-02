@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'bank attributes examples' do
   describe 'when bank attributes' do
     it 'when build_document with bic element' do

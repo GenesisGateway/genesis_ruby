@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -9,22 +11,22 @@ module GenesisRuby
             extend Mixins::Constants::Common
 
             # Exemption Low Value
-            LOW_VALUE                = 'low_value'.freeze
+            LOW_VALUE                = 'low_value'
 
             # Exemption Low Risk
-            LOW_RISK                 = 'low_risk'.freeze
+            LOW_RISK                 = 'low_risk'
 
             # Exemption Trusted Merchant
-            TRUSTED_MERCHANT         = 'trusted_merchant'.freeze
+            TRUSTED_MERCHANT         = 'trusted_merchant'
 
             # Exemption Corporate Payment
-            CORPORATE_PAYMENT        = 'corporate_payment'.freeze
+            CORPORATE_PAYMENT        = 'corporate_payment'
 
             # Exemption Delegated Authentication
-            DELEGATED_AUTHENTICATION = 'delegated_authentication'.freeze
+            DELEGATED_AUTHENTICATION = 'delegated_authentication'
 
             # Exemption Auth Network Outage
-            AUTH_NETWORK_OUTAGE      = 'auth_network_outage'.freeze
+            AUTH_NETWORK_OUTAGE      = 'auth_network_outage'
 
           end
         end

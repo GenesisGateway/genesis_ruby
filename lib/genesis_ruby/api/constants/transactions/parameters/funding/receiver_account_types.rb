@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -10,31 +12,31 @@ module GenesisRuby
               extend Api::Mixins::Constants::Common
 
               # Routing Transit Number and Bank Account Number
-              RTN_AND_BANK_ACCOUNT_NUMBER = 'rtn_and_bank_account_number'.freeze
+              RTN_AND_BANK_ACCOUNT_NUMBER = 'rtn_and_bank_account_number'
 
               # International Bank Account Number
-              IBAN                        = 'iban'.freeze
+              IBAN                        = 'iban'
 
               # Card Account
-              CARD_ACCOUNT                = 'card_account'.freeze
+              CARD_ACCOUNT                = 'card_account'
 
               # Electronic Mail
-              EMAIL                       = 'email'.freeze
+              EMAIL                       = 'email'
 
               # Phone Number
-              PHONE_NUMBER                = 'phone_number'.freeze
+              PHONE_NUMBER                = 'phone_number'
 
               # Bank Account Number and Business Identifier Code
-              BANK_ACCOUNT_NUMBER_AND_BIC = 'bank_account_number_and_bic'.freeze
+              BANK_ACCOUNT_NUMBER_AND_BIC = 'bank_account_number_and_bic'
 
               # Wallet ID
-              WALLET_ID                   = 'wallet_id'.freeze
+              WALLET_ID                   = 'wallet_id'
 
               # Unique Identifier for Social Network Application
-              SOCIAL_NETWORK_ID           = 'social_network_id'.freeze
+              SOCIAL_NETWORK_ID           = 'social_network_id'
 
               # Any other type
-              OTHER                       = 'other'.freeze
+              OTHER                       = 'other'
 
             end
           end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/requests/base/financials/credit_card'
 require 'spec/genesis_ruby/stubs/api/requests/base/financials/credit_card_stub'
 

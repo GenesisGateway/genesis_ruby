@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/constants/currencies/iso4217'
 require 'genesis_ruby/utils/money/conversions/amount_to_exponent'
 require 'genesis_ruby/utils/money/conversions/exponent_to_amount'

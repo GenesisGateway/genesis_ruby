@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/constants/endpoints'
 
 RSpec.describe GenesisRuby::Api::Constants::Endpoints do

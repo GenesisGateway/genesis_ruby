@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/utils/transactions/travel_data/airline_itinerary/leg'
 
 RSpec.describe GenesisRuby::Utils::Transactions::TravelData::AirlineItinerary::Leg do

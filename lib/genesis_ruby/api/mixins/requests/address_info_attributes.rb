@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/mixins/requests/customer_address/billing_info_attributes'
 require 'genesis_ruby/api/mixins/requests/customer_address/shipping_info_attributes'
 require 'genesis_ruby/api/mixins/requests/customer_address/customer_info_attributes'

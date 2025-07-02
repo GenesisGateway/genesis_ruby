@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Constants::Environments do
   it 'has valid production environment' do
     expect(described_class::PRODUCTION).to eq('production')

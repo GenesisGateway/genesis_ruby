@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -12,10 +14,10 @@ module GenesisRuby
                   extend Mixins::Constants::Common
 
                   # No Suspicious Observed
-                  NO_SUSPICIOUS_OBSERVED = 'no_suspicious_observed'.freeze
+                  NO_SUSPICIOUS_OBSERVED = 'no_suspicious_observed'
 
                   # Suspicious Observed
-                  SUSPICIOUS_OBSERVED    = 'suspicious_observed'.freeze
+                  SUSPICIOUS_OBSERVED    = 'suspicious_observed'
 
                 end
               end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -10,589 +12,589 @@ module GenesisRuby
               extend Api::Mixins::Constants::Common
 
               # Aditya Birla Idea Payments Bank
-              ABPB = 'ABPB'.freeze
+              ABPB = 'ABPB'
 
               # Airtel Payments Bank
-              AIRP = 'AIRP'.freeze
+              AIRP = 'AIRP'
 
               # Allahabad Bank
-              ALLA = 'ALLA'.freeze
+              ALLA = 'ALLA'
 
               # Andhra Bank
-              ANDB = 'ANDB'.freeze
+              ANDB = 'ANDB'
 
               # Bank of Baroda - Retail Banking
-              BARB_R = 'BARB_R'.freeze
+              BARB_R = 'BARB_R'
 
               # Bank of Bahrein and Kuwait
-              BBKM = 'BBKM'.freeze
+              BBKM = 'BBKM'
 
               # Dena Bank
-              BKDN = 'BKDN'.freeze
+              BKDN = 'BKDN'
 
               # Bank of India
-              BKID = 'BKID'.freeze
+              BKID = 'BKID'
 
               # Central Bank of India
-              CBIN = 'CBIN'.freeze
+              CBIN = 'CBIN'
 
               # City Union Bank
-              CIUB = 'CIUB'.freeze
+              CIUB = 'CIUB'
 
               # Canara Bank
-              CNRB = 'CNRB'.freeze
+              CNRB = 'CNRB'
 
               # Corporation Bank
-              CORP = 'CORP'.freeze
+              CORP = 'CORP'
 
               # Cosmos Co-operative Bank
-              COSB = 'COSB'.freeze
+              COSB = 'COSB'
 
               # Catholic Syrian Bank
-              CSBK = 'CSBK'.freeze
+              CSBK = 'CSBK'
 
               # Development Bank of Singapore
-              DBSS = 'DBSS'.freeze
+              DBSS = 'DBSS'
 
               # DCB Bank
-              DCBL = 'DCBL'.freeze
+              DCBL = 'DCBL'
 
               # Deutsche Bank
-              DEUT = 'DEUT'.freeze
+              DEUT = 'DEUT'
 
               # Dhanlaxmi Bank
-              DLXB = 'DLXB'.freeze
+              DLXB = 'DLXB'
 
               # Equitas Small Finance Bank
-              ESFB = 'ESFB'.freeze
+              ESFB = 'ESFB'
 
               # Federal Bank
-              FDRL = 'FDRL'.freeze
+              FDRL = 'FDRL'
 
               # HDFC Bank
-              HDFC = 'HDFC'.freeze
+              HDFC = 'HDFC'
 
               # IDBI
-              IBKL = 'IBKL'.freeze
+              IBKL = 'IBKL'
 
               # ICICI Bank
-              ICIC = 'ICIC'.freeze
+              ICIC = 'ICIC'
 
               # IDFC FIRST Bank
-              IDFB = 'IDFB'.freeze
+              IDFB = 'IDFB'
 
               # Indian Bank
-              IDIB = 'IDIB'.freeze
+              IDIB = 'IDIB'
 
               # Indusind Bank
-              INDB = 'INDB'.freeze
+              INDB = 'INDB'
 
               # Indian Overseas Bank
-              IOBA = 'IOBA'.freeze
+              IOBA = 'IOBA'
 
               # Jammu and Kashmir Bank
-              JAKA = 'JAKA'.freeze
+              JAKA = 'JAKA'
 
               # Janata Sahakari Bank (Pune)
-              JSBP = 'JSBP'.freeze
+              JSBP = 'JSBP'
 
               # Karnataka Bank
-              KARB = 'KARB'.freeze
+              KARB = 'KARB'
 
               # Kotak Mahindra Bank
-              KKBK = 'KKBK'.freeze
+              KKBK = 'KKBK'
 
               # Karur Vysya Bank
-              KVBL = 'KVBL'.freeze
+              KVBL = 'KVBL'
 
               # Lakshmi Vilas Bank - Corporate Banking
-              LAVB_C = 'LAVB_C'.freeze
+              LAVB_C = 'LAVB_C'
 
               # Lakshmi Vilas Bank - Retail Banking
-              LAVB_R = 'LAVB_R'.freeze
+              LAVB_R = 'LAVB_R'
 
               # Bank of Maharashtra
-              MAHB = 'MAHB'.freeze
+              MAHB = 'MAHB'
 
               # NKGSB Co-operative Bank
-              NKGS = 'NKGS'.freeze
+              NKGS = 'NKGS'
 
               # Oriental Bank of Commerce
-              ORBC = 'ORBC'.freeze
+              ORBC = 'ORBC'
 
               # Punjab & Maharashtra Co-operative Bank
-              PMCB = 'PMCB'.freeze
+              PMCB = 'PMCB'
 
               # Punjab & Sind Bank
-              PSIB = 'PSIB'.freeze
+              PSIB = 'PSIB'
 
               # Punjab National Bank - Retail Banking
-              PUNB_R = 'PUNB_R'.freeze
+              PUNB_R = 'PUNB_R'
 
               # RBL Bank
-              RATN = 'RATN'.freeze
+              RATN = 'RATN'
 
               # State Bank of Bikaner and Jaipur
-              SBBJ = 'SBBJ'.freeze
+              SBBJ = 'SBBJ'
 
               # State Bank of Hyderabad
-              SBHY = 'SBHY'.freeze
+              SBHY = 'SBHY'
 
               # State Bank of India
-              SBIN = 'SBIN'.freeze
+              SBIN = 'SBIN'
 
               # State Bank of Mysore
-              SBMY = 'SBMY'.freeze
+              SBMY = 'SBMY'
 
               # State Bank of Travancore
-              SBTR = 'SBTR'.freeze
+              SBTR = 'SBTR'
 
               # Standard Chartered Bank
-              SCBL = 'SCBL'.freeze
+              SCBL = 'SCBL'
 
               # South Indian Bank
-              SIBL = 'SIBL'.freeze
+              SIBL = 'SIBL'
 
               # State Bank of Patiala
-              STBP = 'STBP'.freeze
+              STBP = 'STBP'
 
               # Shamrao Vithal Co-operative Bank
-              SVCB = 'SVCB'.freeze
+              SVCB = 'SVCB'
 
               # Syndicate Bank
-              SYNB = 'SYNB'.freeze
+              SYNB = 'SYNB'
 
               # Tamilnadu Mercantile Bank
-              TMBL = 'TMBL'.freeze
+              TMBL = 'TMBL'
 
               # Tamilnadu State Apex Co-operative Bank
-              TNSC = 'TNSC'.freeze
+              TNSC = 'TNSC'
 
               # Union Bank of India
-              UBIN = 'UBIN'.freeze
+              UBIN = 'UBIN'
 
               # UCO Bank
-              UCBA = 'UCBA'.freeze
+              UCBA = 'UCBA'
 
               # United Bank of India
-              UTBI = 'UTBI'.freeze
+              UTBI = 'UTBI'
 
               # Axis Bank
-              UTIB = 'UTIB'.freeze
+              UTIB = 'UTIB'
 
               # Vijaya Bank
-              VIJB = 'VIJB'.freeze
+              VIJB = 'VIJB'
 
               # Yes Bank
-              YESB = 'YESB'.freeze
+              YESB = 'YESB'
 
               # Santander
-              SN = 'SN'.freeze
+              SN = 'SN'
 
               # Itau
-              IT = 'IT'.freeze
+              IT = 'IT'
 
               # Bradesco
-              BR = 'BR'.freeze
+              BR = 'BR'
 
               # Banco do Brasil
-              BB = 'BB'.freeze
+              BB = 'BB'
 
               # Webpay
-              WP = 'WP'.freeze
+              WP = 'WP'
 
               # Bancomer
-              BN = 'BN'.freeze
+              BN = 'BN'
 
               # Bancontact
-              BCT = 'BCT'.freeze
+              BCT = 'BCT'
 
               # PSE
-              PS = 'PS'.freeze
+              PS = 'PS'
 
               # Banco de Occidente
-              BO = 'BO'.freeze
+              BO = 'BO'
 
               # Industrial and Commercial Bank of China
-              ICBC = 'ICBC'.freeze
+              ICBC = 'ICBC'
 
               # China Merchants Bank
-              CMBCHINA = 'CMBCHINA'.freeze
+              CMBCHINA = 'CMBCHINA'
 
               # Agricultural Bank of China
-              ABC = 'ABC'.freeze
+              ABC = 'ABC'
 
               # China Construction Bank
-              CCB = 'CCB'.freeze
+              CCB = 'CCB'
 
               # Bank of Beijing
-              BCCB = 'BCCB'.freeze
+              BCCB = 'BCCB'
 
               # Bank of Communications
-              BOCO = 'BOCO'.freeze
+              BOCO = 'BOCO'
 
               # Industrial Bank
-              CIB = 'CIB'.freeze
+              CIB = 'CIB'
 
               # Bank of Nanjing
-              NJCB = 'NJCB'.freeze
+              NJCB = 'NJCB'
 
               # China Minsheng Banking Corp Ltd
-              CMBC = 'CMBC'.freeze
+              CMBC = 'CMBC'
 
               # China Everbright Bank
-              CEB = 'CEB'.freeze
+              CEB = 'CEB'
 
               # Bank of China
-              BOC = 'BOC'.freeze
+              BOC = 'BOC'
 
               # Ping An Bank
-              PINGANBANK = 'PINGANBANK'.freeze
+              PINGANBANK = 'PINGANBANK'
 
               # Bank of East Asia
-              HKBEA = 'HKBEA'.freeze
+              HKBEA = 'HKBEA'
 
               # Bank of Ningbo
-              NBCB = 'NBCB'.freeze
+              NBCB = 'NBCB'
 
               # China Citic Bank
-              ECITIC = 'ECITIC'.freeze
+              ECITIC = 'ECITIC'
 
               # Shenzhen Development Bank
-              SDB = 'SDB'.freeze
+              SDB = 'SDB'
 
               # Guangdong Development Bank
-              GDB = 'GDB'.freeze
+              GDB = 'GDB'
 
               # Bank of Shanghai
-              SHB = 'SHB'.freeze
+              SHB = 'SHB'
 
               # Shanghai Pudong Development Bank
-              SPDB = 'SPDB'.freeze
+              SPDB = 'SPDB'
 
               # China Post
-              POST = 'POST'.freeze
+              POST = 'POST'
 
               # BEIJING RURAL COMMERCIAL BANK
-              BJRCB = 'BJRCB'.freeze
+              BJRCB = 'BJRCB'
 
               # Hua Xia Bank Co Ltd'
-              HXB = 'HXB'.freeze
+              HXB = 'HXB'
 
               # Bank of Hangzhou
-              HZBANK = 'HZBANK'.freeze
+              HZBANK = 'HZBANK'
 
               # Shanghai Rural Commercial Bank
-              SRCB = 'SRCB'.freeze
+              SRCB = 'SRCB'
 
               # DirectDebit
-              DB = 'DB'.freeze
+              DB = 'DB'
 
               # Caixa
-              CA = 'CA'.freeze
+              CA = 'CA'
 
               # Interac Combined Pay-in
-              CPI = 'CPI'.freeze
+              CPI = 'CPI'
 
               # Servipag
-              SP = 'SP'.freeze
+              SP = 'SP'
 
               # Bank of Beijing
-              BOB = 'BOB'.freeze
+              BOB = 'BOB'
 
               # Bank for economic construction
-              CCD = 'CCD'.freeze
+              CCD = 'CCD'
 
               # China Merchants Bank
-              CMB = 'CMB'.freeze
+              CMB = 'CMB'
 
               # China Citic Bank
-              CITIC = 'CITIC'.freeze
+              CITIC = 'CITIC'
 
               # China Postal Savings Bank
-              PSBC = 'PSBC'.freeze
+              PSBC = 'PSBC'
 
               # China Union Pay
-              QUICKPAY = 'QUICKPAY'.freeze
+              QUICKPAY = 'QUICKPAY'
 
               # Shengzhen Ping An Bank
-              SPABANK = 'SPABANK'.freeze
+              SPABANK = 'SPABANK'
 
               # Yinlian Bank
-              YLB = 'YLB'.freeze
+              YLB = 'YLB'
 
               # Bancolombia
-              PC = 'PC'.freeze
+              PC = 'PC'
 
               # Bank Central Asia
-              DK_BCA_IB = 'DK_BCA_IB'.freeze
+              DK_BCA_IB = 'DK_BCA_IB'
 
               # Bank Rakyat Indonesia
-              DK_BRI_IB = 'DK_BRI_IB'.freeze
+              DK_BRI_IB = 'DK_BRI_IB'
 
               # BTN Bank
-              BTN_IDR = 'BTN_IDR'.freeze
+              BTN_IDR = 'BTN_IDR'
 
               # CIMB Clicks Indonesia
-              DK_CIMBCLICKS_IB = 'DK_CIMBCLICKS_IB'.freeze
+              DK_CIMBCLICKS_IB = 'DK_CIMBCLICKS_IB'
 
               # Danamon Bank
-              DK_DANAMON_IB = 'DK_DANAMON_IB'.freeze
+              DK_DANAMON_IB = 'DK_DANAMON_IB'
 
               # Mandiri Bank
-              MDR_IDR = 'MDR_IDR'.freeze
+              MDR_IDR = 'MDR_IDR'
 
               # Permata Bank
-              DK_PERMATANET_IB = 'DK_PERMATANET_IB'.freeze
+              DK_PERMATANET_IB = 'DK_PERMATANET_IB'
 
               # Virtual Account Bank
-              VA = 'VA'.freeze
+              VA = 'VA'
 
               # Netbanking
-              NB = 'NB'.freeze
+              NB = 'NB'
 
               # UPI
-              UI = 'UI'.freeze
+              UI = 'UI'
 
               # Spei
-              SE = 'SE'.freeze
+              SE = 'SE'
 
               # Banorte
-              BQ = 'BQ'.freeze
+              BQ = 'BQ'
 
               # 7-eleven stores
-              CASH_711 = 'CASH-711'.freeze
+              CASH_711 = 'CASH-711'
 
               # Affin Bank
-              FPX_ABB = 'FPX_ABB'.freeze
-              AFFIN_EPG = 'AFFIN-EPG'.freeze
+              FPX_ABB = 'FPX_ABB'
+              AFFIN_EPG = 'AFFIN-EPG'
 
               # Alliance Bank
-              FPX_ABMB = 'FPX_ABMB'.freeze
+              FPX_ABMB = 'FPX_ABMB'
 
               # Am Online
-              FPX_AMB = 'FPX_AMB'.freeze
-              AMB_W2W = 'AMB-W2W'.freeze
+              FPX_AMB = 'FPX_AMB'
+              AMB_W2W = 'AMB-W2W'
 
               # Bank Islam
-              FPX_BIMB  = 'FPX_BIMB'.freeze
-              BANKISLAM = 'BANKISLAM'.freeze
+              FPX_BIMB  = 'FPX_BIMB'
+              BANKISLAM = 'BANKISLAM'
 
               # Bank Muamalat
-              FPX_BMMB = 'FPX_BMMB'.freeze
+              FPX_BMMB = 'FPX_BMMB'
 
               # Bank Rakyat
-              FPX_BKRM = 'FPX_BKRM'.freeze
+              FPX_BKRM = 'FPX_BKRM'
 
               # Bank Simpanan Nasional
-              FPX_BSN = 'FPX_BSN'.freeze
+              FPX_BSN = 'FPX_BSN'
 
               # CIMB Clicks Bank
-              CIMB_MYR       = 'CIMB_MYR'.freeze
-              FPX_CIMBCLICKS = 'FPX_CIMBCLICKS'.freeze
-              CIMB_CLICKS    = 'CIMB-CLICKS'.freeze
+              CIMB_MYR       = 'CIMB_MYR'
+              FPX_CIMBCLICKS = 'FPX_CIMBCLICKS'
+              CIMB_CLICKS    = 'CIMB-CLICKS'
 
               # FPX
-              FPX = 'FPX'.freeze
+              FPX = 'FPX'
 
               # HLB Connect
-              FPX_HLB = 'FPX_HLB'.freeze
-              HLB_ONL = 'HLB-ONL'.freeze
+              FPX_HLB = 'FPX_HLB'
+              HLB_ONL = 'HLB-ONL'
 
               # Hong Leong Bank
-              HLE_MYR = 'HLE_MYR'.freeze
+              HLE_MYR = 'HLE_MYR'
 
               # jmpay
-              JOMPAY_PHP = 'jompay.php'.freeze
+              JOMPAY_PHP = 'jompay.php'
 
               # Kuwait Finance House
-              FPX_KFH = 'FPX_KFH'.freeze
+              FPX_KFH = 'FPX_KFH'
 
               # May Bank
-              MAY_MYR = 'MAY_MYR'.freeze
+              MAY_MYR = 'MAY_MYR'
 
               # Maybank2u
-              FPX_MB2U = 'FPX_MB2U'.freeze
-              MB2U = 'MB2U'.freeze
+              FPX_MB2U = 'FPX_MB2U'
+              MB2U = 'MB2U'
 
               # OCBC Bank
-              FPX_OCBC = 'FPX_OCBC'.freeze
+              FPX_OCBC = 'FPX_OCBC'
 
               # PBeBank
-              FPX_PBB = 'FPX_PBB'.freeze
-              PUBLICKBANK = 'PUBLICKBANK'.freeze
+              FPX_PBB = 'FPX_PBB'
+              PUBLICKBANK = 'PUBLICKBANK'
 
               # Public Bank
-              PBE_MYR = 'PBE_MYR'.freeze
+              PBE_MYR = 'PBE_MYR'
 
               # RHB Bank
-              RHB_MYR = 'RHB_MYR'.freeze
+              RHB_MYR = 'RHB_MYR'
 
               # RHB Now
-              FPX_RHB = 'FPX_RHB'.freeze
-              RHB_ONL = 'RHB-ONL'.freeze
+              FPX_RHB = 'FPX_RHB'
+              RHB_ONL = 'RHB-ONL'
 
               # Stand Chart Bank
-              FPX_SCB = 'FPX_SCB'.freeze
+              FPX_SCB = 'FPX_SCB'
 
               # UOB Bank
-              FPX_UOB = 'FPX_UOB'.freeze
+              FPX_UOB = 'FPX_UOB'
 
               # BCP
-              BC = 'BC'.freeze
+              BC = 'BC'
 
               # Interbank
-              IB = 'IB'.freeze
+              IB = 'IB'
 
               # Pago Efectivo
-              EF = 'EF'.freeze
+              EF = 'EF'
 
               # BBVA
-              BP = 'BP'.freeze
+              BP = 'BP'
 
               # PagoExpress
-              PE = 'PE'.freeze
+              PE = 'PE'
 
               # Post Finance
-              PF = 'PF'.freeze
+              PF = 'PF'
 
               # Bangkok Bank
-              BBL_IB_U = 'BBL_IB_U'.freeze
+              BBL_IB_U = 'BBL_IB_U'
 
               # Kasikornbank PAYPLUS
-              KBANK_PAYPLUS = 'KBANK_PAYPLUS'.freeze
+              KBANK_PAYPLUS = 'KBANK_PAYPLUS'
 
               # Bank of Ayudhya (Krungsri)
-              BAY_IB_U = 'BAY_IB_U'.freeze
+              BAY_IB_U = 'BAY_IB_U'
 
               # Krung Thai Bank
-              KTB_IB_U = 'KTB_IB_U'.freeze
+              KTB_IB_U = 'KTB_IB_U'
 
               # Siam Commercial Bank
-              SCB_IB_U = 'SCB_IB_U'.freeze
+              SCB_IB_U = 'SCB_IB_U'
 
               # Abitab
-              AI = 'AI'.freeze
+              AI = 'AI'
 
               # Dragonpay
-              DRAGONPAY = 'DRAGONPAY'.freeze
+              DRAGONPAY = 'DRAGONPAY'
 
               # SG eNETS
-              ENETS_D = 'ENETS-D'.freeze
+              ENETS_D = 'ENETS-D'
 
               # singpost
-              SINGPOST_PHP = 'singpost.php'.freeze
+              SINGPOST_PHP = 'singpost.php'
 
               # VTC-Pay VPBank
-              VTCP_VPBANK = 'VTCP_VPBANK'.freeze
+              VTCP_VPBANK = 'VTCP_VPBANK'
 
               # VTC-Pay ABBANK
-              VTCP_ABBANK = 'VTCP_ABBANK'.freeze
+              VTCP_ABBANK = 'VTCP_ABBANK'
 
               # VTC-Pay ACB
-              VTCP_ACB = 'VTCP_ACB'.freeze
+              VTCP_ACB = 'VTCP_ACB'
 
               # VTC-Pay Agribank
-              VTCP_AGRIBANK = 'VTCP_AGRIBANK'.freeze
+              VTCP_AGRIBANK = 'VTCP_AGRIBANK'
 
               # VTC-Pay BACABANK
-              VTCP_BACABANK = 'VTCP_BACABANK'.freeze
+              VTCP_BACABANK = 'VTCP_BACABANK'
 
               # VTC-Pay BIDV
-              VTCP_BIDV = 'VTCP_BIDV'.freeze
+              VTCP_BIDV = 'VTCP_BIDV'
 
               # VTC-Pay BVB
-              VTCP_BVB = 'VTCP_BVB'.freeze
+              VTCP_BVB = 'VTCP_BVB'
 
               # VTC-Pay DongABank
-              VTCP_DONGABANK = 'VTCP_DONGABANK'.freeze
+              VTCP_DONGABANK = 'VTCP_DONGABANK'
 
               # VTC-Pay Eximbank
-              VTCP_EXIMBANK = 'VTCP_EXIMBANK'.freeze
+              VTCP_EXIMBANK = 'VTCP_EXIMBANK'
 
               # VTC-Pay GPBank
-              VTCP_GPBANK = 'VTCP_GPBANK'.freeze
+              VTCP_GPBANK = 'VTCP_GPBANK'
 
               # VTC-Pay HDBank
-              VTCP_HDBANK = 'VTCP_HDBANK'.freeze
+              VTCP_HDBANK = 'VTCP_HDBANK'
 
               # VTC-Pay LienVietPostBank
-              VTCP_LVPB = 'VTCP_LVPB'.freeze
+              VTCP_LVPB = 'VTCP_LVPB'
 
               # VTC-Pay MB
-              VTCP_MB = 'VTCP_MB'.freeze
+              VTCP_MB = 'VTCP_MB'
 
               # VTC-Pay MaritimeBank
-              VTCP_MARITIMEBANK = 'VTCP_MARITIMEBANK'.freeze
+              VTCP_MARITIMEBANK = 'VTCP_MARITIMEBANK'
 
               # VTC-Pay NamABank
-              VTCP_NAMABANK = 'VTCP_NAMABANK'.freeze
+              VTCP_NAMABANK = 'VTCP_NAMABANK'
 
               # VTC-Pay Navibank
-              VTCP_NAVIBANK = 'VTCP_NAVIBANK'.freeze
+              VTCP_NAVIBANK = 'VTCP_NAVIBANK'
 
               # VTC-Pay Oceanbank
-              VTCP_OCEANBANK = 'VTCP_OCEANBANK'.freeze
+              VTCP_OCEANBANK = 'VTCP_OCEANBANK'
 
               # VTC-Pay PGBank
-              VTCP_PGBANK = 'VTCP_PGBANK'.freeze
+              VTCP_PGBANK = 'VTCP_PGBANK'
 
               # VTC-Pay PHUONGDONG
-              VTCP_PHUONGDONG = 'VTCP_PHUONGDONG'.freeze
+              VTCP_PHUONGDONG = 'VTCP_PHUONGDONG'
 
               # VTC-Pay SHB
-              VTCP_SHB = 'VTCP_SHB'.freeze
+              VTCP_SHB = 'VTCP_SHB'
 
               # VTC-Pay Sacombank
-              VTCP_SACOMBANK = 'VTCP_SACOMBANK'.freeze
+              VTCP_SACOMBANK = 'VTCP_SACOMBANK'
 
               # VTC-Pay SaigonBank
-              VTCP_SAIGONBANK = 'VTCP-SAIGONBANK'.freeze
+              VTCP_SAIGONBANK = 'VTCP-SAIGONBANK'
 
               # VTC-Pay SeaABank
-              VTCP_SEAABANK = 'VTCP_SEAABANK'.freeze
+              VTCP_SEAABANK = 'VTCP_SEAABANK'
 
               # VTC-Pay Techcombank
-              VTCP_TECHCOMBANK = 'VTCP_TECHCOMBANK'.freeze
+              VTCP_TECHCOMBANK = 'VTCP_TECHCOMBANK'
 
               # VTC-Pay TienPhong Bank
-              VTCP_TIENPHONGBANK = 'VTCP_TIENPHONGBANK'.freeze
+              VTCP_TIENPHONGBANK = 'VTCP_TIENPHONGBANK'
 
               # VTC-Pay VIB
-              VTCP_VIB = 'VTCP_VIB'.freeze
+              VTCP_VIB = 'VTCP_VIB'
 
               # VTC-Pay VietABank
-              VTCP_VIETABANK = 'VTCP_VIETABANK'.freeze
+              VTCP_VIETABANK = 'VTCP_VIETABANK'
 
               # VTC-Pay Vietcombank
-              VTCP_VIETCOMBANK = 'VTCP_VIETCOMBANK'.freeze
+              VTCP_VIETCOMBANK = 'VTCP_VIETCOMBANK'
 
               # VTC-Pay Vietinbank
-              VTCP_VIETINBANK = 'VTCP_VIETINBANK'.freeze
+              VTCP_VIETINBANK = 'VTCP_VIETINBANK'
 
               # DBS
-              DBS = 'ENETS-D_DBS'.freeze
+              DBS = 'ENETS-D_DBS'
 
               # UOB
-              UOB = 'ENETS-D_UOB'.freeze
+              UOB = 'ENETS-D_UOB'
 
               # OCBC
-              OCBC = 'ENETS-D_OCBC'.freeze
+              OCBC = 'ENETS-D_OCBC'
 
               # SCB
-              SCB = 'ENETS-D_SCB'.freeze
+              SCB = 'ENETS-D_SCB'
 
               # BL
-              BLK = 'BLK'.freeze
+              BLK = 'BLK'
 
               # TrueLayer
-              TRL = 'TRL'.freeze
+              TRL = 'TRL'
 
               # Latipay
-              PID = 'PID'.freeze
+              PID = 'PID'
 
               # Latipay
-              POLI = 'POLI'.freeze
+              POLI = 'POLI'
 
             end
           end

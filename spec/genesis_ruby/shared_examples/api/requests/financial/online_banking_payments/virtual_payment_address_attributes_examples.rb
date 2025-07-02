@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'virtual payment address attributes examples' do
   describe 'when virtual payment address attributes' do
     it 'without virtual payment address attributes' do

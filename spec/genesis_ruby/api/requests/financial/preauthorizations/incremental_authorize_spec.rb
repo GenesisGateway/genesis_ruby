@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::Financial::Preauthorizations::IncrementalAuthorize do
   let(:test_required_fields) { %i[transaction_id reference_id amount currency] }
   let(:test_required_field_values) { %i[currency] }

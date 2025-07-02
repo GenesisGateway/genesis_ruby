@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/utils/options/reminder'
 require 'genesis_ruby/api/constants/transactions/parameters/wpf/reminder_channels'
 

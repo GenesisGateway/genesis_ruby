@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::Financial::Crypto::BitPay::Sale do
   let(:skip_customer_phone) { true }
   let(:test_required_fields) do

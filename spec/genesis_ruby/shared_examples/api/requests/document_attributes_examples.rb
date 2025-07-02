@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'document attributes examples' do
   describe 'when document attributes' do
     it 'without document_id' do

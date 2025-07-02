@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'fx rate attributes examples' do
   describe 'when fx rate attributes' do
     it 'without fx_rate_id' do

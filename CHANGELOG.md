@@ -1,3 +1,21 @@
+0.2.7
+-----
+**Features**:
+
+* Added KYC CPF Check API request support
+* Added KYC CNPJ Check API request support
+* Added KYC Verification Register API request support
+* Added KYC Verification Status API request support
+* Added KYC Identity Document Download API request support
+* Added KYC Make Call API request support
+* Added KYC Update Call API request support
+* Added KYC Identity Document Upload API request support
+* Added KYC Transaction Create API request support
+* Added KYC Transaction Update API request support
+* Added Global Payout transaction request support
+* Added Create and Retrieve Payee API requests support
+* Added Create, Retrieve, List Payee Account API requests support
+
 0.2.6
 -----
 **Features**:

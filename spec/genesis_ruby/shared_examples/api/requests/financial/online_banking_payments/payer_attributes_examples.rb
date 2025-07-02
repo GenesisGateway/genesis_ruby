@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'payer attributes examples' do
   describe 'when beneficiary attributes' do
     describe 'when payer_document_id' do

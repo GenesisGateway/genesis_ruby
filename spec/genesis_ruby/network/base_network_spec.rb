@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Network::BaseNetwork do
   let(:configuration) { GenesisRuby::Configuration.new }
 

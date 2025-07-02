@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec/genesis_ruby/stubs/api/requests/financial/funding_attributes_stub'
 
 # rubocop:disable RSpec/MultipleMemoizedHelpers

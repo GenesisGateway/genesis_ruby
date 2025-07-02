@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'business attributes examples' do
   let(:business_attributes) do
     ## Airlines Air Carriers

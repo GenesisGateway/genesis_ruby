@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -10,10 +12,10 @@ module GenesisRuby
               extend Api::Mixins::Constants::Common
 
               # Change to existing Ticket
-              INDICATOR_C = 'C'.freeze
+              INDICATOR_C = 'C'
 
               # New ticket
-              INDICATOR_N = 'N'.freeze
+              INDICATOR_N = 'N'
 
             end
           end

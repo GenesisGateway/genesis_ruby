@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/constants/transactions/parameters/mpi_protocol_versions'
 require 'genesis_ruby/api/constants/transactions/parameters/mpi_protocol_sub_versions'
 

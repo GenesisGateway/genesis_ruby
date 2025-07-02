@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -12,25 +14,25 @@ module GenesisRuby
                   extend Mixins::Constants::Common
 
                   # Goods
-                  GOODS              = 'goods'.freeze
+                  GOODS              = 'goods'
 
                   # Service
-                  SERVICE            = 'service'.freeze
+                  SERVICE            = 'service'
 
                   # Acceptance check
-                  CHECK_ACCEPTANCE   = 'check_acceptance'.freeze
+                  CHECK_ACCEPTANCE   = 'check_acceptance'
 
                   # Funding account
-                  ACCOUNT_FUNDING    = 'account_funding'.freeze
+                  ACCOUNT_FUNDING    = 'account_funding'
 
                   # Cash quasi
-                  QUASI_CASH         = 'quasi_cash'.freeze
+                  QUASI_CASH         = 'quasi_cash'
 
                   # Prepaid activation
-                  PREPAID_ACTIVATION = 'prepaid_activation'.freeze
+                  PREPAID_ACTIVATION = 'prepaid_activation'
 
                   # Load
-                  LOAN               = 'loan'.freeze
+                  LOAN               = 'loan'
 
                 end
               end

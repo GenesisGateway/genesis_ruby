@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -10,49 +12,49 @@ module GenesisRuby
               extend Api::Mixins::Constants::Common
 
               # Document ID type - birthdate certificate
-              BIRTH_DATE                  = 'birth_date'.freeze
+              BIRTH_DATE                  = 'birth_date'
 
               # Document ID type - unspecified
-              UNSPECIFIED                 = 'unspecified'.freeze
+              UNSPECIFIED                 = 'unspecified'
 
               # Document ID type - national
-              NATIONAL                    = 'national'.freeze
+              NATIONAL                    = 'national'
 
               # Document ID type - passport number
-              PASSPORT_NUMBER             = 'passport_number'.freeze
+              PASSPORT_NUMBER             = 'passport_number'
 
               # Document ID type - driver license
-              DRIVER_LICENSE              = 'driver_license'.freeze
+              DRIVER_LICENSE              = 'driver_license'
 
               # Document ID type - tax
-              TAX                         = 'tax'.freeze
+              TAX                         = 'tax'
 
               # Document ID type - company registration number
-              COMPANY_REGISTRATION_NUMBER = 'company_registration_number'.freeze
+              COMPANY_REGISTRATION_NUMBER = 'company_registration_number'
 
               # Document ID type - proxy
-              PROXY                       = 'proxy'.freeze
+              PROXY                       = 'proxy'
 
               # Document ID type - social security number
-              SOCIAL_SECURITY_NUMBER      = 'social_security_number'.freeze
+              SOCIAL_SECURITY_NUMBER      = 'social_security_number'
 
               # Document ID type - alien registration number
-              ALIEN_REGISTRATION_NUMBER   = 'alien_registration_number'.freeze
+              ALIEN_REGISTRATION_NUMBER   = 'alien_registration_number'
 
               # Document ID type - law enforcement
-              LAW_ENFORCEMENT             = 'law_enforcement'.freeze
+              LAW_ENFORCEMENT             = 'law_enforcement'
 
               # Document ID type - military
-              MILITARY                    = 'military'.freeze
+              MILITARY                    = 'military'
 
               # Document ID type - travel
-              TRAVEL                      = 'travel'.freeze
+              TRAVEL                      = 'travel'
 
               # Document ID type - email
-              EMAIL                       = 'email'.freeze
+              EMAIL                       = 'email'
 
               # Document ID type - phone number
-              PHONE_NUMBER                = 'phone_number'.freeze
+              PHONE_NUMBER                = 'phone_number'
 
             end
           end

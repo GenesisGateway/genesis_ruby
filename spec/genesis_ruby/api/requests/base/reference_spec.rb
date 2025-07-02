@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/requests/base/reference'
 require 'spec/genesis_ruby/stubs/api/requests/base/reference_stub'
 

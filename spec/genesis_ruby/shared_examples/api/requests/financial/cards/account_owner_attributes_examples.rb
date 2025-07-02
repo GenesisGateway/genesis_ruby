@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'account owner attributes examples' do
   describe 'when account owner attributes' do
     describe 'without initialization' do

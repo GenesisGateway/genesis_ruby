@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'request examples' do |environment, endpoint|
   describe "with #{environment} #{endpoint} endpoints" do
     genesis_configuration             = GenesisRuby::Configuration.new

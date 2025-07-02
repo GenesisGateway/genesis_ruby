@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/constants/transactions/parameters/online_banking/bank_code_currencies'
 
 RSpec.describe GenesisRuby::Api::Constants::Transactions::Parameters::OnlineBanking::BankCodeCurrencies do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -9,9 +11,9 @@ module GenesisRuby
 
               extend Mixins::Constants::Common
 
-              CARD_PRESENT     = 'card_present'.freeze
-              CARD_NOT_PRESENT = 'card_not_present'.freeze
-              ALL              = 'all'.freeze
+              CARD_PRESENT     = 'card_present'
+              CARD_NOT_PRESENT = 'card_not_present'
+              ALL              = 'all'
 
             end
           end

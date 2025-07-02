@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'birth date attributes examples' do
   describe 'when birth date attributes' do
     it 'without birth_date attributes' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec/genesis_ruby/stubs/api/requests/financial/threeds/version2/card_holder_account_stub'
 
 RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Threeds::Version2::CardHolderAccount do

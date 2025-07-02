@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/errors/invalid_argument_error'
 
 module GenesisRuby

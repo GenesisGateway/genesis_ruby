@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'mode attributes examples' do
   describe 'when mode attributes' do
     it 'with valid value' do

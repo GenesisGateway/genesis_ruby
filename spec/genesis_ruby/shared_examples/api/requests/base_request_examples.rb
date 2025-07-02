@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'base request examples' do
   let(:test_required_fields) { [] } unless method_defined? :test_required_fields
   let(:test_required_field_values) { [] } unless method_defined? :test_required_field_values

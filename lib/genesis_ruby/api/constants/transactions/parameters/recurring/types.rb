@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -10,14 +12,14 @@ module GenesisRuby
               extend Mixins::Constants::Common
 
               # Indication for an Initial Recurring Transaction. Respond to Init_Recurring
-              INITIAL    = 'initial'.freeze
+              INITIAL    = 'initial'
 
               # Indication for a Managed Recurring Transaction. Respond to Managed Recurring transactions.
-              MANAGED    = 'managed'.freeze
+              MANAGED    = 'managed'
 
               # Indication for a Subsequent Transaction on the Initial Recurring.
               # Respond to subsequent Recurring payments.
-              SUBSEQUENT = 'subsequent'.freeze
+              SUBSEQUENT = 'subsequent'
 
             end
           end

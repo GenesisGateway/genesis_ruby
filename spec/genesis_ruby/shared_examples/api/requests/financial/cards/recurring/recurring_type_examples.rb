@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'recurring type examples' do
   describe 'when recurring type' do
     it 'with initial recurring type' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Sofort do
   let(:test_required_fields) do
     %i[transaction_id remote_ip amount currency customer_email billing_country]

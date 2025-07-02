@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'sca attributes examples' do
   let(:exemption) { GenesisRuby::Api::Constants::Transactions::Parameters::ScaExemptions::AUTH_NETWORK_OUTAGE }
   let(:uuid) { Faker::Internet.uuid }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # rubocop:disable Layout/LineLength
 require 'genesis_ruby/api/constants/date_time_formats'
 require 'genesis_ruby/api/constants/transactions/parameters/threeds/version2/card_holder_account/update_indicators'

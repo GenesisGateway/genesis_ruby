@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -10,16 +12,16 @@ module GenesisRuby
               extend Mixins::Constants::Common
 
               # Payment Type INITIAL
-              INITIAL      = 'initial'.freeze
+              INITIAL      = 'initial'
 
               # Payment Type SUBSEQUENT
-              SUBSEQUENT   = 'subsequent'.freeze
+              SUBSEQUENT   = 'subsequent'
 
               # Payment Type MODIFICATION
-              MODIFICATION = 'modification'.freeze
+              MODIFICATION = 'modification'
 
               # Payment Type CANCELLATION
-              CANCELLATION = 'cancellation'.freeze
+              CANCELLATION = 'cancellation'
 
             end
           end

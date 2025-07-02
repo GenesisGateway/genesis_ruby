@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -12,16 +14,16 @@ module GenesisRuby
                   extend Mixins::Constants::Common
 
                   # Don't have any preferences related to the Challenge flow (default)
-                  NO_PREFERENCE          = 'no_preference'.freeze
+                  NO_PREFERENCE          = 'no_preference'
 
                   # I prefer that a Challenge flow does not take place
-                  NO_CHALLENGE_REQUESTED = 'no_challenge_requested'.freeze
+                  NO_CHALLENGE_REQUESTED = 'no_challenge_requested'
 
                   # A request for the Challenge flow to take place
-                  PREFERENCE             = 'preference'.freeze
+                  PREFERENCE             = 'preference'
 
                   # A Challenge flow must take place to fulfill a mandate
-                  MANDATE                = 'mandate'.freeze
+                  MANDATE                = 'mandate'
 
                 end
               end

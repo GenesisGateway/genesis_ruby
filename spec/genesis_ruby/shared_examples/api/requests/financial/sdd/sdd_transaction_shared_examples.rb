@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'sdd transaction shared examples' do
   let(:skip_customer_phone) { true }
   let(:skip_customer_email) { true }

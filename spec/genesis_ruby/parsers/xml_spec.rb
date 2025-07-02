@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Parsers::Xml do
   let(:xml_parser) { described_class.new }
   let(:fixtures_path) { "#{File.dirname(File.dirname(__FILE__))}/fixtures" }

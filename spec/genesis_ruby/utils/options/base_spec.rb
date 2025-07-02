@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/utils/options/base'
 
 RSpec.describe GenesisRuby::Utils::Options::Base do

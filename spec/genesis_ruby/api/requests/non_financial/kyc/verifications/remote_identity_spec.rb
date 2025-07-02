@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::NonFinancial::Kyc::Verifications::RemoteIdentity do
   let(:config) do
     config             = GenesisRuby::Configuration.new
@@ -38,11 +40,6 @@ RSpec.describe GenesisRuby::Api::Requests::NonFinancial::Kyc::Verifications::Rem
     it 'with all required attributes' do
       expect { request.build_document }.to_not raise_error
     end
-
-    it 'with diffierent expiry_date format' do
-      request.expiry_date = '31-12-2025'
-      expect(request.build_document).to include '"expiry_date": "2025-12-31"'
-    end
   end
 
   describe 'when only required attributes' do
@@ -68,30 +65,7 @@ RSpec.describe GenesisRuby::Api::Requests::NonFinancial::Kyc::Verifications::Rem
   describe 'when invalid request' do
     let(:request) { described_class.new(config) }
 
-    it 'with none of the requred attributes' do
-      expect { request.build_document }.to raise_error GenesisRuby::ParameterError
-    end
-
-    it 'with invalid email format' do
-      expect { request.email = 'invalid_email' }.to raise_error GenesisRuby::InvalidArgumentError
-    end
-
-    it 'with invalid country code' do
-      request.country = 'XX'
-      expect { request.build_document }.to raise_error GenesisRuby::ParameterError
-    end
-
-    it 'with invalid backside_proof_required' do
-      request.backside_proof_required = 'maybe'
-      expect { request.build_document }.to raise_error GenesisRuby::ParameterError
-    end
-
-    it 'with invalid document_supported_types' do
-      expect { request.document_supported_types = ['invalid_type'] }.to raise_error GenesisRuby::InvalidArgumentError
-    end
-
-    it 'with valid backside_proof_required as string' do
-      request.backside_proof_required = 'true'
+    it 'with none of the required attributes' do
       expect { request.build_document }.to raise_error GenesisRuby::ParameterError
     end
 
@@ -115,5 +89,6 @@ RSpec.describe GenesisRuby::Api::Requests::NonFinancial::Kyc::Verifications::Rem
   end
 
   include_examples 'base request examples'
+  include_examples 'verification attributes examples'
   include_examples 'versioned request examples'
 end

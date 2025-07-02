@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Requests
@@ -41,10 +43,11 @@ module GenesisRuby
             def process_request_parameters
               super
 
-              request_path.sub!(':tier_id', tier_id)
-              request_path.sub!(':id', id)
+              processed_path = request_path.dup
+                                           .gsub(':tier_id', tier_id.to_s)
+                                           .gsub(':id', id.to_s)
 
-              init_api_gateway_configuration request_path: "#{version}/#{request_path}", include_token: false
+              init_api_gateway_configuration request_path: "#{version}/#{processed_path}", include_token: false
             end
 
           end

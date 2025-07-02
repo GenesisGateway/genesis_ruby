@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/errors/response_error'
 require 'genesis_ruby/parser'
 require 'genesis_ruby/api/constants/states'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'credential on file attributes examples' do
   describe 'when credential_on_files' do
     it 'without attributes' do

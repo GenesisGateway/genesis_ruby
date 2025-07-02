@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Utils::Formatters::Response::Formats::Timestamp do
   let(:timestamp_format) { described_class.new }
 

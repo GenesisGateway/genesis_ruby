@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'payment attributes examples' do
   describe 'when payment attributes' do
     let(:currency) do

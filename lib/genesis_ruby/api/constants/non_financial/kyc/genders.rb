@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -9,10 +11,10 @@ module GenesisRuby
             extend Mixins::Constants::Common
 
             # Male
-            MALE = 'M'.freeze
+            MALE = 'M'
 
             # Female
-            FEMALE = 'F'.freeze
+            FEMALE = 'F'
 
           end
         end

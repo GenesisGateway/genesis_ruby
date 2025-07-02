@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'processing type attributes examples' do
   describe 'when processing_type attributes' do
     it 'with valid value' do

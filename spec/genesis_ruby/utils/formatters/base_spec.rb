@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec/genesis_ruby/stubs/utils/formatters/base_stub'
 
 RSpec.describe GenesisRuby::Utils::Formatters::Base do

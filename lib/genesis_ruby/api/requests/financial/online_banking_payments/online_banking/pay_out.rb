@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/constants/transactions/parameters/online_banking/bank_account_types'
 require 'genesis_ruby/api/constants/transactions/parameters/online_banking/payout_payment_types'
 

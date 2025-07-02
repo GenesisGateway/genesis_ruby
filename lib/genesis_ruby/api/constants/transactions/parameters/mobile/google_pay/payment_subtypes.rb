@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -11,13 +13,13 @@ module GenesisRuby
                 extend Mixins::Constants::Common
 
                 # Google Pay authorize payment subtype
-                AUTHORIZE           = 'authorize'.freeze
+                AUTHORIZE           = 'authorize'
 
                 # Google Pay init_recurring_sale payment subtype
-                INIT_RECURRING_SALE = 'init_recurring_sale'.freeze
+                INIT_RECURRING_SALE = 'init_recurring_sale'
 
                 # Google Pay sale payment subtype
-                SALE                = 'sale'.freeze
+                SALE                = 'sale'
 
               end
             end

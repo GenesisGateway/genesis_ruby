@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'recurring category examples' do
   describe 'when recurring category' do
     it 'with valid value' do

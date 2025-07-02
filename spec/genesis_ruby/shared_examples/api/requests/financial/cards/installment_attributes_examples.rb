@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'installment attributes examples' do
   describe 'when Installment Attributes' do
     it 'when installment_plan_id without value' do

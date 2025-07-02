@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/constants/non_financial/kyc/profile_current_statuses'
 
 RSpec.describe GenesisRuby::Api::Requests::NonFinancial::Kyc::ConsumerRegistration::Create do
@@ -120,20 +122,9 @@ RSpec.describe GenesisRuby::Api::Requests::NonFinancial::Kyc::ConsumerRegistrati
         expect { request.build_document }.to raise_error GenesisRuby::ParameterError
       end
     end
-
-    describe 'when invalid customer_information_attributes data' do
-      it 'with setting invalid document type' do
-        request.document_type = 'invalid_doc_type'
-        expect { request.build_document }.to raise_error(GenesisRuby::ParameterError)
-      end
-
-      it 'with setting invalid gender' do
-        request.gender = 'invalid_gender'
-        expect { request.build_document }.to raise_error(GenesisRuby::ParameterError)
-      end
-    end
   end
 
   include_examples 'base request examples'
   include_examples 'versioned request examples'
+  include_examples 'customer information attributes examples'
 end

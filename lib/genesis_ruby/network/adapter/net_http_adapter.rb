@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/network/adapter/base_adapter'
 require 'genesis_ruby/errors/network_error'
 require 'net/http'
@@ -65,6 +67,8 @@ module GenesisRuby
         # Path accessor that secure always string return value
         def path
           path = @uri&.path
+
+          path += "?#{@uri.query}" if @uri.query
 
           path.empty? ? '/' : path
         end

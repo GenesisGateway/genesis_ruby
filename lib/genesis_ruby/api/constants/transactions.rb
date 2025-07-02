@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/mixins/constants/common'
 
 module GenesisRuby
@@ -9,366 +11,369 @@ module GenesisRuby
         extend Mixins::Constants::Common
 
         # Account Verification
-        ACCOUNT_VERIFICATION = 'account_verification'.freeze
+        ACCOUNT_VERIFICATION = 'account_verification'
 
         # African Mobile Payout, or otherwise known as Disbursement, is an APM used to process Mobile network operator
         # payments. It is an async payment method and will be approved once the payment is processed with the Mobile
         # network operator
-        AFRICAN_MOBILE_PAYOUT = 'african_mobile_payout'.freeze
+        AFRICAN_MOBILE_PAYOUT = 'african_mobile_payout'
 
         # African Mobile Sale, otherwise known as Charge, is an APM used to process Mobile network operator payments.
         # It is an async payment method and will be approved once the payment is processed with the Mobile network
         # operator
-        AFRICAN_MOBILE_SALE = 'african_mobile_sale'.freeze
+        AFRICAN_MOBILE_SALE = 'african_mobile_sale'
 
         # Alipay is an oBeP-style alternative payment method that allows you to pay directly with your ebank account.
         # After initiating a transaction Alipay will redirect you to their page.
         # There you will see a picture of a QR code, which you will have to scan with your Alipay mobile application.
-        ALIPAY = 'alipay'.freeze
+        ALIPAY = 'alipay'
 
         # Apple pay is payment method working with apple devices
-        APPLE_PAY = 'apple_pay'.freeze
+        APPLE_PAY = 'apple_pay'
 
         # Argencard is a debit or credit card used in Argentina. It allows online shoppers to pay offline
         # for their online purchases at over 150,000 physical outlets.
-        ARGENCARD = 'argencard'.freeze
+        ARGENCARD = 'argencard'
 
         # Aura is a local Brazilian credit card.
-        AURA = 'aura'.freeze
+        AURA = 'aura'
 
         # A standard Authorization
-        AUTHORIZE = 'authorize'.freeze
+        AUTHORIZE = 'authorize'
 
         # 3D-Secure Authorization
-        AUTHORIZE_3D = 'authorize3d'.freeze
+        AUTHORIZE_3D = 'authorize3d'
 
         # Baloto is a cash payment option in Colombia. It allows the customers to receive a voucher at check-out.
         # The voucher can then be paid in any of the Via Boleto offices in cash.
-        BALOTO = 'baloto'.freeze
+        BALOTO = 'baloto'
 
         # Bancomer offers two options for payments in Mexico, cash payment and bank transfer.
-        BANCOMER = 'bancomer'.freeze
+        BANCOMER = 'bancomer'
 
         # Bancontact is a local Belgian debit card scheme.
         # All Belgian debit cards are co-branded Bancontact and Maestro.
-        BANCONTACT = 'bcmc'.freeze
+        BANCONTACT = 'bcmc'
 
         # Banco de Occidente is a cash payment method for Colombia
-        BANCO_DE_OCCIDENTE = 'banco_de_occidente'.freeze
+        BANCO_DE_OCCIDENTE = 'banco_de_occidente'
 
         # Banco do Brasil offers online bank transfer payment service.
-        BANCO_DO_BRASIL = 'banco_do_brasil'.freeze
+        BANCO_DO_BRASIL = 'banco_do_brasil'
 
         # BitPay Payout is a crypto currency payout method where merchants are requesting
         # payouts in FIAT currency and the funds are transfered in Bitcoin equivalent to a crypto wallet address.
-        BITPAY_PAYOUT = 'bitpay_payout'.freeze
+        BITPAY_PAYOUT = 'bitpay_payout'
 
         # BitPay Refund is a custom refund method which will handle the asynchronous BitPay refund workflow.
         # BitPay refunds can only be done on former transactions. Therefore, the reference id for the
         # corresponding BitPay Sale transaction is mandatory.
-        BITPAY_REFUND = 'bitpay_refund'.freeze
+        BITPAY_REFUND = 'bitpay_refund'
 
         # BitPay is a cryptocurrency payments provider supporting blockchain payments
         # with Bitcoin (BTC) and BitcoinCash (BCH).
-        BITPAY_SALE = 'bitpay_sale'.freeze
+        BITPAY_SALE = 'bitpay_sale'
 
         # Boleto is a payment service in Brazil
-        BOLETO = 'boleto'.freeze
+        BOLETO = 'boleto'
 
         # Bradesco is a payment service in Brazil
-        BRADESCO = 'bradesco'.freeze
+        BRADESCO = 'bradesco'
 
         # Cabal is a local debit/credit card brand in Argentina which can be used for online purchases.
-        CABAL = 'cabal'.freeze
+        CABAL = 'cabal'
 
         # Capture settles a transaction which has been authorized before.
-        CAPTURE = 'capture'.freeze
+        CAPTURE = 'capture'
 
         # Cash payment methods allow customers to pay bills and online purchases in cash at convenient
         # physical locations such as stores, banks, ATMs, even pharmacies in some countries.
-        CASH = 'cash'.freeze
+        CASH = 'cash'
 
         # Voucher-based payment
-        CASHU = 'cashu'.freeze
+        CASHU = 'cashu'
 
         # Cencosud is a local credit card in Argentina
-        CENCOSUD = 'cencosud'.freeze
+        CENCOSUD = 'cencosud'
 
         # Credits (also known as Credit Fund Transfer a.k.a. CFT)
-        CREDIT = 'credit'.freeze
+        CREDIT = 'credit'
 
         # Davivienda is offering the Bill pay service which is a fast, easy and secure way to pay and manage
         # your bills online to anyone, anytime in Colombia.
-        DAVIVIENDA = 'davivienda'.freeze
+        DAVIVIENDA = 'davivienda'
 
         # Efecty is an offline cash payment voucher option in Colombia.
-        EFECTY = 'efecty'.freeze
+        EFECTY = 'efecty'
 
         # Elo is a local Brazilian payment card.
-        ELO = 'elo'.freeze
+        ELO = 'elo'
 
         # e-payment standard
         # Direct PPRO transaction
-        EPS = 'eps'.freeze
+        EPS = 'eps'
 
         # eZeeCard Payout is a sync based payout method.
         # It's merchant initiated and can only reference specific transaction types
-        EZEECARD_PAYOUT = 'ezeecard_payout'.freeze
+        EZEECARD_PAYOUT = 'ezeecard_payout'
 
         # Wallet-based payment
-        EZEEWALLET = 'ezeewallet'.freeze
+        EZEEWALLET = 'ezeewallet'
 
         # Fashioncheque transactions are made using gift card provided by Fashioncheque.
         # Using a fashioncheque transaction, the amount is immediately billed to the customer’s gift card.
         # It can be reversed via a void transaction on the same day of the transaction.
         # They can also be refunded.
-        FASHIONCHEQUE = 'fashioncheque'.freeze
+        FASHIONCHEQUE = 'fashioncheque'
+
+        # Global Payout is a transaction type based on Open Banking APIs, used for initiating bank payments
+        GLOBAL_PAYOUT = 'global_payout'
 
         # Google Pay allows shoppers to purchase with credit and debit cards linked to their Google account.
-        GOOGLE_PAY = 'google_pay'.freeze
+        GOOGLE_PAY = 'google_pay'
 
         # iDEAL
         # Direct PPRO transaction
-        IDEAL = 'ideal'.freeze
+        IDEAL = 'ideal'
 
         # iDebit connects consumers to their online banking directly from checkout, enabling secure,
         # real-time payments without a credit card.
         # Using iDebit allows consumers to transfer funds to merchants without
         # revealing their personal banking information.
         # iDebit Payin is only asynchronous and uses eCheck.
-        IDEBIT_PAYIN = 'idebit_payin'.freeze
+        IDEBIT_PAYIN = 'idebit_payin'
 
         # iDebit connects consumers to their online banking directly from checkout, enabling secure,
         # real-time payments without a credit card.
         # Using iDebit allows consumers to transfer funds to merchants without
         # revealing their personal banking information.
         # iDebit Payout is only synchronous and uses eCheck.
-        IDEBIT_PAYOUT = 'idebit_payout'.freeze
+        IDEBIT_PAYOUT = 'idebit_payout'
 
         # Incremental authorizations are used in preauthorization workflow to extend the preauthorization amount,
         # extend the preauthorization time-frame
-        INCREMENTAL_AUTHORIZE = 'incremental_authorize'.freeze
+        INCREMENTAL_AUTHORIZE = 'incremental_authorize'
 
         # A standard initial recurring
         # @deprecated Since 0.1.0 Payment method is deprecated and will be removed
-        INIT_RECURRING_SALE = 'init_recurring_sale'.freeze
+        INIT_RECURRING_SALE = 'init_recurring_sale'
 
         # 3D-based initial recurring
         # @deprecated Since 0.1.0 Payment method is deprecated and will be removed
-        INIT_RECURRING_SALE_3D = 'init_recurring_sale3d'.freeze
+        INIT_RECURRING_SALE_3D = 'init_recurring_sale3d'
 
         # InstaDebit connects consumers to their online banking directly from checkout, enabling secure,
         # real- time payments without a credit card.
         # Using InstaDebit allows consumers to transfer funds to merchants without
         # revealing their personal banking information.
         # InstaDebit Payin is only asynchronous and uses online bank transfer.
-        INSTA_DEBIT_PAYIN = 'insta_debit_payin'.freeze
+        INSTA_DEBIT_PAYIN = 'insta_debit_payin'
 
         # InstaDebit connects consumers to their online banking directly from checkout, enabling secure,
         # real- time payments without a credit card.
         # Using InstaDebit allows consumers to transfer funds to merchants without
         # revealing their personal banking information.
         # InstaDebit Payout is only synchronous and uses online bank transfer.
-        INSTA_DEBIT_PAYOUT = 'insta_debit_payout'.freeze
+        INSTA_DEBIT_PAYOUT = 'insta_debit_payout'
 
         # Intersolve transactions are made using gift card provided by Intersolve
         # Using a intersolve transaction, the amount is immediately billed to the customer’s gift card.
         # It can be reversed via a void transaction.
-        INTERSOLVE = 'intersolve'.freeze
+        INTERSOLVE = 'intersolve'
 
         # Alternative payments refer to payment methods that are used as an alternative to credit card payments.
         # Each alternative payment method has its own unique application, settlement process and currency support.
-        INVOICE = 'invoice'.freeze
+        INVOICE = 'invoice'
 
         # A Invoice capture can only be used after a Invoice on the same transaction.
-        INVOICE_CAPTURE = 'invoice_capture'.freeze
+        INVOICE_CAPTURE = 'invoice_capture'
 
         # The amount can be fully or partially refunded. Invoice refunds can only be done on former
         # Invoice Capture (settled) transactions.
-        INVOICE_REFUND = 'invoice_refund'.freeze
+        INVOICE_REFUND = 'invoice_refund'
 
         # Itau is a real-time online bank transfer method and a virtual card.
-        ITAU = 'itau'.freeze
+        ITAU = 'itau'
 
         # Multibanco allows Portuguese shoppers to do payments through the Internet by using virtual credit cards
-        MULTIBANCO = 'multibanco'.freeze
+        MULTIBANCO = 'multibanco'
 
         # My Bank is an overlay banking system
-        MY_BANK = 'my_bank'.freeze
+        MY_BANK = 'my_bank'
 
         # Naranja is a local credit card issued in Argentina which can be used for purchases over the internet.
-        NARANJA = 'naranja'.freeze
+        NARANJA = 'naranja'
 
         # Nativa is an Argentinian credit card provided by the National Bank of Argentina.
-        NATIVA = 'nativa'.freeze
+        NATIVA = 'nativa'
 
         # Neosurf is a prepaid card (voucher) that is used for online shopping. The card is available in over 100,000
         # stores worldwide, where customers can buy the prepaid vouchers, denominated up to EUR 250.00 or
         # its equivalent in other currencies.
-        NEOSURF = 'neosurf'.freeze
+        NEOSURF = 'neosurf'
 
         # Neteller
-        NETELLER = 'neteller'.freeze
+        NETELLER = 'neteller'
 
         # Online Banking is an oBeP-style alternative payment method that allows you to pay directly
         # with your ebank account. After initiating a transaction, the online banking will redirect you to their page.
         # There you will find a list with available banks to finish the payment.
-        ONLINE_BANKING_PAYIN = 'online_banking'.freeze
+        ONLINE_BANKING_PAYIN = 'online_banking'
 
         # Bank Pay-out is a bank pay-out method. It allows merchants to transfer funds directly to customers’
         # bank accounts.
-        ONLINE_BANKING_PAYOUT = 'bank_payout'.freeze
+        ONLINE_BANKING_PAYOUT = 'bank_payout'
 
         # OXXO is the preferred payment method in Mexico. It is a cash payment via a barcode document
         # thats accepted in more than 14,000 stores.
-        OXXO = 'oxxo'.freeze
+        OXXO = 'oxxo'
 
         # P24 is an online banking payment, popular in Poland
-        P24 = 'p24'.freeze
+        P24 = 'p24'
 
         # Pago Facil is a payment service in Argentina that allows its users to send money,
         # top up their cell phone and payments.
-        PAGO_FACIL = 'pago_facil'.freeze
+        PAGO_FACIL = 'pago_facil'
 
         # Partial reversal transactions are used in preauthorization workflow to release a part of the
         # total authorized amount before a partial capture to be submitted. A transaction of this type
         # should refer the preauthorization directly.
-        PARTIAL_REVERSAL = 'partial_reversal'.freeze
+        PARTIAL_REVERSAL = 'partial_reversal'
 
         # PayByVouchers via oBeP
         # @deprecated Payment method is deprecated and will be removed
-        PAYBYVOUCHER_YEEPAY = 'paybyvoucher_yeepay'.freeze
+        PAYBYVOUCHER_YEEPAY = 'paybyvoucher_yeepay'
 
         # Payouts transactions
-        PAYOUT = 'payout'.freeze
+        PAYOUT = 'payout'
 
         # Voucher-based payment
-        PAYSAFECARD = 'paysafecard'.freeze
+        PAYSAFECARD = 'paysafecard'
 
         # PayU is a payment method for Czech Republic and Poland
-        PAYU = 'payu'.freeze
+        PAYU = 'payu'
 
         # PayPal transaction is a fast and easy way for buyers to pay with their PayPal account.
         # It gives buyers all the transaction details at once, including order details, shipping options,
         # insurance choices, and tax totals.
-        PAY_PAL = 'pay_pal'.freeze
+        PAY_PAL = 'pay_pal'
 
         # Pix is a payment service created by the Central Bank of Brazil (BACEN),
         # which represents a new way of receiving/sending money. Pix allows payments
         # to be made instantly. The customer can pay bills, invoices, public utilities,
         # transfer and receive credits in a facilitated manner, using only Pix keys (CPF/CNPJ).
-        PIX = 'pix'.freeze
+        PIX = 'pix'
 
         # POLi is Australia's most popular online real time debit payment system.
-        POLI = 'poli'.freeze
+        POLI = 'poli'
 
         # PostFinance is an online banking provider in Switzerland
-        POST_FINANCE = 'post_finance'.freeze
+        POST_FINANCE = 'post_finance'
 
         # Supports payments via EPS, SafetyPay, TrustPay, ELV, Przelewy24
-        PPRO = 'ppro'.freeze
+        PPRO = 'ppro'
 
         # PSE (Pagos Seguros en Linea) is the preferred alternative payment solution in Colombia.
         # The solution consists of an interface that offers the client the option to pay for their online purchases
         # in cash, directing it to their online banking.
-        PSE = 'pse'.freeze
+        PSE = 'pse'
 
         # RapiPago from Argentina is an offline payment method used for online purchases.
         # Shoppers buy their goods and services online and pay offline at one of the 6,000+ RapiPago
         # payment locations.
-        RAPI_PAGO = 'rapi_pago'.freeze
+        RAPI_PAGO = 'rapi_pago'
 
         # A RecurringSale transaction is a "repeated" transaction which follows and references an initial transaction
         # @deprecated Since 0.1.0 Payment method is deprecated and will be removed
-        RECURRING_SALE = 'recurring_sale'.freeze
+        RECURRING_SALE = 'recurring_sale'
 
         # Redpagos is a cash payment in Uruguay
-        REDPAGOS = 'redpagos'.freeze
+        REDPAGOS = 'redpagos'
 
         # Refunds allow to return already billed amounts to customers.
-        REFUND = 'refund'.freeze
+        REFUND = 'refund'
 
         # Russian Mobile Payout, or otherwise known as Disbursement, is an APM used to process Mobile network operator
         # payments. It is an async payment method and will be approved once the payment is processed by the
         # Mobile network operator. Notice: Russian Mobile Payout does not support refund and void.
-        RUSSIAN_MOBILE_PAYOUT = 'russian_mobile_payout'.freeze
+        RUSSIAN_MOBILE_PAYOUT = 'russian_mobile_payout'
 
         # Russian Mobile Sale, otherwise known as Charge, is an APM used to process Mobile network operator payments.
         # It is an async payment method and will be approved once the payment is processed by the Mobile network
         # operator.
         # Notice: Russian Mobile Sale does not support refund and void.
-        RUSSIAN_MOBILE_SALE = 'russian_mobile_sale'.freeze
+        RUSSIAN_MOBILE_SALE = 'russian_mobile_sale'
 
         # Safetypay is a real-time bank transfer system that operates in more than 10 different countries.
         # Their main market is in Latin America.
-        SAFETYPAY = 'safetypay'.freeze
+        SAFETYPAY = 'safetypay'
 
         # A standard Sale
-        SALE = 'sale'.freeze
+        SALE = 'sale'
 
         # 3D-Secure Sale
-        SALE_3D = 'sale3d'.freeze
+        SALE_3D = 'sale3d'
 
         # Santander is an online bank transfer for ecommerce purchases. Consumers use their trusted home
         # banking environment, merchants benefit from payment guarantee and swift settlement.
-        SANTANDER = 'santander'.freeze
+        SANTANDER = 'santander'
 
         # Sepa Direct Debit Payout, popular in Germany.
         # Processed as a SEPA CreditTransfer and can be used for all kind of payout services across the EU with 1 day
         # settlement. Suitable for Gaming, Forex-Binaries, Affiliate Programs or Merchant payouts
-        SCT_PAYOUT = 'sct_payout'.freeze
+        SCT_PAYOUT = 'sct_payout'
 
         # Sepa Direct Debit initial recurring
-        SDD_INIT_RECURRING_SALE = 'sdd_init_recurring_sale'.freeze
+        SDD_INIT_RECURRING_SALE = 'sdd_init_recurring_sale'
 
         # Sepa Direct Debit RecurringSale transaction is a "repeated" transaction,
         # which follows and references an SDD initial transaction
-        SDD_RECURRING_SALE = 'sdd_recurring_sale'.freeze
+        SDD_RECURRING_SALE = 'sdd_recurring_sale'
 
         # Sepa Direct Debit Refund Transaction.
         # Refunds allow to return already billed amounts to customers.
-        SDD_REFUND = 'sdd_refund'.freeze
+        SDD_REFUND = 'sdd_refund'
 
         # Sepa Direct Debit Payment, popular in Germany.
         # Single Euro Payments Area (SEPA) allows consumers to make cashless Euro payments to
         # any beneficiary located anywhere in the Euro area using only a single bank account
-        SDD_SALE = 'sdd_sale'.freeze
+        SDD_SALE = 'sdd_sale'
 
         # Bank transfer payment, popular in Germany
-        SOFORT = 'sofort'.freeze
+        SOFORT = 'sofort'
 
         # Tarjeta Shopping is a cash payment in Argentina.
-        TARJETA_SHOPPING = 'tarjeta_shopping'.freeze
+        TARJETA_SHOPPING = 'tarjeta_shopping'
 
         # TCS Thecontainerstore transactions are made using gift cards provided by TCS The amount from a
         # Container Store Transactions is immediately billed to the customer’s gift card.
         # It can be reversed via a void transaction.
-        TCS = 'container_store'.freeze
+        TCS = 'container_store'
 
         # TransferTo Payout is an APM which provides 3 different payment services:
         # BankAccount, MobileWallet and CashPickup. Merchant sends money to a consumer.
-        TRANSFER_TO_PAYOUT = 'transfer_to_payout'.freeze
+        TRANSFER_TO_PAYOUT = 'transfer_to_payout'
 
         # Trustly is a fast and secure oBeP-style alternative payment method. It is free of charge and
         # allows you to deposit money directly from your online bank account.
-        TRUSTLY_SALE = 'trustly_sale'.freeze
+        TRUSTLY_SALE = 'trustly_sale'
 
         # UPI (Unified Payment Interface) transaction is an alternative payment method
         # which allows users to transfer money between bank accounts.
-        UPI = 'upi'.freeze
+        UPI = 'upi'
 
         # Void transactions undo previous transactions.
-        VOID = 'void'.freeze
+        VOID = 'void'
 
         # WebMoney is a global settlement system and environment for online business activities.
-        WEBMONEY = 'webmoney'.freeze
+        WEBMONEY = 'webmoney'
 
         # Webpay is a Chilean real-time bank transfer method.
-        WEBPAY = 'webpay'.freeze
+        WEBPAY = 'webpay'
 
         # WeChat Pay solution offers merchants access to the over 300 million WeChat users that have linked payment
         # to their WeChat account. The solution works on desktop and mobile via a QR code generation platform.
-        WECHAT = 'wechat'.freeze
+        WECHAT = 'wechat'
 
       end
     end

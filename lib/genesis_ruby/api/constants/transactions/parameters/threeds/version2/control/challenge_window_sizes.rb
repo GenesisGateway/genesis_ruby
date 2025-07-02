@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -12,19 +14,19 @@ module GenesisRuby
                   extend Mixins::Constants::Common
 
                   # Challenge Window Size 250x400
-                  SIZE_250X400 = '250x400'.freeze
+                  SIZE_250X400 = '250x400'
 
                   # Challenge Window Size 390x400
-                  SIZE_390X400 = '390x400'.freeze
+                  SIZE_390X400 = '390x400'
 
                   # Challenge Window Size 500x600
-                  SIZE_500X600 = '500x600'.freeze
+                  SIZE_500X600 = '500x600'
 
                   # Challenge Window Size 600x400
-                  SIZE_600X400 = '600x400'.freeze
+                  SIZE_600X400 = '600x400'
 
                   # Challenge Window Size Full Screen
-                  FULLSCREEN   = 'full_screen'.freeze
+                  FULLSCREEN   = 'full_screen'
 
                 end
               end

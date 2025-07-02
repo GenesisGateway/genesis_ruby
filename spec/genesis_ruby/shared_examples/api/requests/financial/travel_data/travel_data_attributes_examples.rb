@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'travel data attributes examples' do
   describe 'when travel data' do # rubocop:disable RSpec/MultipleMemoizedHelpers
     let(:date) { Faker::Date.forward.strftime GenesisRuby::Api::Constants::DateTimeFormats::DD_MM_YYYY_L_HYPHENS }

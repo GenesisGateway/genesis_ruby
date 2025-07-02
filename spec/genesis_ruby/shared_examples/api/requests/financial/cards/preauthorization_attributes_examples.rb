@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'preauthorization attributes examples' do
 
   describe 'when preauthorization attributes' do

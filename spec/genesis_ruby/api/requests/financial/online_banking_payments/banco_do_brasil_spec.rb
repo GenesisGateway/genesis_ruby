@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::BancoDoBrasil do
   let(:skip_customer_phone) { true }
   let(:test_required_fields) do

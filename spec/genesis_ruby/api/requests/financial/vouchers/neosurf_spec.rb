@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::Financial::Vouchers::Neosurf do
   let(:test_required_fields) { %i[transaction_id amount currency billing_country] }
   let(:test_required_field_values) { %i[currency billing_country] }

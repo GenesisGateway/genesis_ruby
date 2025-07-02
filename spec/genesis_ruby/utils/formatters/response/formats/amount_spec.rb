@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Utils::Formatters::Response::Formats::Amount do
   let(:amount_format) { described_class.new }
 

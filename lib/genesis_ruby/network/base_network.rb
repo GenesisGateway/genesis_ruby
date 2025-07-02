@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/utils/options/network_adapter_config'
 
 module GenesisRuby
@@ -5,9 +7,9 @@ module GenesisRuby
     # Base Network factory class
     class BaseNetwork
 
-      XML_HEADER  = 'application/xml'.freeze
-      JSON_HEADER = 'application/json'.freeze
-      HTML_HEADER = 'text/html'.freeze
+      XML_HEADER  = 'application/xml'
+      JSON_HEADER = 'application/json'
+      HTML_HEADER = 'text/html'
 
       # Base constructor
       def initialize(configuration)

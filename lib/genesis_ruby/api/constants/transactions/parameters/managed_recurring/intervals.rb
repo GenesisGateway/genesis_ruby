@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -10,10 +12,10 @@ module GenesisRuby
               extend Mixins::Constants::Common
 
               # Interval DAYS
-              DAYS   = 'days'.freeze
+              DAYS   = 'days'
 
               # Interval MONTHS
-              MONTHS = 'months'.freeze
+              MONTHS = 'months'
 
             end
           end

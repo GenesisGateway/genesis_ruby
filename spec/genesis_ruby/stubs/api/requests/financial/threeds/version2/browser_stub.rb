@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/mixins/requests/financial/threeds/version2/browser'
 
 module GenesisSpec

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec/genesis_ruby/stubs/api/requests/financial/online_banking_payments/virtual_payment_address_attributes_stub'
 
 RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::OnlineBankingPayments::VirtualPaymentAddressAttributes do

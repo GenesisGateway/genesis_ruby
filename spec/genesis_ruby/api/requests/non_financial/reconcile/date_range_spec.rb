@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::NonFinancial::Reconcile::DateRange do
   let(:date) { '2023-01-01' }
   let(:time) { '12:59:59' }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec/genesis_ruby/stubs/request_validation'
 
 RSpec.describe GenesisRuby::Api::Mixins::Requests::AttributeValidation do

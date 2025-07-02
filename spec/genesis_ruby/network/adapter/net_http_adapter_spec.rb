@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Network::Adapter::NetHttpAdapter do
   let(:net_http) { described_class.new }
 

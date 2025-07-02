@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -11,11 +13,11 @@ module GenesisRuby
 
               # URL target for successful payment in Trustly iFrame.
               # Self
-              SELF   = 'self'.freeze
+              SELF   = 'self'
               # Parent
-              PARENT = 'parent'.freeze
+              PARENT = 'parent'
               # Top
-              TOP    = 'TOP'.freeze
+              TOP    = 'TOP'
 
             end
           end

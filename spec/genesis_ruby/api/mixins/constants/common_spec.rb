@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec/genesis_ruby/stubs/api/constants/module_constants_stub'
 
 RSpec.describe GenesisRuby::Api::Mixins::Constants::Common do

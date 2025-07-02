@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -12,13 +14,13 @@ module GenesisRuby
                   extend Mixins::Constants::Common
 
                   # Native interface
-                  NATIVE = 'native'.freeze
+                  NATIVE = 'native'
 
                   # Html inteface
-                  HTML = 'html'.freeze
+                  HTML = 'html'
 
                   # Both interfaces
-                  BOTH = 'both'.freeze
+                  BOTH = 'both'
 
                 end
               end

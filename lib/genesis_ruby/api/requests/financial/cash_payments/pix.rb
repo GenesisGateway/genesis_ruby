@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/constants/transactions/parameters/cash_payments/genders'
 require 'genesis_ruby/api/constants/transactions/parameters/cash_payments/marital_statuses'
 require 'genesis_ruby/api/constants/transactions/parameters/cash_payments/company_types'

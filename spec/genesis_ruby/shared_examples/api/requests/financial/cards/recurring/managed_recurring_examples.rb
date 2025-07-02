@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # rubocop:disable RSpec/MultipleMemoizedHelpers
 RSpec.shared_examples 'managed recurring examples' do
   let(:mode) { GenesisRuby::Api::Constants::Transactions::Parameters::ManagedRecurring::Modes.all.sample }

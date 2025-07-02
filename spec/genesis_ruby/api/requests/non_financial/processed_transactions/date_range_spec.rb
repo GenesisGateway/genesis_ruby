@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::NonFinancial::ProcessedTransactions::DateRange do
   let(:test_required_fields) { %i[start_date] }
   let(:test_required_field_values) { %i[externally_processed processing_type] }

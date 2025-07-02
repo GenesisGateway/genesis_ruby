@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -12,16 +14,16 @@ module GenesisRuby
                   extend Mixins::Constants::Common
 
                   # Current Transaction
-                  CURRENT_TRANSACTION = 'current_transaction'.freeze
+                  CURRENT_TRANSACTION = 'current_transaction'
 
                   # Less than 30 days
-                  LESS_THAN_30DAYS    = 'less_than_30days'.freeze
+                  LESS_THAN_30DAYS    = 'less_than_30days'
 
                   # From 30 to 60 days
-                  FROM_30_TO_60_DAYS  = '30_to_60_days'.freeze
+                  FROM_30_TO_60_DAYS  = '30_to_60_days'
 
                   # More than 60 days
-                  MORE_THAN_60DAYS    = 'more_than_60days'.freeze
+                  MORE_THAN_60DAYS    = 'more_than_60days'
 
                 end
               end

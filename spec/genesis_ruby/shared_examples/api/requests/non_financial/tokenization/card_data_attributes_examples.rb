@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'card data attributes examples' do
   describe 'when card data attributes' do
     it 'with card_number' do

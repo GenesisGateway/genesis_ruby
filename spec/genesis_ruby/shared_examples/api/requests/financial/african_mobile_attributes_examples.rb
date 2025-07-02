@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'african mobile attributes examples' do
   describe 'when african mobile attributes' do
     it 'with target' do

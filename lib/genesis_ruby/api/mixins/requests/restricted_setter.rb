@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/constants/date_time_formats'
 require 'genesis_ruby/utils/common'
 

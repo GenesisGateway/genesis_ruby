@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -10,18 +12,18 @@ module GenesisRuby
 
                 extend Mixins::Constants::Common
 
-                BILLING_STATEMENT      = 'billingStatement'.freeze
-                TRANSACTION_DATE       = 'transactionDate'.freeze
-                TRANSACTION_CURRENCY   = 'transactionCurrency'.freeze
-                TRANSACTION_AMOUNT     = 'transactionAmount'.freeze
-                EXCHANGE_RATE          = 'exchangeRate'.freeze
-                BILLING_AMOUNT         = 'billingAmount'.freeze
-                TRANSACTION_FEE_AMOUNT = 'transactionFeeAmount'.freeze
-                COMMISSION_PERCENT     = 'commissionPercent'.freeze
-                COMMISSION_AMOUNT      = 'commissionAmount'.freeze
-                INTERCHANGE_FEE        = 'interchangeFee'.freeze
-                REGION                 = 'region'.freeze
-                SETTLEMENT_STATUS      = 'settlementStatus'.freeze
+                BILLING_STATEMENT      = 'billingStatement'
+                TRANSACTION_DATE       = 'transactionDate'
+                TRANSACTION_CURRENCY   = 'transactionCurrency'
+                TRANSACTION_AMOUNT     = 'transactionAmount'
+                EXCHANGE_RATE          = 'exchangeRate'
+                BILLING_AMOUNT         = 'billingAmount'
+                TRANSACTION_FEE_AMOUNT = 'transactionFeeAmount'
+                COMMISSION_PERCENT     = 'commissionPercent'
+                COMMISSION_AMOUNT      = 'commissionAmount'
+                INTERCHANGE_FEE        = 'interchangeFee'
+                REGION                 = 'region'
+                SETTLEMENT_STATUS      = 'settlementStatus'
 
               end
             end

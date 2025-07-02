@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec/genesis_ruby/stubs/api/requests/base/versioned_stub'
 
 RSpec.describe GenesisRuby::Api::Requests::Base::Versioned do

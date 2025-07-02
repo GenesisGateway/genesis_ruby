@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'types examples' do
   it 'includes transaction mixin' do
     expect(described_class.singleton_class.include?(GenesisRuby::Api::Constants::Transactions)).to eq(true)

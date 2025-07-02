@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'purpose of payment attributes examples' do
   describe 'when purpose of payment attributes' do
     it 'with purpose_of_payment' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Builders::Form do
   let(:form_builder) { described_class.new }
   let(:data) { { element1: 'value1', element2: 'value2' } }

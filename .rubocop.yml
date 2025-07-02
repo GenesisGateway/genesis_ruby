@@ -57,7 +57,13 @@ Style/Encoding:
 Style/FormatStringToken:
   EnforcedStyle: template
 Style/FrozenStringLiteralComment:
-  EnforcedStyle: never
+  EnforcedStyle: always
+  Exclude:
+    - Gemfile
+    - Rakefile
+    - bin/console
+    - genesis_ruby.gemspec
+  Description: 'Use frozen string literals to avoid unnecessary object allocations.'
 Style/OptionHash:
   Description: "Don't use option hashes when you can use keyword arguments."
   Enabled: true

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'digital asset type attributes examples' do
   describe 'when digital asset type attributes' do
     it 'without digital_asset_type' do

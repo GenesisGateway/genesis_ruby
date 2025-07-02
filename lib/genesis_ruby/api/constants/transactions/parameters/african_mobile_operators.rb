@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -8,17 +10,17 @@ module GenesisRuby
 
             extend Mixins::Constants::Common
 
-            AIRTEL    = 'AIRTEL'.freeze
+            AIRTEL    = 'AIRTEL'
 
-            MOVITEL   = 'MOVITEL'.freeze
+            MOVITEL   = 'MOVITEL'
 
-            MTN       = 'MTN'.freeze
+            MTN       = 'MTN'
 
-            SAFARICOM = 'SAFARICOM'.freeze
+            SAFARICOM = 'SAFARICOM'
 
-            TIGO      = 'TIGO'.freeze
+            TIGO      = 'TIGO'
 
-            VODACOM   = 'VODACOM'.freeze
+            VODACOM   = 'VODACOM'
 
             class << self
 

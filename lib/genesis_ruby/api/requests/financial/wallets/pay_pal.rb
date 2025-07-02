@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/constants/transactions/parameters/wallets/pay_pal/payment_types'
 
 module GenesisRuby

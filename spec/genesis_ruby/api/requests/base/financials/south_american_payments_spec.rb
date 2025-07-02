@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec/genesis_ruby/stubs/api/requests/base/financials/south_american_payments_stub'
 
 RSpec.describe GenesisRuby::Api::Requests::Base::Financials::SouthAmericanPayments do

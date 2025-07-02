@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'sdd reference shared examples' do
   let(:test_required_fields) { %i[transaction_id reference_id amount currency] }
   let(:config) do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'scheme tokenized attributes examples' do
   describe 'when scheme_tokenized' do
     it 'without value' do

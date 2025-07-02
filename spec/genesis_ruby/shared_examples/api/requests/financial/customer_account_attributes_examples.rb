@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'customer account attributes examples' do
   describe 'when customer account attributes' do
     it 'with customer_account_id' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/utils/threeds/v2'
 
 RSpec.describe GenesisRuby::Utils::Threeds::V2 do

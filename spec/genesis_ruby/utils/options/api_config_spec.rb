@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/utils/options/base'
 require 'spec/genesis_ruby/shared_examples/utils/options_examples'
 

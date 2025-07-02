@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'funding attributes examples' do
   describe 'when funding attributes' do
     it 'without funding attributes' do

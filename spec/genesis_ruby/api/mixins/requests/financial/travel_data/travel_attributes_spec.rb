@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::TravelData::TravelAttributes do
   it 'when airline itinerary attributes' do
     expect(

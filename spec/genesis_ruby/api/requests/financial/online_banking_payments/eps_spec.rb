@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Eps do
   let(:skip_customer_email) { true }
   let(:skip_customer_phone) { true }

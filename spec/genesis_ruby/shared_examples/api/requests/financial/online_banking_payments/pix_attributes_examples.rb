@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'pix attributes examples' do
   describe 'when pix attributes' do
     describe 'when incorporation_date' do

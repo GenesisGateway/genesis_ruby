@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'credit card attributes examples' do
   describe 'when credit card attributes' do
     it 'with card_holder' do

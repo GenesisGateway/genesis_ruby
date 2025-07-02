@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -10,10 +12,10 @@ module GenesisRuby
               extend Mixins::Constants::Common
 
               # Amount Type FIXED
-              FIXED = 'fixed'.freeze
+              FIXED = 'fixed'
 
               # Amount Type MAX
-              MAX   = 'max'.freeze
+              MAX   = 'max'
 
             end
           end

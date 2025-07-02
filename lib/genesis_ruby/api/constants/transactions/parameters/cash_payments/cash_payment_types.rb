@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -10,22 +12,22 @@ module GenesisRuby
               extend Mixins::Constants::Common
 
               # 7 Eleven
-              SEVEN_ELEVEN             = 'seven_eleven'.freeze
+              SEVEN_ELEVEN             = 'seven_eleven'
 
               # Bancomer
-              BANCOMER                 = 'bancomer'.freeze
+              BANCOMER                 = 'bancomer'
 
               # Farmacias del Dr. Ahorro
-              PHARMACIES_DEL_DR_AHORRO = 'pharmacies_del_dr_ahorro'.freeze
+              PHARMACIES_DEL_DR_AHORRO = 'pharmacies_del_dr_ahorro'
 
               # Farmacias Santa Maria
-              PHARMACIES_SANTA_MARIA   = 'pharmacies_santa_maria'.freeze
+              PHARMACIES_SANTA_MARIA   = 'pharmacies_santa_maria'
 
               # OXXO
-              OXXO                     = 'oxxo'.freeze
+              OXXO                     = 'oxxo'
 
               # Scotiabank
-              SCOTIABANK               = 'scotiabank'.freeze
+              SCOTIABANK               = 'scotiabank'
 
             end
           end

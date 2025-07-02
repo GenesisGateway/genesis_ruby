@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec/genesis_ruby/stubs/api/requests/non_financial/tokenization/tokenization_attributes_stub'
 
 RSpec.describe GenesisRuby::Api::Mixins::Requests::NonFinancial::Tokenization::TokenizationAttributes do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/constants/currencies/iso4217'
 
 RSpec.describe GenesisRuby::Api::Constants::Currencies::Iso4217 do

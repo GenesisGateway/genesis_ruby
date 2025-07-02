@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Requests
@@ -5,7 +7,7 @@ module GenesisRuby
         # Base Versioned Request class used for Non Financial JSON API services
         class Versioned < Request
 
-          DEFAULT_VERSION = 'v1'.freeze
+          DEFAULT_VERSION = 'v1'
           private_constant :DEFAULT_VERSION
 
           attr_reader :version, :allowed_versions

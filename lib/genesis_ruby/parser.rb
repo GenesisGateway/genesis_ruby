@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/parsers/xml'
 require 'genesis_ruby/parsers/json'
 require 'genesis_ruby/errors/parser_error'
@@ -7,10 +9,10 @@ module GenesisRuby
   class Parser
 
     # XML Parser
-    XML  = 'xml'.freeze
+    XML  = 'xml'
 
     # JSON Parser
-    JSON = 'json'.freeze
+    JSON = 'json'
 
     # Initialize the Parser Interface based on the Response requirements
     def initialize(response_interface)

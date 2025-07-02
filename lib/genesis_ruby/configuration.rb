@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/constants/environments'
 require 'genesis_ruby/api/constants/endpoints'
 require 'genesis_ruby/errors/invalid_argument_error'
@@ -12,7 +14,7 @@ module GenesisRuby
     DEFAULT_TIMEOUT = 60
 
     # Supported Network Connections
-    NETWORK_INTERFACE_NET_HTTP = 'net-http'.freeze
+    NETWORK_INTERFACE_NET_HTTP = 'net-http'
 
     # Default Format Response
     DEFAULT_FORMAT_RESPONSE = true

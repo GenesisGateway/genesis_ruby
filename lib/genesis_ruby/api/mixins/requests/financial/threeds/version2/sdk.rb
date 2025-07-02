@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/constants/transactions/parameters/threeds/version2/sdk/interfaces'
 require 'genesis_ruby/api/constants/transactions/parameters/threeds/version2/sdk/ui_types'
 require 'genesis_ruby/errors/invalid_argument_error'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'date attributes examples' do
   describe 'when non-financial date attributes' do
     it 'with start_date' do # rubocop:disable RSpec/MultipleExpectations

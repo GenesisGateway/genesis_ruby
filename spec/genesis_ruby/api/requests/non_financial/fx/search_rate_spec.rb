@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::NonFinancial::Fx::SearchRate do
   let(:test_required_fields) { %i[tier_id source_currency target_currency] }
   let(:config) do

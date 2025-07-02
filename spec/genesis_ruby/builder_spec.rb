@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/builder'
 
 RSpec.describe GenesisRuby::Builder do

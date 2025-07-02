@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Constants::States::State do
   describe 'when valid state loaded' do
     let(:state) { described_class.new('new') }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'threeds v2 common attributes examples' do
   describe 'when method attributes' do
     describe 'when callback url' do

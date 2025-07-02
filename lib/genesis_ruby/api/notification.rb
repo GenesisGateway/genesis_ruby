@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'cgi'
 require 'digest'
 
@@ -9,14 +11,14 @@ module GenesisRuby
       attr_reader :unique_id, :notification, :reconciliation
 
       # Signature algorithms
-      SHA1_SIGNATURE_TYPE   = 'SHA1'.freeze
-      SHA256_SIGNATURE_TYPE = 'SHA256'.freeze
-      SHA512_SIGNATURE_TYPE = 'SHA512'.freeze
+      SHA1_SIGNATURE_TYPE   = 'SHA1'
+      SHA256_SIGNATURE_TYPE = 'SHA256'
+      SHA512_SIGNATURE_TYPE = 'SHA512'
 
       # Possible request/response identifier fields
-      API_UNIQUE_FIELD = 'unique_id'.freeze
-      WPF_UNIQUE_FIELD = 'wpf_unique_id'.freeze
-      KYC_UNIQUE_FIELD = 'reference_id'.freeze
+      API_UNIQUE_FIELD = 'unique_id'
+      WPF_UNIQUE_FIELD = 'wpf_unique_id'
+      KYC_UNIQUE_FIELD = 'reference_id'
 
       # Class constructor
       def initialize(configuration, data)

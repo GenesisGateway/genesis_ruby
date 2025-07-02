@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/request'
 require 'spec/genesis_ruby/shared_examples/api/request_examples'
 

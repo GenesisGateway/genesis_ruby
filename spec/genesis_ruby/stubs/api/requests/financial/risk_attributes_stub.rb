@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'lib/genesis_ruby/api/mixins/requests/financial/risk_attributes'
 
 module GenesisSpec

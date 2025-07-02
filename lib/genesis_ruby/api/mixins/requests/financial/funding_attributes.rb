@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/constants/transactions/parameters/funding/business_application_identifier_types'
 require 'genesis_ruby/api/constants/transactions/parameters/funding/identifier_types'
 require 'genesis_ruby/api/constants/transactions/parameters/funding/receiver_account_types'

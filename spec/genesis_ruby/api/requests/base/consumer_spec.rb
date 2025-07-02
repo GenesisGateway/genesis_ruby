@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec/genesis_ruby/stubs/api/requests/base/consumer_stub'
 
 RSpec.describe GenesisRuby::Api::Requests::Base::Consumer do

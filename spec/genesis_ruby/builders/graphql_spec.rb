@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Builders::Graphql do
   let(:graphql_builder) { described_class.new }
   let(:data) do

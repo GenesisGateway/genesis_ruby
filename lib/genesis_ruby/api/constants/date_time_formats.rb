@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -7,25 +9,25 @@ module GenesisRuby
         extend Mixins::Constants::Common
 
         # Little endian(day, month, year) system with hyphens in between
-        DD_MM_YYYY_L_HYPHENS  = '%d-%m-%Y'.freeze
+        DD_MM_YYYY_L_HYPHENS  = '%d-%m-%Y'
 
         # Little endian(day, month, year) system with dots in between
-        DD_MM_YYYY_L_DOTS     = '%d.%m.%Y'.freeze
+        DD_MM_YYYY_L_DOTS     = '%d.%m.%Y'
 
         # Little endian(day, month, year) system with dots in between
-        DD_MM_YYYY_L_SLASHES  = '%d/%m/%Y'.freeze
+        DD_MM_YYYY_L_SLASHES  = '%d/%m/%Y'
 
         # Zulu timestamp
-        YYYY_MM_DD_H_I_S_ZULU = '%Y-%m-%dT%H:%M:%SZ'.freeze
+        YYYY_MM_DD_H_I_S_ZULU = '%Y-%m-%dT%H:%M:%SZ'
 
         # Modified Zulu timestamp
-        YYYY_MM_DD_H_I_S      = '%Y-%m-%d %H:%M:%S'.freeze
+        YYYY_MM_DD_H_I_S      = '%Y-%m-%d %H:%M:%S'
 
         # Date Format ISO 8601
-        YYYY_MM_DD_ISO_8601   = '%Y-%m-%d'.freeze
+        YYYY_MM_DD_ISO_8601   = '%Y-%m-%d'
 
         # Date Format
-        MM_DD                 = '%m%d'.freeze
+        MM_DD                 = '%m%d'
 
         class << self
 

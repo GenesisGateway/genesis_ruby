@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::Idebit::PayOut do
   let(:test_required_fields) { %i[transaction_id reference_id amount currency] }
   let(:config) do

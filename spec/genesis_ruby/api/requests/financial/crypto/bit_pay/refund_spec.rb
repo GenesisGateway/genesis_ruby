@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::Financial::Crypto::BitPay::Refund do
   let(:test_required_fields) do
     %i[transaction_id amount currency reference_id]

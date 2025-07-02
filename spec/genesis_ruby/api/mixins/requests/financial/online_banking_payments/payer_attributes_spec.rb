@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec/genesis_ruby/stubs/api/requests/financial/online_banking_payments/payer_attributes_stub'
 
 RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::OnlineBankingPayments::PayerAttributes do

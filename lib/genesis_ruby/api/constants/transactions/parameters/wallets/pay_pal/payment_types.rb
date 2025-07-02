@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -11,15 +13,15 @@ module GenesisRuby
                 extend Api::Mixins::Constants::Common
 
                 # Creates an order that should be captured later.
-                AUTHORIZE = 'authorize'.freeze
+                AUTHORIZE = 'authorize'
 
                 # Captures the created order immediately after the buyer confirms the payment.
-                SALE      = 'sale'.freeze
+                SALE      = 'sale'
 
                 # Creates an Express Checkout PayPal payment. Express Checkout eliminates one of the
                 # major causes of checkout abandonment by giving buyers all the transaction details at
                 # once, including order details, shipping options, insurance choices, and tax totals.
-                EXPRESS   = 'express'.freeze
+                EXPRESS   = 'express'
 
               end
             end

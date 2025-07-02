@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -9,9 +11,9 @@ module GenesisRuby
 
               extend Mixins::Constants::Common
 
-              GENESIS  = 'genesis'.freeze
-              EXTERNAL = 'external'.freeze
-              ALL      = 'all'.freeze
+              GENESIS  = 'genesis'
+              EXTERNAL = 'external'
+              ALL      = 'all'
 
             end
           end

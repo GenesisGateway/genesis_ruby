@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::Financial::Wallets::PayPal do
   let(:test_required_fields) { %i[transaction_id payment_type amount currency] }
   let(:test_required_field_values) { %i[currency payment_type] }

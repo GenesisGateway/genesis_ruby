@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'source of funds attributes examples' do
   describe 'when source of funds attributes' do
     it 'with source_of_funds' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/constants/transactions/parameters/threeds/version2/merchant_risk/shipping_indicators'
 require 'genesis_ruby/api/constants/transactions/parameters/threeds/version2/merchant_risk/delivery_timeframes'
 require 'genesis_ruby/api/constants/transactions/parameters/threeds/version2/merchant_risk/reorder_item_indicators'

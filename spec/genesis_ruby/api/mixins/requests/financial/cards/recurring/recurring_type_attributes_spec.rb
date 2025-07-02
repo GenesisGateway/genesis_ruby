@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec/genesis_ruby/stubs/api/requests/financial/cards/recurring/recurring_type_attributes_stub'
 
 RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Cards::Recurring::RecurringTypeAttributes do

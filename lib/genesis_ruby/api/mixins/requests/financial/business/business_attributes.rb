@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/mixins/requests/financial/business/airlines_air_carriers_attributes'
 require 'genesis_ruby/api/mixins/requests/financial/business/car_plane_and_boat_rentals_attributes'
 require 'genesis_ruby/api/mixins/requests/financial/business/cruise_lines_attributes'

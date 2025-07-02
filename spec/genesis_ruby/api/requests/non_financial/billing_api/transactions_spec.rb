@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::NonFinancial::BillingApi::Transactions do
   let(:test_required_field_values) { %i[sort_by_direction] }
   let(:uuid) { Faker::Internet.uuid }

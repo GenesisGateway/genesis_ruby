@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/utils/formatters/response/definitions'
 
 module GenesisSpec

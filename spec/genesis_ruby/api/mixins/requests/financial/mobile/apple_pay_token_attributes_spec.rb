@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec/genesis_ruby/stubs/api/requests/financial/mobile/apple_pay_token_attributes_stub'
 
 # rubocop:disable RSpec/MultipleMemoizedHelpers

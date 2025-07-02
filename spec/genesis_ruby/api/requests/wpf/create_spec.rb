@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::Wpf::Create do
   let(:test_required_fields) { %i[transaction_id transaction_types amount currency] }
   let(:test_required_field_values) do

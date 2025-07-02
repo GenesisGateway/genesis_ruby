@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'consumer identifier attributes examples' do
   describe 'when consumer identifier attributes' do
     it 'with consumer_reference' do

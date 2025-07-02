@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'beneficiary attributes examples' do
   describe 'when beneficiary attributes' do
     it 'with beneficiary_name' do

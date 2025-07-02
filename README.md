@@ -1094,6 +1094,9 @@ GenesisRuby::Api::Requests::Financial::Sdd::Refund
 GenesisRuby::Api::Requests::Financial::Sdd::Recurring::RecurringSale
 GenesisRuby::Api::Requests::Financial::Cards::Credit
 
+#Payout
+GenesisRuby::Api::Requests::Financial::Payout::GlobalPayout
+
 # Non Financial
 ## Reconcile
 GenesisRuby::Api::Requests::NonFinancial::Reconcile::Transaction
@@ -1137,7 +1140,25 @@ GenesisRuby::Api::Requests::NonFinancial::Tokenization::GetCard
 ## KYC Know Your Customer API
 GenesisRuby::Api::Requests::NonFinancial::Kyc::ConsumerRegistration::Create
 GenesisRuby::Api::Requests::NonFinancial::Kyc::ConsumerRegistration::Update
+GenesisRuby::Api::Requests::NonFinancial::Kyc::Verifications::Create
+GenesisRuby::Api::Requests::NonFinancial::Kyc::Verifications::Register
 GenesisRuby::Api::Requests::NonFinancial::Kyc::Verifications::RemoteIdentity
+GenesisRuby::Api::Requests::NonFinancial::Kyc::Verifications::Status
+GenesisRuby::Api::Requests::NonFinancial::Kyc::Cpf::Check
+GenesisRuby::Api::Requests::NonFinancial::Kyc::Cnpj::Check
+GenesisRuby::Api::Requests::NonFinancial::Kyc::IdentityDocument::Download
+GenesisRuby::Api::Requests::NonFinancial::Kyc::IdentityDocument::Upload
+GenesisRuby::Api::Requests::NonFinancial::Kyc::Call::Create
+GenesisRuby::Api::Requests::NonFinancial::Kyc::Call::Update
+GenesisRuby::Api::Requests::NonFinancial::Kyc::Transaction::Update
+GenesisRuby::Api::Requests::NonFinancial::Kyc::Transaction::Create
+
+## Payee API
+GenesisRuby::Api::Requests::NonFinancial::Payee::Create
+GenesisRuby::Api::Requests::NonFinancial::Payee::Retrieve
+GenesisRuby::Api::Requests::NonFinancial::Payee::Account::Create
+GenesisRuby::Api::Requests::NonFinancial::Payee::Account::Retrieve
+GenesisRuby::Api::Requests::NonFinancial::Payee::Account::List
 
 ## Chargeback API
 GenesisRuby::Api::Requests::NonFinancial::Fraud::Chargeback::Transaction

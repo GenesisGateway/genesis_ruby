@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/utils/transactions/wpf_types'
 require 'spec/genesis_ruby/shared_examples/utils/transactions/types_examples'
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'ucof attributes examples' do
   describe 'when credential_on_file_transaction_identifier' do
     it 'without value' do

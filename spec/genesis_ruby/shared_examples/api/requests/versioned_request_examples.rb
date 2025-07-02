@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'versioned request examples' do
   describe 'when Versioned Request' do
     it 'with version' do

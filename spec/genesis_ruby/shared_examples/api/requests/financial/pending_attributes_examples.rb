@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'pending attributes examples' do
   describe 'when pending attributes' do
     it 'with pending url' do

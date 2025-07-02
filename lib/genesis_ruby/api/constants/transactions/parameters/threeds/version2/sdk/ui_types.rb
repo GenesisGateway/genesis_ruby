@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -12,19 +14,19 @@ module GenesisRuby
                   extend Mixins::Constants::Common
 
                   # Text
-                  TEXT          = 'text'.freeze
+                  TEXT          = 'text'
 
                   # Single Select
-                  SINGLE_SELECT = 'single_select'.freeze
+                  SINGLE_SELECT = 'single_select'
 
                   # Multi Select
-                  MULTI_SELECT  = 'multi_select'.freeze
+                  MULTI_SELECT  = 'multi_select'
 
                   # Out of bag
-                  OUT_OF_BAG    = 'out_of_bag'.freeze
+                  OUT_OF_BAG    = 'out_of_bag'
 
                   # Othre html
-                  OTHER_HTML    = 'other_html'.freeze
+                  OTHER_HTML    = 'other_html'
 
                 end
               end

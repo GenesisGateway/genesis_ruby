@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Notification do
   let(:identifier) { '38d0ad63e7a56a2c6397438d116bafce' }
   let(:signature) { 'd8a6e8108df2224763c8f9fb55f7e23c6cc4454b' }

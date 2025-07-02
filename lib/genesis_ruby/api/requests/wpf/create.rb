@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/utils/transactions/wpf_types'
 require 'genesis_ruby/api/constants/transactions/parameters/sca_exemptions'
 require 'genesis_ruby/api/constants/i18n'

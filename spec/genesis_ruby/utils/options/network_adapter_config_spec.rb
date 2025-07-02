@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/utils/options/base'
 require 'genesis_ruby/utils/options/network_adapter_config'
 require 'genesis_ruby/api/request'

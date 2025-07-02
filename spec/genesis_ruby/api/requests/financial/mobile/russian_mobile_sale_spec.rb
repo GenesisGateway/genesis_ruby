@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::Financial::Mobile::RussianMobileSale do
   let(:operators) { %w(mtc megafon tele2 beeline) }
   let(:test_required_fields) do

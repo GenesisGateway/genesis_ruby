@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/constants/transactions/parameters/cash_payments/cash_payment_types'
 
 module GenesisRuby

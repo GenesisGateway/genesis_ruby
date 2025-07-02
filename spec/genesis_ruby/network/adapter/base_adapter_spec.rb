@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/network/adapter/base_adapter'
 
 RSpec.describe GenesisRuby::Network::Adapter::BaseAdapter do

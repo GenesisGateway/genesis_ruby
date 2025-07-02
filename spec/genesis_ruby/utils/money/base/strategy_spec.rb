@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/utils/money/base/strategy'
 
 RSpec.describe GenesisRuby::Utils::Money::Base::Strategy do

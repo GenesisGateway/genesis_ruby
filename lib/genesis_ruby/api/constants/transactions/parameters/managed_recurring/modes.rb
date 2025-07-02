@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -10,10 +12,10 @@ module GenesisRuby
               extend Mixins::Constants::Common
 
               # Mode AUTOMATIC
-              AUTOMATIC = 'automatic'.freeze
+              AUTOMATIC = 'automatic'
 
               # Mode MANUAL
-              MANUAL    = 'manual'.freeze
+              MANUAL    = 'manual'
 
             end
           end

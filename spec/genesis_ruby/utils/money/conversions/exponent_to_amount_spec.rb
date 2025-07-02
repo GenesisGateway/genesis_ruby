@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/utils/money/conversions/exponent_to_amount'
 
 RSpec.describe GenesisRuby::Utils::Money::Conversions::ExponentToAmount do

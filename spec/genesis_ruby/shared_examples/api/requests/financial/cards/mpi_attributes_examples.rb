@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'mpi attributes examples' do
   describe 'when mpi attributes' do
     describe 'without initialization' do

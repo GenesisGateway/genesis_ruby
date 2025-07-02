@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec/genesis_ruby/stubs/request_skeleton'
 require 'genesis_ruby/api/constants/endpoints'
 require 'genesis_ruby/api/constants/environments'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'customer identification attributes examples' do
   describe 'when customer identification attributes' do
     it 'with customer_identification_document_id' do

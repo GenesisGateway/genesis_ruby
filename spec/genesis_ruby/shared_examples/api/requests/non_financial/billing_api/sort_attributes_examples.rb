@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'sort attributes examples' do |allowed_field|
   describe 'when sort attributes' do
     it 'with sort_by_field' do

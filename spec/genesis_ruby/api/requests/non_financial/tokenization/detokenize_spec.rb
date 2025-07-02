@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::NonFinancial::Tokenization::Detokenize do
   let(:test_required_fields) do
     %i[consumer_id email token_type token]

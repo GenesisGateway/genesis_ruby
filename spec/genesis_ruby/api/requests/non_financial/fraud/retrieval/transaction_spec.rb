@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::NonFinancial::Fraud::Retrieval::Transaction do
   let(:config) do
     config             = GenesisRuby::Configuration.new

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -10,10 +12,10 @@ module GenesisRuby
               extend Api::Mixins::Constants::Common
 
               # Document ID type - business
-              BUSINESS   = 'business'.freeze
+              BUSINESS   = 'business'
 
               # Document ID type - individual
-              INDIVIDUAL = 'individual'.freeze
+              INDIVIDUAL = 'individual'
 
             end
           end

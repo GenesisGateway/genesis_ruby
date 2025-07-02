@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/utils/country'
 
 RSpec.describe GenesisRuby::Utils::Country do

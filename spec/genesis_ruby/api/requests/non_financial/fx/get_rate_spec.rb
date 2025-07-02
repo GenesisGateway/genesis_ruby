@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::NonFinancial::Fx::GetRate do
   let(:config) do
     config             = GenesisRuby::Configuration.new

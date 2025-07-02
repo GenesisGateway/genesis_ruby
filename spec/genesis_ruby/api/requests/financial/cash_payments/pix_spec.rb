@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::Financial::CashPayments::Pix do
   let(:skip_customer_phone) { true }
   let(:test_required_fields) { %i[transaction_id amount currency document_id] }

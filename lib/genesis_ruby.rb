@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/version'
 require 'genesis_ruby/configuration'
 require 'genesis_ruby/connection'

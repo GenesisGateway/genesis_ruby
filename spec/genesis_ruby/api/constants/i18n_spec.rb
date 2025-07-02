@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/constants/i18n'
 require 'spec/genesis_ruby/shared_examples/api/constants/common_examples'
 

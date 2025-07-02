@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec/genesis_ruby/stubs/api/requests/financial/business/travel_agencies_attributes_stub'
 
 RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Business::TravelAgenciesAttributes do

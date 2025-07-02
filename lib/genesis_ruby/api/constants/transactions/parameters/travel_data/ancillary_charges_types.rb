@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -10,29 +12,29 @@ module GenesisRuby
 
               extend Mixins::Constants::Common
 
-              BF = 'BF'.freeze
-              BG = 'BG'.freeze
-              CF = 'CF'.freeze
-              CG = 'CG'.freeze
-              CO = 'CO'.freeze
-              FF = 'FF'.freeze
-              GF = 'GF'.freeze
-              GT = 'GT'.freeze
-              IE = 'IE'.freeze
-              LG = 'LG'.freeze
-              MD = 'MD'.freeze
-              ML = 'ML'.freeze
-              OT = 'OT'.freeze
-              PA = 'PA'.freeze
-              PT = 'PT'.freeze
-              SA = 'SA'.freeze
-              SB = 'SB'.freeze
-              SF = 'SF'.freeze
-              ST = 'ST'.freeze
-              TS = 'TS'.freeze
-              UN = 'UN'.freeze
-              UP = 'UP'.freeze
-              WI = 'WI'.freeze
+              BF = 'BF'
+              BG = 'BG'
+              CF = 'CF'
+              CG = 'CG'
+              CO = 'CO'
+              FF = 'FF'
+              GF = 'GF'
+              GT = 'GT'
+              IE = 'IE'
+              LG = 'LG'
+              MD = 'MD'
+              ML = 'ML'
+              OT = 'OT'
+              PA = 'PA'
+              PT = 'PT'
+              SA = 'SA'
+              SB = 'SB'
+              SF = 'SF'
+              ST = 'ST'
+              TS = 'TS'
+              UN = 'UN'
+              UP = 'UP'
+              WI = 'WI'
 
             end
           end

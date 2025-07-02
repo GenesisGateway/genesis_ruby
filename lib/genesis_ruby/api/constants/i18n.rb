@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -7,82 +9,82 @@ module GenesisRuby
         extend Mixins::Constants::Common
 
         # Arabic
-        AR = 'ar'.freeze
+        AR = 'ar'
 
         # Bulgarian
-        BG = 'bg'.freeze
+        BG = 'bg'
 
         # German
-        DE = 'de'.freeze
+        DE = 'de'
 
         # English
-        EN = 'en'.freeze
+        EN = 'en'
 
         # Spanish
-        ES = 'es'.freeze
+        ES = 'es'
 
         # French
-        FR = 'fr'.freeze
+        FR = 'fr'
 
         # Hindu
-        HI = 'hi'.freeze
+        HI = 'hi'
 
         # Japanese
-        JA = 'ja'.freeze
+        JA = 'ja'
 
         # Icelandic
-        IS = 'is'.freeze
+        IS = 'is'
 
         # Italian
-        IT = 'it'.freeze
+        IT = 'it'
 
         # Dutch
-        NL = 'nl'.freeze
+        NL = 'nl'
 
         # Portuguese
-        PT = 'pt'.freeze
+        PT = 'pt'
 
         # Polish
-        PL = 'pl'.freeze
+        PL = 'pl'
 
         # Russian
-        RU = 'ru'.freeze
+        RU = 'ru'
 
         # Turkish
-        TR = 'tr'.freeze
+        TR = 'tr'
 
         # Mandarin Chinese
-        ZH = 'zh'.freeze
+        ZH = 'zh'
 
         # Indonesian
-        ID = 'id'.freeze
+        ID = 'id'
 
         # Malay
-        MS = 'ms'.freeze
+        MS = 'ms'
 
         # Thai
-        TH = 'th'.freeze
+        TH = 'th'
 
         # Czech
-        CS = 'cs'.freeze
+        CS = 'cs'
 
         # Croatian
-        HR = 'hr'.freeze
+        HR = 'hr'
 
         # Slovenian
-        SL = 'sl'.freeze
+        SL = 'sl'
 
         # Finnish
-        FI = 'fi'.freeze
+        FI = 'fi'
 
         # Norwegian
-        NO = 'no'.freeze
+        NO = 'no'
 
         # Danish
-        DA = 'da'.freeze
+        DA = 'da'
 
         # Swedish
-        SV = 'sv'.freeze
+        SV = 'sv'
 
       end
     end

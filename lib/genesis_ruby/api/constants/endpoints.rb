@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -6,11 +8,11 @@ module GenesisRuby
 
         # Domain for E-ComProcessing's Genesis instance
         # http://www.e-comprocessing.com/
-        ECOMPROCESSING = 'e-comprocessing.net'.freeze
+        ECOMPROCESSING = 'e-comprocessing.net'
 
         # Domain for emerchantpay's Genesis instance
         # https://www.emerchantpay.com
-        EMERCHANTPAY   = 'emerchantpay.net'.freeze
+        EMERCHANTPAY   = 'emerchantpay.net'
 
       end
     end

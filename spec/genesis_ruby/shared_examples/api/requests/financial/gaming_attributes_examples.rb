@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'gaming attributes examples' do
   describe 'when gaming attributes' do
     it 'without gaming attributes' do

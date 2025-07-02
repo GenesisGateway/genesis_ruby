@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'date'
 require 'genesis_ruby/api/constants/transactions/parameters/non_financial/billing_api/order_by_fields'
 require 'genesis_ruby/api/constants/transactions/parameters/non_financial/billing_api/response_fields'

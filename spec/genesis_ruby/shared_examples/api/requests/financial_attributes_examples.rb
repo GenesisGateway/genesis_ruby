@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'financial attributes examples' do
   describe 'when financial XML document' do
     it 'with root element' do

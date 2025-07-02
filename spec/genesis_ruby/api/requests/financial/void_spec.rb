@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::Financial::Void do
   let(:config) do
     config             = GenesisRuby::Configuration.new

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'graphql request examples' do
   describe 'when GraphQL Request' do
     it 'with request_path' do

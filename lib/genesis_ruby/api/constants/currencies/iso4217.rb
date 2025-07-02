@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/errors/invalid_argument_error'
 
 module GenesisRuby
@@ -1098,9 +1100,8 @@ module GenesisRuby
             def fetch_exponent(iso_currency)
               raise InvalidArgumentError, 'Nil Currency value given' if iso_currency.nil?
 
-              iso_currency.to_s.upcase!
-
-              ISO4217.key?(iso_currency.to_sym) ? ISO4217[iso_currency.to_sym][:exponent].to_i : 0
+              currency_key = iso_currency.to_s.upcase.to_sym
+              ISO4217.key?(currency_key) ? ISO4217[currency_key][:exponent].to_i : 0
             end
 
           end

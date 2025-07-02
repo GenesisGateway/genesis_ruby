@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::Financial::Mobile::GooglePay do
   let(:test_required_fields) do
     %i[

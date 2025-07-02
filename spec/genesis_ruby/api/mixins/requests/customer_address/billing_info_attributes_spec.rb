@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec/genesis_ruby/stubs/api/requests/customer_address/billing_info_attributes_stub'
 
 RSpec.describe GenesisRuby::Api::Mixins::Requests::CustomerAddress::BillingInfoAttributes do

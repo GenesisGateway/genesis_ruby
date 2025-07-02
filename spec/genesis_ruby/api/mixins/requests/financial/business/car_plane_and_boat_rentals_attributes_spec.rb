@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec/genesis_ruby/stubs/api/requests/financial/business/car_plane_and_boat_rentals_attributes_stub'
 
 RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::Business::CarPlaneAndBoatRentalsAttributes do

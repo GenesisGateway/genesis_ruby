@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/errors/request_error'
 
 module GenesisRuby

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'tokenization params attributes examples' do
 
   describe 'when tokenization_tavv attributes' do

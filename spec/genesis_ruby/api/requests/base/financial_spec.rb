@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/requests/base/financial'
 require 'spec/genesis_ruby/stubs/api/requests/base/financial_stub'
 

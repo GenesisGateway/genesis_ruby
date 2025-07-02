@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'risk attributes examples' do
   describe 'when risk attributes' do
     it 'has proper structure without risk attributes' do

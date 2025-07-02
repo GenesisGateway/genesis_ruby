@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -9,124 +11,124 @@ module GenesisRuby
             extend Mixins::Constants::Common
 
             # Interest
-            ISINTE = 'ISINTE'.freeze
+            ISINTE = 'ISINTE'
 
             # Income tax
-            ISINTX = 'ISINTX'.freeze
+            ISINTX = 'ISINTX'
 
             # Investment
-            ISINVS = 'ISINVS'.freeze
+            ISINVS = 'ISINVS'
 
             # Labor insurance
-            ISLBRI = 'ISLBRI'.freeze
+            ISLBRI = 'ISLBRI'
 
             # License fee
-            ISLICF = 'ISLICF'.freeze
+            ISLICF = 'ISLICF'
 
             # Life insurance
-            ISLIFI = 'ISLIFI'.freeze
+            ISLIFI = 'ISLIFI'
 
             # Loan
-            ISLOAN = 'ISLOAN'.freeze
+            ISLOAN = 'ISLOAN'
 
             # Medical services
-            ISMDCS = 'ISMDCS'.freeze
+            ISMDCS = 'ISMDCS'
 
             # Mobile P2B payment
-            ISMP2B = 'ISMP2B'.freeze
+            ISMP2B = 'ISMP2B'
 
             # Mobile P2P payment
-            ISMP2P = 'ISMP2P'.freeze
+            ISMP2P = 'ISMP2P'
 
             # Mobile top up
-            ISMTUP = 'ISMTUP'.freeze
+            ISMTUP = 'ISMTUP'
 
             # Not otherwise specified
-            ISNOWS = 'ISNOWS'.freeze
+            ISNOWS = 'ISNOWS'
 
             # Other
-            ISOTHR = 'ISOTHR'.freeze
+            ISOTHR = 'ISOTHR'
 
             # Transaction is related to a payment of other telecom related bill
-            ISOTLC = 'ISOTLC'.freeze
+            ISOTLC = 'ISOTLC'
 
             # Payroll
-            ISPAYR = 'ISPAYR'.freeze
+            ISPAYR = 'ISPAYR'
 
             # Contribution to pension fund
-            ISPEFC = 'ISPEFC'.freeze
+            ISPEFC = 'ISPEFC'
 
             # Pension payment
-            ISPENS = 'ISPENS'.freeze
+            ISPENS = 'ISPENS'
 
             # Payment of telephone bill
-            ISPHON = 'ISPHON'.freeze
+            ISPHON = 'ISPHON'
 
             # Property insurance
-            ISPPTI = 'ISPPTI'.freeze
+            ISPPTI = 'ISPPTI'
 
             # Transaction is for general rental/lease
-            ISRELG = 'ISRELG'.freeze
+            ISRELG = 'ISRELG'
 
             # The payment of rent
-            ISRENT = 'ISRENT'.freeze
+            ISRENT = 'ISRENT'
 
             # Payment for railway transport related business
-            ISRLWY = 'ISRLWY'.freeze
+            ISRLWY = 'ISRLWY'
 
             # Royalties
-            ISROYA = 'ISROYA'.freeze
+            ISROYA = 'ISROYA'
 
             # Salary payment
-            ISSALA = 'ISSALA'.freeze
+            ISSALA = 'ISSALA'
 
             # Payment to savings/retirement account
-            ISSAVG = 'ISSAVG'.freeze
+            ISSAVG = 'ISSAVG'
 
             # Securities
-            ISSECU = 'ISSECU'.freeze
+            ISSECU = 'ISSECU'
 
             # Social security benefit
-            ISSSBE = 'ISSSBE'.freeze
+            ISSSBE = 'ISSSBE'
 
             # Study
-            ISSTDY = 'ISSTDY'.freeze
+            ISSTDY = 'ISSTDY'
 
             # Subscription
-            ISSUBS = 'ISSUBS'.freeze
+            ISSUBS = 'ISSUBS'
 
             # Supplier payment
-            ISSUPP = 'ISSUPP'.freeze
+            ISSUPP = 'ISSUPP'
 
             # Refund of a tax payment or obligation
-            ISTAXR = 'ISTAXR'.freeze
+            ISTAXR = 'ISTAXR'
 
             # Tax payment
-            ISTAXS = 'ISTAXS'.freeze
+            ISTAXS = 'ISTAXS'
 
             # Transaction is related to a payment of telecommunications related bill
-            ISTBIL = 'ISTBIL'.freeze
+            ISTBIL = 'ISTBIL'
 
             # Trade services operation
-            ISTRAD = 'ISTRAD'.freeze
+            ISTRAD = 'ISTRAD'
 
             # Treasury payment
-            ISTREA = 'ISTREA'.freeze
+            ISTREA = 'ISTREA'
 
             # Payment for travel
-            ISTRPT = 'ISTRPT'.freeze
+            ISTRPT = 'ISTRPT'
 
             # Utility bill payment
-            ISUBIL = 'ISUBIL'.freeze
+            ISUBIL = 'ISUBIL'
 
             # Value added tax payment
-            ISVATX = 'ISVATX'.freeze
+            ISVATX = 'ISVATX'
 
             # With holding
-            ISWHLD = 'ISWHLD'.freeze
+            ISWHLD = 'ISWHLD'
 
             # Payment of water bill
-            ISWTER = 'ISWTER'.freeze
+            ISWTER = 'ISWTER'
 
           end
         end

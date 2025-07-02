@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::NonFinancial::Sca::Checker do
   let(:test_required_fields) { %i[card_number transaction_amount transaction_currency] }
   let(:test_required_field_values) { %i[transaction_currency recurring_type transaction_exemption] }

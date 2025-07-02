@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'south american payment examples' do
   let(:test_required_fields) do
     %i[transaction_id amount currency consumer_reference national_id customer_email billing_country]

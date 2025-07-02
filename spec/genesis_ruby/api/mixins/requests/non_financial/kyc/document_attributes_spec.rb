@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec/genesis_ruby/stubs/api/requests/non_financial/kyc/document_attributes_stub'
 
 RSpec.describe GenesisRuby::Api::Mixins::Requests::NonFinancial::Kyc::DocumentAttributes do # rubocop:disable RSpec/MultipleMemoizedHelpers

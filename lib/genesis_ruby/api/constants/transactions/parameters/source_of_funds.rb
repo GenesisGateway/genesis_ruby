@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -9,22 +11,22 @@ module GenesisRuby
             extend Mixins::Constants::Common
 
             # Source of Funds Credit
-            CREDIT               = 'credit'.freeze
+            CREDIT               = 'credit'
 
             # Source of Funds Debit
-            DEBIT                = 'debit'.freeze
+            DEBIT                = 'debit'
 
             # Source of Funds Prepaid
-            PREPAID              = 'prepaid'.freeze
+            PREPAID              = 'prepaid'
 
             # Source of Funds Cash
-            CASH                 = 'cash'.freeze
+            CASH                 = 'cash'
 
             # Source of Funds Other Debit Account
-            OTHER_DEBIT_ACCOUNT  = 'other_debit_account'.freeze
+            OTHER_DEBIT_ACCOUNT  = 'other_debit_account'
 
             # Source of funds Other Credit Account
-            OTHER_CREDIT_ACCOUNT = 'other_credit_account'.freeze
+            OTHER_CREDIT_ACCOUNT = 'other_credit_account'
 
           end
         end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -12,40 +14,40 @@ module GenesisRuby
               extend Mixins::Constants::Common
 
               # Frequency DAILY
-              DAILY            = 'daily'.freeze
+              DAILY            = 'daily'
 
               # Frequency TWICE_WEEKLY
-              TWICE_WEEKLY     = 'twice_weekly'.freeze
+              TWICE_WEEKLY     = 'twice_weekly'
 
               # Frequency WEEKLY
-              WEEKLY           = 'weekly'.freeze
+              WEEKLY           = 'weekly'
 
               # Frequency TEN DAYS
-              TEN_DAYS         = 'ten_days'.freeze
+              TEN_DAYS         = 'ten_days'
 
               # Frequency FORTNIGHTLY
-              FORTNIGHTLY      = 'fortnightly'.freeze
+              FORTNIGHTLY      = 'fortnightly'
 
               # Frequency MONTHLY
-              MONTHLY          = 'monthly'.freeze
+              MONTHLY          = 'monthly'
 
               # Frequency EVERY TWO MONTHS
-              EVERY_TWO_MONTHS = 'every_two_months'.freeze
+              EVERY_TWO_MONTHS = 'every_two_months'
 
               # Frequency TRIMESTER
-              TRIMESTER        = 'trimester'.freeze
+              TRIMESTER        = 'trimester'
 
               # Frequency QUARTERLY
-              QUARTERLY        = 'quarterly'.freeze
+              QUARTERLY        = 'quarterly'
 
               # Frequency TWICE YEARLY
-              TWICE_YEARLY     = 'twice_yearly'.freeze
+              TWICE_YEARLY     = 'twice_yearly'
 
               # Frequency ANNUALLY
-              ANNUALLY         = 'annually'.freeze
+              ANNUALLY         = 'annually'
 
               # Frequency UNSCHEDULED
-              UNSCHEDULED      = 'unscheduled'.freeze
+              UNSCHEDULED      = 'unscheduled'
 
             end
           end

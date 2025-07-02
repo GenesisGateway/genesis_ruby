@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Builders::Xml do
   let(:xml_builder) { described_class.new }
 

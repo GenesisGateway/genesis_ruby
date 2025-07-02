@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # rubocop:disable RSpec/MultipleMemoizedHelpers
 RSpec.shared_examples 'dynamic descriptor examples' do
   describe 'when dynamic descriptor' do

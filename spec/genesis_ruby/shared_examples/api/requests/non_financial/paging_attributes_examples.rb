@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'paging attributes examples' do
   describe 'when paging attributes' do
     describe 'when page attribute' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -12,10 +14,10 @@ module GenesisRuby
                   extend Mixins::Constants::Common
 
                   # Browser-based consumer interface. All the browser parameters are required.
-                  BROWSER     = 'browser'.freeze
+                  BROWSER     = 'browser'
 
                   # Application
-                  APPLICATION = 'application'.freeze
+                  APPLICATION = 'application'
 
                 end
               end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/constants/transactions/parameters/customer_identification/customer_identification_type'
 
 RSpec.describe GenesisRuby::Api::Constants::Transactions::Parameters::CustomerIdentification::CustomerIdentificationType do # rubocop:disable Layout/LineLength

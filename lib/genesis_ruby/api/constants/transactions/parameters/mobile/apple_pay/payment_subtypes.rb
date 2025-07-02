@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -11,13 +13,13 @@ module GenesisRuby
                 extend Mixins::Constants::Common
 
                 # Apple Pay authorize payment subtype
-                AUTHORIZE           = 'authorize'.freeze
+                AUTHORIZE           = 'authorize'
 
                 # Apple Pay init_recurring_sale payment subtype
-                INIT_RECURRING_SALE = 'init_recurring_sale'.freeze
+                INIT_RECURRING_SALE = 'init_recurring_sale'
 
                 # Apple Pay sale payment subtype
-                SALE                = 'sale'.freeze
+                SALE                = 'sale'
 
               end
             end

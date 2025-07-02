@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -10,10 +12,10 @@ module GenesisRuby
               extend Mixins::Constants::Common
 
               # Channel email
-              EMAIL = 'email'.freeze
+              EMAIL = 'email'
 
               # Channel sms
-              SMS   = 'sms'.freeze
+              SMS   = 'sms'
 
             end
           end

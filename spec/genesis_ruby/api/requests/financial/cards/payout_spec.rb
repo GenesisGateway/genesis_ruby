@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Payout do
   let(:test_required_fields) do
     %i[

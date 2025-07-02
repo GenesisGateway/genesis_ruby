@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Bancontact do # rubocop:disable RSpec/MultipleMemoizedHelpers
   let(:test_required_fields) do
     %i[transaction_id

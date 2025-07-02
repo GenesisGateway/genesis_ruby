@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'crypto attributes examples' do
   describe 'when crypto attributes' do
     it 'without crypto attributes' do

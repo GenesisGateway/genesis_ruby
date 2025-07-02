@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -10,10 +12,10 @@ module GenesisRuby
               extend Api::Mixins::Constants::Common
 
               # Document ID belongs to
-              SENDER   = 'sender'.freeze
+              SENDER   = 'sender'
 
               # Document ID belongs to
-              RECEIVER = 'receiver'.freeze
+              RECEIVER = 'receiver'
 
             end
           end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'financial structure examples' do
   describe 'when financial Hash structure' do
     it 'with root payment_transaction key' do

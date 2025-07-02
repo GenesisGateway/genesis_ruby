@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/utils/money/format'
 
 RSpec.describe GenesisRuby::Utils::Money::Format do

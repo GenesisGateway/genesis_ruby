@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -12,28 +14,28 @@ module GenesisRuby
                   extend Mixins::Constants::Common
 
                   # Sale as Billing
-                  SAME_AS_BILLING  = 'same_as_billing'.freeze
+                  SAME_AS_BILLING  = 'same_as_billing'
 
                   # Stored Address
-                  STORED_ADDRESS   = 'stored_address'.freeze
+                  STORED_ADDRESS   = 'stored_address'
 
                   # Verified Address
-                  VERIFIED_ADDRESS = 'verified_address'.freeze
+                  VERIFIED_ADDRESS = 'verified_address'
 
                   # Pick Up
-                  PICK_UP          = 'pick_up'.freeze
+                  PICK_UP          = 'pick_up'
 
                   # Digital Goods
-                  DIGITAL_GOODS    = 'digital_goods'.freeze
+                  DIGITAL_GOODS    = 'digital_goods'
 
                   # Travel
-                  TRAVEL           = 'travel'.freeze
+                  TRAVEL           = 'travel'
 
                   # Event Tickets
-                  EVENT_TICKETS    = 'event_tickets'.freeze
+                  EVENT_TICKETS    = 'event_tickets'
 
                   # Other
-                  OTHER            = 'other'.freeze
+                  OTHER            = 'other'
 
                 end
               end

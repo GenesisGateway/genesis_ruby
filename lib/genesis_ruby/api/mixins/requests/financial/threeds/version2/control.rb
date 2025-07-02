@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/constants/transactions/parameters/threeds/version2/control/device_types'
 require 'genesis_ruby/api/constants/transactions/parameters/threeds/version2/control/challenge_window_sizes'
 require 'genesis_ruby/api/constants/transactions/parameters/threeds/version2/control/challenge_indicators'

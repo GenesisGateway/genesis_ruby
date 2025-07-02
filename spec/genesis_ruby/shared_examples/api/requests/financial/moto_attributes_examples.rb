@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'moto attributes examples' do
   describe 'when moto attributes' do
     it 'without moto attributes' do

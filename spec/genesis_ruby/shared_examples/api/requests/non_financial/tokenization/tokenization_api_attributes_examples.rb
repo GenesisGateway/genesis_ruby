@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'tokenization api attributes examples' do
   describe 'when tokenization api attributes' do
     it 'with consumer_id' do

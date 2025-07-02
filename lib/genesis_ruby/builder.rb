@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/builders/xml'
 require 'genesis_ruby/builders/form'
 require 'genesis_ruby/builders/json'
@@ -9,16 +11,16 @@ module GenesisRuby
   class Builder
 
     # Builder XML
-    XML  = 'xml'.freeze
+    XML  = 'xml'
 
     # Builder JSON
-    JSON = 'json'.freeze
+    JSON = 'json'
 
     # Builder FORM
-    FORM = 'form'.freeze
+    FORM = 'form'
 
     # Builder GraphQL
-    GRAPHQL = 'graphql'.freeze
+    GRAPHQL = 'graphql'
 
     # Initialize the Builder Interface based on the Request requirements
     def initialize(request_interface)

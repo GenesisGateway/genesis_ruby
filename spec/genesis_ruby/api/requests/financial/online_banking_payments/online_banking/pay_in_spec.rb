@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::OnlineBanking::PayIn do
   let(:test_required_fields) do
     %i[transaction_id amount currency bank_code]

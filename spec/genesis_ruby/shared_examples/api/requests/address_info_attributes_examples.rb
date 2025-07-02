@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'address info attributes examples' do
   describe 'when billing address attributes' do
     let(:billing_country) do

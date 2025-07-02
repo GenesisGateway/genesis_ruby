@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby do
   let(:configuration) do
     config             = described_class::Configuration.new

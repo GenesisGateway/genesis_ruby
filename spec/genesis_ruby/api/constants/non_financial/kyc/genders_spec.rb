@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/constants/non_financial/kyc/genders'
 
 RSpec.describe GenesisRuby::Api::Constants::NonFinancial::Kyc::Genders do

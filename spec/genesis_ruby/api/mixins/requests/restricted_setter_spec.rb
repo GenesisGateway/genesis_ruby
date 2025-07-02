@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec/genesis_ruby/stubs/api/requests/restricted_setter_stub'
 
 RSpec.describe GenesisRuby::Api::Mixins::Requests::RestrictedSetter do

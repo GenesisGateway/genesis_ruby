@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/constants/transactions/parameters/non_financial/externally_processed'
 require 'genesis_ruby/api/constants/transactions/parameters/non_financial/processing_type'
 

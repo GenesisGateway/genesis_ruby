@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/utils/transactions/travel_data/airline_itinerary/base'
 require 'genesis_ruby/utils/money_format'
 

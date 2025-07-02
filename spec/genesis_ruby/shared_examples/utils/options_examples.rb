@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'option examples' do
   describe 'with proper initialization' do
     it 'set hash' do

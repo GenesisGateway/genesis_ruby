@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'wpf reminders attributes examples' do
   describe 'when WPF Reminders' do
     it 'without reminders' do

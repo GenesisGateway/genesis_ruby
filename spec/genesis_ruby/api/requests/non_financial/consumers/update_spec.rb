@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::NonFinancial::Consumers::Update do
   let(:test_required_fields) { %i[email consumer_id] }
   let(:skip_customer_phone) { true }

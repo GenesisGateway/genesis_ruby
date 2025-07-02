@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Utils::ObjectFormatter do
   let(:structure) do
     parser = GenesisRuby::Parser.new(GenesisRuby::Parser::XML)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec/genesis_ruby/stubs/api/requests/financial/source_of_funds_attributes_stub'
 require 'genesis_ruby/api/constants/transactions/parameters/source_of_funds'
 

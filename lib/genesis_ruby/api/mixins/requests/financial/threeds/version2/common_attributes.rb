@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/mixins/requests/financial/threeds/version2/browser'
 require 'genesis_ruby/api/mixins/requests/financial/threeds/version2/card_holder_account'
 require 'genesis_ruby/api/mixins/requests/financial/threeds/version2/control'

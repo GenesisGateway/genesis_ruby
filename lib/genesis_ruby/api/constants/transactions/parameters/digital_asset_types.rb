@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -9,19 +11,19 @@ module GenesisRuby
             extend Mixins::Constants::Common
 
             # Default crypto flag
-            CRYPTO = 'crypto'.freeze
+            CRYPTO = 'crypto'
 
             # Central Bank Digital Currency or tokenized deposits
-            CBDC = 'cbdc'.freeze
+            CBDC = 'cbdc'
 
             # Stablecoin (Fiat-backed)
-            STABLECOIN = 'stablecoin'.freeze
+            STABLECOIN = 'stablecoin'
 
             # Blockchain native token/coin
-            BLOCKCHAIN_NATIVE_TOKEN = 'blockchain_native_token'.freeze
+            BLOCKCHAIN_NATIVE_TOKEN = 'blockchain_native_token'
 
             # Non-fungible token
-            NFT = 'nft'.freeze
+            NFT = 'nft'
 
           end
         end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/api/constants/transactions/parameters/mobile/google_pay/payment_subtypes'
 
 module GenesisRuby

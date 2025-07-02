@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/utils/options/api_config'
 require 'genesis_ruby/errors/endpoint_not_set_error'
 require 'genesis_ruby/builder'
@@ -12,15 +14,15 @@ module GenesisRuby
       include Mixins::Requests::RestrictedSetter
       include Mixins::Requests::AttributeValidation
 
-      PROTOCOL_HTTPS = 'https'.freeze
+      PROTOCOL_HTTPS = 'https'
       PORT_HTTPS     = 443
 
-      METHOD_POST    = 'POST'.freeze
-      METHOD_GET     = 'GET'.freeze
-      METHOD_PUT     = 'PUT'.freeze
+      METHOD_POST    = 'POST'
+      METHOD_GET     = 'GET'
+      METHOD_PUT     = 'PUT'
 
-      AUTH_TYPE_BASIC = 'basic'.freeze
-      AUTH_TYPE_TOKEN = 'bearer'.freeze
+      AUTH_TYPE_BASIC = 'basic'
+      AUTH_TYPE_TOKEN = 'bearer'
 
       attr_reader :api_config
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -5,11 +7,11 @@ module GenesisRuby
       class Environments
 
         # Live (Production) environment
-        PRODUCTION = 'production'.freeze
+        PRODUCTION = 'production'
 
         # Staging/Test environment
         # NO MONEY are being transferred
-        STAGING    = 'sandbox'.freeze
+        STAGING    = 'sandbox'
 
       end
     end

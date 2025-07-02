@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'externally processed attributes examples' do
   describe 'when externally_processed attributes' do
     it 'with valid value' do

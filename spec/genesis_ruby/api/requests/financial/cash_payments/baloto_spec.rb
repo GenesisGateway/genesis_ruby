@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GenesisRuby::Api::Requests::Financial::CashPayments::Baloto do
   let(:request) do
     request = described_class.new config

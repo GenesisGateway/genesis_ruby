@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'gift cards attributes examples' do
   describe 'when gift cards attributes' do
     it 'with card_number' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'genesis_ruby/network/net_http'
 require 'genesis_ruby/errors/network_error'
 require 'genesis_ruby/configuration'

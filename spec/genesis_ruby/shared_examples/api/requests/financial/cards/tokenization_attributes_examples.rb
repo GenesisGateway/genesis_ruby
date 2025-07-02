@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'tokenization attributes examples' do
   let(:skip_tokenization_customer_email) { false } unless method_defined? :skip_tokenization_customer_email
 

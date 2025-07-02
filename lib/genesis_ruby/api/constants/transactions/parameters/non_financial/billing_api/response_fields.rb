@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenesisRuby
   module Api
     module Constants
@@ -10,52 +12,52 @@ module GenesisRuby
 
                 extend Mixins::Constants::Common
 
-                ID                                               = 'id'.freeze
-                BILLING_STATEMENT                                = 'billingStatement'.freeze
-                UNIQUE_ID                                        = 'uniqueId'.freeze
-                ARN                                              = 'arn'.freeze
-                TRANSACTION_DATE                                 = 'transactionDate'.freeze
-                TRANSACTION_TYPE                                 = 'transactionType'.freeze
-                TRANSACTION_CURRENCY                             = 'transactionCurrency'.freeze
-                TRANSACTION_AMOUNT                               = 'transactionAmount'.freeze
-                EXCHANGE_RATE                                    = 'exchangeRate'.freeze
-                BILLING_CURRENCY                                 = 'billingCurrency'.freeze
-                BILLING_AMOUNT                                   = 'billingAmount'.freeze
-                TRANSACTION_FEE_CURRENCY                         = 'transactionFeeCurrency'.freeze
-                TRANSACTION_FEE_AMOUNT                           = 'transactionFeeAmount'.freeze
-                TRANSACTION_FEE_CHARGED_ON_BILLING_STATEMENT     = 'transactionFeeChargedOnBillingStatement'.freeze
-                COMMISSION_PERCENT                               = 'commissionPercent'.freeze
-                COMMISSION_AMOUNT                                = 'commissionAmount'.freeze
-                INTERCHANGE_FEE                                  = 'interchangeFee'.freeze
-                INTERCHANGE_CURRENCY                             = 'interchangeCurrency'.freeze
-                IS_INTERCHANGEPLUSPLUS                           = 'isInterchangeplusplus'.freeze
-                INTERCHANGEPLUSPLUS_CHARGED_ON_BILLING_STATEMENT = 'interchangeplusplusChargedOnBillingStatement'.freeze
-                SCHEME_FEE                                       = 'schemeFee'.freeze
-                SCHEME_FEE_CURRENCY                              = 'schemeFeeCurrency'.freeze
-                STANDARD_DEBIT_CARD_RATE                         = 'standardDebitCardRate'.freeze
-                GST_AMOUNT                                       = 'gstAmount'.freeze
-                GST_RATE                                         = 'gstRate'.freeze
-                VAT_AMOUNT                                       = 'vatAmount'.freeze
-                VAT_RATE                                         = 'vatRate'.freeze
-                TERMINAL_NAME                                    = 'terminalName'.freeze
-                REGION                                           = 'region'.freeze
-                SETTLEMENT_BILLING_STATEMENTS                    = 'settlementBillingStatements'.freeze
-                SETTLEMENT_DATES                                 = 'settlementDates'.freeze
-                SETTLEMENT_STATUS                                = 'settlementStatus'.freeze
-                MERCHANT_ID                                      = 'merchantId'.freeze
-                MERCHANT_NAME                                    = 'merchantName'.freeze
-                MERCHANT_TRANSACTION_ID                          = 'merchantTransactionId'.freeze
-                MASTER_ACCOUNT_NAME                              = 'masterAccountName'.freeze
-                VALUE_DATE                                       = 'valueDate'.freeze
-                DOCUMENT_ID                                      = 'documentId'.freeze
-                REFERENCE_ID                                     = 'referenceId'.freeze
-                AUTH_CODE                                        = 'authCode'.freeze
-                PAYMENT_TYPE                                     = 'paymentType'.freeze
-                CARD_BRAND                                       = 'cardBrand'.freeze
-                CARD_NUMBER                                      = 'cardNumber'.freeze
-                CARD_HOLDER                                      = 'cardHolder'.freeze
-                CARD_TYPE                                        = 'cardType'.freeze
-                CARD_SUBTYPE                                     = 'cardSubtype'.freeze
+                ID                                               = 'id'
+                BILLING_STATEMENT                                = 'billingStatement'
+                UNIQUE_ID                                        = 'uniqueId'
+                ARN                                              = 'arn'
+                TRANSACTION_DATE                                 = 'transactionDate'
+                TRANSACTION_TYPE                                 = 'transactionType'
+                TRANSACTION_CURRENCY                             = 'transactionCurrency'
+                TRANSACTION_AMOUNT                               = 'transactionAmount'
+                EXCHANGE_RATE                                    = 'exchangeRate'
+                BILLING_CURRENCY                                 = 'billingCurrency'
+                BILLING_AMOUNT                                   = 'billingAmount'
+                TRANSACTION_FEE_CURRENCY                         = 'transactionFeeCurrency'
+                TRANSACTION_FEE_AMOUNT                           = 'transactionFeeAmount'
+                TRANSACTION_FEE_CHARGED_ON_BILLING_STATEMENT     = 'transactionFeeChargedOnBillingStatement'
+                COMMISSION_PERCENT                               = 'commissionPercent'
+                COMMISSION_AMOUNT                                = 'commissionAmount'
+                INTERCHANGE_FEE                                  = 'interchangeFee'
+                INTERCHANGE_CURRENCY                             = 'interchangeCurrency'
+                IS_INTERCHANGEPLUSPLUS                           = 'isInterchangeplusplus'
+                INTERCHANGEPLUSPLUS_CHARGED_ON_BILLING_STATEMENT = 'interchangeplusplusChargedOnBillingStatement'
+                SCHEME_FEE                                       = 'schemeFee'
+                SCHEME_FEE_CURRENCY                              = 'schemeFeeCurrency'
+                STANDARD_DEBIT_CARD_RATE                         = 'standardDebitCardRate'
+                GST_AMOUNT                                       = 'gstAmount'
+                GST_RATE                                         = 'gstRate'
+                VAT_AMOUNT                                       = 'vatAmount'
+                VAT_RATE                                         = 'vatRate'
+                TERMINAL_NAME                                    = 'terminalName'
+                REGION                                           = 'region'
+                SETTLEMENT_BILLING_STATEMENTS                    = 'settlementBillingStatements'
+                SETTLEMENT_DATES                                 = 'settlementDates'
+                SETTLEMENT_STATUS                                = 'settlementStatus'
+                MERCHANT_ID                                      = 'merchantId'
+                MERCHANT_NAME                                    = 'merchantName'
+                MERCHANT_TRANSACTION_ID                          = 'merchantTransactionId'
+                MASTER_ACCOUNT_NAME                              = 'masterAccountName'
+                VALUE_DATE                                       = 'valueDate'
+                DOCUMENT_ID                                      = 'documentId'
+                REFERENCE_ID                                     = 'referenceId'
+                AUTH_CODE                                        = 'authCode'
+                PAYMENT_TYPE                                     = 'paymentType'
+                CARD_BRAND                                       = 'cardBrand'
+                CARD_NUMBER                                      = 'cardNumber'
+                CARD_HOLDER                                      = 'cardHolder'
+                CARD_TYPE                                        = 'cardType'
+                CARD_SUBTYPE                                     = 'cardSubtype'
 
               end
             end

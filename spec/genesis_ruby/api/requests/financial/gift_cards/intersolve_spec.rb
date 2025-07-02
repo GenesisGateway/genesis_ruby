@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # rubocop:disable RSpec/MultipleMemoizedHelpers
 RSpec.describe GenesisRuby::Api::Requests::Financial::GiftCards::Intersolve do
   let(:test_required_fields) do
