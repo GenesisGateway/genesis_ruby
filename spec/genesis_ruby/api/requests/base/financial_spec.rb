@@ -50,26 +50,10 @@ RSpec.describe GenesisRuby::Api::Requests::Base::Financial do
       request
     end
 
-    it 'with force_smart_routing' do
-      configuration.force_smart_routing = true
-
-      request.build_document
-
-      expect(request.api_config.url).to eq 'https://staging.api.emerchantpay.net:443/transactions'
-    end
-
-    it 'with use_smart_router' do
-      configuration.force_smart_routing = false
-      request.use_smart_router = true
-
-      request.build_document
-
-      expect(request.api_config.url).to eq 'https://staging.api.emerchantpay.net:443/transactions'
-    end
-
-    include_examples 'financial attributes examples'
     include_examples 'base request examples'
+    include_examples 'financial attributes examples'
     include_examples 'financial structure examples'
     include_examples 'payment attributes examples'
+    include_examples 'smart router attributes examples'
   end
 end

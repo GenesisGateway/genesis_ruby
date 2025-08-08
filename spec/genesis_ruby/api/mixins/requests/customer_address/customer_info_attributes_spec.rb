@@ -49,7 +49,7 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::CustomerAddress::CustomerInfo
 
   describe 'with invalid email' do
     it 'raise error' do
-      expect { customer_attributes.customer_email = 'invalid' }.to raise_error GenesisRuby::ParameterError
+      expect { customer_attributes.customer_email = 'invalid' }.to raise_error GenesisRuby::InvalidArgumentError
     end
   end
 end

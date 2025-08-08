@@ -29,6 +29,12 @@ RSpec.describe GenesisRuby::Api::Request do
       expect(request.build_document).to eq ''
     end
 
+    it 'can build PATCH document' do
+      request = described_class.new GenesisRuby::Configuration.new, 'patch'
+
+      expect(request.build_document).to eq '{}'
+    end
+
     it 'can not init api gateway configuration' do
       expect { request.__send__(:init_api_gateway_configuration) }.to raise_error GenesisRuby::EndpointNotSetError
     end
@@ -57,6 +63,11 @@ RSpec.describe GenesisRuby::Api::Request do
         url:                   'https://staging.api.emerchantpay.net:443/graphql'
       }
     )
+    patch_request_configuration   = base_request_configuration.merge(
+      format: 'patch',
+      parser_skip_root_node: false,
+      type: described_class::METHOD_PATCH
+    )
 
     let(:request) do
       genesis_configuration.username    = 'username'
@@ -80,6 +91,13 @@ RSpec.describe GenesisRuby::Api::Request do
       request.__send__ :init_api_gateway_configuration
 
       expect(request.api_config).to eq json_request_configuration
+    end
+
+    it 'init proper PATCH configuration' do
+      request.__send__ :init_patch_configuration
+      request.__send__ :init_api_gateway_configuration
+
+      expect(request.api_config).to eq patch_request_configuration
     end
 
     it 'init proper FORM configuration' do

@@ -54,5 +54,11 @@ RSpec.describe GenesisRuby::Utils::Options::ApiConfig do
           { authorization: 'bearer', bearer_token: nil, format: 'graphql', parser_skip_root_node: false }
         )
     end
+
+    it 'with PATCH configuration' do
+      options.load_patch_config
+
+      expect(options).to eq basic_options.merge({ format: 'patch', parser_skip_root_node: false, type: 'PATCH' })
+    end
   end
 end

@@ -32,6 +32,7 @@ module GenesisRuby
             when Api::Request::METHOD_POST then @response = @request.post path, request_data.body, headers
             when Api::Request::METHOD_PUT then @response = @request.put path, request_data.body, headers
             when Api::Request::METHOD_GET then @response = @request.get path, headers
+            when Api::Request::METHOD_PATCH then @response = @request.patch path, request_data.body, headers
             else raise 'Invalid Request Type!'
             end
           end

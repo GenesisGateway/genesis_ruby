@@ -15,9 +15,7 @@ module GenesisRuby
 
             # Email of the customer
             def customer_email=(value)
-              raise GenesisRuby::ParameterError unless value.nil? || value =~ /\A.+@.+\..+\Z/
-
-              @customer_email = value
+              parse_email attribute: __method__, value: value, allow_empty: true
             end
 
           end

@@ -20,6 +20,7 @@ module GenesisRuby
       METHOD_POST    = 'POST'
       METHOD_GET     = 'GET'
       METHOD_PUT     = 'PUT'
+      METHOD_PATCH   = 'PATCH'
 
       AUTH_TYPE_BASIC = 'basic'
       AUTH_TYPE_TOKEN = 'bearer'
@@ -83,6 +84,11 @@ module GenesisRuby
       # Pre-defined GraphQL Request Configuration
       def init_graphql_configuration
         @api_config.load_graphql_config
+      end
+
+      # Pre-defined PATCH Request Configuration
+      def init_patch_configuration
+        @api_config.load_patch_config
       end
 
       # Initializes Api EndPoint Url with request path & terminal token

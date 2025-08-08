@@ -63,6 +63,17 @@ module GenesisRuby
           self.bearer_token          = nil
         end
 
+        # Load pre-defined PATCH configuration
+        def load_patch_config
+          self.protocol              = GenesisRuby::Api::Request::PROTOCOL_HTTPS
+          self.port                  = GenesisRuby::Api::Request::PORT_HTTPS
+          self.type                  = GenesisRuby::Api::Request::METHOD_PATCH
+          self.format                = Builder::PATCH
+          self.parser_skip_root_node = false
+          self.authorization         = GenesisRuby::Api::Request::AUTH_TYPE_BASIC
+          self.bearer_token          = nil
+        end
+
       end
     end
   end

@@ -19,14 +19,7 @@ module GenesisRuby
 
               # Consumer e-mail address
               def email=(value)
-                error_message = format(
-                  'Invalid value given for %{attribute}',
-                  attribute: __method__
-                )
-
-                raise GenesisRuby::ParameterError, error_message unless value.nil? || value =~ /\A.+@.+\..+\Z/
-
-                @email = value
+                parse_email attribute: __method__, value: value, allow_empty: true
               end
 
               protected

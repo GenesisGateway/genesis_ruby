@@ -9,6 +9,7 @@ module GenesisSpec
           class CustomerInfoAttributesStub
 
             include GenesisRuby::Api::Mixins::Requests::CustomerAddress::CustomerInfoAttributes
+            include GenesisRuby::Api::Mixins::Requests::RestrictedSetter
 
           end
         end

@@ -36,7 +36,7 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::NonFinancial::Tokenization::T
     end
 
     it 'with invalid value' do
-      expect { attributes.email = 'invalid_email' }.to raise_error GenesisRuby::ParameterError
+      expect { attributes.email = 'invalid_email' }.to raise_error GenesisRuby::InvalidArgumentError
     end
   end
 

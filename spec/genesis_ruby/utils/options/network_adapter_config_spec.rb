@@ -158,4 +158,28 @@ RSpec.describe GenesisRuby::Utils::Options::NetworkAdapterConfig do
       expect(options).to include headers: { 'Accept' => 'application/json' }
     end
   end
+
+  describe 'when PATCH request' do
+    before do
+      request.__send__ :init_patch_configuration
+      request.__send__ :init_api_gateway_configuration
+      options.map_from_request(request, configuration)
+    end
+
+    it 'with JSON format' do
+      expect(options).to include format: 'application/json'
+    end
+
+    it 'with Basic authorization' do
+      expect(options).to include authorization: 'basic'
+    end
+
+    it 'with Basic authorization login' do
+      expect(options).to include user_login: "Basic #{encoded_login}"
+    end
+
+    it 'with additional headers' do
+      expect(options).to include headers: {}
+    end
+  end
 end

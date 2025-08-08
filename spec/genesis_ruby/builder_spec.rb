@@ -88,6 +88,16 @@ RSpec.describe GenesisRuby::Builder do
     end
   end
 
+  describe 'PATCH Builder' do
+    let(:patch_builder) { described_class.new(described_class::PATCH) }
+
+    it 'can generate valid json content' do
+      patch_builder.parse_structure element1: 'value1', element2: 'value2'
+
+      expect(patch_builder.document).to eq "{\n  \"element1\": \"value1\",\n  \"element2\": \"value2\"\n}"
+    end
+  end
+
   describe 'Graphql Builder' do
     let(:graphql_builder) { described_class.new(described_class::GRAPHQL) }
     let(:structure) do

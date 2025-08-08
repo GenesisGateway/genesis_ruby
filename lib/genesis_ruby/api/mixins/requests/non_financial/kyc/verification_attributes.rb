@@ -17,9 +17,7 @@ module GenesisRuby
 
               # User's email
               def email=(value)
-                raise InvalidArgumentError unless value =~ /\A.+@.+\..+\Z/
-
-                @email = value
+                parse_email attribute: __method__, value: value
               end
 
               # Signifies that both sides of the document are required to verify the identity

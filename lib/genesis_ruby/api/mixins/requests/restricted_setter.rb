@@ -81,6 +81,16 @@ module GenesisRuby
             assign_instance_variable attribute, value
           end
 
+          # Parses given value to a valid email address and assign it to the given attribute
+          # If allow_empty is true, it will assign nil if the value is empty
+          def parse_email(attribute:, value:, allow_empty: false)
+            return assign_instance_variable attribute, nil if allow_empty && value.to_s.empty?
+
+            raise InvalidArgumentError, "#{attribute} must be a valid email address." unless value =~ /\A.+@.+\..+\Z/
+
+            assign_instance_variable attribute, value
+          end
+
           private
 
           # Helper for assigning a attribute to the class instance

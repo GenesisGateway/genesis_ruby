@@ -1,3 +1,12 @@
+0.2.8
+-----
+**Features**
+
+* Add Smart Router support with single Reconcile
+* Add PATCH method support
+* Add Update Payee and Update Payee Account request support
+* Add parse_email restricted setter
+
 0.2.7
 -----
 **Features**:

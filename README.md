@@ -1156,9 +1156,11 @@ GenesisRuby::Api::Requests::NonFinancial::Kyc::Transaction::Create
 ## Payee API
 GenesisRuby::Api::Requests::NonFinancial::Payee::Create
 GenesisRuby::Api::Requests::NonFinancial::Payee::Retrieve
+GenesisRuby::Api::Requests::NonFinancial::Payee::Update
 GenesisRuby::Api::Requests::NonFinancial::Payee::Account::Create
 GenesisRuby::Api::Requests::NonFinancial::Payee::Account::Retrieve
 GenesisRuby::Api::Requests::NonFinancial::Payee::Account::List
+GenesisRuby::Api::Requests::NonFinancial::Payee::Account::Update
 
 ## Chargeback API
 GenesisRuby::Api::Requests::NonFinancial::Fraud::Chargeback::Transaction

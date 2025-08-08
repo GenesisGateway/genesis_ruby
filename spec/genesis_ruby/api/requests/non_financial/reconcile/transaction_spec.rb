@@ -1,19 +1,19 @@
 # frozen_string_literal: true
 
 RSpec.describe GenesisRuby::Api::Requests::NonFinancial::Reconcile::Transaction do
-  let(:config) do
-    config             = GenesisRuby::Configuration.new
-    config.username    = 'example_username'
-    config.password    = 'example_password'
-    config.token       = 'example_token'
-    config.endpoint    = GenesisRuby::Api::Constants::Endpoints::EMERCHANTPAY
-    config.environment = GenesisRuby::Api::Constants::Environments::STAGING
+  let(:configuration) do
+    configuration             = GenesisRuby::Configuration.new
+    configuration.username    = 'example_username'
+    configuration.password    = 'example_password'
+    configuration.token       = 'example_token'
+    configuration.endpoint    = GenesisRuby::Api::Constants::Endpoints::EMERCHANTPAY
+    configuration.environment = GenesisRuby::Api::Constants::Environments::STAGING
 
-    config
+    configuration
   end
 
   let(:request) do
-    request = described_class.new config
+    request = described_class.new configuration
 
     request.unique_id = Faker::Internet.uuid
 
@@ -22,7 +22,7 @@ RSpec.describe GenesisRuby::Api::Requests::NonFinancial::Reconcile::Transaction 
 
   describe 'when initialized' do
     it 'with valid endpoint' do
-      expect(request.api_config[:url]).to eq "https://staging.gate.emerchantpay.net:443/reconcile/#{config.token}/"
+      expect(request.api_config[:url]).to eq "https://staging.gate.emerchantpay.net:443/reconcile/#{configuration.token}/"
     end
 
     it 'with XML root element' do
@@ -49,4 +49,5 @@ RSpec.describe GenesisRuby::Api::Requests::NonFinancial::Reconcile::Transaction 
   end
 
   include_examples 'base request examples'
+  include_examples 'smart router attributes examples'
 end

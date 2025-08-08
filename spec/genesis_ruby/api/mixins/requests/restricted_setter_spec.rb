@@ -257,4 +257,49 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::RestrictedSetter do
       end
     end
   end
+
+  describe 'when parse_email' do
+    let(:attribute) { 'attr_email' }
+    let(:valid_email) { 'test@example.com' }
+
+    it 'with valid email address' do
+      expect(
+        restricted_setter.__send__(:parse_email, attribute: attribute, value: valid_email)
+      ).to eq valid_email
+    end
+
+    it 'with invalid email address' do
+      expect do
+        restricted_setter.__send__(:parse_email, attribute: attribute, value: 'invalid-email')
+      end.to raise_error GenesisRuby::InvalidArgumentError
+    end
+
+    it 'without allowed empty' do
+      expect do
+        restricted_setter.__send__(:parse_email, attribute: attribute, value: '')
+      end.to raise_error GenesisRuby::InvalidArgumentError
+    end
+
+    it 'with allowed empty' do
+      expect(restricted_setter.__send__(:parse_email, attribute: attribute, value: '', allow_empty: true)).to eq nil
+    end
+
+    it 'with email containing subdomains' do
+      email = 'test@sub.example.com'
+      expect(
+        restricted_setter.__send__(:parse_email, attribute: attribute, value: email)
+      ).to eq email
+    end
+
+    it 'with email containing plus sign' do
+      email = 'test+label@example.com'
+      expect(
+        restricted_setter.__send__(:parse_email, attribute: attribute, value: email)
+      ).to eq email
+    end
+
+    it 'with nil value and allow_empty true' do
+      expect(restricted_setter.__send__(:parse_email, attribute: attribute, value: nil, allow_empty: true)).to eq nil
+    end
+  end
 end

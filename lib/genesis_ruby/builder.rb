@@ -4,6 +4,7 @@ require 'genesis_ruby/builders/xml'
 require 'genesis_ruby/builders/form'
 require 'genesis_ruby/builders/json'
 require 'genesis_ruby/builders/graphql'
+require 'genesis_ruby/builders/patch'
 require 'genesis_ruby/errors/builder_error'
 
 module GenesisRuby
@@ -22,6 +23,9 @@ module GenesisRuby
     # Builder GraphQL
     GRAPHQL = 'graphql'
 
+    # Builder PATCH
+    PATCH = 'patch'
+
     # Initialize the Builder Interface based on the Request requirements
     def initialize(request_interface)
       case request_interface
@@ -29,6 +33,7 @@ module GenesisRuby
       when FORM then @builder_context = Builders::Form.new
       when JSON then @builder_context = Builders::Json.new
       when GRAPHQL then @builder_context = Builders::Graphql.new
+      when PATCH then @builder_context = Builders::Patch.new
       else
         raise GenesisRuby::BuilderError, 'Invalid Builder interface!'
       end

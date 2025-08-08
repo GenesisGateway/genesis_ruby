@@ -35,7 +35,8 @@ module GenesisRuby
           when Builder::JSON then 'application/json'
           when Builder::FORM then 'application/x-www-form-urlencoded'
           when Builder::GRAPHQL then 'application/graphql'
-          else raise InvalidArgumentError, 'Invalid request format type. Allowed are XML, JSON and FORM'
+          when Builder::PATCH then 'application/json'
+          else raise InvalidArgumentError, 'Invalid request format type. Allowed are XML, JSON, FORM AND PATCH'
           end
         end
 
