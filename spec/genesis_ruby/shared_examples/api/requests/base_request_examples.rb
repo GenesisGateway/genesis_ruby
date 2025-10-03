@@ -27,4 +27,12 @@ RSpec.shared_examples 'base request examples' do
       expect { request_copy.build_document }.to raise_error GenesisRuby::ParameterError
     end
   end
+
+  it 'with non empty api_config' do
+    expect(request.api_config).to_not be_empty
+  end
+
+  it 'with non empty api_config format' do
+    expect(request.api_config.format).to_not be_empty
+  end
 end

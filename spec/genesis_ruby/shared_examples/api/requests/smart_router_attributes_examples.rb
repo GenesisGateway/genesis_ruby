@@ -3,7 +3,14 @@
 RSpec.shared_examples 'smart router attributes examples' do
   describe 'when smart router attributes' do
     let(:url) do
-      request.is_a?(GenesisRuby::Api::Requests::Base::Financial) ? 'transactions' : 'reconcile'
+      url = 'reconcile'
+
+      if request.is_a?(GenesisRuby::Api::Requests::Base::Financial) ||
+         request.is_a?(GenesisRuby::Api::Requests::Financial::Void)
+        url = 'transactions'
+      end
+
+      return url
     end
 
     it 'with force_smart_routing' do

@@ -9,12 +9,20 @@ module GenesisRuby
 
           include Mixins::Requests::Financial::BaseAttributes
           include Mixins::Requests::Financial::ReferenceAttributes
+          include Mixins::Requests::SmartRouterAttributes
 
           protected
 
           # Void transaction type
           def transaction_type
             Api::Constants::Transactions::VOID
+          end
+
+          # Void transaction request configuration
+          def init_configuration
+            init_xml_configuration
+            init_api_gateway_configuration
+            init_api_smart_router_configuration if @configuration.force_smart_routing
           end
 
           def init_field_validations

@@ -43,11 +43,6 @@ module GenesisRuby
             }
           end
 
-          # Initialize Smart Router endpoint
-          def init_api_smart_router_configuration
-            api_config.url = build_request_url({ subdomain: 'smart_router', path: 'transactions' })
-          end
-
           # Initialize Financial class validations
           def init_field_validations
             super

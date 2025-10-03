@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe GenesisRuby::Api::Requests::Financial::Void do
-  let(:config) do
+  let(:configuration) do
     config             = GenesisRuby::Configuration.new
     config.username    = 'example_username'
     config.password    = 'example_password'
@@ -13,7 +13,7 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Void do
   end
 
   let(:request) do
-    request = described_class.new config
+    request = described_class.new configuration
 
     request.transaction_id     = Faker::Internet.uuid
     request.usage              = Faker::Lorem.sentence
@@ -23,6 +23,11 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Void do
     request
   end
 
+  it 'with proper URL' do
+    expect(request.api_config.url).to eq 'https://staging.gate.emerchantpay.net:443/process/example_token/'
+  end
+
   include_examples 'base request examples'
   include_examples 'reference attributes examples'
+  include_examples 'smart router attributes examples'
 end

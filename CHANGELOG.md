@@ -1,3 +1,10 @@
+0.3.1
+-----
+
+**Fixes**:
+
+* Fixed Void transaction request execution
+
 0.3.0
 -----
 **Features**:
