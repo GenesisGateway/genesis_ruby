@@ -8,19 +8,31 @@ module GenesisRuby
     # Net HTTP Network module
     class NetHttp < BaseNetwork
 
-      # JSON Response Type
+      # XML Response Type
       def xml?
-        response_headers['content-type'].downcase.include?(BaseNetwork::XML_HEADER)
+        content_type = response_headers['content-type']
+
+        return false if content_type.nil?
+
+        content_type.downcase.include?(BaseNetwork::XML_HEADER)
       end
 
       # JSON Response Type
       def json?
-        response_headers['content-type'].downcase.include?(BaseNetwork::JSON_HEADER)
+        content_type = response_headers['content-type']
+
+        return false if content_type.nil?
+
+        content_type.downcase.include?(BaseNetwork::JSON_HEADER)
       end
 
       # HTML Response Type
       def html?
-        response_headers['content-type'].downcase.include?(BaseNetwork::HTML_HEADER)
+        content_type = response_headers['content-type']
+
+        return false if content_type.nil?
+
+        content_type.downcase.include?(BaseNetwork::HTML_HEADER)
       end
 
       protected

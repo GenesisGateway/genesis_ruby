@@ -33,6 +33,9 @@ module GenesisRuby
       def parse_response(network)
         @network_context = network
         @response_raw    = @network_context.response_body
+
+        return process_successful_empty_response if successful_empty_response?
+
         @response_object = load_parser(@network_context).parse_document(@response_raw)
 
         process_response_object
@@ -87,6 +90,18 @@ module GenesisRuby
         end
 
         @response_object
+      end
+
+      private
+
+      # Determines if the response is a successful 2xx with empty body (e.g., 204 No Content)
+      def successful_empty_response?
+        @response_raw.to_s.empty? && @network_context.status.to_i.between?(200, 299)
+      end
+
+      # Process a successful empty response without invoking the parser
+      def process_successful_empty_response
+        @response_object = {}
       end
 
     end

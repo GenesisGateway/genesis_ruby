@@ -63,12 +63,40 @@ module GenesisSpec
         json_response 400, 'gate_json_error_response.json'
       end
 
+      delete '/success_example' do
+        json_response 200, 'billing_api_response.json'
+      end
+
+      delete '/error_example' do
+        json_response 400, 'gate_json_error_response.json'
+      end
+
+      delete '/no_content_example' do
+        status 204
+      end
+
+      delete '/success_example_with_body' do
+        json_response 200, 'billing_api_response.json'
+      end
+
       post '/v1/installments' do
         json_response 200, 'billing_api_response.json'
       end
 
       get '/v1/installments/123' do
         json_response 200, 'billing_api_response.json'
+      end
+
+      get '/v1/managed_recurring/items' do
+        json_response 200, 'billing_api_response.json'
+      end
+
+      get %r{/v1/managed_recurring/items/\w+} do
+        json_response 200, 'billing_api_response.json'
+      end
+
+      delete %r{/v1/managed_recurring/items/\w+} do
+        status 204
       end
 
       private

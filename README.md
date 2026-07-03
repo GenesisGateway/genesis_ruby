@@ -1106,7 +1106,13 @@ GenesisRuby::Api::Requests::NonFinancial::Reconcile::DateRange
 GenesisRuby::Api::Requests::NonFinancial::Installments::Fetch
 
 ## Billing API
+GenesisRuby::Api::Requests::NonFinancial::BillingApi::Statements
 GenesisRuby::Api::Requests::NonFinancial::BillingApi::Transactions
+
+## Managed Recurring API
+GenesisRuby::Api::Requests::NonFinancial::ManagedRecurring::FetchAll
+GenesisRuby::Api::Requests::NonFinancial::ManagedRecurring::Fetch
+GenesisRuby::Api::Requests::NonFinancial::ManagedRecurring::Cancel
 
 ## Consumer API
 GenesisRuby::Api::Requests::NonFinancial::Consumers::Create
@@ -1130,6 +1136,7 @@ GenesisRuby::Api::Requests::NonFinancial::ProcessedTransactions::PostDateRange
 
 ## Tokenization API
 GenesisRuby::Api::Requests::NonFinancial::Tokenization::Tokenize
+GenesisRuby::Api::Requests::NonFinancial::Tokenization::Retokenize
 GenesisRuby::Api::Requests::NonFinancial::Tokenization::Detokenize
 GenesisRuby::Api::Requests::NonFinancial::Tokenization::UpdateToken
 GenesisRuby::Api::Requests::NonFinancial::Tokenization::Cryptogram
@@ -1138,8 +1145,13 @@ GenesisRuby::Api::Requests::NonFinancial::Tokenization::DeleteToken
 GenesisRuby::Api::Requests::NonFinancial::Tokenization::GetCard
 
 ## KYC Know Your Customer API
+GenesisRuby::Api::Requests::NonFinancial::Kyc::Business::Create
+GenesisRuby::Api::Requests::NonFinancial::Kyc::Business::DocumentList
+GenesisRuby::Api::Requests::NonFinancial::Kyc::Business::Document
+GenesisRuby::Api::Requests::NonFinancial::Kyc::Business::Verification
 GenesisRuby::Api::Requests::NonFinancial::Kyc::ConsumerRegistration::Create
 GenesisRuby::Api::Requests::NonFinancial::Kyc::ConsumerRegistration::Update
+GenesisRuby::Api::Requests::NonFinancial::Kyc::Verifications::AddressByDocumentProof
 GenesisRuby::Api::Requests::NonFinancial::Kyc::Verifications::Create
 GenesisRuby::Api::Requests::NonFinancial::Kyc::Verifications::Register
 GenesisRuby::Api::Requests::NonFinancial::Kyc::Verifications::RemoteIdentity
@@ -1155,12 +1167,33 @@ GenesisRuby::Api::Requests::NonFinancial::Kyc::Transaction::Create
 
 ## Payee API
 GenesisRuby::Api::Requests::NonFinancial::Payee::Create
+GenesisRuby::Api::Requests::NonFinancial::Payee::List
 GenesisRuby::Api::Requests::NonFinancial::Payee::Retrieve
 GenesisRuby::Api::Requests::NonFinancial::Payee::Update
 GenesisRuby::Api::Requests::NonFinancial::Payee::Account::Create
 GenesisRuby::Api::Requests::NonFinancial::Payee::Account::Retrieve
 GenesisRuby::Api::Requests::NonFinancial::Payee::Account::List
 GenesisRuby::Api::Requests::NonFinancial::Payee::Account::Update
+GenesisRuby::Api::Requests::NonFinancial::Payee::Account::Reverify
+GenesisRuby::Api::Requests::NonFinancial::Payee::ListPayeeOwners
+GenesisRuby::Api::Requests::NonFinancial::Payee::AssociatePayeeWithOwners
+GenesisRuby::Api::Requests::NonFinancial::Payee::DissociatePayeeWithOwners
+GenesisRuby::Api::Requests::NonFinancial::Payee::CreatePayeeDocument
+GenesisRuby::Api::Requests::NonFinancial::Payee::RetrievePayeeDocument
+GenesisRuby::Api::Requests::NonFinancial::Payee::ListPayeeDocuments
+GenesisRuby::Api::Requests::NonFinancial::Payee::Verifications::CreatePayeeVerification
+GenesisRuby::Api::Requests::NonFinancial::Payee::Verifications::RetrievePayeeVerification
+GenesisRuby::Api::Requests::NonFinancial::Payee::Verifications::ListPayeeVerifications
+GenesisRuby::Api::Requests::NonFinancial::Payee::Owners::Create
+GenesisRuby::Api::Requests::NonFinancial::Payee::Owners::Retrieve
+GenesisRuby::Api::Requests::NonFinancial::Payee::Owners::Update
+GenesisRuby::Api::Requests::NonFinancial::Payee::Owners::Delete
+GenesisRuby::Api::Requests::NonFinancial::Payee::Owners::ListOwners
+GenesisRuby::Api::Requests::NonFinancial::Payee::Owners::AssociateOwnerWithOwners
+GenesisRuby::Api::Requests::NonFinancial::Payee::Owners::DissociateOwners
+GenesisRuby::Api::Requests::NonFinancial::Payee::Owners::CreateOwnerDocument
+GenesisRuby::Api::Requests::NonFinancial::Payee::Owners::RetrieveOwnerDocument
+GenesisRuby::Api::Requests::NonFinancial::Payee::Owners::ListOwnerDocuments
 
 ## Chargeback API
 GenesisRuby::Api::Requests::NonFinancial::Fraud::Chargeback::Transaction

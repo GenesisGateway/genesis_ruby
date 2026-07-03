@@ -15,12 +15,13 @@ module GenesisRuby
       include Mixins::Requests::AttributeValidation
 
       PROTOCOL_HTTPS = 'https'
-      PORT_HTTPS     = 443
+      PORT_HTTPS = 443
 
-      METHOD_POST    = 'POST'
-      METHOD_GET     = 'GET'
-      METHOD_PUT     = 'PUT'
-      METHOD_PATCH   = 'PATCH'
+      METHOD_POST   = 'POST'
+      METHOD_GET    = 'GET'
+      METHOD_PUT    = 'PUT'
+      METHOD_PATCH  = 'PATCH'
+      METHOD_DELETE = 'DELETE'
 
       AUTH_TYPE_BASIC = 'basic'
       AUTH_TYPE_TOKEN = 'bearer'
@@ -28,9 +29,9 @@ module GenesisRuby
       attr_reader :api_config
 
       def initialize(configuration, builder_interface = 'xml')
-        @configuration     = configuration
+        @configuration = configuration
         @builder_interface = builder_interface
-        @api_config        = GenesisRuby::Utils::Options::ApiConfig.new
+        @api_config = GenesisRuby::Utils::Options::ApiConfig.new
 
         init_configuration
         init_field_validations
@@ -91,9 +92,14 @@ module GenesisRuby
         @api_config.load_patch_config
       end
 
+      # Pre-defined DELETE Request Configuration
+      def init_delete_configuration
+        @api_config.load_delete_config
+      end
+
       # Initializes Api EndPoint Url with request path & terminal token
       def init_api_gateway_configuration(options = { request_path: 'process', include_token: true })
-        request_path  = options.fetch :request_path, 'process'
+        request_path = options.fetch :request_path, 'process'
         include_token = options.fetch :include_token, true
 
         api_config.url = build_request_url(
@@ -168,7 +174,7 @@ module GenesisRuby
       #   path - the requested service /blacklists, threeds/threeds_method/<unique_id>, wpf/reconcile, etc/
       #   token - the MID configuration, appended to the end of the URL
       def build_request_url(options = { subdomain: 'gateway', path: '', token: '' })
-        options  = parse_request_parameters(options)
+        options = parse_request_parameters(options)
 
         format('%{protocol}://%{sub}%{domain}:%{port}/%{path}', {
                  protocol: api_config.protocol || PROTOCOL_HTTPS,

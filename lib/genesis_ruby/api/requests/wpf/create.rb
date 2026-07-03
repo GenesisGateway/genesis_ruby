@@ -95,6 +95,24 @@ module GenesisRuby
                             error_message: 'Accepts only boolean values'
           end
 
+          # Signifies whether the scheme tokenized card payments would be enabled on the WPF
+          def scheme_tokenized
+            @scheme_tokenized ||= false
+
+            return nil unless @scheme_tokenized
+
+            @scheme_tokenized
+          end
+
+          # Signifies whether the scheme tokenized card payments would be enabled on the WPF
+          def scheme_tokenized=(value)
+            allowed_options attribute: __method__,
+                            allowed: [true, false],
+                            value: value,
+                            allow_empty: true,
+                            error_message: 'Accepts only boolean values'
+          end
+
           # A number of minutes determining how long the WPF will be valid. Will be set to 30 minutes by default.
           def lifetime
             @lifetime ||= DEFAULT_LIFETIME
@@ -173,6 +191,7 @@ module GenesisRuby
                 risk_params:               risk_parameters_structure,
                 account_owner:             account_owner_attributes_structure,
                 pay_later:                 pay_later,
+                scheme_tokenized:          scheme_tokenized,
                 reminders:                 pay_later ? reminders_structure : [],
                 funding:                   funding_attributes_structure,
                 digital_asset_type:        digital_asset_type

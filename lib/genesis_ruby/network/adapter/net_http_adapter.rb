@@ -8,7 +8,7 @@ module GenesisRuby
   module Network
     module Adapter
       # Net-HTTP Adapter implementation
-      class NetHttpAdapter < BaseAdapter
+      class NetHttpAdapter < BaseAdapter # rubocop:disable Metrics/ClassLength
 
         # HTTP Response Status Code
         def status
@@ -18,13 +18,13 @@ module GenesisRuby
         # Prepare the request from the given data
         def prepare_request(data)
           @request_data = data
-          @uri          = parse_uri
+          @uri = parse_uri
           # Force connection re-creation
-          @request      = Net::HTTP.start(@uri.hostname ||= '', ssl_options)
+          @request = Net::HTTP.start(@uri.hostname ||= '', ssl_options)
         end
 
         # Send the request
-        def execute # rubocop:disable Metrics/AbcSize
+        def execute # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
           raise NetworkError, 'Request is not initialized' unless @request
 
           safe_execute do
@@ -33,6 +33,7 @@ module GenesisRuby
             when Api::Request::METHOD_PUT then @response = @request.put path, request_data.body, headers
             when Api::Request::METHOD_GET then @response = @request.get path, headers
             when Api::Request::METHOD_PATCH then @response = @request.patch path, request_data.body, headers
+            when Api::Request::METHOD_DELETE then @response = execute_delete
             else raise 'Invalid Request Type!'
             end
           end
@@ -97,7 +98,7 @@ module GenesisRuby
         def headers
           data = common_headers
 
-          data.merge! payload_headers unless request_data.type == Api::Request::METHOD_GET
+          data.merge! payload_headers if include_payload_headers?
           data.merge! request_data.headers if request_data.headers.is_a?(Hash) && !request_data.headers.empty?
 
           data
@@ -117,6 +118,31 @@ module GenesisRuby
             'Content-Type'   => request_data.format,
             'Content-Length' => request_data.body&.length.to_s
           }
+        end
+
+        # Check if DELETE request has a body
+        def delete_with_body?
+          request_data.type == Api::Request::METHOD_DELETE &&
+            request_data.body.is_a?(String) && !request_data.body.empty?
+        end
+
+        # Determine whether payload headers should be included
+        def include_payload_headers?
+          return false if request_data.type == Api::Request::METHOD_GET
+          return delete_with_body? if request_data.type == Api::Request::METHOD_DELETE
+
+          true
+        end
+
+        # Execute DELETE request with body support via Net::HTTP::Delete
+        def execute_delete
+          if delete_with_body?
+            delete_request = Net::HTTP::Delete.new(path, headers)
+            delete_request.body = request_data.body
+            @request.request(delete_request)
+          else
+            @request.delete path, headers
+          end
         end
 
         # Safe Request execution

@@ -64,6 +64,8 @@ RSpec.describe GenesisRuby::Api::Requests::NonFinancial::Kyc::Verifications::Cre
         Faker::Date.birthday(min_age: 18, max_age: 65).strftime('%Y-%m-%d')
       request.document_allow_offline          = Faker::Boolean.boolean
       request.document_allow_online           = Faker::Boolean.boolean
+      request.business_name                   = Faker::Company.name
+      request.business_incorporation_date     = Faker::Date.backward(days: 365).strftime('%Y-%m-%d')
 
       expect { request.build_document }.to_not raise_error
     end

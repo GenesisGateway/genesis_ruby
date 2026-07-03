@@ -5,6 +5,7 @@ $LOAD_PATH.unshift('./')
 require 'webmock/rspec'
 require 'spec/genesis_ruby/stubs/fake_request'
 require 'genesis_ruby'
+require 'spec/genesis_ruby/stubs/request_skeleton'
 require 'faker'
 
 # Load Shared examples

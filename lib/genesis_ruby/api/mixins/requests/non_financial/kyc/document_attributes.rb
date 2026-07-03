@@ -9,7 +9,7 @@ module GenesisRuby
             # Document Attributes mixin
             module DocumentAttributes
 
-              attr_accessor :proof, :full_address
+              attr_accessor :proof, :additional_proof, :full_address
               attr_reader   :first_name, :middle_name, :last_name
 
               # Gets date of birth for the document attributes
@@ -44,12 +44,13 @@ module GenesisRuby
               # Defines the structure of the document attributes
               def document_attributes_structure
                 {
-                  proof:         proof,
-                  date_of_birth: date_of_birth,
-                  first_name:    first_name,
-                  middle_name:   middle_name,
-                  last_name:     last_name,
-                  full_address:  full_address
+                  proof:            proof,
+                  additional_proof: additional_proof,
+                  date_of_birth:    date_of_birth,
+                  first_name:       first_name,
+                  middle_name:      middle_name,
+                  last_name:        last_name,
+                  full_address:     full_address
                 }
               end
 

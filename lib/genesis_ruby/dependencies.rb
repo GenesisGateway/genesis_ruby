@@ -28,6 +28,8 @@ require 'genesis_ruby/api/requests/financial/sdd/sale'
 require 'genesis_ruby/api/requests/base/graphql'
 require 'genesis_ruby/api/notification'
 require 'genesis_ruby/api/requests/base/non_financial/kyc/base'
+require 'genesis_ruby/api/requests/base/non_financial/billing_api/base'
+require 'genesis_ruby/api/requests/base/non_financial/payee/base'
 
 # Load Financial and Non Financial API Requests
 Dir["#{File.dirname(__FILE__)}/api/requests/*financial/**/*.rb"].sort.each { |file| require file }

@@ -20,6 +20,7 @@ module GenesisRuby
             include Mixins::Requests::Financial::CustomerIdentificationAttributes
             include Mixins::Requests::Financial::DynamicDescriptorAttributes
             include Mixins::Requests::Financial::GamingAttributes
+            include Mixins::Requests::Financial::MoneyTransferPayoutAttributes
             include Mixins::Requests::Financial::MotoAttributes
             include Mixins::Requests::Financial::PurposeOfPaymentAttributes
             include Mixins::Requests::Financial::SourceOfFundsAttributes
@@ -61,7 +62,8 @@ module GenesisRuby
                   billing_address:           billing_address_parameters_structure,
                   shipping_address:          shipping_address_parameters_structure,
                   customer_identification:   customer_identification_attributes_structure,
-                  dynamic_descriptor_params: dynamic_descriptor_structure
+                  dynamic_descriptor_params: dynamic_descriptor_structure,
+                  money_transfer:            money_transfer_payout_attributes_structure
                 }
               )
             end

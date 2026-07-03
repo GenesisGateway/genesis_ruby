@@ -19,7 +19,6 @@ RSpec.describe GenesisRuby::Utils::Options::ApiConfig do
         protocol:              'https',
         type:                  'POST'
       }
-
     end
 
     it 'with XML configuration' do
@@ -49,16 +48,21 @@ RSpec.describe GenesisRuby::Utils::Options::ApiConfig do
     it 'with GraphQL configuration' do
       options.load_graphql_config
 
-      expect(options)
-        .to eq basic_options.merge(
-          { authorization: 'bearer', bearer_token: nil, format: 'graphql', parser_skip_root_node: false }
-        )
+      expect(options).to eq basic_options.merge(
+        { authorization: 'bearer', bearer_token: nil, format: 'graphql', parser_skip_root_node: false }
+      )
     end
 
     it 'with PATCH configuration' do
       options.load_patch_config
 
       expect(options).to eq basic_options.merge({ format: 'patch', parser_skip_root_node: false, type: 'PATCH' })
+    end
+
+    it 'with DELETE configuration' do
+      options.load_delete_config
+
+      expect(options).to eq basic_options.merge({ format: 'json', parser_skip_root_node: false, type: 'DELETE' })
     end
   end
 end

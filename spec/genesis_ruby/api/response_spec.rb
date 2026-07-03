@@ -17,6 +17,7 @@ RSpec.describe GenesisRuby::Api::Response do
 
     allow(network).to receive(:json?).and_return(false)
     allow(network).to receive(:xml?).and_return(true)
+    allow(network).to receive(:status).and_return('200')
 
     network
   end
@@ -159,6 +160,7 @@ RSpec.describe GenesisRuby::Api::Response do
 
       allow(network).to receive(:json?).and_return(true)
       allow(network).to receive(:xml?).and_return(false)
+      allow(network).to receive(:status).and_return('200')
 
       network
     end
@@ -173,6 +175,89 @@ RSpec.describe GenesisRuby::Api::Response do
 
     it 'with error object' do
       expect(response.parse_response(network_mock)).to include :status
+    end
+  end
+
+  describe 'when successful empty response' do
+    let(:empty_network_mock) do
+      network = instance_double(GenesisRuby::Network::NetHttp)
+
+      allow(network).to receive(:response_body).and_return('')
+      allow(network).to receive(:status).and_return('200')
+
+      network
+    end
+
+    it 'does not crash' do
+      expect { response.parse_response(empty_network_mock) }.to_not raise_error
+    end
+
+    it 'returns empty hash response_object' do
+      response.parse_response(empty_network_mock)
+
+      expect(response.response_object).to eq({})
+    end
+
+    it 'returns empty response_raw' do
+      response.parse_response(empty_network_mock)
+
+      expect(response.response_raw).to eq('')
+    end
+  end
+
+  describe 'when 204 no content response' do
+    let(:no_content_network_mock) do
+      network = instance_double(GenesisRuby::Network::NetHttp)
+
+      allow(network).to receive(:response_body).and_return('')
+      allow(network).to receive(:status).and_return('204')
+
+      network
+    end
+
+    it 'does not crash' do
+      expect { response.parse_response(no_content_network_mock) }.to_not raise_error
+    end
+
+    it 'returns empty hash response_object' do
+      response.parse_response(no_content_network_mock)
+
+      expect(response.response_object).to eq({})
+    end
+  end
+
+  describe 'when 202 accepted empty response' do
+    let(:accepted_network_mock) do
+      network = instance_double(GenesisRuby::Network::NetHttp)
+
+      allow(network).to receive(:response_body).and_return('')
+      allow(network).to receive(:status).and_return('202')
+
+      network
+    end
+
+    it 'returns empty hash response_object' do
+      response.parse_response(accepted_network_mock)
+
+      expect(response.response_object).to eq({})
+    end
+  end
+
+  describe 'when empty non-2xx response' do
+    let(:error_empty_network_mock) do
+      network = instance_double(GenesisRuby::Network::NetHttp)
+
+      allow(network).to receive(:response_body).and_return('')
+      allow(network).to receive(:status).and_return('500')
+      allow(network).to receive(:json?).and_return(false)
+      allow(network).to receive(:xml?).and_return(false)
+      allow(network).to receive(:server_message).and_return('500 Internal Server Error')
+
+      network
+    end
+
+    it 'must not be treated as successful' do
+      expect { response.parse_response(error_empty_network_mock) }.to raise_error GenesisRuby::NetworkError
     end
   end
 end

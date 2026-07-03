@@ -38,6 +38,11 @@ module GenesisRuby
         @context.server_message
       end
 
+      # HTTP Response Status Code
+      def status
+        @context.status
+      end
+
       # Send the request
       def send_request
         @context.execute

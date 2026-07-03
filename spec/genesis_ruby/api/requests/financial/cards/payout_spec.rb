@@ -58,6 +58,7 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Payout do
   include_examples 'financial attributes examples'
   include_examples 'fx rate attributes examples'
   include_examples 'gaming attributes examples'
+  include_examples 'money transfer payout attributes examples'
   include_examples 'moto attributes examples'
   include_examples 'payment attributes examples'
   include_examples 'purpose of payment attributes examples'

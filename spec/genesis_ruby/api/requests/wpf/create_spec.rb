@@ -272,6 +272,22 @@ RSpec.describe GenesisRuby::Api::Requests::Wpf::Create do
     end
   end
 
+  describe 'when Scheme Tokenized' do
+    it 'without scheme tokenized' do
+      expect(request.build_document).to_not include 'scheme_tokenized'
+    end
+
+    it 'with valid value' do
+      request.scheme_tokenized = true
+
+      expect(request.build_document).to include '<scheme_tokenized>true</scheme_tokenized>'
+    end
+
+    it 'with invalid value' do
+      expect { request.scheme_tokenized = 'invalid' }.to raise_error GenesisRuby::InvalidArgumentError
+    end
+  end
+
   describe 'when lifetime' do
     it 'with default value' do
       expect(request.lifetime).to be 30

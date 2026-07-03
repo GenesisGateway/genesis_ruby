@@ -7,7 +7,8 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::NonFinancial::Kyc::DocumentAt
     GenesisSpec::Stubs::Api::Requests::NonFinancial::Kyc::DocumentAttributesStub.new
   end
 
-  let(:proof)         { Faker::Lorem.word }
+  let(:proof)            { Faker::Lorem.word }
+  let(:additional_proof) { Faker::Lorem.word }
   let(:date_of_birth) do
     Faker::Date.forward.strftime(GenesisRuby::Api::Constants::DateTimeFormats::YYYY_MM_DD_ISO_8601)
   end
@@ -18,20 +19,22 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::NonFinancial::Kyc::DocumentAt
 
   describe 'document attributes structure' do # rubocop:disable RSpec/MultipleMemoizedHelpers
     it 'returns a hash with the expected keys and values' do # rubocop:disable RSpec/ExampleLength
-      document_attributes.proof         = proof
-      document_attributes.date_of_birth = date_of_birth
-      document_attributes.first_name    = first_name
-      document_attributes.middle_name   = middle_name
-      document_attributes.last_name     = last_name
-      document_attributes.full_address  = full_address
+      document_attributes.proof            = proof
+      document_attributes.additional_proof = additional_proof
+      document_attributes.date_of_birth    = date_of_birth
+      document_attributes.first_name       = first_name
+      document_attributes.middle_name      = middle_name
+      document_attributes.last_name        = last_name
+      document_attributes.full_address     = full_address
 
       expected_hash = {
-        proof:         proof,
-        date_of_birth: date_of_birth,
-        first_name:    first_name,
-        middle_name:   middle_name,
-        last_name:     last_name,
-        full_address:  full_address
+        proof:            proof,
+        additional_proof: additional_proof,
+        date_of_birth:    date_of_birth,
+        first_name:       first_name,
+        middle_name:      middle_name,
+        last_name:        last_name,
+        full_address:     full_address
       }
 
       structure = document_attributes.public_send(:document_attributes_structure)

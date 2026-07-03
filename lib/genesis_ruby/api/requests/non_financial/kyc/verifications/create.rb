@@ -3,6 +3,7 @@
 require 'genesis_ruby/api/constants/non_financial/kyc/address_supported_types'
 require 'genesis_ruby/api/constants/non_financial/kyc/languages'
 require 'genesis_ruby/api/constants/non_financial/kyc/verification_modes'
+require 'genesis_ruby/api/mixins/requests/non_financial/kyc/business_attributes'
 
 module GenesisRuby
   module Api
@@ -19,6 +20,7 @@ module GenesisRuby
               include Api::Mixins::Requests::NonFinancial::Kyc::FaceAttributes
               include Api::Mixins::Requests::NonFinancial::Kyc::VerificationAttributes
               include Api::Mixins::Requests::NonFinancial::Kyc::VerificationDocumentAttributes
+              include Api::Mixins::Requests::NonFinancial::Kyc::BusinessAttributes
 
               attr_accessor :language, :address_backside_proof_required, :allow_retry, :verification_mode
               attr_reader   :redirect_url, :address_supported_types
@@ -77,7 +79,8 @@ module GenesisRuby
                   allow_retry:                     allow_retry,
                   verification_mode:               verification_mode,
                   background_checks:               background_checks_attributes_structure,
-                  document:                        verification_document_attributes_structure
+                  document:                        verification_document_attributes_structure,
+                  business:                        business_attributes_structure
                 }
               end
 

@@ -52,7 +52,7 @@ RSpec.describe GenesisRuby::Network::Adapter::NetHttpAdapter do
 
     it 'has NetworkError error when SystemError' do
       stub_request(:any, %r{emerchantpay.net/timeout_error}).to_timeout
-      adapter_config.url  = 'https://emerchantpay.net/timeout_error'
+      adapter_config.url = 'https://emerchantpay.net/timeout_error'
       adapter_config.type = GenesisRuby::Api::Request::METHOD_POST
       net_http.prepare_request(adapter_config)
 
@@ -61,8 +61,8 @@ RSpec.describe GenesisRuby::Network::Adapter::NetHttpAdapter do
 
     describe 'when METHOD_POST request type' do
       let(:post_adapter_config) do
-        adapter_config.url    = 'https://emerchantpay.net/success_example'
-        adapter_config.type   = GenesisRuby::Api::Request::METHOD_POST
+        adapter_config.url = 'https://emerchantpay.net/success_example'
+        adapter_config.type = GenesisRuby::Api::Request::METHOD_POST
         adapter_config.format = 'text/xml'
 
         adapter_config
@@ -119,8 +119,8 @@ RSpec.describe GenesisRuby::Network::Adapter::NetHttpAdapter do
 
     describe 'when METHOD_PUT request' do
       let(:form_adapter_config) do
-        adapter_config.url    = 'https://emerchantpay.net/method_continue'
-        adapter_config.type   = GenesisRuby::Api::Request::METHOD_PUT
+        adapter_config.url = 'https://emerchantpay.net/method_continue'
+        adapter_config.type = GenesisRuby::Api::Request::METHOD_PUT
         adapter_config.format = 'application/x-www-form-urlencoded'
 
         adapter_config
@@ -150,7 +150,7 @@ RSpec.describe GenesisRuby::Network::Adapter::NetHttpAdapter do
 
     describe 'when METHOD_GET request' do
       let(:get_adapter_config) do
-        adapter_config.url  = 'https://emerchantpay.net/success_example'
+        adapter_config.url = 'https://emerchantpay.net/success_example'
         adapter_config.type = GenesisRuby::Api::Request::METHOD_GET
 
         adapter_config
@@ -172,14 +172,13 @@ RSpec.describe GenesisRuby::Network::Adapter::NetHttpAdapter do
         expect(net_http.status).to eq '200'
       end
 
-      it 'when execute with error request' do # rubocop:disable RSpec/ExampleLength
+      it 'when execute with error request' do
         get_adapter_config.url = 'https://emerchantpay.net/error_example'
         net_http.prepare_request get_adapter_config
         net_http.execute
 
-        expect(net_http.response_body)
-          .to eq File.open("#{File.dirname(File.dirname(File.dirname(__FILE__)))}/fixtures/responses/" \
-                             'gate_json_error_response.json').read
+        fixture_path = "#{File.dirname(File.dirname(File.dirname(__FILE__)))}/fixtures/responses/"
+        expect(net_http.response_body).to eq File.open("#{fixture_path}gate_json_error_response.json").read
       end
 
       it 'when execute with 400 status code' do
@@ -198,6 +197,97 @@ RSpec.describe GenesisRuby::Network::Adapter::NetHttpAdapter do
 
       it 'when header with authorization without kind' do
         net_http.prepare_request get_adapter_config
+
+        expect(net_http.__send__(:headers)['Authorization']).to eq ''
+      end
+    end
+
+    describe 'when METHOD_DELETE request' do
+      let(:delete_adapter_config) do
+        adapter_config.url = 'https://emerchantpay.net/success_example'
+        adapter_config.type = GenesisRuby::Api::Request::METHOD_DELETE
+
+        adapter_config
+      end
+
+      it 'when execute with success request' do
+        net_http.prepare_request delete_adapter_config
+        net_http.execute
+
+        expect(net_http.response_body).to eq File.open(
+          "#{File.dirname(File.dirname(File.dirname(__FILE__)))}/fixtures/responses/billing_api_response.json"
+        ).read
+      end
+
+      it 'when execute with 200 success status code' do
+        net_http.prepare_request delete_adapter_config
+        net_http.execute
+
+        expect(net_http.status).to eq '200'
+      end
+
+      it 'when execute with error request' do
+        delete_adapter_config.url = 'https://emerchantpay.net/error_example'
+        net_http.prepare_request delete_adapter_config
+        net_http.execute
+
+        fixture_path = "#{File.dirname(File.dirname(File.dirname(__FILE__)))}/fixtures/responses/"
+        expect(net_http.response_body).to eq File.open("#{fixture_path}gate_json_error_response.json").read
+      end
+
+      it 'when execute with 400 status code' do
+        delete_adapter_config.url = 'https://emerchantpay.net/error_example'
+        net_http.prepare_request delete_adapter_config
+        net_http.execute
+
+        expect(net_http.status).to eq '400'
+      end
+
+      it 'when headers without content type' do
+        net_http.prepare_request delete_adapter_config
+
+        expect(net_http.__send__(:headers)).to_not include 'Content-Type', 'Content-Length'
+      end
+
+      it 'when header with authorization without kind' do
+        net_http.prepare_request delete_adapter_config
+
+        expect(net_http.__send__(:headers)['Authorization']).to eq ''
+      end
+    end
+
+    describe 'when METHOD_DELETE request with body' do
+      let(:delete_body_adapter_config) do
+        adapter_config.url = 'https://emerchantpay.net/success_example_with_body'
+        adapter_config.type = GenesisRuby::Api::Request::METHOD_DELETE
+        adapter_config.format = 'application/json'
+        adapter_config.body = '{"owners":[{"unique_id":"123"}]}'
+
+        adapter_config
+      end
+
+      it 'when execute with success request' do
+        net_http.prepare_request delete_body_adapter_config
+        net_http.execute
+
+        expect(net_http.response_body).to_not be_empty
+      end
+
+      it 'when execute with 200 success status code' do
+        net_http.prepare_request delete_body_adapter_config
+        net_http.execute
+
+        expect(net_http.status).to eq '200'
+      end
+
+      it 'when headers with content type' do
+        net_http.prepare_request delete_body_adapter_config
+
+        expect(net_http.__send__(:headers)).to include 'Content-Type', 'Content-Length'
+      end
+
+      it 'when header with authorization without kind' do
+        net_http.prepare_request delete_body_adapter_config
 
         expect(net_http.__send__(:headers)['Authorization']).to eq ''
       end

@@ -13,11 +13,14 @@ module GenesisRuby
         module BillingApi
           # Billing Transactions API allows to programmatically retrieve information about billing transactions
           # using given filters, pagination, and sort parameters.
-          class Transactions < Base::Graphql # rubocop:disable Metrics/ClassLength
+          class Transactions < Base::NonFinancial::BillingApi::Base # rubocop:disable Metrics/ClassLength
 
-            include Api::Mixins::Requests::NonFinancial::BillingApi::SortAttributes
-            include Api::Mixins::Requests::NonFinancial::DateAttributes
-            include Api::Mixins::Requests::NonFinancial::PagingAttributes
+            MAX_UNIQUE_ID_COUNT              = 1_000
+            MAX_BILLING_STATEMENT_COUNT      = 10
+            MAX_MERCHANT_TRANSACTION_COUNT   = 1_000
+            MAX_MASTER_ACCOUNT_NAME_COUNT    = 10
+            MAX_TRANSACTION_TYPE_COUNT       = 10
+            MAX_DAYS_DIFFERENCE              = 7
 
             def initialize(configuration, _builder_interface = nil)
               super configuration
@@ -40,32 +43,22 @@ module GenesisRuby
                                          ResponseFields.all
             end
 
-            # List of billing transaction unique IDs. Max number of elements is 10000. Primary filter.
+            # List of billing transaction unique IDs. Max number of elements is 1000. Primary filter.
             def unique_id
               @unique_id || []
             end
 
-            # List of billing transaction unique IDs. Max number of elements is 10000. Primary filter.
+            # List of billing transaction unique IDs. Max number of elements is 1000. Primary filter.
             def unique_id=(value)
               parse_array_of_strings attribute: __method__, value: value, allow_empty: true
             end
 
-            # List of billing statement names. Max number of elements allowed is 10. Primary filter.
-            def billing_statement
-              @billing_statement || []
-            end
-
-            # List of billing statement names. Max number of elements allowed is 10. Primary filter.
-            def billing_statement=(value)
-              parse_array_of_strings attribute: __method__, value: value, allow_empty: true
-            end
-
-            # List of merchant transaction IDs. Max number of elements allowed is 10000. Primary filter.
+            # List of merchant transaction IDs. Max number of elements allowed is 1000. Primary filter.
             def merchant_transaction_id
               @merchant_transaction_id || []
             end
 
-            # List of merchant transaction IDs. Max number of elements allowed is 10000. Primary filter.
+            # List of merchant transaction IDs. Max number of elements allowed is 1000. Primary filter.
             def merchant_transaction_id=(value)
               parse_array_of_strings attribute: __method__, value: value, allow_empty: true
             end
@@ -96,16 +89,11 @@ module GenesisRuby
 
             protected
 
-            # Billing API Authorization Token
-            def init_authorization_token
-              api_config.bearer_token = configuration.billing_api_token
-            end
-
             # Billing API Transactions field validations
             def init_field_validations
               super
 
-              required_fields.push *%i[response_fields]
+              required_fields.push :response_fields
               field_values.merge! sort_by_direction: Api::Constants::Transactions::Parameters::NonFinancial::
                                       SortDirections.all,
                                   sort_by_field: Api::Constants::Transactions::Parameters::NonFinancial::BillingApi::
@@ -117,7 +105,7 @@ module GenesisRuby
               super
 
               validate_filters
-              validate_dates if @start_date || @end_date
+              validate_date_range(:start_date, :end_date, MAX_DAYS_DIFFERENCE) if @start_date || @end_date
               validate_array_fields_size
             end
 
@@ -152,49 +140,21 @@ module GenesisRuby
               }
             end
 
-            # Format given timestamp string to GraphQL suitable argument
-            def escape_argument(attribute)
-              __send__(attribute).to_s.empty? ? nil : "\"#{__send__(attribute)}\""
-            end
-
             # Validate Billing API Primary filters
             def validate_filters
-              unless start_date.nil? && end_date.nil? && unique_id.empty? && billing_statement.empty? &&
-                     merchant_transaction_id.empty?
-                return
-              end
+              return unless start_date.nil? && end_date.nil? && unique_id.empty? && billing_statement.empty? &&
+                            merchant_transaction_id.empty?
 
               raise ParameterError, 'At least one Primary filter is required!'
             end
 
-            # Validate StartDate and EndDate
-            def validate_dates
-              message   = 'If filter startDate is provided, then endDate should also be provided and vice versa.'
-              raise ParameterError, message unless @start_date.is_a?(DateTime) && @end_date.is_a?(DateTime)
-
-              raise ParameterError, 'EndData must be after StartDate!' if @start_date == @end_date
-
-              days_diff = @end_date - @start_date
-              message   = 'Maximum difference between StartDate and EndDate is 7 days'
-              raise ParameterError, message unless days_diff >= 0 && days_diff <= 7
-            end
-
             # Validate Billing API Array field requirements
             def validate_array_fields_size
-              validate_array_size :unique_id, 10_000
-              validate_array_size :billing_statement, 10
-              validate_array_size :merchant_transaction_id, 10_000
-              validate_array_size :master_account_name, 10
-              validate_array_size :transaction_type, 10
-            end
-
-            # Validate Max size of the given Array attribute
-            def validate_array_size(attribute, size)
-              message = format 'Max array length on %{attribute} exceed allowed size of %{size}',
-                               attribute: attribute,
-                               size:      size
-
-              raise ParameterError, message if __send__(attribute).length > size
+              validate_array_size :unique_id, MAX_UNIQUE_ID_COUNT
+              validate_array_size :billing_statement, MAX_BILLING_STATEMENT_COUNT
+              validate_array_size :merchant_transaction_id, MAX_MERCHANT_TRANSACTION_COUNT
+              validate_array_size :master_account_name, MAX_MASTER_ACCOUNT_NAME_COUNT
+              validate_array_size :transaction_type, MAX_TRANSACTION_TYPE_COUNT
             end
 
           end

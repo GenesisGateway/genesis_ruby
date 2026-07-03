@@ -1,3 +1,26 @@
+0.3.2
+-----
+
+**Features**:
+
+* Added scheme_tokenized parameter to Web Payment Form request
+* Added additional_proof to KYC Offsite Verification parameters
+* Added with_enhanced_address_verification parameter support to KYC Address Verification
+* Added ReTokenize API request
+* Added Business parameters to the KYC Create Verification API request
+* Added KYC Create, Verification, List Document, Add Document Business API requests
+* Added Payee Account Reverify API request
+* Added Payee List API request
+* Added Money Transfer payout parameters to Payout transaction request
+* Added Billing Statements API request
+* Added Managed Recurring API request
+* Added payee_date, payee_notification_url, payee_registration_number, address parameters support to Create and Update Payee API request
+* Added Associate Owners, Create Document, Dissociate Owner, List Document, List Owners and Retrieve Document Payee API requests
+* Added Associate Owner with Owners, Create, Create Document, Delete, Dissociate, List Documents, List, Retrieve, Retrieve Documents and Update Payee Owner API requests
+* Added Create, List and Retrieve Payee Verification API requests
+* Updated addressable gem to version 2.9.0
+* Removed directory_server_id parameter validations, which is part of the MPI parameters
+
 0.3.1
 -----
 

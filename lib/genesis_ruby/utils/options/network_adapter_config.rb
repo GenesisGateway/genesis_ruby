@@ -20,7 +20,7 @@ module GenesisRuby
           self.format        = fetch_content_type request.api_config.format
           self.authorization = request.api_config.authorization
           self.user_login    = build_user_login request, configuration
-          self.setimeout     = configuration.timeout
+          self.timeout       = configuration.timeout
           self.headers       = build_additional_headers request
 
           self

@@ -8,12 +8,12 @@ require 'base64'
 RSpec.describe GenesisRuby::Utils::Options::NetworkAdapterConfig do
   let(:options) { described_class.new }
   let(:configuration) do
-    config             = GenesisRuby::Configuration.new
-    config.username    = 'example_username'
-    config.password    = 'example_password'
-    config.token       = 'example_token'
+    config = GenesisRuby::Configuration.new
+    config.username = 'example_username'
+    config.password = 'example_password'
+    config.token = 'example_token'
     config.environment = GenesisRuby::Api::Constants::Environments::STAGING
-    config.endpoint    = GenesisRuby::Api::Constants::Endpoints::EMERCHANTPAY
+    config.endpoint = GenesisRuby::Api::Constants::Endpoints::EMERCHANTPAY
 
     config
   end
@@ -180,6 +180,57 @@ RSpec.describe GenesisRuby::Utils::Options::NetworkAdapterConfig do
 
     it 'with additional headers' do
       expect(options).to include headers: {}
+    end
+  end
+
+  describe 'when DELETE request' do
+    before do
+      request.__send__ :init_delete_configuration
+      request.__send__ :init_api_gateway_configuration
+      options.map_from_request(request, configuration)
+    end
+
+    it 'with JSON format' do
+      expect(options).to include format: 'application/json'
+    end
+
+    it 'with Basic authorization' do
+      expect(options).to include authorization: 'basic'
+    end
+
+    it 'with Basic authorization login' do
+      expect(options).to include user_login: "Basic #{encoded_login}"
+    end
+
+    it 'with additional headers' do
+      expect(options).to include headers: {}
+    end
+  end
+
+  describe 'when timeout is configured' do
+    before do
+      request.__send__ :init_xml_configuration
+      request.__send__ :init_api_gateway_configuration
+      options.map_from_request(request, configuration)
+    end
+
+    it 'propagates configuration timeout to adapter options' do
+      expect(options[:timeout]).to eq configuration.timeout
+    end
+
+    it 'propagates custom timeout value' do # rubocop:disable RSpec/ExampleLength
+      custom_config = GenesisRuby::Configuration.new
+      custom_config.username = 'example_username'
+      custom_config.password = 'example_password'
+      custom_config.token = 'example_token'
+      custom_config.environment = GenesisRuby::Api::Constants::Environments::STAGING
+      custom_config.endpoint = GenesisRuby::Api::Constants::Endpoints::EMERCHANTPAY
+      custom_config.timeout = 120
+
+      custom_options = described_class.new
+      custom_options.map_from_request(request, custom_config)
+
+      expect(custom_options[:timeout]).to eq 120
     end
   end
 end

@@ -38,10 +38,14 @@ RSpec.describe GenesisRuby::Api::Request do
     it 'can not init api gateway configuration' do
       expect { request.__send__(:init_api_gateway_configuration) }.to raise_error GenesisRuby::EndpointNotSetError
     end
+
+    it 'has METHOD_DELETE constant' do
+      expect(GenesisRuby::Api::Request::METHOD_DELETE).to eq 'DELETE'
+    end
   end
 
   describe 'with defined configuration' do
-    genesis_configuration      = GenesisRuby::Configuration.new
+    genesis_configuration = GenesisRuby::Configuration.new
 
     base_request_configuration = {
       authorization: described_class::AUTH_TYPE_BASIC,
@@ -52,9 +56,9 @@ RSpec.describe GenesisRuby::Api::Request do
       url:           'https://staging.gate.emerchantpay.net:443/process/token/'
     }
 
-    xml_request_configuration     = base_request_configuration.merge format: 'xml', parser_skip_root_node: true
-    json_request_configuration    = base_request_configuration.merge format: 'json', parser_skip_root_node: false
-    form_request_configuration    = base_request_configuration.merge format: 'form', parser_skip_root_node: true
+    xml_request_configuration = base_request_configuration.merge format: 'xml', parser_skip_root_node: true
+    json_request_configuration = base_request_configuration.merge format: 'json', parser_skip_root_node: false
+    form_request_configuration = base_request_configuration.merge format: 'form', parser_skip_root_node: true
     graphql_request_configuration = base_request_configuration.merge(
       {
         format:                'graphql',
@@ -63,17 +67,22 @@ RSpec.describe GenesisRuby::Api::Request do
         url:                   'https://staging.api.emerchantpay.net:443/graphql'
       }
     )
-    patch_request_configuration   = base_request_configuration.merge(
+    patch_request_configuration = base_request_configuration.merge(
       format: 'patch',
       parser_skip_root_node: false,
       type: described_class::METHOD_PATCH
     )
+    delete_request_configuration = base_request_configuration.merge(
+      format: 'json',
+      parser_skip_root_node: false,
+      type: described_class::METHOD_DELETE
+    )
 
     let(:request) do
-      genesis_configuration.username    = 'username'
-      genesis_configuration.password    = 'password'
-      genesis_configuration.token       = 'token'
-      genesis_configuration.endpoint    = GenesisRuby::Api::Constants::Endpoints::EMERCHANTPAY
+      genesis_configuration.username = 'username'
+      genesis_configuration.password = 'password'
+      genesis_configuration.token = 'token'
+      genesis_configuration.endpoint = GenesisRuby::Api::Constants::Endpoints::EMERCHANTPAY
       genesis_configuration.environment = GenesisRuby::Api::Constants::Environments::STAGING
 
       described_class.new genesis_configuration
@@ -98,6 +107,13 @@ RSpec.describe GenesisRuby::Api::Request do
       request.__send__ :init_api_gateway_configuration
 
       expect(request.api_config).to eq patch_request_configuration
+    end
+
+    it 'init proper DELETE configuration' do
+      request.__send__ :init_delete_configuration
+      request.__send__ :init_api_gateway_configuration
+
+      expect(request.api_config).to eq delete_request_configuration
     end
 
     it 'init proper FORM configuration' do

@@ -136,5 +136,31 @@ RSpec.describe GenesisRuby::Network::NetHttp do
       end
 
     end
+
+    describe 'when missing Content-Type header' do
+      let(:no_content_type_network) do
+        network = instance_double(GenesisRuby::Network::Adapter::NetHttpAdapter)
+
+        allow(network).to receive(:response_headers).and_return({})
+
+        network
+      end
+
+      before do
+        allow(net_http).to receive(:response_headers).and_return({})
+      end
+
+      it 'xml? returns false without crashing' do
+        expect(net_http.xml?).to eq false
+      end
+
+      it 'json? returns false without crashing' do
+        expect(net_http.json?).to eq false
+      end
+
+      it 'html? returns false without crashing' do
+        expect(net_http.html?).to eq false
+      end
+    end
   end
 end
