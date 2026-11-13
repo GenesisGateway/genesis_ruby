@@ -13,7 +13,8 @@ module GenesisRuby
 
               attr_accessor :background_checks_first_name, :background_checks_middle_name,
                             :background_checks_last_name, :background_checks_full_name, :background_checks_match_score
-              attr_reader   :background_checks_async_update
+              attr_reader   :background_checks_async_update, :background_checks_with_alias_search,
+                            :background_checks_with_associates_search
 
               # Customer's date of birth
               def background_checks_date_of_birth
@@ -37,6 +38,24 @@ module GenesisRuby
                                 error_message: 'Accepts only boolean values'
               end
 
+              # Enables the user search within a list of aliases
+              def background_checks_with_alias_search=(value)
+                allowed_options attribute:     __method__,
+                                allowed:       [true, false],
+                                value:         value,
+                                allow_empty:   true,
+                                error_message: 'Accepts only boolean values'
+              end
+
+              # Enables the user search within a list of RCA (relatives and close associates)
+              def background_checks_with_associates_search=(value)
+                allowed_options attribute:     __method__,
+                                allowed:       [true, false],
+                                value:         value,
+                                allow_empty:   true,
+                                error_message: 'Accepts only boolean values'
+              end
+
               # One or more AML Filters to query
               def background_checks_filters
                 @background_checks_filters || []
@@ -53,16 +72,18 @@ module GenesisRuby
               protected
 
               # Defines the structure of the background checks attributes
-              def background_checks_attributes_structure
+              def background_checks_attributes_structure # rubocop:disable Metrics/MethodLength
                 {
-                  first_name:    background_checks_first_name,
-                  middle_name:   background_checks_middle_name,
-                  last_name:     background_checks_last_name,
-                  full_name:     background_checks_full_name,
-                  date_of_birth: background_checks_date_of_birth,
-                  async_update:  background_checks_async_update,
-                  filters:       background_checks_filters,
-                  match_score:   background_checks_match_score
+                  first_name:             background_checks_first_name,
+                  middle_name:            background_checks_middle_name,
+                  last_name:              background_checks_last_name,
+                  full_name:              background_checks_full_name,
+                  date_of_birth:          background_checks_date_of_birth,
+                  async_update:           background_checks_async_update,
+                  filters:                background_checks_filters,
+                  match_score:            background_checks_match_score,
+                  with_alias_search:      background_checks_with_alias_search,
+                  with_associates_search: background_checks_with_associates_search
                 }
               end
 

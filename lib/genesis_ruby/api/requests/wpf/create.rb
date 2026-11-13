@@ -21,8 +21,10 @@ module GenesisRuby
           include Mixins::Requests::Financial::DynamicDescriptorAttributes
           include Mixins::Requests::Financial::FundingAttributes
           include Mixins::Requests::Financial::NotificationAttributes
+          include Mixins::Requests::Financial::OrderAttributes
           include Mixins::Requests::Financial::PaymentAttributes
           include Mixins::Requests::Financial::PendingPaymentAttributes
+          include Mixins::Requests::Financial::PurposeOfPaymentAttributes
           include Mixins::Requests::Financial::RiskAttributes
           include Mixins::Requests::Financial::Threeds::Version2::WpfAttributes
           include Mixins::Requests::WpfRemindersAttributes
@@ -186,6 +188,7 @@ module GenesisRuby
                 },
                 threeds_v2_params:         threeds_v2_wpf_attributes_structure,
                 web_payment_form_id:       web_payment_form_id,
+                order_id:                  order_id,
                 recurring_category:        recurring_category,
                 dynamic_descriptor_params: dynamic_descriptor_structure,
                 risk_params:               risk_parameters_structure,
@@ -194,6 +197,7 @@ module GenesisRuby
                 scheme_tokenized:          scheme_tokenized,
                 reminders:                 pay_later ? reminders_structure : [],
                 funding:                   funding_attributes_structure,
+                purpose_of_payment:        purpose_of_payment,
                 digital_asset_type:        digital_asset_type
               }
             }

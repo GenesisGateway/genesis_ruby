@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
+require 'genesis_ruby/api/constants/transactions/parameters/funding/person_types'
 require 'genesis_ruby/api/constants/transactions/parameters/money_transfer/types'
 require 'genesis_ruby/api/constants/transactions/parameters/money_transfer/sender_account_number_types'
-require 'genesis_ruby/api/constants/transactions/parameters/money_transfer/purpose_of_payments'
 require 'genesis_ruby/api/constants/transactions/parameters/money_transfer/source_of_funds'
 
 module GenesisRuby
@@ -13,25 +13,17 @@ module GenesisRuby
           # Money Transfer Payout Attributes
           module MoneyTransferPayoutAttributes
 
-            attr_accessor :money_transfer_sender_account_number,
-                          :money_transfer_service_provider_name,
-                          :money_transfer_sender_address_country,
-                          :money_transfer_sender_address_city,
-                          :money_transfer_sender_address_line,
-                          :money_transfer_sender_address_state,
-                          :money_transfer_sender_address_postal_code,
-                          :money_transfer_receiver_first_name,
-                          :money_transfer_receiver_last_name,
-                          :money_transfer_receiver_address_country,
-                          :money_transfer_receiver_address_city,
-                          :money_transfer_receiver_address_line,
-                          :money_transfer_receiver_address_state,
-                          :money_transfer_receiver_address_postal_code,
-                          :money_transfer_receiver_account_number,
-                          :money_transfer_receiver_account_number_type
+            attr_accessor :money_transfer_sender_account_number, :money_transfer_service_provider_name,
+                          :money_transfer_sender_address_first_name, :money_transfer_sender_address_last_name,
+                          :money_transfer_sender_address_country, :money_transfer_sender_address_city,
+                          :money_transfer_sender_address_zip_code, :money_transfer_sender_address_address1,
+                          :money_transfer_sender_address_state, :money_transfer_receiver_first_name,
+                          :money_transfer_receiver_last_name, :money_transfer_receiver_country,
+                          :money_transfer_receiver_city, :money_transfer_receiver_zip_code,
+                          :money_transfer_receiver_address1, :money_transfer_receiver_state
 
-            attr_reader :money_transfer_type, :money_transfer_sender_account_number_type,
-                        :money_transfer_purpose_of_payment, :money_transfer_source_of_funds
+            attr_reader :money_transfer_type, :money_transfer_sender_address_type, :money_transfer_receiver_type,
+                        :money_transfer_sender_account_number_type, :money_transfer_source_of_funds
 
             # Money Transfer Type setter
             def money_transfer_type=(value)
@@ -44,25 +36,35 @@ module GenesisRuby
               )
             end
 
-            # Money Transfer Sender Account Number Type setter
-            def money_transfer_sender_account_number_type=(value)
+            # Money Transfer Sender Address Person Type setter
+            def money_transfer_sender_address_type=(value)
               allowed_options(
                 attribute:     __method__,
-                allowed:       Api::Constants::Transactions::Parameters::MoneyTransfer::
-                    SenderAccountNumberTypes.all,
+                allowed:       Api::Constants::Transactions::Parameters::Funding::PersonTypes.all,
                 value:         value,
-                error_message: 'Invalid data for Money Transfer Sender Account Number Type',
+                error_message: 'Invalid data for Money Transfer Sender Address Type',
                 allow_empty:   true
               )
             end
 
-            # Money Transfer Purpose of Payment setter
-            def money_transfer_purpose_of_payment=(value)
+            # Money Transfer Receiver Person Type setter
+            def money_transfer_receiver_type=(value)
               allowed_options(
                 attribute:     __method__,
-                allowed:       Api::Constants::Transactions::Parameters::MoneyTransfer::PurposeOfPayments.all,
+                allowed:       Api::Constants::Transactions::Parameters::Funding::PersonTypes.all,
                 value:         value,
-                error_message: 'Invalid data for Money Transfer Purpose of Payment',
+                error_message: 'Invalid data for Money Transfer Receiver Type',
+                allow_empty:   true
+              )
+            end
+
+            # Money Transfer Sender Account Number Type setter
+            def money_transfer_sender_account_number_type=(value)
+              allowed_options(
+                attribute:     __method__,
+                allowed:       Api::Constants::Transactions::Parameters::MoneyTransfer::SenderAccountNumberTypes.all,
+                value:         value,
+                error_message: 'Invalid data for Money Transfer Sender Account Number Type',
                 allow_empty:   true
               )
             end
@@ -99,27 +101,28 @@ module GenesisRuby
                 sender_account_number:      money_transfer_sender_account_number,
                 sender_birth_date:          money_transfer_sender_birth_date,
                 service_provider_name:      money_transfer_service_provider_name,
-                sender_account_number_type: money_transfer_sender_account_number_type,
-                purpose_of_payment:         money_transfer_purpose_of_payment,
-                source_of_funds:            money_transfer_source_of_funds,
                 sender_address:             {
-                  country:     money_transfer_sender_address_country,
-                  city:        money_transfer_sender_address_city,
-                  line:        money_transfer_sender_address_line,
-                  state:       money_transfer_sender_address_state,
-                  postal_code: money_transfer_sender_address_postal_code
+                  type:       money_transfer_sender_address_type,
+                  first_name: money_transfer_sender_address_first_name,
+                  last_name:  money_transfer_sender_address_last_name,
+                  country:    money_transfer_sender_address_country,
+                  city:       money_transfer_sender_address_city,
+                  zip_code:   money_transfer_sender_address_zip_code,
+                  address1:   money_transfer_sender_address_address1,
+                  state:      money_transfer_sender_address_state
                 },
                 receiver:                   {
-                  first_name:          money_transfer_receiver_first_name,
-                  last_name:           money_transfer_receiver_last_name,
-                  country:             money_transfer_receiver_address_country,
-                  city:                money_transfer_receiver_address_city,
-                  line:                money_transfer_receiver_address_line,
-                  state:               money_transfer_receiver_address_state,
-                  postal_code:         money_transfer_receiver_address_postal_code,
-                  account_number:      money_transfer_receiver_account_number,
-                  account_number_type: money_transfer_receiver_account_number_type
-                }
+                  type:       money_transfer_receiver_type,
+                  first_name: money_transfer_receiver_first_name,
+                  last_name:  money_transfer_receiver_last_name,
+                  country:    money_transfer_receiver_country,
+                  city:       money_transfer_receiver_city,
+                  zip_code:   money_transfer_receiver_zip_code,
+                  address1:   money_transfer_receiver_address1,
+                  state:      money_transfer_receiver_state
+                },
+                sender_account_number_type: money_transfer_sender_account_number_type,
+                source_of_funds:            money_transfer_source_of_funds
               }
             end
 

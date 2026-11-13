@@ -155,9 +155,13 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Mobile::GooglePay do
   include_examples 'document attributes examples'
   include_examples 'dynamic descriptor examples'
   include_examples 'financial attributes examples'
+  include_examples 'force threeds attributes examples'
+  include_examples 'force threeds with threeds v2 examples'
   include_examples 'funding attributes examples'
   include_examples 'notification attributes examples'
   include_examples 'payment attributes examples'
+  include_examples 'purpose of payment attributes examples'
+  include_examples 'purpose of payment default allow-list examples'
   include_examples 'recurring type mobile tokenized examples'
   include_examples 'threeds v2 common attributes examples'
 end

@@ -15,6 +15,8 @@ module GenesisRuby
           # using given filters, pagination, and sort parameters.
           class Transactions < Base::NonFinancial::BillingApi::Base # rubocop:disable Metrics/ClassLength
 
+            include Api::Mixins::Requests::NonFinancial::DateAttributes
+
             MAX_UNIQUE_ID_COUNT              = 1_000
             MAX_BILLING_STATEMENT_COUNT      = 10
             MAX_MERCHANT_TRANSACTION_COUNT   = 1_000
@@ -113,8 +115,8 @@ module GenesisRuby
             def query_filters # rubocop:disable Metrics/MethodLength
               {
                 filter: {
-                  startDate:             escape_argument(:start_date),
-                  endDate:               escape_argument(:end_date),
+                  startDate:             start_date,
+                  endDate:               end_date,
                   uniqueId:              unique_id,
                   billingStatement:      billing_statement,
                   merchantTransactionId: merchant_transaction_id,

@@ -302,4 +302,40 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::RestrictedSetter do
       expect(restricted_setter.__send__(:parse_email, attribute: attribute, value: nil, allow_empty: true)).to eq nil
     end
   end
+
+  describe 'when parse_url' do
+    let(:attribute) { 'attr_url' }
+
+    %w(https://example.com http://example.com/path?query=1).each do |url|
+      it "with valid url #{url}" do
+        expect(restricted_setter.__send__(:parse_url, attribute: attribute, value: url)).to eq url
+      end
+    end
+
+    it 'with assigned instance variable' do
+      restricted_setter.__send__(:parse_url, attribute: attribute, value: 'https://example.com')
+
+      expect(restricted_setter.instance_variable_get(:@attr_url)).to eq 'https://example.com'
+    end
+
+    %w(ftp://example.com example.com https:// invalid-url).each do |url|
+      it "with invalid url #{url}" do
+        expect do
+          restricted_setter.__send__(:parse_url, attribute: attribute, value: url)
+        end.to raise_error GenesisRuby::InvalidArgumentError
+      end
+    end
+
+    it 'without allowed empty' do
+      expect do
+        restricted_setter.__send__(:parse_url, attribute: attribute, value: '')
+      end.to raise_error GenesisRuby::InvalidArgumentError
+    end
+
+    [nil, ''].each do |value|
+      it "with #{value.inspect} value and allow_empty true" do
+        expect(restricted_setter.__send__(:parse_url, attribute: attribute, value: value, allow_empty: true)).to eq nil
+      end
+    end
+  end
 end

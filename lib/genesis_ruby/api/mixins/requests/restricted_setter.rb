@@ -91,6 +91,18 @@ module GenesisRuby
             assign_instance_variable attribute, value
           end
 
+          # Parses given value to a valid absolute http or https URL and assign it to the given attribute
+          # If allow_empty is true, it will assign nil if the value is empty
+          def parse_url(attribute:, value:, allow_empty: false)
+            return assign_instance_variable attribute, nil if allow_empty && value.to_s.empty?
+
+            unless GenesisRuby::Utils::Common.valid_url?(value.to_s)
+              raise InvalidArgumentError, "#{attribute} must be a valid http or https URL."
+            end
+
+            assign_instance_variable attribute, value
+          end
+
           private
 
           # Helper for assigning a attribute to the class instance

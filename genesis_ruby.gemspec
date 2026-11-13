@@ -19,9 +19,10 @@ Gem::Specification.new do |spec|
   spec.metadata['documentation_uri'] = 'https://github.com/GenesisGateway/genesis_ruby/blob/main/README.md'
 
   # Specify which files should be added to the gem when it is released.
-  # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
-  spec.files = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(bin|test|spec|features|sig)/|\.(?:git|pronto|rspec|rubocop)})
+  # Only the library code and the user-facing documents are packaged (allowlist),
+  # so development files (.kiro, .github, spec, bin, sig, Gemfile, etc.) are never shipped.
+  spec.files = `git ls-files -z`.split("\x0").select do |f|
+    f.match(%r{\Alib/}) || %w(LICENSE README.md CHANGELOG.md VERSION).include?(f)
   end
 
   spec.bindir        = 'exe'

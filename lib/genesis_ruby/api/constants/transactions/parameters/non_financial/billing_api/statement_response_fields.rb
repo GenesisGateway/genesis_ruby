@@ -12,20 +12,21 @@ module GenesisRuby
 
                 extend Mixins::Constants::Common
 
-                ID                     = 'id'
-                BILLING_STATEMENT      = 'billingStatement'
-                STATUS                 = 'status'
-                COMPANY                = 'company'
-                MASTER_ACCOUNT_NAME    = 'masterAccountName'
+                ID                      = 'id'
+                BILLING_STATEMENT       = 'billingStatement'
+                STATUS                  = 'status'
+                COMPANY                 = 'company'
+                MASTER_ACCOUNT_NAME     = 'masterAccountName'
+                MASTER_ACCOUNT_MID      = 'masterAccountMID'
                 MASTER_ACCOUNT_CURRENCY = 'masterAccountCurrency'
-                VALUE_DATE             = 'valueDate'
-                CREATION_DATE          = 'creationDate'
-                CURRENCY               = 'currency'
-                PAYMENT_METHOD         = 'paymentMethod'
-                START_DATE             = 'startDate'
-                END_DATE               = 'endDate'
-                SUMMARY                = 'summary'
-                DETAILS                = 'details'
+                VALUE_DATE              = 'valueDate'
+                CREATION_DATE           = 'creationDate'
+                CURRENCY                = 'currency'
+                PAYMENT_METHOD          = 'paymentMethod'
+                START_DATE              = 'startDate'
+                END_DATE                = 'endDate'
+                SUMMARY                 = 'summary'
+                DETAILS                 = 'details'
 
               end
             end

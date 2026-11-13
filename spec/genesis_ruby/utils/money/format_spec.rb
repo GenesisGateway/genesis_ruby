@@ -60,6 +60,12 @@ RSpec.describe GenesisRuby::Utils::Money::Format do
 
         expect { described_class.new(strategy).convert }.to_not raise_error
       end
+
+      it 'works with zero amount when currency exponent is 0' do
+        strategy = GenesisRuby::Utils::Money::Conversions::AmountToExponent.new(0, 'XYZ', 0)
+
+        expect { described_class.new(strategy).convert }.to_not raise_error
+      end
     end
   end
 end

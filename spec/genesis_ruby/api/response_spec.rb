@@ -96,6 +96,14 @@ RSpec.describe GenesisRuby::Api::Response do
     end
   end
 
+  describe 'when response with order_id' do
+    it 'exposes order_id on the response object' do
+      response.parse_response(network_mock)
+
+      expect(response.response_object[:order_id]).to eq 'ORD-2024-78456'
+    end
+  end
+
   describe 'without parsed response' do
     it 'has string response raw' do
       expect(response.response_raw).to eq('')

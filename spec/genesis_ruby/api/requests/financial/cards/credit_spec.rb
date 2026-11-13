@@ -32,8 +32,7 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Credit do
       request.reference_id                            = Faker::Internet.uuid
       request.source_of_funds                         =
         GenesisRuby::Api::Constants::Transactions::Parameters::SourceOfFunds.all.sample
-      request.purpose_of_payment                      =
-        GenesisRuby::Api::Constants::Transactions::Parameters::PurposeOfPayment.all.sample
+      request.purpose_of_payment                      = 'ISBONU'
       request.customer_identification_owner           =
         GenesisRuby::Api::Constants::Transactions::Parameters::CustomerIdentification::CustomerIdentificationOwner.all.sample # rubocop:disable Layout/LineLength
       request.customer_identification_type            =
@@ -61,5 +60,6 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Credit do
   include_examples 'customer identification attributes examples'
   include_examples 'source of funds attributes examples'
   include_examples 'purpose of payment attributes examples'
+  include_examples 'purpose of payment default allow-list examples'
   include_examples 'digital asset type attributes examples'
 end

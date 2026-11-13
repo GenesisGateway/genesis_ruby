@@ -12,6 +12,7 @@ module GenesisRuby
 
             include Api::Mixins::Requests::NonFinancial::Tokenization::CardDataAttributes
             include Api::Mixins::Requests::NonFinancial::Tokenization::TokenizationAttributes
+            include Api::Mixins::Requests::SchemeTokenizedAttributes
 
             def initialize(configuration, builder_interface = Builder::XML)
               super configuration, builder_interface
@@ -34,7 +35,8 @@ module GenesisRuby
                 tokenize_request: tokenization_attributes_structure.merge(
                   {
                     card_data: card_data_attributes_structure
-                  }
+                  },
+                  scheme_tokenized_attributes_structure
                 )
               }
             end

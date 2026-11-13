@@ -22,15 +22,20 @@ module GenesisRuby
             include Mixins::Requests::Financial::Cards::Recurring::ManagedRecurringAttributes
             include Mixins::Requests::Financial::Cards::Recurring::RecurringCategoryAttributes
             include Mixins::Requests::Financial::Cards::Recurring::RecurringTypeAttributes
+            include Mixins::Requests::Financial::CommercialCardAttributes
             include Mixins::Requests::Financial::CryptoAttributes
             include Mixins::Requests::Financial::DynamicDescriptorAttributes
             include Mixins::Requests::Financial::FundingAttributes
             include Mixins::Requests::Financial::GamingAttributes
+            include Mixins::Requests::Financial::MarketplaceDataAttributes
             include Mixins::Requests::Financial::MotoAttributes
             include Mixins::Requests::Financial::NotificationAttributes
+            include Mixins::Requests::Financial::OrderAttributes
             include Mixins::Requests::Financial::PreauthorizationAttributes
+            include Mixins::Requests::Financial::PurposeOfPaymentAttributes
             include Mixins::Requests::Financial::RiskAttributes
             include Mixins::Requests::Financial::ScaAttributes
+            include Mixins::Requests::Financial::Threeds::ForceThreedsAttributes
             include Mixins::Requests::Financial::Threeds::Version2::CommonAttributes
             include Mixins::Requests::Financial::TravelData::TravelAttributes
 
@@ -59,6 +64,9 @@ module GenesisRuby
               validate_threeds_card_holder_dates
 
               super
+
+              validate_marketplace_data_attributes
+              validate_commercial_card_attributes
             end
 
             # Authorize 3D transaction request parameters
@@ -85,13 +93,17 @@ module GenesisRuby
                 recurring_category:         recurring_category,
                 sca_params:                 sca_attributes_structure,
                 threeds_v2_params:          threeds_v2_common_attributes_structure,
+                force_threeds:              force_threeds,
                 managed_recurring:          managed_recurring_attributes_structure,
                 travel:                     travel_data_attributes_structure,
+                marketplace_data:           marketplace_data_attributes_structure,
                 funding:                    funding_attributes_structure,
+                items:                      commercial_card_attributes_structure,
+                purpose_of_payment:         purpose_of_payment,
                 installment_plan_id:        installment_plan_id,
                 installment_plan_reference: installment_plan_reference,
                 digital_asset_type:         digital_asset_type
-              )
+              ).merge(order_attributes_structure)
             end
 
           end

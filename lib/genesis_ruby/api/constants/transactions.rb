@@ -35,6 +35,11 @@ module GenesisRuby
         # for their online purchases at over 150,000 physical outlets.
         ARGENCARD = 'argencard'
 
+        # Async Refund returns already billed amounts to the customer through an asynchronous workflow; the gateway
+        # confirms the result later. The amount can be refunded fully or partially. The reference_id of the preceding
+        # transaction is mandatory.
+        ASYNC_REFUND = 'async_refund'
+
         # Aura is a local Brazilian credit card.
         AURA = 'aura'
 
@@ -112,6 +117,10 @@ module GenesisRuby
         # e-payment standard
         # Direct PPRO transaction
         EPS = 'eps'
+
+        # eWallet transaction that handles different e-wallet providers.
+        # The provider is selected with the payment_type parameter.
+        E_WALLET = 'e_wallet'
 
         # eZeeCard Payout is a sync based payout method.
         # It's merchant initiated and can only reference specific transaction types

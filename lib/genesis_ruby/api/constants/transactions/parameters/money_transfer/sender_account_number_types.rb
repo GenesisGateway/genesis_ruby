@@ -11,35 +11,32 @@ module GenesisRuby
 
               extend Mixins::Constants::Common
 
+              # RTN and bank account number
+              RTN_AND_BANK_ACCOUNT_NUMBER = 'rtn_and_bank_account_number'
+
               # International Bank Account Number
-              IBAN                         = 'iban'
+              IBAN                        = 'iban'
 
-              # Credit/Debit card account number
-              CREDIT_DEBIT_CARD            = 'credit_debit_card'
+              # Card account
+              CARD_ACCOUNT                = 'card_account'
 
-              # Savings/Checking/Investment account number
-              SAVINGS_CHECKING_INVESTMENT  = 'savings_checking_investment'
-
-              # Social Networking ID
-              SOCIAL_NETWORKING_ID         = 'social_networking_id'
+              # Email
+              EMAIL                       = 'email'
 
               # Phone number
-              PHONE_NUMBER                 = 'phone_number'
+              PHONE_NUMBER                = 'phone_number'
 
               # Bank account number and Bank Identification Code
-              BANK_ACCOUNT_NUMBER_AND_BIC  = 'bank_account_number_and_bic'
+              BANK_ACCOUNT_NUMBER_AND_BIC = 'bank_account_number_and_bic'
 
               # Wallet ID
-              WALLET_ID                    = 'wallet_id'
+              WALLET_ID                   = 'wallet_id'
 
-              # Unique transaction reference
-              UNIQUE_TRANSACTION_REFERENCE = 'unique_transaction_reference'
-
-              # National ID
-              NATIONAL_ID                  = 'national_id'
+              # Social network ID
+              SOCIAL_NETWORK_ID           = 'social_network_id'
 
               # Other
-              OTHER                        = 'other'
+              OTHER                       = 'other'
 
             end
           end

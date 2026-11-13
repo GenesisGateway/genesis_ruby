@@ -14,18 +14,7 @@ module GenesisRuby
             include Mixins::Requests::Financial::Cards::TokenizationAttributes
             include Mixins::Requests::Financial::Cards::TokenizationParamsAttributes
             include Mixins::Requests::Financial::Cards::UcofAttributes
-
-            attr_reader :scheme_tokenized
-
-            # Visa tokenization for Visa
-            # Digital Secure Remote Payments (DSRP) for Mastercard.
-            def scheme_tokenized=(value)
-              allowed_options attribute:      __method__,
-                              allowed:        [true, false],
-                              value:          value,
-                              allow_empty:    true,
-                              error_message: 'Accepts only boolean values'
-            end
+            include Mixins::Requests::SchemeTokenizedAttributes
 
             protected
 

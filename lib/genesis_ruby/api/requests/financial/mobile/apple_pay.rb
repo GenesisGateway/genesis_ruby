@@ -19,6 +19,8 @@ module GenesisRuby
             include Mixins::Requests::Financial::DynamicDescriptorAttributes
             include Mixins::Requests::Financial::FundingAttributes
             include Mixins::Requests::Financial::Mobile::ApplePayTokenAttributes
+            include Mixins::Requests::Financial::PurposeOfPaymentAttributes
+            include Mixins::Requests::Financial::Threeds::ForceThreedsAttributes
 
             attr_accessor :payment_subtype
 
@@ -62,9 +64,11 @@ module GenesisRuby
                 document_id:               document_id,
                 crypto:                    crypto,
                 recurring_type:            recurring_type,
+                force_threeds:             force_threeds,
                 business_attributes:       business_attributes_structure,
                 dynamic_descriptor_params: dynamic_descriptor_structure,
-                funding:                   funding_attributes_structure
+                funding:                   funding_attributes_structure,
+                purpose_of_payment:        purpose_of_payment
               }
             end
 

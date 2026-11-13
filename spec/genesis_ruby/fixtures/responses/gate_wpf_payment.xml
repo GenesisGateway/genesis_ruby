@@ -7,5 +7,6 @@
   <amount>99</amount>
   <currency>EUR</currency>
   <redirect_url>https://staging.wpf.emerchantpay.net/en/v2/payment/1c4ae3aee01fe6fcc346b6c54074d26b</redirect_url>
+  <order_id>ORD-2024-78456</order_id>
   <empty/>
 </wpf_payment>

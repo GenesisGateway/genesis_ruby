@@ -26,8 +26,9 @@ module GenesisRuby
         # Validate the given amount against the defined currency exponent
         def valid_amount_exponent?
           amount_sign, amount_digits, amount_base, amount_exponent = strategy.amount.split # rubocop:disable Lint/UselessAssignment
+          decimal_places = strategy.amount.zero? ? 0 : amount_digits.length - amount_exponent
 
-          !amount_sign.negative? && (amount_digits.length - amount_exponent) <= strategy.currency_exponent
+          !amount_sign.negative? && decimal_places <= strategy.currency_exponent
         end
 
       end

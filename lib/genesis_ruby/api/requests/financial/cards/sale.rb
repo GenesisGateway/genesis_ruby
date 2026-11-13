@@ -14,16 +14,21 @@ module GenesisRuby
             include Mixins::Requests::DigitalAssetTypeAttributes
             include Mixins::Requests::DocumentAttributes
             include Mixins::Requests::Financial::Business::BusinessAttributes
+            include Mixins::Requests::Financial::Cards::CredentialOnFileTransactionLinkAttributes
             include Mixins::Requests::Financial::Cards::FxRateAttributes
             include Mixins::Requests::Financial::Cards::InstallmentAttributes
             include Mixins::Requests::Financial::Cards::Recurring::ManagedRecurringAttributes
             include Mixins::Requests::Financial::Cards::Recurring::RecurringCategoryAttributes
             include Mixins::Requests::Financial::Cards::Recurring::RecurringTypeAttributes
+            include Mixins::Requests::Financial::CommercialCardAttributes
             include Mixins::Requests::Financial::CryptoAttributes
             include Mixins::Requests::Financial::DynamicDescriptorAttributes
             include Mixins::Requests::Financial::FundingAttributes
             include Mixins::Requests::Financial::GamingAttributes
+            include Mixins::Requests::Financial::MarketplaceDataAttributes
             include Mixins::Requests::Financial::MotoAttributes
+            include Mixins::Requests::Financial::OrderAttributes
+            include Mixins::Requests::Financial::PurposeOfPaymentAttributes
             include Mixins::Requests::Financial::ReferenceAttributes
             include Mixins::Requests::Financial::RiskAttributes
             include Mixins::Requests::Financial::ScaAttributes
@@ -34,6 +39,16 @@ module GenesisRuby
             # Sale Transaction Type
             def transaction_type
               GenesisRuby::Api::Constants::Transactions::SALE
+            end
+
+            # Special validations upon document building
+            def check_requirements
+              validate_credential_on_file_transaction_link_id
+
+              super
+
+              validate_marketplace_data_attributes
+              validate_commercial_card_attributes
             end
 
             # Request Field validations
@@ -53,29 +68,33 @@ module GenesisRuby
 
             def payment_transaction_structure # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
               super.merge(
-                gaming:                     gaming,
-                moto:                       moto,
-                crypto:                     crypto,
-                customer_email:             customer_email,
-                customer_phone:             customer_phone,
-                reference_id:               reference_id,
-                document_id:                document_id,
-                fx_rate_id:                 fx_rate_id,
-                billing_address:            billing_address_parameters_structure,
-                shipping_address:           shipping_address_parameters_structure,
-                risk_params:                risk_parameters_structure,
-                dynamic_descriptor_params:  dynamic_descriptor_structure,
-                business_attributes:        business_attributes_structure,
-                recurring_type:             recurring_type,
-                recurring_category:         recurring_category,
-                sca_params:                 sca_attributes_structure,
-                managed_recurring:          managed_recurring_attributes_structure,
-                travel:                     travel_data_attributes_structure,
-                funding:                    funding_attributes_structure,
-                installment_plan_id:        installment_plan_id,
-                installment_plan_reference: installment_plan_reference,
-                digital_asset_type:         digital_asset_type
-              )
+                gaming:                                 gaming,
+                moto:                                   moto,
+                crypto:                                 crypto,
+                customer_email:                         customer_email,
+                customer_phone:                         customer_phone,
+                reference_id:                           reference_id,
+                document_id:                            document_id,
+                fx_rate_id:                             fx_rate_id,
+                billing_address:                        billing_address_parameters_structure,
+                shipping_address:                       shipping_address_parameters_structure,
+                risk_params:                            risk_parameters_structure,
+                dynamic_descriptor_params:              dynamic_descriptor_structure,
+                business_attributes:                    business_attributes_structure,
+                recurring_type:                         recurring_type,
+                recurring_category:                     recurring_category,
+                sca_params:                             sca_attributes_structure,
+                managed_recurring:                      managed_recurring_attributes_structure,
+                travel:                                 travel_data_attributes_structure,
+                marketplace_data:                       marketplace_data_attributes_structure,
+                funding:                                funding_attributes_structure,
+                items:                                  commercial_card_attributes_structure,
+                purpose_of_payment:                     purpose_of_payment,
+                installment_plan_id:                    installment_plan_id,
+                installment_plan_reference:             installment_plan_reference,
+                digital_asset_type:                     digital_asset_type,
+                credential_on_file_transaction_link_id: credential_on_file_transaction_link_id
+              ).merge(order_attributes_structure)
             end
 
           end

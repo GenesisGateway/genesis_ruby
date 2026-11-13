@@ -1,0 +1,52 @@
+{
+  "data": {
+    "billingStatements": {
+      "items": [
+        {
+          "id": 45239,
+          "billingStatement": "A123",
+          "status": "paid",
+          "company": "Example Merchant Ltd",
+          "masterAccountName": "Example Master Account",
+          "masterAccountMID": "111700000000000",
+          "masterAccountCurrency": "EUR",
+          "valueDate": "2022-07-01",
+          "creationDate": "2024-01-05",
+          "currency": "EUR",
+          "paymentMethod": "Example Payment Method",
+          "startDate": "2024-01-01 00:00:00",
+          "endDate": "2024-01-05 23:59:59",
+          "summary": {
+            "grossVolume": 15430.75,
+            "debit": 0.00,
+            "credit": 0.00,
+            "fees": -0.19,
+            "taxes": null,
+            "netReserves": 0.00,
+            "adjustments": 0.19,
+            "netSettlementAmount": 14890.12,
+            "paymentFxConversionFee": null,
+            "paymentAmount": 14890.12,
+            "paymentCurrency": "EUR"
+          },
+          "details": {
+            "transactionTypesBreakdown": [
+              {
+                "category": "Example Card Category",
+                "transactionType": "Sales",
+                "count": 121,
+                "amount": 26150.48
+              }
+            ]
+          }
+        }
+      ],
+      "paging": {
+        "count": 1,
+        "perPage": 100,
+        "after": null,
+        "before": null
+      }
+    }
+  }
+}

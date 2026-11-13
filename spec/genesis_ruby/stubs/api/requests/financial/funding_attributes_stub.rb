@@ -9,6 +9,7 @@ module GenesisSpec
           class FundingAttributesStub
 
             include GenesisRuby::Api::Mixins::Requests::Financial::FundingAttributes
+            include GenesisRuby::Api::Mixins::Requests::RestrictedSetter
 
             public :funding_attributes_structure, :funding_attributes_field_validations
 

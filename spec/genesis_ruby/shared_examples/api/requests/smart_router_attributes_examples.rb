@@ -10,6 +10,10 @@ RSpec.shared_examples 'smart router attributes examples' do
         url = 'transactions'
       end
 
+      if request.is_a?(GenesisRuby::Api::Requests::Base::NonFinancial::Reconcile::Base)
+        url = request.__send__(:request_path)
+      end
+
       return url
     end
 

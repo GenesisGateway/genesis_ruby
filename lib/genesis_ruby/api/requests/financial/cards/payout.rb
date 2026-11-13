@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'genesis_ruby/api/requests/base/financials/credit_card'
+require 'genesis_ruby/api/constants/transactions/parameters/money_transfer/purpose_of_payments'
 
 module GenesisRuby
   module Api
@@ -19,11 +20,20 @@ module GenesisRuby
             include Mixins::Requests::Financial::CryptoAttributes
             include Mixins::Requests::Financial::CustomerIdentificationAttributes
             include Mixins::Requests::Financial::DynamicDescriptorAttributes
-            include Mixins::Requests::Financial::GamingAttributes
             include Mixins::Requests::Financial::MoneyTransferPayoutAttributes
             include Mixins::Requests::Financial::MotoAttributes
             include Mixins::Requests::Financial::PurposeOfPaymentAttributes
             include Mixins::Requests::Financial::SourceOfFundsAttributes
+
+            # Credential on file settlement date is not supported by the Payout transaction
+            def credential_on_file_settlement_date=(_value)
+              raise ParameterError, "Parameter #{__method__} is not supported by the Payout transaction"
+            end
+
+            # Scheme tokenized is not supported by the Payout transaction
+            def scheme_tokenized=(_value)
+              raise ParameterError, "Parameter #{__method__} is not supported by the Payout transaction"
+            end
 
             protected
 
@@ -41,15 +51,21 @@ module GenesisRuby
               field_value_dependencies.merge! required_tokenization_fields_conditional
             end
 
+            # Payout accepts the Visa and the Mastercard Money Transfer purpose of payment values
+            def allowed_purpose_of_payment_values
+              super | Api::Constants::Transactions::Parameters::MoneyTransfer::PurposeOfPayments.all
+            end
+
             # Payout request structure
             def payment_transaction_structure # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
-              super.delete(:credential_on_file_settlement_date)
-              super.delete(:scheme_tokenized)
+              parent_structure = super
 
-              super.merge(
+              parent_structure.delete :credential_on_file_settlement_date
+              parent_structure.delete :scheme_tokenized
+
+              parent_structure.merge(
                 source_of_funds_attributes_structure,
                 {
-                  gaming:                    gaming,
                   moto:                      moto,
                   crypto:                    crypto,
                   digital_asset_type:        digital_asset_type,

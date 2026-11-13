@@ -167,9 +167,58 @@ RSpec.describe GenesisRuby::Api::Requests::NonFinancial::BillingApi::Transaction
 
       expect(request.build_document).to include "    items\n    {\n      #{field}\n    }"
     end
+
+    it 'with full documented set of fields' do
+      all_fields = GenesisRuby::Api::Constants::Transactions::Parameters::NonFinancial::BillingApi::ResponseFields.all
+      request.response_fields = all_fields
+
+      expect { request.build_document }.to_not raise_error
+    end
+
+    it 'with full documented set accepts every field' do
+      all_fields = GenesisRuby::Api::Constants::Transactions::Parameters::NonFinancial::BillingApi::ResponseFields.all
+      request.response_fields = all_fields
+
+      expect(request.response_fields).to eq all_fields
+    end
+
+    it 'with undocumented field raises error and preserves previously set value' do # rubocop:disable RSpec/MultipleExpectations
+      request.response_fields = [field]
+
+      expect { request.response_fields = %w(undocumentedField) }.to raise_error GenesisRuby::InvalidArgumentError
+      expect(request.response_fields).to eq [field]
+    end
+  end
+
+  describe 'when paging attributes' do
+    it 'renders page and perPage bare/numeric unchanged' do # rubocop:disable RSpec/MultipleExpectations
+      request.page     = 2
+      request.per_page = 100
+
+      document = request.build_document
+
+      expect(document).to include 'page: 2'
+      expect(document).to include 'perPage: 100'
+    end
+
+    it 'renders perPage without surrounding quotes' do
+      request.per_page = 100
+
+      expect(request.build_document).to_not include 'perPage: "100"'
+    end
   end
 
   describe 'when sort attributes' do
+    let(:order_by_field) do
+      GenesisRuby::Api::Constants::Transactions::Parameters::NonFinancial::BillingApi::OrderByFields.all.sample
+    end
+
+    it 'when sort_by_field with documented value' do
+      request.sort_by_field = order_by_field
+
+      expect(request.build_document).to include "byField: #{order_by_field}"
+    end
+
     it 'when sort_by_field with invalid value' do
       request.sort_by_field = 'invalid'
 

@@ -21,9 +21,10 @@ module GenesisRuby
               include Api::Mixins::Requests::NonFinancial::Kyc::VerificationAttributes
               include Api::Mixins::Requests::NonFinancial::Kyc::VerificationDocumentAttributes
               include Api::Mixins::Requests::NonFinancial::Kyc::BusinessAttributes
+              include Api::Mixins::Requests::NonFinancial::Kyc::VerificationInstructionsAttributes
 
               attr_accessor :language, :address_backside_proof_required, :allow_retry, :verification_mode
-              attr_reader   :redirect_url, :address_supported_types
+              attr_reader   :redirect_url, :address_supported_types, :show_consent, :show_privacy_policy
 
               # Initializes the Create Verification Request
               def initialize(configuration, _builder_interface = nil)
@@ -49,6 +50,24 @@ module GenesisRuby
                                        allow_empty: true
               end
 
+              # Signifies whether consent message to be shown on the verification page
+              def show_consent=(value)
+                allowed_options attribute:     __method__,
+                                allowed:       [true, false],
+                                value:         value,
+                                allow_empty:   true,
+                                error_message: 'Accepts only boolean values'
+              end
+
+              # Signifies whether privacy policy to be shown on the verification page
+              def show_privacy_policy=(value)
+                allowed_options attribute:     __method__,
+                                allowed:       [true, false],
+                                value:         value,
+                                allow_empty:   true,
+                                error_message: 'Accepts only boolean values'
+              end
+
               protected
 
               def init_field_validations
@@ -60,10 +79,12 @@ module GenesisRuby
                   allow_retry:                     [true, false],
                   verification_mode:               Api::Constants::NonFinancial::Kyc::VerificationModes.all
                 )
+
+                field_value_dependencies.merge! business_incorporation_date: %i[business_name]
               end
 
               # Returns request structure for the Create verification
-              def request_structure # rubocop:disable Metrics/MethodLength
+              def request_structure # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
                 {
                   email:                           email,
                   country:                         country,
@@ -78,9 +99,15 @@ module GenesisRuby
                   expiry_date:                     expiry_date,
                   allow_retry:                     allow_retry,
                   verification_mode:               verification_mode,
-                  background_checks:               background_checks_attributes_structure,
+                  background_checks:               background_checks_attributes_structure.merge(
+                    {
+                      business: business_attributes_structure
+                    }
+                  ),
                   document:                        verification_document_attributes_structure,
-                  business:                        business_attributes_structure
+                  show_consent:                    show_consent,
+                  show_privacy_policy:             show_privacy_policy,
+                  verification_instructions:       verification_instructions_attributes_structure
                 }
               end
 

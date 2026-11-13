@@ -45,7 +45,19 @@ RSpec.describe GenesisRuby::Api::Requests::NonFinancial::Tokenization::Cryptogra
     end
   end
 
+  describe 'when scheme_tokenized placement' do
+    it 'is the last direct child after transaction_reference' do
+      request.scheme_tokenized = true
+
+      expect(
+        Nokogiri::XML(request.build_document)
+                .xpath('/cryptogram_request/transaction_reference/following-sibling::*').map(&:name)
+      ).to eq %w(scheme_tokenized)
+    end
+  end
+
   include_examples 'base request examples'
+  include_examples 'scheme tokenized attributes examples'
   include_examples 'token attributes examples'
   include_examples 'tokenization api attributes examples'
   include_examples 'versioned request examples'

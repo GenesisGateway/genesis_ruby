@@ -36,115 +36,33 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Refund do
     request
   end
 
-  it 'when bank_account_type with invalid value' do
-    request.bank_account_type = 'invalid'
+  describe 'when refund mixin accessors' do
+    refund_mixins = GenesisRuby::Api::Mixins::Requests::Financial::Refund
 
-    expect { request.build_document }.to raise_error GenesisRuby::ParameterError
-  end
+    {
+      'BeneficiaryAttributes'  => %w(beneficiary_bank_code beneficiary_name beneficiary_account_number),
+      'BankAttributes'         => %w(bank bank_branch bank_account bank_account_type),
+      'TravelTicketAttributes' => %w(credit_reason_indicator_1 credit_reason_indicator_2 ticket_change_indicator)
+    }.each do |mixin_name, names|
+      names.each do |name|
+        it "with #{name} accessors from #{mixin_name}" do
+          mixin = refund_mixins.const_get(mixin_name)
 
-  describe 'when beneficiary attributes' do
-    it 'with beneficiary_bank_code' do
-      expect(request.build_document)
-        .to include "<beneficiary_bank_code>#{request.beneficiary_bank_code}</beneficiary_bank_code>"
-    end
-
-    it 'with beneficiary_name' do
-      expect(request.build_document).to include "<beneficiary_name>#{request.beneficiary_name}</beneficiary_name>"
-    end
-
-    it 'with beneficiary_account_number' do
-      expect(request.build_document)
-        .to include "<beneficiary_account_number>#{request.beneficiary_account_number}</beneficiary_account_number>"
-    end
-  end
-
-  describe 'when bank attributes' do
-    it 'with bank' do
-      expect(request.build_document).to include "<bank>#{request.bank}</bank>"
-    end
-
-    it 'with bank_branch' do
-      expect(request.build_document).to include "<bank_branch>#{request.bank_branch}</bank_branch>"
-    end
-
-    it 'with bank_account' do
-      expect(request.build_document).to include "<bank_account>#{request.bank_account}</bank_account>"
-    end
-
-    it 'with bank_account_type' do
-      expect(request.build_document).to include "<bank_account_type>#{request.bank_account_type}</bank_account_type>"
-    end
-  end
-
-  describe 'when Level 3 Travel Data attributes' do
-    it 'without attributes' do
-      expect(request.build_document).to_not include '<travel>'
-    end
-
-    it 'when credit_reason_indicator_1 with valid value' do
-      request.credit_reason_indicator_1 = indicator = GenesisRuby::Api::Constants::Transactions::Parameters::Refund::
-          CreditReasonIndicators.all.sample
-
-      expect(request.build_document).to include "<credit_reason_indicator_1>#{indicator}</credit_reason_indicator_1>"
-    end
-
-    it 'when credit_reason_indicator_1 with invalid value' do
-      request.credit_reason_indicator_1 = 'invalid'
-
-      expect { request.build_document }.to raise_error GenesisRuby::ParameterError
-    end
-
-    it 'when credit_reason_indicator_2 with valid value' do
-      request.credit_reason_indicator_2 = indicator = GenesisRuby::Api::Constants::Transactions::Parameters::Refund::
-          CreditReasonIndicators.all.sample
-
-      expect(request.build_document).to include "<credit_reason_indicator_2>#{indicator}</credit_reason_indicator_2>"
-    end
-
-    it 'when credit_reason_indicator_2 with invalid value' do
-      request.credit_reason_indicator_2 = 'invalid'
-
-      expect { request.build_document }.to raise_error GenesisRuby::ParameterError
-    end
-
-    it 'when ticket_change_indicator with valid value' do
-      request.ticket_change_indicator = indicator = GenesisRuby::Api::Constants::Transactions::Parameters::Refund::
-          TicketChangeIndicators.all.sample
-
-      expect(request.build_document).to include "<ticket_change_indicator>#{indicator}</ticket_change_indicator>"
-    end
-
-    it 'when ticket_change_indicator with invalid value' do
-      request.ticket_change_indicator = 'invalid'
-
-      expect { request.build_document }.to raise_error GenesisRuby::ParameterError
-    end
-
-    describe 'when structure' do
-      let(:travel_request) do
-        request.credit_reason_indicator_1 = GenesisRuby::Api::Constants::Transactions::Parameters::Refund::
-              CreditReasonIndicators.all.sample
-        request.credit_reason_indicator_2 = GenesisRuby::Api::Constants::Transactions::Parameters::Refund::
-              CreditReasonIndicators.all.sample
-        request.ticket_change_indicator   = GenesisRuby::Api::Constants::Transactions::Parameters::Refund::
-              TicketChangeIndicators.all.sample
-
-        request
-      end
-
-      it 'with ticket node' do
-        expect(travel_request.build_document).to include '<ticket>'
-      end
-
-      it 'with travel node' do
-        expect(travel_request.build_document).to include '<travel>'
+          expect([described_class.instance_method(name).owner, described_class.instance_method("#{name}=").owner])
+            .to eq [mixin, mixin]
+        end
       end
     end
   end
+
+  it_behaves_like 'refund bank attributes examples'
+  it_behaves_like 'refund beneficiary attributes examples'
+  it_behaves_like 'refund travel ticket attributes examples'
 
   include_examples 'base request examples'
   include_examples 'financial attributes examples'
   include_examples 'reference attributes examples'
   include_examples 'payment attributes examples'
   include_examples 'installment attributes examples'
+  include_examples 'commercial card attributes examples'
 end

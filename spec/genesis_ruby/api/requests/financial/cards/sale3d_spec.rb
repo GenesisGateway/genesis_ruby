@@ -71,7 +71,10 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Sale3d do
   include_examples 'base request examples'
   include_examples 'business attributes examples'
   include_examples 'card holder date attributes examples'
+  include_examples 'commercial card attributes examples'
   include_examples 'credential on file attributes examples'
+  include_examples 'credential on file transaction link excluded examples',
+                   %i[credential_on_file credential_on_file_transaction_identifier credential_on_file_settlement_date]
   include_examples 'credit card attributes examples'
   include_examples 'crypto attributes examples'
   include_examples 'digital asset type attributes examples'
@@ -80,13 +83,19 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Sale3d do
   include_examples 'financial attributes examples'
   include_examples 'funding attributes examples'
   include_examples 'fx rate attributes examples'
+  include_examples 'force threeds attributes examples'
+  include_examples 'force threeds with threeds v2 examples'
   include_examples 'gaming attributes examples'
   include_examples 'installment attributes examples'
   include_examples 'managed recurring examples'
+  include_examples 'marketplace data attributes examples'
   include_examples 'moto attributes examples'
   include_examples 'mpi attributes examples'
   include_examples 'notification attributes examples'
+  include_examples 'order attributes examples'
   include_examples 'payment attributes examples'
+  include_examples 'purpose of payment attributes examples'
+  include_examples 'purpose of payment default allow-list examples'
   include_examples 'recurring category examples'
   include_examples 'recurring type initial examples'
   include_examples 'risk attributes examples'
@@ -97,4 +106,32 @@ RSpec.describe GenesisRuby::Api::Requests::Financial::Cards::Sale3d do
   include_examples 'tokenization params attributes examples'
   include_examples 'travel data attributes examples'
   include_examples 'ucof attributes examples'
+
+  describe 'when sale3d with initial recurring type and force threeds' do
+    before do
+      request.recurring_type = GenesisRuby::Api::Constants::Transactions::Parameters::Recurring::Types::INITIAL
+      request.force_threeds  = true
+    end
+
+    it 'contains recurring_type as direct child of payment_transaction' do
+      document = Nokogiri::XML request.build_document
+      expect(document.xpath('/payment_transaction/recurring_type').map(&:text)).to eq ['initial']
+    end
+
+    it 'contains force_threeds as direct child of payment_transaction' do
+      document = Nokogiri::XML request.build_document
+      expect(document.xpath('/payment_transaction/force_threeds').map(&:text)).to eq ['true']
+    end
+  end
+
+  describe 'when order_id' do
+    let(:order_id) { "ORD-#{Faker::Number.number(digits: 8)}" }
+
+    it 'contains order_id with initial recurring type' do
+      request.recurring_type = GenesisRuby::Api::Constants::Transactions::Parameters::Recurring::Types::INITIAL
+      request.order_id       = order_id
+
+      expect(Nokogiri::XML(request.build_document).xpath('/payment_transaction/order_id').text).to eq order_id
+    end
+  end
 end

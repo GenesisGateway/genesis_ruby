@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-require 'genesis_ruby/api/constants/transactions/parameters/non_financial/externally_processed'
-require 'genesis_ruby/api/constants/transactions/parameters/non_financial/processing_type'
+require 'genesis_ruby/api/constants/transactions/parameters/non_financial/scopes'
 
 module GenesisRuby
   module Api
@@ -14,8 +13,7 @@ module GenesisRuby
 
             include Api::Mixins::Requests::NonFinancial::DateAttributes
             include Api::Mixins::Requests::NonFinancial::PagingAttributes
-
-            attr_accessor :externally_processed, :processing_type
+            include Api::Mixins::Requests::NonFinancial::ScopeAttributes
 
             # Start of the requested date range
             def start_date
@@ -41,23 +39,18 @@ module GenesisRuby
             def init_field_validations
               super
 
-              required_fields.push *%i[start_date]
-              field_values.merge! externally_processed: Constants::Transactions::Parameters::NonFinancial::
-                                      ExternallyProcessed.all,
-                                  processing_type:      Constants::Transactions::Parameters::NonFinancial::
-                                      ProcessingType.all
+              required_fields.push *%i[start_date scope]
             end
 
             # Processed Transactions API DateRange request structure
             def populate_structure
               @tree_structure = {
                 processed_transaction_request: {
-                  start_date:           start_date,
-                  end_date:             end_date,
-                  externally_processed: externally_processed,
-                  processing_type:      processing_type,
-                  page:                 page,
-                  per_page:             per_page
+                  start_date: start_date,
+                  end_date:   end_date,
+                  scope:      scope,
+                  page:       page,
+                  per_page:   per_page
                 }
               }
             end

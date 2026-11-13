@@ -10,6 +10,7 @@ module GenesisRuby
 
             include Api::Mixins::Requests::NonFinancial::Tokenization::TokenAttributes
             include Api::Mixins::Requests::NonFinancial::Tokenization::TokenizationAttributes
+            include Api::Mixins::Requests::SchemeTokenizedAttributes
 
             attr_accessor :transaction_reference
 
@@ -35,7 +36,8 @@ module GenesisRuby
                   {
                     token:                 token,
                     transaction_reference: transaction_reference
-                  }
+                  },
+                  scheme_tokenized_attributes_structure
                 )
               }
             end

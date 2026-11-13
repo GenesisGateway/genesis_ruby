@@ -9,7 +9,8 @@ module GenesisRuby
           module BillingInfoAttributes
 
             attr_accessor :billing_first_name, :billing_last_name, :billing_address1, :billing_address2,
-                          :billing_zip_code, :billing_city, :billing_state, :billing_country, :billing_neighborhood
+                          :billing_zip_code, :billing_city, :billing_state, :billing_country, :billing_neighborhood,
+                          :billing_street_name
 
             protected
 
@@ -24,6 +25,7 @@ module GenesisRuby
                 city:         billing_city,
                 state:        billing_state,
                 neighborhood: billing_neighborhood,
+                street_name:  billing_street_name,
                 country:      billing_country
               }
             end

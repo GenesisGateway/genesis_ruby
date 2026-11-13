@@ -22,6 +22,8 @@ module GenesisRuby
             include Mixins::Requests::Financial::FundingAttributes
             include Mixins::Requests::Financial::Mobile::GooglePayTokenAttributes
             include Mixins::Requests::Financial::NotificationAttributes
+            include Mixins::Requests::Financial::PurposeOfPaymentAttributes
+            include Mixins::Requests::Financial::Threeds::ForceThreedsAttributes
             include Mixins::Requests::Financial::Threeds::Version2::CommonAttributes
 
             # Define a payment token from a JSON string
@@ -61,7 +63,7 @@ module GenesisRuby
             end
 
             # Google Pay Payment Transaction Structure
-            def payment_transaction_structure # rubocop:disable Metrics/MethodLength
+            def payment_transaction_structure # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
               {
                 payment_subtype:           payment_subtype,
                 payment_token:             google_pay_token_structure,
@@ -77,8 +79,10 @@ module GenesisRuby
                 dynamic_descriptor_params: dynamic_descriptor_structure,
                 document_id:               document_id,
                 recurring_type:            recurring_type,
+                force_threeds:             force_threeds,
                 threeds_v2_params:         threeds_v2_common_attributes_structure,
-                funding:                   funding_attributes_structure
+                funding:                   funding_attributes_structure,
+                purpose_of_payment:        purpose_of_payment
               }
             end
 

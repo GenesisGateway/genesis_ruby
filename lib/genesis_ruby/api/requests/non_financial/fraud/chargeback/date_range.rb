@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-require 'genesis_ruby/api/constants/transactions/parameters/non_financial/externally_processed'
-require 'genesis_ruby/api/constants/transactions/parameters/non_financial/processing_type'
+require 'genesis_ruby/api/constants/transactions/parameters/non_financial/scopes'
 
 module GenesisRuby
   module Api
@@ -15,8 +14,7 @@ module GenesisRuby
 
               include Api::Mixins::Requests::NonFinancial::DateAttributes
               include Api::Mixins::Requests::NonFinancial::PagingAttributes
-
-              attr_accessor :externally_processed, :processing_type
+              include Api::Mixins::Requests::NonFinancial::ScopeAttributes
 
               # Start of the requested date range
               def start_date
@@ -51,26 +49,19 @@ module GenesisRuby
               def init_field_validations
                 super
 
-                constant_values = {
-                  externally_processed: Constants::Transactions::Parameters::NonFinancial::ExternallyProcessed.all,
-                  processing_type:      Constants::Transactions::Parameters::NonFinancial::ProcessingType.all
-                }
-
-                required_fields.push *%i[start_date]
-                field_values.merge! constant_values
+                required_fields.push *%i[start_date scope]
               end
 
               # API Request structure
-              def populate_structure # rubocop:disable Metrics/MethodLength
+              def populate_structure
                 @tree_structure = {
                   chargeback_request: {
-                    start_date:           start_date,
-                    end_date:             end_date,
-                    import_date:          import_date,
-                    page:                 page,
-                    per_page:             per_page,
-                    externally_processed: externally_processed,
-                    processing_type:      processing_type
+                    start_date:  start_date,
+                    end_date:    end_date,
+                    import_date: import_date,
+                    page:        page,
+                    per_page:    per_page,
+                    scope:       scope
                   }
                 }
               end

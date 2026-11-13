@@ -8,9 +8,21 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::NonFinancial::Kyc::Verificati
     Faker::Date.between(from: '1950-01-01', to: '2000-12-31')
                .strftime GenesisRuby::Api::Constants::DateTimeFormats::YYYY_MM_DD_ISO_8601
   end
+  let(:keys_order) do
+    %i[
+      first_name last_name date_of_birth allow_offline allow_online with_enhanced_data allow_fuzzy_match
+      allow_decline_during_single_step with_optical_character_recognition_form
+    ]
+  end
 
-  it 'when verification document attributes structure' do
-    expect(attributes.verification_document_attributes_structure).to be_kind_of Hash
+  describe 'with structure' do
+    it 'with proper type' do
+      expect(attributes.verification_document_attributes_structure).to be_kind_of Hash
+    end
+
+    it 'with proper structure keys' do
+      expect(attributes.verification_document_attributes_structure.keys).to eq keys_order
+    end
   end
 
   describe 'when first_name' do
@@ -82,6 +94,70 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::NonFinancial::Kyc::Verificati
 
     it 'with invalid value' do
       expect { attributes.document_allow_online = 1 }.to raise_error(GenesisRuby::InvalidArgumentError)
+    end
+  end
+
+  describe 'when with_enhanced_data' do
+    it 'with setter' do
+      expect { attributes.document_with_enhanced_data = true }.to_not raise_error
+    end
+
+    it 'with getter' do
+      attributes.document_with_enhanced_data = true
+
+      expect(attributes.document_with_enhanced_data).to eq true
+    end
+
+    it 'with invalid value' do
+      expect { attributes.document_with_enhanced_data = 1 }.to raise_error(GenesisRuby::InvalidArgumentError)
+    end
+  end
+
+  describe 'when allow_fuzzy_match' do
+    it 'with setter' do
+      expect { attributes.document_allow_fuzzy_match = true }.to_not raise_error
+    end
+
+    it 'with getter' do
+      attributes.document_allow_fuzzy_match = true
+
+      expect(attributes.document_allow_fuzzy_match).to eq true
+    end
+
+    it 'with invalid value' do
+      expect { attributes.document_allow_fuzzy_match = 1 }.to raise_error(GenesisRuby::InvalidArgumentError)
+    end
+  end
+
+  describe 'when allow_decline_during_single_step' do
+    it 'with setter' do
+      expect { attributes.document_allow_decline_during_single_step = true }.to_not raise_error
+    end
+
+    it 'with getter' do
+      attributes.document_allow_decline_during_single_step = true
+
+      expect(attributes.document_allow_decline_during_single_step).to eq true
+    end
+
+    it 'with invalid value' do
+      expect { attributes.document_allow_decline_during_single_step = 1 }.to raise_error(GenesisRuby::InvalidArgumentError)
+    end
+  end
+
+  describe 'when with_optical_character_recognition_form' do
+    it 'with setter' do
+      expect { attributes.document_with_optical_character_recognition_form = true }.to_not raise_error
+    end
+
+    it 'with getter' do
+      attributes.document_with_optical_character_recognition_form = true
+
+      expect(attributes.document_with_optical_character_recognition_form).to eq true
+    end
+
+    it 'with invalid value' do
+      expect { attributes.document_with_optical_character_recognition_form = 1 }.to raise_error(GenesisRuby::InvalidArgumentError)
     end
   end
 

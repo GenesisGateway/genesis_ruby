@@ -58,6 +58,8 @@ module GenesisRuby
                 CARD_HOLDER                                      = 'cardHolder'
                 CARD_TYPE                                        = 'cardType'
                 CARD_SUBTYPE                                     = 'cardSubtype'
+                RETRIEVAL_REFERENCE_NUMBER                       = 'retrievalReferenceNumber'
+                OMNIPAY_CARD_PRESENT_TRANSACTION_ID              = 'omnipayCardPresentTransactionId'
 
               end
             end

@@ -43,6 +43,12 @@ module GenesisRuby
             raise NoMethodError, "Response Fields isn't defined for #{self.class.name}"
           end
 
+          # Filter keys rendered without surrounding quotes (bare GraphQL ENUM tokens).
+          # Defaults to none; concrete requests override to expose bare ENUM filters.
+          def filters_without_quotes
+            []
+          end
+
           # GraphQL request structure
           def request_structure
             Hash[
@@ -50,6 +56,7 @@ module GenesisRuby
               Hash[
                 :action, request_name,
                 :filters, query_filters,
+                :filters_without_quotes, filters_without_quotes,
                 :response_fields, query_response_fields
               ]
             ]

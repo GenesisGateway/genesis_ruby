@@ -8,25 +8,11 @@ module GenesisRuby
           # Reconcile can be used to retrieve data about a transaction.
           # This can be useful if you want to retrieve information about a transaction whose status is timeout,
           # which returned an error or has changed eg. has beed chargebacked.
-          class Transaction < Api::Request
-
-            include Mixins::Requests::SmartRouterAttributes
+          class Transaction < Api::Requests::Base::NonFinancial::Reconcile::Base
 
             attr_accessor :arn, :transaction_id, :unique_id
 
             protected
-
-            # Set Gateway API configuration
-            def init_configuration
-              init_xml_configuration
-              init_api_gateway_configuration request_path: 'reconcile'
-              init_api_smart_router_configuration if @configuration.force_smart_routing
-            end
-
-            # Initialize Smart Router endpoint
-            def init_api_smart_router_configuration
-              api_config.url = build_request_url({ subdomain: 'smart_router', path: 'reconcile' })
-            end
 
             # API Request structure
             def populate_structure

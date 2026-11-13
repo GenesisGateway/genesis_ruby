@@ -78,6 +78,12 @@ RSpec.shared_examples 'address info attributes examples' do
 
       expect(billing.build_document).to include "<neighborhood>#{neighborhood}</neighborhood>"
     end
+
+    it 'with billing street name' do
+      billing.billing_street_name = street_name = Faker::Address.street_name
+
+      expect(billing.build_document).to include "<street_name>#{street_name}</street_name>"
+    end
   end
 
   describe 'when shipping address attributes' do

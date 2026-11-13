@@ -100,6 +100,7 @@ begin
     # Other
     request.lifetime            = 30
     request.web_payment_form_id = '987654321'
+    request.order_id            = 'ORD-2024-78456'
 
     # Reminders
     request.pay_later           = true
@@ -154,6 +155,78 @@ rescue GenesisRuby::Error => error
   puts error.message
 end
 ```
+
+#### Marketplace Data (Foreign Retailer)
+
+Available for the `Authorize`, `Authorize3d`, `Sale` and `Sale3d` card transactions.
+
+<details>
+<summary>Example Sale with Marketplace Data</summary>
+
+```ruby
+require 'genesis_ruby'
+
+begin
+  genesis = GenesisRuby::Genesis.for(config: configuration, request: GenesisRuby::Api::Requests::Financial::Cards::Sale) do |request|
+    # Common Attributes
+    request.transaction_id = '12345-67890'
+    request.amount         = '100.00'
+    request.currency       = 'EUR'
+    # ... Credit Card, Customer and Billing Attributes
+
+    # Marketplace Data Attributes
+    # Required when foreign_retailer_transaction_amount is set
+    request.foreign_retailer_indicator          = GenesisRuby::Api::Constants::Transactions::Parameters::
+                                                    ForeignRetailerIndicators::FOREIGN_RETAILER
+    # Optional when foreign_retailer_indicator is set
+    # Set in major currency units (like amount); the SDK converts it to minor units with the request currency
+    # Must be greater than 0 and less than or equal to amount
+    request.foreign_retailer_transaction_amount = '25.50'
+  end.execute
+
+  puts genesis.response.response_object
+
+rescue GenesisRuby::Error => error
+  puts error.message
+end
+```
+</details>
+
+#### Order
+
+Available for the `Authorize`, `Authorize3d`, `Sale` and `Sale3d` card transactions and the Web Payment Form `Create` request.
+
+<details>
+<summary>Example Sale with Order ID</summary>
+
+```ruby
+require 'genesis_ruby'
+
+begin
+  genesis = GenesisRuby::Genesis.for(config: configuration, request: GenesisRuby::Api::Requests::Financial::Cards::Sale) do |request|
+    # Common Attributes
+    request.transaction_id = '12345-67890'
+    request.amount         = '100.00'
+    request.currency       = 'EUR'
+
+    # ... Credit Card, Customer and Billing Attributes
+
+    # Order Attributes
+    # Merchant order identifier, any string up to 255 characters
+    # Groups multiple transactions under a single business order
+    # Transaction order IDs must be enabled for the merchant in the Genesis admin
+    request.order_id = 'ORD-2024-78456'
+  end.execute
+
+  puts genesis.response.response_object
+
+  # Returned when the transaction is associated with an order
+  puts genesis.response.response_object[:order_id]
+rescue GenesisRuby::Error => error
+  puts error.message
+end
+```
+</details>
 
 ### Smart Router
 
@@ -1019,6 +1092,7 @@ GenesisRuby::Api::Requests::Financial::Mobile::RussianMobileSale
 
 ## Wallets
 GenesisRuby::Api::Requests::Financial::Wallets::Alipay
+GenesisRuby::Api::Requests::Financial::Wallets::EWallet
 GenesisRuby::Api::Requests::Financial::Wallets::PayPal
 
 ## Cash Payments
@@ -1050,6 +1124,8 @@ GenesisRuby::Api::Requests::Financial::Vouchers::Neosurf
 GenesisRuby::Api::Requests::Wpf::Create
 ## WPF Reconcile
 GenesisRuby::Api::Requests::Wpf::Reconcile
+GenesisRuby::Api::Requests::Wpf::ReconcileByDate
+GenesisRuby::Api::Requests::Wpf::ReconcileByOrder
 
 # Online Banking Payments
 GenesisRuby::Api::Requests::Financial::OnlineBankingPayments::BancoDoBrasil
@@ -1090,6 +1166,7 @@ GenesisRuby::Api::Requests::Financial::Sdd::Recurring::InitRecurringSale
 GenesisRuby::Api::Requests::Financial::Capture
 GenesisRuby::Api::Requests::Financial::Void
 GenesisRuby::Api::Requests::Financial::Refund
+GenesisRuby::Api::Requests::Financial::AsyncRefund
 GenesisRuby::Api::Requests::Financial::Sdd::Refund
 GenesisRuby::Api::Requests::Financial::Sdd::Recurring::RecurringSale
 GenesisRuby::Api::Requests::Financial::Cards::Credit
@@ -1101,13 +1178,15 @@ GenesisRuby::Api::Requests::Financial::Payout::GlobalPayout
 ## Reconcile
 GenesisRuby::Api::Requests::NonFinancial::Reconcile::Transaction
 GenesisRuby::Api::Requests::NonFinancial::Reconcile::DateRange
+GenesisRuby::Api::Requests::NonFinancial::Reconcile::Order
 
 ## Installments
 GenesisRuby::Api::Requests::NonFinancial::Installments::Fetch
 
 ## Billing API
-GenesisRuby::Api::Requests::NonFinancial::BillingApi::Statements
+GenesisRuby::Api::Requests::NonFinancial::BillingApi::Statement
 GenesisRuby::Api::Requests::NonFinancial::BillingApi::Transactions
+GenesisRuby::Api::Requests::NonFinancial::BillingApi::EnhancedStatement
 
 ## Managed Recurring API
 GenesisRuby::Api::Requests::NonFinancial::ManagedRecurring::FetchAll
@@ -1152,6 +1231,7 @@ GenesisRuby::Api::Requests::NonFinancial::Kyc::Business::Verification
 GenesisRuby::Api::Requests::NonFinancial::Kyc::ConsumerRegistration::Create
 GenesisRuby::Api::Requests::NonFinancial::Kyc::ConsumerRegistration::Update
 GenesisRuby::Api::Requests::NonFinancial::Kyc::Verifications::AddressByDocumentProof
+GenesisRuby::Api::Requests::NonFinancial::Kyc::Verifications::BankAccount
 GenesisRuby::Api::Requests::NonFinancial::Kyc::Verifications::Create
 GenesisRuby::Api::Requests::NonFinancial::Kyc::Verifications::Register
 GenesisRuby::Api::Requests::NonFinancial::Kyc::Verifications::RemoteIdentity
@@ -1203,6 +1283,10 @@ GenesisRuby::Api::Requests::NonFinancial::Fraud::Chargeback::DateRange
 GenesisRuby::Api::Requests::NonFinancial::Fraud::Reports::Transaction
 GenesisRuby::Api::Requests::NonFinancial::Fraud::Reports::DateRange
 
+## Rapid Dispute Resolution API
+GenesisRuby::Api::Requests::NonFinancial::Fraud::Rdr::Transaction
+GenesisRuby::Api::Requests::NonFinancial::Fraud::Rdr::DateRange
+
 ## Fx API
 GenesisRuby::Api::Requests::NonFinancial::Fx::GetTiers
 GenesisRuby::Api::Requests::NonFinancial::Fx::GetTier
@@ -1210,6 +1294,90 @@ GenesisRuby::Api::Requests::NonFinancial::Fx::GetRates
 GenesisRuby::Api::Requests::NonFinancial::Fx::GetRate
 GenesisRuby::Api::Requests::NonFinancial::Fx::SearchRate
 
+## APM Services API
+GenesisRuby::Api::Requests::NonFinancial::Alternatives::Alipay::RegisterMerchant
+
+## Payment Authorizations API
+GenesisRuby::Api::Requests::NonFinancial::PaymentAuthorizations::DateRange
+
+```
+
+### Billing Statements
+
+The standard `Statement` request issues the `billingStatements` GraphQL query and the
+`EnhancedStatement` request issues the `enhancedBillingStatements` query. Both are served
+from the same `billing_statements` endpoint; the enhanced request additionally exposes the
+extended `summary` / `details` response tree (`pricingMethod`, detailed fee breakdowns).
+
+> The `master_account_mid` filter applies server-side only to records created on or after
+> 2026-08-17.
+
+```ruby
+request = GenesisRuby::Api::Requests::NonFinancial::BillingApi::Statement.new configuration
+
+# Date-range filters. Each from/to pair must be set together, the `from` value must be on or
+# before its `to` value, a pair may span at most 7 days, and every boundary accepts either a
+# date ('YYYY-MM-DD') or a datetime ('YYYY-MM-DD HH:MM:SS') value.
+request.start_date_from = '2024-01-01'
+request.start_date_to   = '2024-01-05'
+request.end_date_from   = '2024-01-01'
+request.end_date_to     = '2024-01-07 23:59:59'
+
+# Filter by master account MID (list)
+request.master_account_mid = %w(111700000000000 124000000000000)
+
+# Flat and nested response-field selection. The nested structure is rendered exactly as given.
+# For billingStatements, `summary` is a group of scalar leaves and `details` exposes
+# `transactionTypesBreakdown`.
+request.response_fields = [
+  'billingStatement',
+  'status',
+  { 'summary' => %w(
+    grossVolume debit credit fees taxes netReserves adjustments
+    netSettlementAmount paymentFxConversionFee paymentAmount paymentCurrency
+  ) },
+  { 'details' => [
+    { 'transactionTypesBreakdown' => %w(category transactionType count amount) }
+  ] }
+]
+
+response = genesis.execute request
+```
+
+The SDK does **not** auto-expand the `summary` and `details` response fields. There is no fixed
+internal `summary` / `details` tree: the caller supplies the exact nested fields wanted and the
+SDK renders them as given.
+
+For the enhanced statement tree, use `EnhancedStatement` and request `pricingMethod` plus the
+deeper `summary` / `details` sub-selections. In the enhanced schema `summary` groups such as
+`grossVolume` are objects (`{ count amount }`) and `details` exposes `discountFees`,
+`transactionFees`, `serviceFees`, `chargebacks`, `miscellaneous`, and `reserves`:
+
+```ruby
+request = GenesisRuby::Api::Requests::NonFinancial::BillingApi::EnhancedStatement.new configuration
+
+request.start_date_from = '2024-01-01'
+request.start_date_to   = '2024-01-05'
+request.response_fields = [
+  'billingStatement',
+  'pricingMethod',
+  { 'summary' => [
+    { 'grossVolume' => %w(count amount) },
+    'netSettlementAmount',
+    'paymentAmount'
+  ] },
+  { 'details' => [
+    { 'discountFees' => [
+      'subtotalCount',
+      'subtotalValue',
+      'subtotalAmount',
+      { 'feesByRegionAndCardType' => [
+        'category',
+        { 'feesByTransactionType' => %w(transactionType count value amount rate interchange) }
+      ] }
+    ] }
+  ] }
+]
 ```
 
 ### Manual initialization

@@ -13,8 +13,12 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::FundingAttributes 
   let(:account_number) { Faker::Internet.uuid }
   let(:account_number_type) { 'type' }
   let(:address) { Faker::Address.full_address }
+  let(:address2) { Faker::Address.secondary_address }
+  let(:street_name) { Faker::Address.street_name }
+  let(:zip_code) { Faker::Address.zip_code }
   let(:state) { Faker::Address.state }
   let(:city) { Faker::Address.city }
+  let(:person_type) { GenesisRuby::Api::Constants::Transactions::Parameters::Funding::PersonTypes.all.sample }
 
   describe 'when funding_identifier_type' do
     it 'with setter' do
@@ -112,6 +116,78 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::FundingAttributes 
     end
   end
 
+  describe 'when funding_receiver_address2' do
+    it 'with setter' do
+      expect { funding.funding_receiver_address2 = address2 }.to_not raise_error
+    end
+
+    it 'with getter' do
+      funding.funding_receiver_address2 = address2
+
+      expect(funding.funding_receiver_address2).to eq address2
+    end
+  end
+
+  describe 'when funding_receiver_street_name' do
+    it 'with setter' do
+      expect { funding.funding_receiver_street_name = street_name }.to_not raise_error
+    end
+
+    it 'with getter' do
+      funding.funding_receiver_street_name = street_name
+
+      expect(funding.funding_receiver_street_name).to eq street_name
+    end
+  end
+
+  describe 'when funding_receiver_zip_code' do
+    it 'with setter' do
+      expect { funding.funding_receiver_zip_code = zip_code }.to_not raise_error
+    end
+
+    it 'with getter' do
+      funding.funding_receiver_zip_code = zip_code
+
+      expect(funding.funding_receiver_zip_code).to eq zip_code
+    end
+  end
+
+  describe 'when funding_receiver_type' do
+    it 'with setter' do
+      expect { funding.funding_receiver_type = person_type }.to_not raise_error
+    end
+
+    it 'with getter' do
+      funding.funding_receiver_type = person_type
+
+      expect(funding.funding_receiver_type).to eq person_type
+    end
+
+    it 'with invalid value' do
+      expect { funding.funding_receiver_type = 'invalid' }.to raise_error GenesisRuby::InvalidArgumentError
+    end
+
+    it 'with nil value' do
+      expect { funding.funding_receiver_type = nil }.to_not raise_error
+    end
+
+    it 'with nil value getter' do
+      funding.funding_receiver_type = nil
+
+      expect(funding.funding_receiver_type).to be_nil
+    end
+
+    it 'with empty value' do
+      expect { funding.funding_receiver_type = '' }.to_not raise_error
+    end
+
+    it 'with empty value getter' do
+      funding.funding_receiver_type = ''
+
+      expect(funding.funding_receiver_type).to be_nil
+    end
+  end
+
   describe 'when funding_receiver_state' do
     it 'with setter' do
       expect { funding.funding_receiver_state = state }.to_not raise_error
@@ -147,6 +223,42 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::Financial::FundingAttributes 
       funding.funding_sender_name = name
 
       expect(funding.funding_sender_name).to eq name
+    end
+  end
+
+  describe 'when funding_sender_type' do
+    it 'with setter' do
+      expect { funding.funding_sender_type = person_type }.to_not raise_error
+    end
+
+    it 'with getter' do
+      funding.funding_sender_type = person_type
+
+      expect(funding.funding_sender_type).to eq person_type
+    end
+
+    it 'with invalid value' do
+      expect { funding.funding_sender_type = 'invalid' }.to raise_error GenesisRuby::InvalidArgumentError
+    end
+
+    it 'with nil value' do
+      expect { funding.funding_sender_type = nil }.to_not raise_error
+    end
+
+    it 'with nil value getter' do
+      funding.funding_sender_type = nil
+
+      expect(funding.funding_sender_type).to be_nil
+    end
+
+    it 'with empty value' do
+      expect { funding.funding_sender_type = '' }.to_not raise_error
+    end
+
+    it 'with empty value getter' do
+      funding.funding_sender_type = ''
+
+      expect(funding.funding_sender_type).to be_nil
     end
   end
 

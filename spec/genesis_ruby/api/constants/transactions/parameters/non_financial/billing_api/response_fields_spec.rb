@@ -4,6 +4,6 @@ require 'genesis_ruby/api/constants/transactions/parameters/non_financial/billin
 
 RSpec.describe GenesisRuby::Api::Constants::Transactions::Parameters::NonFinancial::BillingApi::ResponseFields do
 
-  include_examples 'common constants examples', 'interchangeplusplusChargedOnBillingStatement'
+  include_examples 'common constants examples', 'omnipayCardPresentTransactionId'
 
 end

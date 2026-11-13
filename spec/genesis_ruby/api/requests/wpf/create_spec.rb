@@ -71,8 +71,12 @@ RSpec.describe GenesisRuby::Api::Requests::Wpf::Create do
   include_examples 'card holder date attributes examples'
   include_examples 'digital asset type attributes examples'
   include_examples 'dynamic descriptor examples'
+  include_examples 'force threeds excluded examples'
   include_examples 'funding attributes examples'
+  include_examples 'order attributes examples'
   include_examples 'pending attributes examples'
+  include_examples 'purpose of payment attributes examples'
+  include_examples 'purpose of payment default allow-list examples'
   include_examples 'recurring category examples'
   include_examples 'risk attributes examples'
   include_examples 'wpf reminders attributes examples'
@@ -91,6 +95,24 @@ RSpec.describe GenesisRuby::Api::Requests::Wpf::Create do
 
   it 'fails without parameters' do
     expect { described_class.new(config).build_document }.to raise_error GenesisRuby::ParameterError
+  end
+
+  describe 'when e_wallet transaction type' do
+    it 'accepts e_wallet transaction type' do
+      payment_type = GenesisRuby::Api::Constants::Transactions::Parameters::Wallets::EWallet::
+          PaymentTypes::PAYTM
+
+      expect { request.add_transaction_type('e_wallet', { payment_type: payment_type }) }.to_not raise_error
+    end
+
+    it 'emits e_wallet transaction type with payment_type' do
+      payment_type = GenesisRuby::Api::Constants::Transactions::Parameters::Wallets::EWallet::
+          PaymentTypes::PAYTM
+      request.add_transaction_type('e_wallet', { payment_type: payment_type })
+
+      expect(request.build_document)
+        .to include('<transaction_type name="e_wallet">', '<payment_type>Paytm</payment_type>')
+    end
   end
 
   describe 'when locale' do

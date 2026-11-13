@@ -2,6 +2,7 @@
 
 require 'genesis_ruby/api/constants/transactions/parameters/funding/business_application_identifier_types'
 require 'genesis_ruby/api/constants/transactions/parameters/funding/identifier_types'
+require 'genesis_ruby/api/constants/transactions/parameters/funding/person_types'
 require 'genesis_ruby/api/constants/transactions/parameters/funding/receiver_account_types'
 
 module GenesisRuby
@@ -12,12 +13,35 @@ module GenesisRuby
           # Mixin Funding Attributes
           module FundingAttributes
 
+            attr_reader :funding_receiver_type, :funding_sender_type
+
             attr_accessor :funding_identifier_type, :funding_business_application_identifier,
                           :funding_receiver_first_name, :funding_receiver_last_name, :funding_receiver_country,
                           :funding_receiver_account_number, :funding_receiver_account_number_type,
-                          :funding_receiver_address, :funding_receiver_state, :funding_receiver_city,
+                          :funding_receiver_address, :funding_receiver_address2, :funding_receiver_street_name,
+                          :funding_receiver_state, :funding_receiver_city, :funding_receiver_zip_code,
                           :funding_sender_name, :funding_sender_reference_number, :funding_sender_country,
                           :funding_sender_address, :funding_sender_state, :funding_sender_city
+
+            # Funding Receiver Person Type setter
+            def funding_receiver_type=(value)
+              allowed_options(
+                attribute:   __method__,
+                allowed:     Api::Constants::Transactions::Parameters::Funding::PersonTypes.all,
+                value:       value,
+                allow_empty: true
+              )
+            end
+
+            # Funding Sender Person Type setter
+            def funding_sender_type=(value)
+              allowed_options(
+                attribute:   __method__,
+                allowed:     Api::Constants::Transactions::Parameters::Funding::PersonTypes.all,
+                value:       value,
+                allow_empty: true
+              )
+            end
 
             protected
 
@@ -34,22 +58,27 @@ module GenesisRuby
             end
 
             # Funding Attributes Structure
-            def funding_attributes_structure # rubocop:disable Metrics/MethodLength
+            def funding_attributes_structure # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
               {
                 identifier_type:                 funding_identifier_type,
                 business_application_identifier: funding_business_application_identifier,
                 receiver:                        {
                   first_name:          funding_receiver_first_name,
                   last_name:           funding_receiver_last_name,
+                  type:                funding_receiver_type,
                   country:             funding_receiver_country,
                   account_number:      funding_receiver_account_number,
                   account_number_type: funding_receiver_account_number_type,
                   address:             funding_receiver_address,
+                  address2:            funding_receiver_address2,
+                  street_name:         funding_receiver_street_name,
                   state:               funding_receiver_state,
-                  city:                funding_receiver_city
+                  city:                funding_receiver_city,
+                  zip_code:            funding_receiver_zip_code
                 },
                 sender:                          {
                   name:             funding_sender_name,
+                  type:             funding_sender_type,
                   reference_number: funding_sender_reference_number,
                   country:          funding_sender_country,
                   address:          funding_sender_address,

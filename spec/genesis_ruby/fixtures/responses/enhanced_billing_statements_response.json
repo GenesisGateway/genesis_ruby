@@ -1,0 +1,90 @@
+{
+  "data": {
+    "enhancedBillingStatements": {
+      "items": [
+        {
+          "id": 45254,
+          "billingStatement": "A123",
+          "status": "paid",
+          "company": "Example Merchant Ltd",
+          "masterAccountName": "Example Master Account",
+          "masterAccountMID": "111700000000000",
+          "masterAccountCurrency": "USD",
+          "valueDate": "2022-07-01",
+          "creationDate": "2024-01-05",
+          "currency": "EUR",
+          "paymentMethod": "Example Payment Method",
+          "startDate": "2024-01-01 00:00:00",
+          "endDate": "2024-01-05 23:59:59",
+          "pricingMethod": "IC++",
+          "summary": {
+            "grossVolume": { "count": 287, "amount": 53500.93 },
+            "refunds": { "count": 10, "amount": -968.62 },
+            "payouts": { "count": 0, "amount": 0.00 },
+            "chargebacks": { "count": 5, "amount": -1765.97 },
+            "totalFees": { "count": 0, "amount": -1590.73 },
+            "netReserves": { "count": 0, "amount": -1070.02 },
+            "netSettlementAmount": 48105.59,
+            "paymentAmount": null
+          },
+          "details": {
+            "discountFees": {
+              "subtotalCount": 297,
+              "subtotalValue": 52532.31,
+              "subtotalAmount": -1509.55,
+              "feesByRegionAndCardType": [
+                {
+                  "category": "Example Card Category",
+                  "feesByTransactionType": [
+                    {
+                      "transactionType": "Sales",
+                      "count": 121,
+                      "value": 26150.48,
+                      "amount": -756.15,
+                      "rate": null,
+                      "interchange": -392.24
+                    }
+                  ]
+                }
+              ]
+            },
+            "transactionFees": {
+              "subtotalCount": 652,
+              "subtotalAmount": -81.18,
+              "transactionFeeItems": [
+                { "category": "Settlement Approved", "transactions": 287, "rate": 0.0534, "amount": -15.33 }
+              ]
+            },
+            "serviceFees": null,
+            "chargebacks": {
+              "subtotalCount": 5,
+              "subtotalAmount": -1765.97,
+              "chargebackItems": [
+                { "type": "Chargeback", "count": 4, "amount": -1812.94 },
+                { "type": "Chargeback Reversal", "count": 1, "amount": 46.97 }
+              ]
+            },
+            "miscellaneous": null,
+            "reserves": {
+              "totalBalance": -1070.02,
+              "reserveItems": [
+                {
+                  "category": "Example Reserve Category",
+                  "maturityDate": "2026-01-28",
+                  "ratePercentage": 2.00,
+                  "amount": -1070.02
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "paging": {
+        "count": 1,
+        "perPage": 100,
+        "after": null,
+        "before": null
+      }
+    }
+  }
+}

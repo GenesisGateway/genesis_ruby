@@ -18,7 +18,7 @@ module GenesisRuby
                 BALOTO, BANCOMER, BANCONTACT, BANCO_DE_OCCIDENTE, BANCO_DO_BRASIL, BITPAY_SALE, BOLETO, BRADESCO,
                 CAPTURE, CASHU,
                 DAVIVIENDA,
-                EFECTY, EPS, FASHIONCHEQUE,
+                EFECTY, EPS, E_WALLET, FASHIONCHEQUE,
                 GOOGLE_PAY,
                 IDEAL, IDEBIT_PAYIN, INIT_RECURRING_SALE, INIT_RECURRING_SALE_3D, INVOICE_CAPTURE, ITAU,
                 MY_BANK,
@@ -41,6 +41,7 @@ module GenesisRuby
             # Checks if the given type is a Refund type
             def valid?(type)
               [
+                ASYNC_REFUND,
                 BITPAY_REFUND,
                 INVOICE_REFUND,
                 REFUND,

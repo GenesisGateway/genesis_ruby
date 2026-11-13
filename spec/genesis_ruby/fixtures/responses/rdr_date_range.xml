@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rapid_dispute_resolution_responses per_page="100" page="1" total_count="2" pages_count="1">
+  <rapid_dispute_resolution_response>
+    <type>RDR Pre-dispute</type>
+    <post_date>2014-01-24</post_date>
+    <reason_code>4855</reason_code>
+    <reason_description>Non-receipt of merchandise</reason_description>
+    <rdr_amount>300.0</rdr_amount>
+    <rdr_currency>EUR</rdr_currency>
+    <card_number>554960******5069</card_number>
+    <arn>74537604221431003881865</arn>
+    <card_brand>master</card_brand>
+    <customer_email>jonh_doe@example.com</customer_email>
+    <customer_phone>3598851248512</customer_phone>
+    <transaction_type>sale3d</transaction_type>
+    <original_transaction_unique_id>f9634ec5e7dbe6ca3871974accb875cd</original_transaction_unique_id>
+    <original_transaction_amount>200.0</original_transaction_amount>
+    <original_transaction_currency>EUR</original_transaction_currency>
+    <original_transaction_merchant_transaction_id>12345</original_transaction_merchant_transaction_id>
+  </rapid_dispute_resolution_response>
+  <rapid_dispute_resolution_response>
+    <type>RDR Pre-dispute</type>
+    <post_date>2014-01-27</post_date>
+    <reason_code>4855</reason_code>
+    <reason_description>Non-receipt of merchandise</reason_description>
+    <rdr_amount>300.0</rdr_amount>
+    <rdr_currency>EUR</rdr_currency>
+    <card_number>454360******5008</card_number>
+    <arn>74537604221431003881865</arn>
+    <card_brand>visa</card_brand>
+    <customer_email>ivan@example.com</customer_email>
+    <customer_phone>3598851248512</customer_phone>
+    <transaction_type>sale</transaction_type>
+    <original_transaction_unique_id>67fbebc172b743a164a3f3af3d010457</original_transaction_unique_id>
+    <original_transaction_amount>200.0</original_transaction_amount>
+    <original_transaction_currency>EUR</original_transaction_currency>
+    <original_transaction_merchant_transaction_id>12345</original_transaction_merchant_transaction_id>
+  </rapid_dispute_resolution_response>
+</rapid_dispute_resolution_responses>

@@ -1,0 +1,12 @@
+{
+  "merchant_type": "ENTERPRISE",
+  "site_information": {
+    "type": "APP",
+    "url": "https://example.com",
+    "name": "Example"
+  },
+  "contact_number": "1234567",
+  "registration_number": "1234567",
+  "shareholder_id": "1234567",
+  "shareholder_name": "Your Name"
+}

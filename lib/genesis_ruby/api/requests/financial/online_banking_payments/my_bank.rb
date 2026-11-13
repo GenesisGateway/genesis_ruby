@@ -27,7 +27,7 @@ module GenesisRuby
                 amount currency billing_country]
 
               field_values.merge! currency:        'EUR',
-                                  billing_country: %w(IT BE PT ES)
+                                  billing_country: %w(IT BE PT ES FR)
             end
 
             # MyBank request structure

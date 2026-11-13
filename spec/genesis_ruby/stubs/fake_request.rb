@@ -55,6 +55,14 @@ module GenesisSpec
         xml_response 200, 'reconcile_error.xml'
       end
 
+      post '/rapid_dispute_resolutions' do
+        xml_response 200, 'rdr_not_found.xml'
+      end
+
+      post '/rapid_dispute_resolutions/by_date' do
+        xml_response 200, 'rdr_date_range.xml'
+      end
+
       get '/success_example' do
         json_response 200, 'billing_api_response.json'
       end

@@ -1,0 +1,30 @@
+query {
+  exampleAction(filter: { key1: "value1" })
+  {
+    items
+    {
+      topLeaf
+      level1
+      {
+        level2
+        {
+          level3
+          {
+            level4
+            {
+              level5
+              {
+                deepLeaf
+              }
+            }
+          }
+        }
+      }
+    }
+    paging
+    {
+      page
+      perPage
+    }
+  }
+}

@@ -1,3 +1,38 @@
+0.4.0
+-----
+
+**Features**:
+
+* Added force_threeds parameter to Authorize3D, Sale3D, Apple Pay and Google Pay requests
+* Added credential_on_file_transaction_link_id parameter to Authorize and Sale requests
+* Added Rapid Dispute Resolution (RDR) Transaction and Date Range API requests
+* Added Marketplace Foreign Retailer data support
+* Added street_name attributes to the Billing attributes
+* Updated SDD Sale allowed countries
+* Updated Funding and Visa AFT attributes and validations
+* Added eWallet transaction support
+* Added scheme_tokenized parameter to Tokenization Cryptogram and Tokenize requests
+* Updated Billing APIs to the current API contract
+* Updated Processed Transactions, Chargebacks and Retrieval Requests Date Range reporting APIs to the current scope contract
+* Added required scope parameter to Processed Transactions, Chargebacks and Retrieval Requests Date Range requests
+* Added KYC Bank Account Verification API request
+* Updated KYC Create Verification parameters
+* Added order_id parameter to Authorize, Authorize3D, Sale, Sale3D and WPF Create requests
+* Added Payment Authorizations API requests
+* Added Async Refund transaction support
+* Added Commercial Card Data and Mastercard LTI support to Authorize, Authorize3D, Sale, Sale3D and Refund requests
+* Added Alipay Register Merchant APM Service request
+* Completed Reconcile API support
+* Added purpose_of_payment parameter to Authorize, Authorize3D, Sale, Sale3D, Apple Pay, Google Pay and WPF Create requests
+* Updated Money Transfer and Purpose of Payment lists and Payout request Money Transfer section
+* Removed deprecated processing_type and externally_processed parameters, constants and accessors from the Processed Transactions, Chargebacks and Retrieval Requests Date Range requests
+* Removed gaming parameters from the Payout card request
+* Removed credential_on_file_settlement_date and scheme_tokenized parameters from the Payout request, setting them now raises ParameterError
+
+**Fixes**:
+
+* Fixed zero-amount conversion for zero-exponent currencies
+
 0.3.2
 -----
 

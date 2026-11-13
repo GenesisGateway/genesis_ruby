@@ -11,29 +11,20 @@ module GenesisRuby
 
               extend Mixins::Constants::Common
 
-              # Current account
-              CURRENT_ACCOUNT      = 'current_account'
+              # Credit
+              CREDIT          = 'credit'
 
-              # Credit card
-              CREDIT_CARD          = 'credit_card'
-
-              # Savings account
-              SAVINGS_ACCOUNT      = 'savings_account'
-
-              # Deposit account
-              DEPOSIT_ACCOUNT      = 'deposit_account'
-
-              # Cash
-              CASH                 = 'cash'
+              # Debit
+              DEBIT           = 'debit'
 
               # Prepaid
-              PREPAID              = 'prepaid'
+              PREPAID         = 'prepaid'
 
-              # Other debit account
-              OTHER_DEBIT_ACCOUNT  = 'other_debit_account'
+              # Cash
+              CASH            = 'cash'
 
-              # Other credit account
-              OTHER_CREDIT_ACCOUNT = 'other_credit_account'
+              # Deposit account
+              DEPOSIT_ACCOUNT = 'deposit_account'
 
             end
           end

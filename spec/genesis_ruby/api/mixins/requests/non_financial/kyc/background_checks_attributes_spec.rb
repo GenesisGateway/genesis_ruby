@@ -13,8 +13,17 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::NonFinancial::Kyc::Background
     GenesisRuby::Api::Constants::NonFinancial::Kyc::AmlFilters.all.sample(2)
   end
 
-  it 'when background checks attributes structure' do
-    expect(attributes.background_checks_attributes_structure).to be_kind_of Hash
+  describe 'with structure' do
+    it 'with proper type' do
+      expect(attributes.background_checks_attributes_structure).to be_kind_of Hash
+    end
+
+    it 'with proper structure keys' do
+      expect(attributes.background_checks_attributes_structure.keys).to eq(
+        %i[first_name middle_name last_name full_name date_of_birth async_update filters match_score with_alias_search
+           with_associates_search]
+      )
+    end
   end
 
   describe 'when first_name' do
@@ -94,6 +103,38 @@ RSpec.describe GenesisRuby::Api::Mixins::Requests::NonFinancial::Kyc::Background
 
     it 'with invalid value' do
       expect { attributes.background_checks_async_update = 1 }.to raise_error(GenesisRuby::InvalidArgumentError)
+    end
+  end
+
+  describe 'when with_alias_search' do
+    it 'with setter' do
+      expect { attributes.background_checks_with_alias_search = true }.to_not raise_error
+    end
+
+    it 'with getter' do
+      attributes.background_checks_with_alias_search = true
+
+      expect(attributes.background_checks_with_alias_search).to eq true
+    end
+
+    it 'with invalid value' do
+      expect { attributes.background_checks_with_alias_search = 1 }.to raise_error(GenesisRuby::InvalidArgumentError)
+    end
+  end
+
+  describe 'when with_associates_search' do
+    it 'with setter' do
+      expect { attributes.background_checks_with_associates_search = true }.to_not raise_error
+    end
+
+    it 'with getter' do
+      attributes.background_checks_with_associates_search = true
+
+      expect(attributes.background_checks_with_associates_search).to eq true
+    end
+
+    it 'with invalid value' do
+      expect { attributes.background_checks_with_associates_search = 1 }.to raise_error(GenesisRuby::InvalidArgumentError)
     end
   end
 
